@@ -1,4 +1,5 @@
 <template>
+<v-app>
   <v-layout>
     <v-flex class="text-center">
       <img
@@ -61,4 +62,11 @@
       </blockquote>
     </v-flex>
   </v-layout>
+</v-app>
 </template>
+<script>
+export default {
+  
+}
+</script>
+
