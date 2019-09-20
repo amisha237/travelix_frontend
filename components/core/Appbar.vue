@@ -72,7 +72,7 @@ export default {
         },
         {
           title: 'Stories',
-          to: '/inspire'
+          to: '/stories'
         },
         {
           title: 'Blog',
