@@ -1,7 +1,5 @@
 <template>
-  <v-app >
-  
-    <v-app-bar
+  <v-app-bar
       fixed
       app
       light
@@ -21,6 +19,7 @@
 					router
 					exact
 					text
+        
 					v-text="item.title" 
 					class="navbar-menu-items"	
 				>
@@ -43,13 +42,7 @@
      
 		</v-layout>
     </v-app-bar>
-    <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-content>
-   
-  </v-app>
+  
 </template>
 
 <script>
@@ -71,7 +64,7 @@ export default {
         },
         {
           title: 'Package',
-          to: '/inspire'
+          to: '/package1'
         },
         {
           title: 'Destination',

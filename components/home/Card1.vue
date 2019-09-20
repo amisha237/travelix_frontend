@@ -36,7 +36,7 @@ export default {
         return{
             items:[
                 {
-                src:"https://cdn.vuetifyjs.com/images/cards/docks.jpg",
+                src:"/fig1.jpG",
                 price:'$100',
                 destination:'Bhubaneswar',
                 to:'/'
@@ -54,9 +54,9 @@ export default {
                 to:'/'
                 },
                 {
-                src:"https://cdn.vuetifyjs.com/images/cards/docks.jpg",
+                src:"/delhi.jpg",
                 price:'$150',
-                destination:'Shimla',
+                destination:'Delhi',
                 to:'/inspire'
                 },
             ]

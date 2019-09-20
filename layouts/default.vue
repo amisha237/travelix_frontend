@@ -1,10 +1,9 @@
 <template>
  <v-app>
    <Appbar />
-   <!-- <Drawer /> -->
     <v-content>
       <v-container >
-      
+         <nuxt />
       </v-container>
     </v-content>
    <Footer />
@@ -20,12 +19,6 @@ export default {
      Appbar,Footer,
     //  Drawer
   },
-  data () {
-    return {
-     
-
-    }
-  }
 }
  
 </script>

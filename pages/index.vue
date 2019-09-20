@@ -5,21 +5,17 @@
     justify-center
     align-center
   >
-  <div width="100%">
+  <div width="100%" fluid>
   <Carousel />
-  <v-divider color="pink"></v-divider><br><br>
+  <br><br>
   </div>
-  <v-divider></v-divider>
   <div class="display-2" color="primary">
-    Best Tours
+    Best Destination
     <br><br>
-   </div>
-   <Card1 />
-   <br>
-   <br>
-   <v-divider>
+  </div>
+  <Card1 />
 
-   </v-divider>
+  <div class="display-2">Best Packages<br><br></div>
    <Card2 />
     <div>
 
@@ -80,7 +76,8 @@ export default {
   },
   data(){
     return{
-      
+      inset:true,
+      dark:true,
 
     }
   }

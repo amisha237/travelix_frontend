@@ -6,7 +6,7 @@
       :src="item.src"
 
     >
-    <div color="white" class="display-4">
+    <div class="display-4 white--text">
         <center><br><br>Discover new Worlds</center>
     </div>
     </v-carousel-item>
