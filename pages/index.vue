@@ -14,12 +14,21 @@
     <br><br>
   </div>
   <Card1 />
-
   <div class="display-2">Best Packages<br><br></div>
-   <Card2 />
+   <Card2 /> 
+   <br>
+   <br>
+   
+   <card4 />
+   <br>
+   <br>
+   <div class="">
+       <span class="display-2"> Latest From Our Blogs</span>
+       <br><br>
+   </div>
+   <card3 />
     <div>
-
-    <pre>
+       <pre>
 
 
 
@@ -66,11 +75,16 @@
 // import Slider1 from '@/components/Slider1' ;
 import Carousel from '@/components/home/Carousel' ;
 import Card1 from '@/components/home/Card1' ;
-import Card2 from '@/components/home/Card2' ;
+import Card2 from '@/components/home/Card2' ; import card3 from '@/components/home/card3' ;
+import card4 from '@/components/home/card4' ;
 export default {
   components: {
     // Slider1,
-    Carousel,Card1,Card2
+    Carousel
+    ,Card1,
+    Card2,
+    card3,
+    card4
 
     
   },

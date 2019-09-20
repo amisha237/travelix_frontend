@@ -36,7 +36,7 @@ export default {
         return{
             items:[
                 {
-                src:"/fig1.jpG",
+                src:"/fig1.jpg",
                 price:'$100',
                 destination:'Bhubaneswar',
                 to:'/'
