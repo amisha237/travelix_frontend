@@ -3,8 +3,9 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+const _a2826ea8 = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
 const _3d9a2a66 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
-const _6d17f64f = () => interopDefault(import('..\\pages\\package1.vue' /* webpackChunkName: "pages_package1" */))
+const _3b07545c = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
 const _3188b35f = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
 const _246d115e = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
@@ -18,13 +19,17 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+      path: "/contact",
+      component: _a2826ea8,
+      name: "contact"
+    }, {
       path: "/inspire",
       component: _3d9a2a66,
       name: "inspire"
     }, {
-      path: "/package1",
-      component: _6d17f64f,
-      name: "package1"
+      path: "/package",
+      component: _3b07545c,
+      name: "package"
     }, {
       path: "/stories",
       component: _3188b35f,

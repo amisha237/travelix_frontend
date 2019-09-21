@@ -67,8 +67,8 @@
                     </v-card>
                   </v-tab-item>
                   <v-tab-item>
-                    signup page
-                  
+                    
+                    signup
                   </v-tab-item>
               </v-tabs>
            </template>

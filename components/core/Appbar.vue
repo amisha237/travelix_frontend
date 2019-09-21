@@ -64,7 +64,7 @@ export default {
         },
         {
           title: 'Package',
-          to: '/package1'
+          to: '/package'
         },
         {
           title: 'Destination',
@@ -80,7 +80,7 @@ export default {
         },
         {
           title: 'Contact',
-          to: '/inspire'
+          to: '/contact'
         }
 
       ],
