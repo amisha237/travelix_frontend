@@ -1,7 +1,7 @@
-<template>
-     <v-dialog v-model="dialog"  max-width="700px" light>
+  <template>
+     <v-dialog v-model="dialog"  max-width="700px" >
         <template v-slot:activator="{ on }">
-          <v-btn color="primary" text v-on="on">Login | Sign Up</v-btn>
+         <v-btn color="primary" text v-on="on">Login | Sign Up</v-btn>
         </template>
         <template>
            <v-tabs
@@ -68,7 +68,7 @@
                   </v-tab-item>
                   <v-tab-item>
                     
-                    signup
+                    <signup />
                   </v-tab-item>
               </v-tabs>
            </template>
@@ -76,15 +76,19 @@
 </template>
 
 <script>
+import signup from './signup';
 
 export default {
+  components:{
+    signup
+  },
     data() {
 	  	return {
-            active:null,
+        active:null,
 		  	dialog:false,
-      	    email: '',
+        email: '',
 		   	password: '',
-			show: false,
+		  	show: false,
 		   	rules: {
 				required: v => !!v || 'Required.',
 				min: v => v.length >= 8 || 'Min 8 characters',
