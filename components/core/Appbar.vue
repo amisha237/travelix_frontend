@@ -10,8 +10,10 @@
      
       <v-toolbar-title v-text="title" />
      
+      <!-- navigation button -->
+
       <div class="flex-grow-1"></div>
-      <v-layout >
+      <v-layout  >
 			<div class="hidden-sm-and-down" >
 				<v-btn
 					v-for="(item, i) in items" :key="i"
@@ -19,17 +21,49 @@
 					router
 					exact
 					text
-        
-					v-text="item.title" 
-					class="navbar-menu-items"	
+          v-text="item.title" 
+					class=""	
 				>
 					{{item.text}}
 				</v-btn>
 			</div>
       <v-spacer/>
-       <Login />
-      <v-spacer />
-			 <v-flex xs12 sm12  md3 lg3>
+
+      <!-- login signup dialog -->
+      
+     <template>
+     <v-dialog v-model="dialog"  max-width="700px" >
+        <template v-slot:activator="{ on }">
+         <v-btn color="primary" text v-on="on">Login | Sign Up</v-btn>
+        </template>
+        <template>
+           <v-tabs
+              v-model="active"
+              color="primary"
+              light
+              slider-color="yellow"
+              grow
+           >
+             <v-tab
+              v-for="n in logins"
+              :key="n"
+              ripple
+              >
+              {{n}}
+
+              </v-tab>
+                 <v-tab-item  >
+                      <Login />
+                 </v-tab-item>
+                 <v-tab-item>
+                    <Signup />
+                 </v-tab-item>
+              </v-tabs>
+           </template>
+      </v-dialog>
+   </template>
+   <v-spacer />
+			<v-flex xs12 sm12  md3 lg3>
 				<v-text-field
           clearable
 					append-icon="mdi-magnify"
@@ -40,22 +74,25 @@
 				/>
 			</v-flex> 
      
-		</v-layout>
-    </v-app-bar>
+	</v-layout>
+</v-app-bar>
   
 </template>
 
 <script>
 import Login from '@/components/Login.vue' ;
+import Signup from '@/components/Signup.vue' ;
 export default {
     name:"Appbar",
     components:{
-      Login
+      Login,
+      Signup
     },
   data () {
     return {
       fixed: false,
-      dark:false,
+      title: 'Travelix',
+     
       items: [
         
         {
@@ -84,7 +121,11 @@ export default {
         }
 
       ],
-      title: 'Travelix'
+
+      dialog:false,
+      active:null,
+      logins:[ 'Sign In', 'Sign Up' ],
+        
     }
   }
 }
