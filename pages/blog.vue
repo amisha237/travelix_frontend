@@ -27,7 +27,7 @@
                 
                 <v-card
                     v-for="item in items" :key="item.title"
-                    class="mx-auto card_margin"
+                    class="mx-auto card_margin pb-4 "
                     :flat="flat"
                     :loading="loading"
                     :outlined="outlined"
@@ -54,7 +54,7 @@
 
                     <v-card-text>text..........</v-card-text>
                     <br>
-                    <v-btn>likes</v-btn>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<v-btn>read more</v-btn>
+                    &emsp;<v-btn>likes</v-btn>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<v-btn>read more</v-btn>
                     
                 </v-card>
            

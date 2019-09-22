@@ -27,7 +27,7 @@
                 
                 <v-card
                     v-for="item in items" :key="item.title"
-                    class="mx-auto card_margin"
+                    class="mx-auto card_margin pa-4"
                     :flat="flat"
                     :loading="loading"
                     :outlined="outlined"
@@ -90,7 +90,7 @@
                 </v-div>
                 <v-divider></v-divider>
                 <v-subheader>Latest Offers</v-subheader>
-                 <v-div v-for="offer in offers" :key="offer.title" >
+                 <v-div v-for="offer in offers" :key="offer.title"  >
                 
                 <li>{{offer.data}}</li>
                 
