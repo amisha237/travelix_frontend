@@ -101,8 +101,24 @@
 
 
     methods: {
-    
-    
+      
+       async submitForm() {
+
+      const response = await this.$axios.post('/contact/add',{
+        name :this.name,
+        email: this.email,
+        subject: this.subject,
+        message: this.message
+
+      })
+      if(response.data.success==true)
+				{
+					console.log("Success")
+        }
+        
+
+    }
+
     },
   }
 </script>

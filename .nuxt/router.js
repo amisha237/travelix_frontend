@@ -3,12 +3,12 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _aa2a23e4 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
-const _6e44f964 = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
-const _05bf49c4 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
-const _bbfaf2ec = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
-const _1de237d2 = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
-const _4ab81016 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _de4fad0a = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
+const _403b6ad7 = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
+const _61d266de = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
+const _73f8f7fd = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
+const _79f554ec = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
+const _22724249 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 Vue.use(Router)
 
@@ -21,27 +21,27 @@ export const routerOptions = {
 
   routes: [{
       path: "/blog",
-      component: _aa2a23e4,
+      component: _de4fad0a,
       name: "blog"
     }, {
       path: "/contact",
-      component: _6e44f964,
+      component: _403b6ad7,
       name: "contact"
     }, {
       path: "/inspire",
-      component: _05bf49c4,
+      component: _61d266de,
       name: "inspire"
     }, {
       path: "/package",
-      component: _bbfaf2ec,
+      component: _73f8f7fd,
       name: "package"
     }, {
       path: "/stories",
-      component: _1de237d2,
+      component: _79f554ec,
       name: "stories"
     }, {
       path: "/",
-      component: _4ab81016,
+      component: _22724249,
       name: "index"
     }],
 
