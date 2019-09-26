@@ -8,6 +8,8 @@
         <v-form
             ref="form"
             v-model="active"
+            method="POST"
+            id="form"
         >
           
            <v-text-field
@@ -25,7 +27,7 @@
             ></v-text-field>
 
             <v-select
-            v-model="select"
+            v-model="subject"
             :items="items"
             :rules="[v => !!v || 'Item is required']"
             label="Subject"
@@ -42,11 +44,14 @@
           
             <div class="text-center">
             <v-btn
+            @click.prevent="submitForm"
+            form="form" 
             class=" purple  darken-4 white--text "
             rounded  large
             >
             SEND MESSAGE
             </v-btn>
+            
             </div>
            
         </v-form>
@@ -59,6 +64,14 @@
 
 <script>
   export default {
+
+
+
+
+
+
+
+
     data: () => ({
       active: true,
       name: '',
@@ -76,7 +89,7 @@
         v => !!v || 'E-mail is required',
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
       ],
-      select: null,
+      subject: null,
       items: [
         'Subject 1',
         'Subject 2',
@@ -85,6 +98,7 @@
       ],
       
     }),
+
 
     methods: {
     

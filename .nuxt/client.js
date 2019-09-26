@@ -47,8 +47,6 @@ if (logs.length > 0) {
   console.groupEnd()
 }
 
-modules: [ '@nuxtjs/axios']
-
 // Setup global Vue error handler
 if (!Vue.config.$nuxt) {
   const defaultErrorHandler = Vue.config.errorHandler
@@ -707,8 +705,4 @@ async function mountApp(__app) {
       if (err) errorHandler(err)
     })
   })
-}
-
-axios: {
-  baseURL: 'http://localhost:8000'
 }
