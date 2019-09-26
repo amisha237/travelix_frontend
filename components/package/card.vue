@@ -19,11 +19,12 @@
      <v-flex xs12 sm12 md4 lg4>
        <v-col class="shrink">
         <v-img
+          
           max-width="300"
           max-height="200"
           height="auto"
           width="auto"
-          v-bind:src="item.src"
+         
         ></v-img>
        </v-col>
       </v-flex>

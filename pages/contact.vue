@@ -104,7 +104,7 @@
       
        async submitForm() {
 
-      const response = await this.$axios.post('/contact/add',{
+      const response = await this.$axios.post('api/contact/add',{
         name :this.name,
         email: this.email,
         subject: this.subject,

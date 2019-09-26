@@ -45,7 +45,7 @@ export default {
 	  '@nuxtjs/auth',
   ],
   axios: {
-    baseURL: 'http://localhost:8000/api',
+    baseURL: 'http://localhost:8000',
     proxyHeaders: false,
     credentials: false,
     proxy: false,
