@@ -1,14 +1,14 @@
 <template>
 <div>
- ghhjjjkkll
+ 
 <!-- <p><script> {{items.package_name}} </script> </p> -->
 <v-layout wrap  align-center justify-space-around>
   <v-card
    v-for="item in items" :key="item.id"
     max-width="100vw"
     width="100%"
-    class="ma-10 mx-auto"
-    elavation=6
+    class="ma-12 mx-auto"
+    elavation=4
     height="auto"
     outlined
     raised
@@ -31,11 +31,11 @@
       <v-flex xs12 sm12 md6 lg6>
        <v-col class="text-left  align-self-start" >
          <v-container class="pa-0">
-           
-            <p class="title"> {{item.package_name}} </p><br>
-            <p class="subtitle-1 ">Type: {{item.type}} </p>
-            <p class="subtitle-1">Location: {{item.loc}} </p>
-            <p class="caption">{{item.desc}} </p>
+            
+            <p class="title"> {{ item.package_name }} </p><br>
+            <p class="subtitle-1 ">Type: {{item.package_type}} </p>
+            <p class="subtitle-1">Location: {{item.package_location}} </p>
+            <p class="caption">{{item.details}} </p>
         </v-container>
       </v-col>
       </v-flex>
@@ -91,36 +91,34 @@
       //     desc: 'Features ty uioo hjkkl; bbnjmkll',
       //   },
       // ],
-      export default {
+      
+    export default {
+
     data: () => ({
      
+       items: [],
 
-       items:[],
-      }
-    ),
+      }),
 
-    async created () {
-		await this.initialize()
-	
+    created () {
+		  this.initialize()
   },
+  
   methods: {
 
-		async initialize () {
+	  	async initialize () {
       const response = await this.$axios.get('/api/packages/index')
-      console.log(response)
-
-      for(var j=0;j<response.data.length;j++)
-				{
-					this.items.push(response.data[j])
+ 
+       for(var j=0;j<response.data.length;j++)
+			 	{
+			 		 this.items.push(response.data[j])
         }
-         console.log(items)
+
+        console.log(this.items)
 
       },
       
   }
     
-    
-
-
   }
 </script>
