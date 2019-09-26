@@ -41,7 +41,16 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+	  '@nuxtjs/auth',
   ],
+  axios: {
+    baseURL: 'http://localhost:8000',
+    proxyHeaders: false,
+    credentials: false,
+    proxy: false,
+    debug: false
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module

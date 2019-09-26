@@ -33,6 +33,7 @@ if (!global.fetch) { global.fetch = fetch }
 let _lastPaths = []
 let app
 let router
+let store
 
 // Try to rehydrate SSR data from window
 const NUXT = window.__NUXT__ || {}
@@ -46,8 +47,6 @@ if (logs.length > 0) {
   delete NUXT.logs
   console.groupEnd()
 }
-
-modules: [ '@nuxtjs/axios']
 
 // Setup global Vue error handler
 if (!Vue.config.$nuxt) {
@@ -634,6 +633,7 @@ async function mountApp(__app) {
   // Set global variables
   app = __app.app
   router = __app.router
+  store = __app.store
 
   // Resolve route components
   const Components = await Promise.all(resolveComponents(router))
@@ -707,8 +707,4 @@ async function mountApp(__app) {
       if (err) errorHandler(err)
     })
   })
-}
-
-axios: {
-  baseURL: 'http://localhost:8000'
 }
