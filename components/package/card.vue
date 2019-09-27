@@ -19,12 +19,11 @@
      <v-flex xs12 sm12 md4 lg4>
        <v-col class="shrink">
         <v-img
-        :src  = "`/http::localhost:8000/MainPackages/${item.package_header_image}`"
+          :src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
           max-width="300"
           max-height="200"
           height="auto"
           width="auto"
-         v-bind:src ="`http:localhost:8000/Mainpackages/${item.package_header_images}`"
         ></v-img>
        </v-col>
       </v-flex>
