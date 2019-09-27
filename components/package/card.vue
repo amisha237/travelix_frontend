@@ -19,7 +19,7 @@
      <v-flex xs12 sm12 md4 lg4>
        <v-col class="shrink">
         <v-img
-          
+        :src  = "`/http::localhost:8000/MainPackages/${item.package_header_image}`"
           max-width="300"
           max-height="200"
           height="auto"
@@ -36,7 +36,7 @@
             <p class="title"> {{ item.package_name }} </p><br>
             <p class="subtitle-1 ">Type: {{item.package_type}} </p>
             <p class="subtitle-1">Location: {{item.package_location}} </p>
-            <p class="caption">{{item.details}} </p>
+            <p class="caption">{{item.package_details}} </p>
         </v-container>
       </v-col>
       </v-flex>
@@ -57,6 +57,7 @@
 </div>
 </template>
 <script>
+
   
       // items: [
       //   {
@@ -93,6 +94,7 @@
       //   },
       // ],
       
+    import { mapState } from 'vuex'  
     export default {
 
     data: () => ({
@@ -104,6 +106,12 @@
     created () {
 		  this.initialize()
   },
+
+//  computed: {
+// 		...mapState({
+// 			baseUrl: state => state.config.baseUrl
+// 		})
+// 	},
   
   methods: {
 
