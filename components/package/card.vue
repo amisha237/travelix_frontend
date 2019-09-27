@@ -24,7 +24,7 @@
           max-height="200"
           height="auto"
           width="auto"
-         
+         v-bind:src ="`http:localhost:8000/Mainpackages/${item.package_header_images}`"
         ></v-img>
        </v-col>
       </v-flex>
