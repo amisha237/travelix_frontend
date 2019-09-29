@@ -48,7 +48,7 @@ export default {
                 to:'/inspire'
                 },
                 {
-                src:"fig2.jpg",
+                src:"/fig2.jpg",
                 price:'$90',
                 destination:'Puri',
                 to:'/'

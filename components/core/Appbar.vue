@@ -113,7 +113,7 @@ export default {
         },
         {
           title: 'Blog',
-          to: '/inspire'
+          to: '/blog'
         },
         {
           title: 'Contact',
