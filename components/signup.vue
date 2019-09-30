@@ -18,6 +18,13 @@
                 label="Email ID"
                 required
               ></v-text-field>
+
+               <v-text-field
+                v-model="username"
+                :rules="usernameRules"
+                label="Username"
+                required
+              ></v-text-field>
               
             <!-- password -->
               <v-text-field id="password"
@@ -40,6 +47,13 @@
                 type="password"
                 required
               > </v-text-field>
+
+              <v-text-field
+                v-model="contact"
+                :rules="contactRules"
+                label="Contact"
+                required
+              ></v-text-field>
 
             <!-- agree to continue -->
             <v-checkbox
@@ -67,12 +81,17 @@
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+        v => (v && v.length <= 30) || 'Name must be less than 10 characters',
       ],
       email: '',
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
+       contact: '',
+      contactRules: [
+        v => !!v || 'Contact  is required',
+        v => (v && v.length <= 10) || 'Contact Should be of 10 digits',
       ],
      
       password:'',
@@ -86,5 +105,7 @@
         this.$refs.form.reset()
       },
     }
+
+    
   }
 </script>
