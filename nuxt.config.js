@@ -42,7 +42,33 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
-	  '@nuxtjs/auth',
+    '@nuxtjs/auth',
+    [
+      'nuxt-fontawesome', {
+        imports: [
+          {
+            set: '@fortawesome/free-solid-svg-icons',
+            icons: ['fas']
+          },
+          {
+            set: '@fortawesome/free-brands-svg-icons',
+            icons: ['fab']
+          }
+        ]
+      }
+    ],
+    ['nuxt-gmaps', {
+      // key: '<API-Key>'
+      key: 'GOOGLE MAPS KEY'
+    }],
+    // // Simple usage
+    // 'nuxt-google-maps-module',
+
+    // // With options
+    // ['nuxt-google-maps-module', {
+    //   /* module options */
+    //   key: 'GOOGLE MAPS KEY', // Default
+    // }],
   ],
   axios: {
     baseURL: 'http://localhost:8000',
