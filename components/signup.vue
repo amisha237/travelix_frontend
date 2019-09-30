@@ -1,7 +1,10 @@
 <template>
   <v-layout wrap align-center justify-center >
     <v-flex xs12 md9> 
-        <v-form ref="form" v-model="valid" >
+        <v-form  ref="form"
+              v-model="active"
+              method="POST"
+              id="form">
         
             <!-- name -->
             <v-text-field
@@ -21,7 +24,7 @@
 
                <v-text-field
                 v-model="username"
-                :rules="usernameRules"
+               
                 label="Username"
                 required
               ></v-text-field>
@@ -65,8 +68,14 @@
 
             <!-- submit  and clear button -->
               <div  class="text-center ma-6">
-                <v-btn color="primary" type="submit" class="mr-5">  Submit  </v-btn>
-                <v-btn color="error" @click="reset">  Clear  </v-btn>
+                <v-btn color="primary" 
+                        type="submit" 
+                        class="mr-5"
+                        @click.prevent="submitForm"
+                        form="form" 
+                        >  Submit  </v-btn>
+                <v-btn color="error" 
+                        @click="reset">  Clear  </v-btn>
               </div>
             
           </v-form>
@@ -77,7 +86,8 @@
 <script>
   export default {
     data: () => ({
-      valid: false,
+       active: true,
+    
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
@@ -91,21 +101,44 @@
        contact: '',
       contactRules: [
         v => !!v || 'Contact  is required',
-        v => (v && v.length <= 10) || 'Contact Should be of 10 digits',
+        v => (v && v.length >= 2) || 'Contact Should be of atleast 10 digits',
       ],
      
       password:'',
       confirm_password:'',
       
-      checkbox: false,
+     
+      username : '',
+       checkbox: false,
+
+     
+
     }),
 
     methods: {
       reset () {
         this.$refs.form.reset()
       },
+
+      async submitForm() {
+
+      const response = await this.$axios.post('api/register',{
+        name :this.name,
+        email: this.email,
+        contact: this.contact,
+        username: this.username,
+        password: this.password,
+        password_confirmation: this.password,
+
+
+      })
+      if(response.data.success==true)
+				{
+					console.log("Success")
+        }
     }
 
-    
+
+  },
   }
 </script>

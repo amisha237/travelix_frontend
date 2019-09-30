@@ -2,7 +2,10 @@
    <v-card>
        <v-card-text>
           <div>
-              <v-form @submit.prevent="checkLogin" id="login-form"  method="post">
+              <v-form ref="form"
+              v-model="active"
+              method="POST"
+              id="form">
               
                 <!-- email -->
                  <v-text-field
@@ -30,22 +33,23 @@
                       placeholder=" "
                       hint="At least 8 characters"
                       autocomplete="off"
-                      @click:append="show = !show"
+                     @click:append="show = !show"
                       outline
                        >
                   </v-text-field>
 
                 <!-- remember me -->
-                  <v-checkbox
-                      v-model="checkbox"
-                      label="Remember Me"
-                  >
-                  </v-checkbox>
+                 
 
                 <!-- submit button -->
                   <v-flex xs12 sm12 md12 lg12>
                       <center>
-                      <v-btn color="success" type="submit" left>LogIn</v-btn>
+                      <v-btn color="success"
+                             type="submit"                              
+                        @click.prevent="checkLogin"
+                        form="form"
+                              left>
+                              LogIn</v-btn>
                       </center>
                       </v-flex>
               </v-form>
@@ -58,20 +62,41 @@
 <script>
 export default {
 
-    data() {
-	  	return {
-        email: '',
-		   	password: '',
-		  	show: false,
-		   	rules: {
-				required: v => !!v || 'Required.',
-				min: v => v.length >= 8 || 'Min 8 characters',
-				emailValid : v=> /.+@.+/.test(v) || 'E-mail must be valid'
-			},
-        checkbox: false,
+     data: () => ({
+       active: true,
+      show : false,
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
+       
+     
+      password:'',
+      
 
-		}
-	}
+    }),
+
+  methods: {
+  
+
+   async checkLogin() {
+
+      const response = await this.$axios.post('api/login',{
+        
+        email: this.email,
+        password: this.password,
+      })
+      if(response.data.success==true)
+				{
+          console.log("Success")
+          console.log('Login SuccessFull')
+           this.$router.push({
+            path: '/admin'
+        });
+        }
+  }
+},
 }
 </script>
 

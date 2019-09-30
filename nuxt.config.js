@@ -77,6 +77,17 @@ export default {
     proxy: false,
     debug: false
   },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'meta.token' },
+          user: { url: 'user', method: 'get', propertyName: 'data' },
+          logout: {}
+        }
+      }
+    }
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
