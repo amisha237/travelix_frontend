@@ -9,6 +9,8 @@ const _775cbdbf = () => interopDefault(import('..\\pages\\contact.vue' /* webpac
 const _06381f79 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
 const _a9cb6a36 = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
 const _0bb2af1c = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
+const _ad2be0da = () => interopDefault(import('..\\pages\\admin\\addPackage.vue' /* webpackChunkName: "pages_admin_addPackage" */))
+const _5ee020ba = () => interopDefault(import('..\\pages\\admin\\viewPackage.vue' /* webpackChunkName: "pages_admin_viewPackage" */))
 const _201b2f31 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 Vue.use(Router)
@@ -44,6 +46,14 @@ export const routerOptions = {
       path: "/stories",
       component: _0bb2af1c,
       name: "stories"
+    }, {
+      path: "/admin/addPackage",
+      component: _ad2be0da,
+      name: "admin-addPackage"
+    }, {
+      path: "/admin/viewPackage",
+      component: _5ee020ba,
+      name: "admin-viewPackage"
     }, {
       path: "/",
       component: _201b2f31,
