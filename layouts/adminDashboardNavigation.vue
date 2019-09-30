@@ -257,7 +257,7 @@ export default {
           {
            icon: 'mdi-apps',
            title: 'Add Package',
-           to: '/',
+           to: '/admin/addPackage',
           },
           {
           icon: ' ',
