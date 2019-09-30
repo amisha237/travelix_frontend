@@ -3,15 +3,16 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _b416fcd8 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages_admin_index" */))
-const _2569ff93 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
-const _775cbdbf = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
-const _06381f79 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
-const _a9cb6a36 = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
-const _0bb2af1c = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
-const _ad2be0da = () => interopDefault(import('..\\pages\\admin\\addPackage.vue' /* webpackChunkName: "pages_admin_addPackage" */))
-const _5ee020ba = () => interopDefault(import('..\\pages\\admin\\viewPackage.vue' /* webpackChunkName: "pages_admin_viewPackage" */))
-const _201b2f31 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _4f29f8a3 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages_admin_index" */))
+const _63f2f5a2 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
+const _88a24d60 = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
+const _4a8a3b0a = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
+const _21273314 = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
+const _184dbb6b = () => interopDefault(import('..\\pages\\package-details.vue' /* webpackChunkName: "pages_package-details" */))
+const _3e78c403 = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
+const _b8c0ac38 = () => interopDefault(import('..\\pages\\admin\\addPackage.vue' /* webpackChunkName: "pages_admin_addPackage" */))
+const _1d0d9f72 = () => interopDefault(import('..\\pages\\admin\\viewPackage.vue' /* webpackChunkName: "pages_admin_viewPackage" */))
+const _9a9e09fc = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 Vue.use(Router)
 
@@ -24,39 +25,43 @@ export const routerOptions = {
 
   routes: [{
       path: "/admin",
-      component: _b416fcd8,
+      component: _4f29f8a3,
       name: "admin"
     }, {
       path: "/blog",
-      component: _2569ff93,
+      component: _63f2f5a2,
       name: "blog"
     }, {
       path: "/contact",
-      component: _775cbdbf,
+      component: _88a24d60,
       name: "contact"
     }, {
       path: "/inspire",
-      component: _06381f79,
+      component: _4a8a3b0a,
       name: "inspire"
     }, {
       path: "/package",
-      component: _a9cb6a36,
+      component: _21273314,
       name: "package"
     }, {
+      path: "/package-details",
+      component: _184dbb6b,
+      name: "package-details"
+    }, {
       path: "/stories",
-      component: _0bb2af1c,
+      component: _3e78c403,
       name: "stories"
     }, {
       path: "/admin/addPackage",
-      component: _ad2be0da,
+      component: _b8c0ac38,
       name: "admin-addPackage"
     }, {
       path: "/admin/viewPackage",
-      component: _5ee020ba,
+      component: _1d0d9f72,
       name: "admin-viewPackage"
     }, {
       path: "/",
-      component: _201b2f31,
+      component: _9a9e09fc,
       name: "index"
     }],
 
