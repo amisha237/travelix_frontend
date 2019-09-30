@@ -10,6 +10,8 @@ const _4a8a3b0a = () => interopDefault(import('..\\pages\\inspire.vue' /* webpac
 const _21273314 = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
 const _184dbb6b = () => interopDefault(import('..\\pages\\package-details.vue' /* webpackChunkName: "pages_package-details" */))
 const _3e78c403 = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
+const _b8c0ac38 = () => interopDefault(import('..\\pages\\admin\\addPackage.vue' /* webpackChunkName: "pages_admin_addPackage" */))
+const _1d0d9f72 = () => interopDefault(import('..\\pages\\admin\\viewPackage.vue' /* webpackChunkName: "pages_admin_viewPackage" */))
 const _9a9e09fc = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 Vue.use(Router)
@@ -49,6 +51,14 @@ export const routerOptions = {
       path: "/stories",
       component: _3e78c403,
       name: "stories"
+    }, {
+      path: "/admin/addPackage",
+      component: _b8c0ac38,
+      name: "admin-addPackage"
+    }, {
+      path: "/admin/viewPackage",
+      component: _1d0d9f72,
+      name: "admin-viewPackage"
     }, {
       path: "/",
       component: _9a9e09fc,

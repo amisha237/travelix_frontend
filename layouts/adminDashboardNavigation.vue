@@ -45,12 +45,7 @@
             </v-list-item-icon>
           </v-list-item>
         </v-list-group>
-
-
-
-       
-				
-    </v-list>
+      </v-list>
     </v-navigation-drawer>
     <v-app-bar
       :clipped-left="clipped"
@@ -59,15 +54,178 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
      
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
       
       <v-toolbar-title >Dashboard</v-toolbar-title>
       <v-spacer />
+      
+      <!-- email notifications -->
+
+        <div class="text-center">
+         <v-menu offset-y transition="scale-transition" open-on-hover>
+            <template v-slot:activator="{ on }">
+                
+                <v-btn
+                color="primary"
+                dark
+                icon
+                fav
+                v-on="on"
+                >
+                <v-badge color="primary">
+                    <template v-slot:badge>{{email}}</template>
+                    <v-icon color="grey darken-4">mdi-email</v-icon>
+                </v-badge>
+                </v-btn>
+            </template>
+            <span v-if="email > 0">
+                
+            <v-list >
+            
+                <v-list-item
+                 v-for="(item, index) in emails"
+                 :key="index"
+                >
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item>
+                <v-btn
+                class=""
+                text
+                small
+                rounded
+                color="error"
+                @click="email = 0"
+                >
+                Mark all as read
+                </v-btn>
+            </v-list>
+            </span>
+            <span v-else>
+                No new email
+            </span>
+
+          </v-menu>
+        </div>
+
+        <!-- notifications -->
+
+        <div class="text-center">
+            <v-menu offset-y transition="scale-transition" open-on-hover>
+            <template v-slot:activator="{ on }">
+                
+                <v-btn
+                color="black"
+                text
+                fav
+                icon
+                v-on="on"
+                >
+                <v-badge color="orange">
+                    <template v-slot:badge>{{messages}}</template>
+                    <v-icon color="grey darken-4">mdi-bell</v-icon>
+                </v-badge>
+                </v-btn>
+            </template>
+            <span v-if="messages > 0">
+                
+            <v-list>
+               <v-list-item
+                
+                v-for="(item, index) in notifications"
+                :key="index"
+                >
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                
+                </v-list-item>
+                
+                <div class="text-center">
+                <v-btn
+                class=""
+                text
+                small
+                rounded
+                color="error"
+                @click="messages = 0"
+
+                >
+                clear all
+                </v-btn>
+                </div>
+            </v-list>
+            </span>
+            <span v-else class=""><br>
+                No new notifications
+
+            </span>
+            </v-menu>
+        </div>
+    
+       <!-- account -->
+        <template>
+        <div class="text-center nav" >
+            <v-menu
+            
+            :close-on-content-click="false"
+            :nudge-width="200"
+            offset-y
+            transition="scroll-x-reverse-transition"
+            open-on-hover
+            >
+            <template v-slot:activator="{ on }">
+                <v-btn
+                 
+                icon
+                v-on="on"
+                
+                fav
+                
+                >
+                <v-icon>mdi-account</v-icon>
+                </v-btn>
+            </template>
+
+            <v-card class="primary">
+             <v-list>
+                <v-list-item>
+                    <v-list-item-avatar>
+                    <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                    </v-list-item-avatar>
+
+                    <v-list-item-content>
+                    <v-list-item-title>John Leider</v-list-item-title>
+                    <v-list-item-subtitle>Admin of Travelix</v-list-item-subtitle>
+                    </v-list-item-content>
+
+                    <v-list-item-action>
+                    
+                    </v-list-item-action>
+                </v-list-item>
+                </v-list>
+
+                <v-divider></v-divider>
+                
+                <v-list>
+                <v-list-item>
+                  <v-list-item-action>
+                    <v-btn text>
+                      Profile
+                    </v-btn>
+                  </v-list-item-action>
+                </v-list-item>
+                
+                <v-list-item>
+                <v-list-item-action>
+                    <v-btn text>
+                    Logout
+                    </v-btn>
+                    </v-list-item-action>
+                </v-list-item>
+                </v-list>
+            </v-card>
+            </v-menu>
+        </div>
+        </template>
+  
+
     </v-app-bar>
     <v-content>
       <v-container>
@@ -104,7 +262,7 @@ export default {
           {
           icon: ' ',
           title: 'View Package',
-          to: '/inspire'
+          to: '/admin/viewPackage'
         },
 
         ]
@@ -204,6 +362,21 @@ export default {
         ]
         },
       ],
+      messages:5,
+      notifications: [
+        { title: 'Vasily S sent you a message' },
+        { title: 'Oleg M uploaded a new Zip file with ' },
+        { title: 'Oleg M uploaded a new Zip file with ' },
+        { title: 'Click Me 2' },
+      ],
+      email:4,
+      emails:[
+          {title:'email1'},
+          {title:'email2'},
+          {title:'email3'},
+          {title:'email4'},
+
+      ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
@@ -212,3 +385,6 @@ export default {
   }
 }
 </script>
+
+
+
