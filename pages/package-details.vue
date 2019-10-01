@@ -1,95 +1,105 @@
 <template>
-    <div>
-        <img src="/andaman.png" alt="">
-        <template>
-        <div >
-            
-            <br><br><br>
-            <v-sheet
-            class="mx-auto"
-            elevation="8"
-            max-width="1000"  
-            >
-            <v-slide-group
-                v-model="model"
-                class="pa-4"
-                :prev-icon="prevIcon ? 'mdi-minus' : undefined"
-                :next-icon="nextIcon ? 'mdi-plus' : undefined"
-                :multiple="multiple"
-                :mandatory="mandatory"
-                :show-arrows="showArrows"
-                :center-active="centerActive"
-            
-            >
-                <v-slide-item
-                v-for="n in 15"
-                :key="n"
-                v-slot:default="{ active, toggle }"
-                >
-                <v-card
-                    :color="active ? 'primary' : 'grey lighten-1'"
-                    class="ma-4"
-                    height="100"
-                    width="100"
-                    @click="toggle"
-                >
-                    <v-row
-                    class="fill-height"
-                    align="center"
-                    justify="center"
-                    >
-                    <!-- <v-scale-transition>
-                        <v-icon
-                        v-if="active"
-                        color="white"
-                        size="48"
-                        v-text="'mdi-close-circle-outline'"
-                        ></v-icon>
-                    </v-scale-transition> -->
-                    </v-row>
-                </v-card>
-                </v-slide-item>
-            </v-slide-group>
+  <div>
+    <!-- <img src="/header-img.jpg" height=200px width=100% alt=""> -->
+    <v-container fluid fill-width>
+
+          <v-sheet class="pa-5" elevation="1">
+           
+          
+            <center> <h1>{{packageHeading}}</h1></center><br>
+            <img src="/Shimla.gif" height="300" width="100%" alt="">
+
+            <v-sheet class="pa-4" elevation="1">
+              <v-row v-for="item in packageDetails" :key="item">
+              <v-col>
+              <h3> {{item.title}} </h3> {{item.value}}
+              
+              </v-col>  
+              
+            </v-row>
+            <br>
+            <v-btn class="ma-2" outlined color="indigo">Book Now</v-btn>
             </v-sheet>
-        </div>
-        </template>
-        <pre>
+            
 
+             <template>
+              <div >
+                
+                <br><br>
+                <h3>Gallery</h3><br>
+                <v-sheet
+                class="mx-auto"
+                elevation="2"
+                max-width=100%  
+                >
+                <v-slide-group
+                    v-model="model"
+                    class="pa-2"
+                    :prev-icon="prevIcon ? 'mdi-minus' : undefined"
+                    :next-icon="nextIcon ? 'mdi-plus' : undefined"
+                    :multiple="multiple"
+                    :mandatory="mandatory"
+                    :show-arrows="showArrows"
+                    :center-active="centerActive"
+                
+                >
+                    <v-slide-item
+                    v-for="n in 15"
+                    :key="n"
+                    v-slot:default="{ active, toggle }"
+                    >
+                    <v-card
+                        color='grey lighten-1'
+                        class="ma-4"
+                        height="100"
+                        width="100"
+                        @click="toggle"
+                    >
+                        <v-row
+                        class="fill-height"
+                        align="center"
+                        justify="center"
+                        >
+                        <!-- <v-scale-transition>
+                            <v-icon
+                            v-if="active"
+                            color="white"
+                            size="48"
+                            v-text="'mdi-close-circle-outline'"
+                            ></v-icon>
+                        </v-scale-transition> -->
+                        </v-row>
+                    </v-card>
+                    </v-slide-item>
+                </v-slide-group>
+                </v-sheet>
+            </div>
+            </template>
 
-            <h1>Description</h1>
-
-            7 days and 6 nights
-
-            Places to visit:
-            Havelock island, Neil island, Cellular Jail, Mud Volcano, Northbay, Ross island
-
-            Pricing
-            Adult : 50,000 per head
-            Child : 40,000 per head
-
-             <v-btn class="ma-2" outlined color="indigo">Book Now</v-btn>
-
-        </pre>
-
-        <GMap
-        :cluster="{options: {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}}" :center="{lat: locations[0].lat, lng: locations[0].lng}"
-        :options="{fullscreenControl: false, streetViewControl: false, mapTypeControl: false, zoomControl: true, gestureHandling: 'cooperative', styles: mapStyle}"
-        :zoom="6">
-        <GMapMarker v-for="location in locations"
-            :key="location.id"
-            :position="{lat: location.lat, lng: location.lng}"
-            :options="{icon: location === currentLocation ? pins.selected : pins.notSelected}"
-            @click="currentLocation = location">
-            <GMapInfoWindow>
-                <code>
-                    lat: {{ location.lat }},
-                    lng: {{ location.lng }}
-                </code>
-            </GMapInfoWindow>
-        </GMapMarker>
-</GMap>
-
-    </div>
+            <br><br>
+            <!-- google map -->
+            <GMap
+            :cluster="{options: {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}}" :center="{lat: locations[0].lat, lng: locations[0].lng}"
+            :options="{fullscreenControl: false, streetViewControl: false, mapTypeControl: false, zoomControl: true, gestureHandling: 'cooperative', styles: mapStyle}"
+            :zoom="6">
+            <GMapMarker v-for="location in locations"
+                :key="location.id"
+                :position="{lat: location.lat, lng: location.lng}"
+                :options="{icon: location === currentLocation ? pins.selected : pins.notSelected}"
+                @click="currentLocation = location">
+                <GMapInfoWindow>
+                    <code>
+                        lat: {{ location.lat }},
+                        lng: {{ location.lng }}
+                    </code>
+                </GMapInfoWindow>
+            </GMapMarker>
+            </GMap>
+          </v-sheet>
+      
+     
+    </v-container>  
+  </div>  
 </template>
 
 
@@ -105,6 +115,26 @@
       nextIcon: false,
       centerActive: false,
 
+      packageHeading: 'Shimla with Kinnaur Valley',
+      packageDetails: [        
+        {
+          title: 'Package Name:',
+          value: 'Shimla with Kinnaur Valley'
+        },
+        {
+          title: 'Package Duration:',
+          value: '6 nights and 7 days'
+        },
+        {
+          title: 'Places to Visit:',
+          value: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+        },
+        {
+          title: 'Package Price:',
+          value: 'Rs. 20,000/- per head'
+        }
+      ],
+     
     //map script
 
         locations: [
