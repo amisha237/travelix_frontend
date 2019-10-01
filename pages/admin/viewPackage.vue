@@ -309,10 +309,10 @@
 
      async deleteItem (item) {
         
-        // confirm('Are you sure you want to delete this item?') 
+         confirm('Are you sure you want to delete this item?') 
 
-			  let id=this.editedItem.id
-				const response = await this.$axios.delete(`/api/packages//${id}`)
+        let id=item.id
+				const response = await this.$axios.delete(`/api/packages/delete/${id}`)
 				if(response.data.success==true)
 				 {
 					this.message=` Package deleted  successfully`
@@ -333,24 +333,28 @@
       },
 
      async submitForm () {
+
+       console.log(this.editedItem)
         if (this.editedIndex > -1) {
          var id=this.editedItem.id
-         const response=await this.$axios.post(`/api/package//${id}`,{
 
-            package_name : this.editItem_name,
-            package_price: this.editedItem.package_price,
-            package_location:this.editedItem.package_location,
-            package_type: this.editedItem.package_type,
-            package_days:  this.editedItem.package_days,
-            package_nights: this.editedItem.package_nights,
-            package_features: this.editItem.package_features,
-            package_details: this.editedItem.package_details,
+         const response=await this.$axios.post(`/api/packages/edit/${id}`,{
+
+            name : this.editedItem.package_name,
+            price: this.editedItem.package_price,
+            location: this.editedItem.package_location,
+            type: this.editedItem.package_type,
+            days:  this.editedItem.package_days,
+            nights: this.editedItem.package_nights,
+            features: this.editItem.package_features,
+            details: this.editedItem.package_details,
          })
          if(response.data.success==true)
 				{
           this.message="package successfully updated"
           this.snackbar=true
-					console.log("Success")
+          console.log("Success")
+          window.location.reload()
         }
         this.close()
 

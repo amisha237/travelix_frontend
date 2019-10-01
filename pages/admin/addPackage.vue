@@ -207,7 +207,10 @@
       })
       if(response.data.success==true)
 				{
-					console.log("Success")
+          console.log("Success")
+          this.$router.push({
+           path: '/admin/viewPackage'
+         });
         }
         
 

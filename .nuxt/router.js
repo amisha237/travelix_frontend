@@ -3,17 +3,17 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _3dfabeb2 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages_admin_index" */))
-const _2065e1a6 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
-const _85738268 = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
-const _4c21a086 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
-const _4e433295 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
-const _1df8681c = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
-const _63d5e4e7 = () => interopDefault(import('..\\pages\\package-details.vue' /* webpackChunkName: "pages_package-details" */))
-const _4010297f = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
-const _2dc36460 = () => interopDefault(import('..\\pages\\admin\\addPackage.vue' /* webpackChunkName: "pages_admin_addPackage" */))
-const _513d9714 = () => interopDefault(import('..\\pages\\admin\\viewPackage.vue' /* webpackChunkName: "pages_admin_viewPackage" */))
-const _f6c8e104 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _f0ee75e2 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages_admin_index" */))
+const _aa2a23e4 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
+const _6e44f964 = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
+const _05bf49c4 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
+const _145fb32d = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
+const _bbfaf2ec = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
+const _0fc6f102 = () => interopDefault(import('..\\pages\\package-details.vue' /* webpackChunkName: "pages_package-details" */))
+const _1de237d2 = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
+const _6a287e10 = () => interopDefault(import('..\\pages\\admin\\addPackage.vue' /* webpackChunkName: "pages_admin_addPackage" */))
+const _41772a44 = () => interopDefault(import('..\\pages\\admin\\viewPackage.vue' /* webpackChunkName: "pages_admin_viewPackage" */))
+const _4ab81016 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 Vue.use(Router)
 
@@ -26,47 +26,47 @@ export const routerOptions = {
 
   routes: [{
       path: "/admin",
-      component: _3dfabeb2,
+      component: _f0ee75e2,
       name: "admin"
     }, {
       path: "/blog",
-      component: _2065e1a6,
+      component: _aa2a23e4,
       name: "blog"
     }, {
       path: "/contact",
-      component: _85738268,
+      component: _6e44f964,
       name: "contact"
     }, {
       path: "/inspire",
-      component: _4c21a086,
+      component: _05bf49c4,
       name: "inspire"
     }, {
       path: "/login",
-      component: _4e433295,
+      component: _145fb32d,
       name: "login"
     }, {
       path: "/package",
-      component: _1df8681c,
+      component: _bbfaf2ec,
       name: "package"
     }, {
       path: "/package-details",
-      component: _63d5e4e7,
+      component: _0fc6f102,
       name: "package-details"
     }, {
       path: "/stories",
-      component: _4010297f,
+      component: _1de237d2,
       name: "stories"
     }, {
       path: "/admin/addPackage",
-      component: _2dc36460,
+      component: _6a287e10,
       name: "admin-addPackage"
     }, {
       path: "/admin/viewPackage",
-      component: _513d9714,
+      component: _41772a44,
       name: "admin-viewPackage"
     }, {
       path: "/",
-      component: _f6c8e104,
+      component: _4ab81016,
       name: "index"
     }],
 
