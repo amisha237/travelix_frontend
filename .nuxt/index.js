@@ -12,12 +12,12 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_75fa1c7c from 'nuxt_plugin_plugin_75fa1c7c' // Source: .\\vuetify\\plugin.js (mode: 'all')
-import nuxt_plugin_nuxtgooglemaps_2adcd1bc from 'nuxt_plugin_nuxtgooglemaps_2adcd1bc' // Source: .\\nuxt-google-maps.js (mode: 'all')
-import nuxt_plugin_templatesplugin49291861_036acff7 from 'nuxt_plugin_templatesplugin49291861_036acff7' // Source: .\\templates.plugin.49291861.js (mode: 'all')
-import nuxt_plugin_axios_657042d6 from 'nuxt_plugin_axios_657042d6' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_plugin_221ae752 from 'nuxt_plugin_plugin_221ae752' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_nuxtgooglemaps_5704e077 from 'nuxt_plugin_nuxtgooglemaps_5704e077' // Source: .\\nuxt-google-maps.js (mode: 'all')
+import nuxt_plugin_templatesplugin4a687f94_d2933412 from 'nuxt_plugin_templatesplugin4a687f94_d2933412' // Source: .\\templates.plugin.4a687f94.js (mode: 'all')
+import nuxt_plugin_axios_64651860 from 'nuxt_plugin_axios_64651860' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_user_3c62e8e6 from 'nuxt_plugin_user_3c62e8e6' // Source: ..\\plugins\\mixins\\user.js (mode: 'all')
-import nuxt_plugin_plugin_cacc6af8 from 'nuxt_plugin_plugin_cacc6af8' // Source: .\\auth\\plugin.js (mode: 'all')
+import nuxt_plugin_plugin_448d7fe2 from 'nuxt_plugin_plugin_448d7fe2' // Source: .\\auth\\plugin.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -164,28 +164,28 @@ async function createApp(ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_75fa1c7c === 'function') {
-    await nuxt_plugin_plugin_75fa1c7c(app.context, inject)
+  if (typeof nuxt_plugin_plugin_221ae752 === 'function') {
+    await nuxt_plugin_plugin_221ae752(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_nuxtgooglemaps_2adcd1bc === 'function') {
-    await nuxt_plugin_nuxtgooglemaps_2adcd1bc(app.context, inject)
+  if (typeof nuxt_plugin_nuxtgooglemaps_5704e077 === 'function') {
+    await nuxt_plugin_nuxtgooglemaps_5704e077(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_templatesplugin49291861_036acff7 === 'function') {
-    await nuxt_plugin_templatesplugin49291861_036acff7(app.context, inject)
+  if (typeof nuxt_plugin_templatesplugin4a687f94_d2933412 === 'function') {
+    await nuxt_plugin_templatesplugin4a687f94_d2933412(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_657042d6 === 'function') {
-    await nuxt_plugin_axios_657042d6(app.context, inject)
+  if (typeof nuxt_plugin_axios_64651860 === 'function') {
+    await nuxt_plugin_axios_64651860(app.context, inject)
   }
 
   if (typeof nuxt_plugin_user_3c62e8e6 === 'function') {
     await nuxt_plugin_user_3c62e8e6(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_cacc6af8 === 'function') {
-    await nuxt_plugin_plugin_cacc6af8(app.context, inject)
+  if (typeof nuxt_plugin_plugin_448d7fe2 === 'function') {
+    await nuxt_plugin_plugin_448d7fe2(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first

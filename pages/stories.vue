@@ -54,7 +54,9 @@
 
                     <v-card-text>text..........</v-card-text>
                     <br>
-                    <v-btn>likes</v-btn>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<v-btn>read more</v-btn>
+                    <v-row class="pa-4">
+                    <v-btn>likes</v-btn><v-spacer></v-spacer><v-btn>read more</v-btn>
+                    </v-row>
                     
                 </v-card>
            
@@ -81,7 +83,9 @@
                             </v-img>
                         </v-col>
                         <v-col class="text-center">
-                            
+                           
+
+
                         </v-col>
                      </v-row>
                 </v-card>
