@@ -81,20 +81,29 @@ export default {
   
 
    async checkLogin() {
+       
+       console.log(this.email);
+       await this.$auth.loginWith('local', {
+        data: {
+          "email": this.email,
+          "password": this.password,  
+        }
+      }).catch(e => {
 
-      const response = await this.$axios.post('api/login',{
-        
-        email: this.email,
-        password: this.password,
-      })
-      if(response.data.success==true)
-				{
-          console.log("Success")
+          console.log("Login Failde");
+      });
+
+      if(this.$auth.loggedIn)
+      {
+         console.log("Success")
+         // console.log(response.data)
           console.log('Login SuccessFull')
            this.$router.push({
-            path: '/admin'
-        });
-        }
+           path: '/package'
+         });
+
+      }
+         
   }
 },
 }

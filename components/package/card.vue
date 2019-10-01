@@ -1,6 +1,6 @@
 <template>
 <div>
- 
+
 <!-- <p><script> {{items.package_name}} </script> </p> -->
 <v-layout wrap  align-center justify-space-around>
   <v-card
@@ -13,6 +13,7 @@
     outlined
     raised
    >
+  
     <v-row
       class="pa-2 ma-1 "
     >

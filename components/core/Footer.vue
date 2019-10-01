@@ -13,7 +13,9 @@
         </v-flex>
         <v-flex xs12 sm12 md6 lg4>
         <div > 
-         COMPANY<br><br>
+        Company
+         
+         <br><br>
         <a href="#"> About Us</a><br>
         <a href="#"> Contact Us</a><br>
         <a href="#"> Privacy Policy</a><br><br>

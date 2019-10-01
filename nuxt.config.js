@@ -29,8 +29,7 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-  ],
+  plugins: [ '~plugins/mixins/user.js'],
   /*
   ** Nuxt.js dev-modules
   */
@@ -78,14 +77,20 @@ export default {
     debug: false
   },
   auth: {
+    login: '/login',
+    logout: '/',
     strategies: {
       local: {
         endpoints: {
-          login: { url: 'login', method: 'post', propertyName: 'meta.token' },
-          user: { url: 'user', method: 'get', propertyName: 'data' },
-          logout: {}
-        }
-      }
+          login: { url: '/api/login', method: 'post', propertyName: 'meta.token' },
+          user: { url: '/api/me', method: 'get', propertyName: 'data' },
+          logout: {url: '/api/logout', method: 'get'},
+        },
+
+        tokenRequired: true,
+        tokenType: 'Bearer',
+      },
+    
     }
   },
   /*

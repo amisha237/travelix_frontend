@@ -33,9 +33,12 @@
       
      <template>
      <v-dialog v-model="dialog"  max-width="700px" >
-        <template v-slot:activator="{ on }">
-         <v-btn color="primary" text v-on="on">Login | Sign Up</v-btn>
+        <template v-slot:activator="{ on }" >
+         <v-btn  color="primary" text v-on="on">Login | Sign Up</v-btn>
+         <!-- <v-btn v-if="loggedIn" color="primary" text v-on="on">Logout</v-btn>          -->
         </template>
+
+       
         <template>
            <v-tabs
               v-model="active"
@@ -127,6 +130,13 @@ export default {
       logins:[ 'Sign In', 'Sign Up' ],
         
     }
+  },
+
+  methods:{
+        async logout()
+        {
+          await this.$auth.logout();
+        }
   }
 }
 </script>

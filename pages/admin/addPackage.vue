@@ -194,15 +194,15 @@
       
        async submitForm() {
 
-          const response = await this.$axios.post('api/',{
-            name : this.package_name,
-            price: this.package_price,
-            location:this.package_location,
-            type: this.package_name,
-            days:  this.package_name,
-            nights: this.package_name,
-            features: this.package_name,
-            details: this.package_name,
+          const response = await this.$axios.post('api/packages/add',{
+            package_name : this.name,
+            package_price: this.price,
+            package_location:this.location,
+            package_type: this.type,
+            package_days:  this.days,
+            package_nights: this.nights,
+            package_features: this.features,
+            package_details: this.details,
 
       })
       if(response.data.success==true)
