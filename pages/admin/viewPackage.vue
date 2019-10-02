@@ -1,21 +1,28 @@
 <template>
 <div>
-  <v-card class="mx-auto ma-12 pa-5 " >
-     <v-card-title class="display-1" > PACKAGES
-        <div class="flex-grow-1"></div>
+  
+  <v-card class="mx-auto ma-12  " >
+    <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1 "  >
+    <v-toolbar-title class="headline">
+       Package
+     
+    </v-toolbar-title>
+    </v-toolbar><br>
+     <v-card-title class="display-1 mb-5" > 
+       
         <v-flex xs6 sm6 md4 lg4>
         <v-text-field
           v-model="search"
           label="Search"
           single-line
-          
+        
           hide-details
         ></v-text-field>
         </v-flex>
-        
+         <div class="flex-grow-1"></div>
         <v-btn color="primary" dark class="ml-5" exact to="/admin/addPackage">New Package</v-btn>
      </v-card-title>
-    <br><hr><br>
+   
     <v-data-table
       :headers="headers"
       :items="packages"
@@ -167,6 +174,62 @@
             
           </v-card>
         </v-dialog>
+        <template>
+  <v-row justify="center">
+    <v-dialog v-model="imagedialog"  max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Images</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="10" md="10">
+                 <v-file-input
+                    accept="image/png, image/jpeg, image/bmp"
+                    placeholder="Pick an image"
+                    prepend-icon="mdi-camera"
+                    label="Image"
+                ></v-file-input>
+              </v-col>
+               <v-col cols="12" sm="10" md="10">
+                 <v-file-input
+                    accept="image/png, image/jpeg, image/bmp"
+                    placeholder="Pick an image"
+                    prepend-icon="mdi-camera"
+                    label="Image"
+                ></v-file-input>
+              </v-col>
+               <v-col cols="12" sm="10" md="10">
+                 <v-file-input
+                    accept="image/png, image/jpeg, image/bmp"
+                    placeholder="Pick an image"
+                    prepend-icon="mdi-camera"
+                    label="Image"
+                ></v-file-input>
+              </v-col>
+               <v-col cols="12" sm="10" md="10">
+                 <v-file-input
+                    accept="image/png, image/jpeg, image/bmp"
+                    placeholder="Pick an image"
+                    prepend-icon="mdi-camera"
+                    label="Image"
+                ></v-file-input>
+              </v-col>
+               
+            </v-row>
+          </v-container>
+          
+        </v-card-text>
+        <v-card-actions>
+          <div class="flex-grow-1"></div>
+          <v-btn color="blue darken-1" text @click="imagedialog = false">Close</v-btn>
+          <v-btn color="blue darken-1" text @click="imagedialog = false">Save</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-row>
+</template>
       <v-icon
         small
         class="mr-2"
@@ -176,9 +239,16 @@
       </v-icon>
       <v-icon
         small
+         class="mr-2"
         @click="deleteItem(item)"
       >
        mdi-delete
+      </v-icon>
+      <v-icon
+        small
+        @click="addImage(item)"
+      >
+       mdi-camera
       </v-icon>
     </template>
     </v-data-table>
@@ -210,6 +280,7 @@
       },
     data () {
       return {
+        imagedialog:false,
         active:true,
         message:'',
         timeout:3000,
@@ -322,10 +393,14 @@
           const index = this.packages.indexOf(item)
 				  this.packages.splice(index, 1)
         
-			},
+      },
+      addImage(item){
+          this.imagedialog=true;
+      },
 
      close () {
         this.dialog = false
+        this.imagedialog = false
         setTimeout(() => {
           this.editedItem = Object.assign({}, this.defaultItem)
           this.editedIndex = -1
