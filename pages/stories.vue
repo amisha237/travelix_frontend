@@ -94,7 +94,7 @@
                 </v-div>
                 <v-divider></v-divider>
                 <v-subheader>Latest Offers</v-subheader>
-                 <v-div v-for="offer in offers" :key="offer.title"  >
+               <v-div v-for="offer in offers" :key="offer.title" align="center" justify="center" >
                 
                 <li>{{offer.data}}</li>
                 

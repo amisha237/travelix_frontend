@@ -1,5 +1,5 @@
 <template>
-    <v-img src="/header-img.jpg" height=250px width=200% alt=""><br><br><br>
+    <v-img src="/home_slider.jpg" height=250px width=200% alt=""><br><br><br>
        <p class="display-2  white--text">The Offers</p>
     </v-img>
   
