@@ -291,7 +291,7 @@ export default {
           {
           icon: 'mdi-account',
           title: 'View Admin User',
-          to: '/inspire'
+          to: '/admin/viewAdmin'
         },
 
         ]
@@ -303,7 +303,7 @@ export default {
           {
           icon: ' ',
           title: 'View all Customers',
-          to: '/inspire'
+          to: '/admin/viewCustomer'
         },
 
         ]
