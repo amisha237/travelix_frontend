@@ -257,12 +257,12 @@ export default {
           {
            icon: 'mdi-apps',
            title: 'Add Package',
-           to: '/admin/addPackage',
+           to: '/admin/add-package',
           },
           {
           icon: ' ',
           title: 'View Package',
-          to: '/admin/viewPackage'
+          to: '/admin/view-packages'
         },
 
         ]
@@ -291,7 +291,7 @@ export default {
           {
           icon: 'mdi-account',
           title: 'View Admin User',
-          to: '/admin/viewAdmin'
+          to: '/admin/view-users'
         },
 
         ]
@@ -303,7 +303,7 @@ export default {
           {
           icon: ' ',
           title: 'View all Customers',
-          to: '/admin/viewCustomer'
+          to: '/admin/view-customers'
         },
 
         ]
@@ -315,7 +315,7 @@ export default {
           {
           icon: ' ',
           title: 'View subscribers',
-          to: '/inspire'
+          to: '/admin/view-subscribers'
         },
 
         ]
@@ -327,7 +327,7 @@ export default {
           {
           icon: ' ',
           title: 'View contact Enquiry',
-          to: '/inspire'
+          to: '/admin/view-enquiries'
         },
 
         ]
@@ -356,7 +356,7 @@ export default {
           {
           icon: ' ',
           title: 'View all bookings',
-          to: '/inspire'
+          to: '/admin/view-bookings'
         },
 
         ]

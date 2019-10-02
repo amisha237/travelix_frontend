@@ -51,9 +51,9 @@ export default {
           },
           { text: 'Name', value: 'name' },
           { text: 'Email', value: 'email' },
-          { text:'Password', value: 'password' },
+          { text: 'Password', value: 'password' },
           { text: 'Contact', value: 'contact' },
-          { text: 'Avatar', image: 'profile_img' },
+          { text: 'Avatar', value: 'profile_img' },
         ],
         
         users:[],
