@@ -4,6 +4,7 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _172e437c = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages_admin_index" */))
+const _de4fad0a = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
 const _403b6ad7 = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
 const _61d266de = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
 const _27cc3540 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
@@ -11,6 +12,8 @@ const _73f8f7fd = () => interopDefault(import('..\\pages\\package.vue' /* webpac
 const _43cfd5f2 = () => interopDefault(import('..\\pages\\package-details.vue' /* webpackChunkName: "pages_package-details" */))
 const _79f554ec = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
 const _11f582aa = () => interopDefault(import('..\\pages\\admin\\addPackage.vue' /* webpackChunkName: "pages_admin_addPackage" */))
+const _5e34cd54 = () => interopDefault(import('..\\pages\\admin\\viewAdmin.vue' /* webpackChunkName: "pages_admin_viewAdmin" */))
+const _3d24b969 = () => interopDefault(import('..\\pages\\admin\\viewCustomer.vue' /* webpackChunkName: "pages_admin_viewCustomer" */))
 const _365aa38b = () => interopDefault(import('..\\pages\\admin\\viewPackage.vue' /* webpackChunkName: "pages_admin_viewPackage" */))
 const _22724249 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
@@ -27,6 +30,10 @@ export const routerOptions = {
       path: "/admin",
       component: _172e437c,
       name: "admin"
+    }, {
+      path: "/blog",
+      component: _de4fad0a,
+      name: "blog"
     }, {
       path: "/contact",
       component: _403b6ad7,
@@ -55,6 +62,14 @@ export const routerOptions = {
       path: "/admin/addPackage",
       component: _11f582aa,
       name: "admin-addPackage"
+    }, {
+      path: "/admin/viewAdmin",
+      component: _5e34cd54,
+      name: "admin-viewAdmin"
+    }, {
+      path: "/admin/viewCustomer",
+      component: _3d24b969,
+      name: "admin-viewCustomer"
     }, {
       path: "/admin/viewPackage",
       component: _365aa38b,

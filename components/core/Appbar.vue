@@ -7,11 +7,11 @@
       class="nav"
       min-height="80px"
     >
-      <!-- navigation button -->
-      <!-- <v-app-bar-nav-icon class="hidden-md-and-up" @click="toggleDrawer"></v-app-bar-nav-icon> -->
-           
-      <Drawer/>
+     
       <v-toolbar-title v-text="title" />
+     
+      <!-- navigation button -->
+
       <div class="flex-grow-1"></div>
       <v-layout  >
 			<div class="hidden-sm-and-down" >
@@ -73,7 +73,6 @@
 				  placeholder="search..."
 					hide-details
           outlined
-          
 				  class="hidden-sm-and-down"
 				/>
 			</v-flex> 
@@ -84,15 +83,13 @@
 </template>
 
 <script>
-import Drawer from '@/components/core/Drawer.vue' ;
 import Login from '@/components/Login.vue' ;
 import Signup from '@/components/Signup.vue' ;
 export default {
     name:"Appbar",
     components:{
       Login,
-      Signup,
-      Drawer
+      Signup
     },
   data () {
     return {
