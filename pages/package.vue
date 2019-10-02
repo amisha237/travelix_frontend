@@ -1,24 +1,8 @@
 <template>
-    <v-app>
-     <div align-center justify-center>
-        <v-img  
-         width="100vw"
-         height="400"
-         src="\fig5.jpg">
-         <br>
-         <br>
-         <p class="display-2  white--text"><center>The Offers</center></p>
-          
-        </v-img>
-         </div>
-     <v-layout wrap>
-        
-        
-         <card />
-
-      </v-layout>
-
-    </v-app>
+    <v-img src="/header-img.jpg" height=250px width=200% alt=""><br><br><br>
+       <p class="display-2  white--text">The Offers</p>
+    </v-img>
+  
 </template>
 
 <script>

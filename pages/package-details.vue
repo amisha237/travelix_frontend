@@ -1,11 +1,24 @@
 <template>
   <div>
-    <!-- <img src="/header-img.jpg" height=200px width=100% alt=""> -->
-    <v-container fluid fill-width>
+     <!-- <v-app>
+     <div  justify-center>
+       <center>
+        <v-img  
+         width="100%"
+         height="300"
+         src="\fig5.jpg"><br><br><br><br><br><br>
+         <p class="display-2  white--text">The place for your Destinations</p>
+        </v-img>
+       </center>
 
+         </div>
+    </v-app> -->
+    <v-img src="/header-img.jpg" height=200px width=100% alt=""><br><br><br>
+     <center>  <p class="display-2  white--text">The place for your Destinations</p></center>
+    </v-img>
+  
+    <v-container fluid fill-width>
           <v-sheet class="pa-5" elevation="1">
-           
-          
             <center> <h1>{{packageHeading}}</h1></center><br>
             <img src="/Shimla.gif" height="300" width="100%" alt="">
 

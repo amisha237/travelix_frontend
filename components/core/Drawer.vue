@@ -5,21 +5,7 @@
     style="position: relative;"
   > -->
   <div>
-    <!-- <v-container class="fill-height">
-      <v-row
-        align="center"
-        justify="center"
-      >
-         <v-btn
-          color="pink"
-          dark
-          @click.stop="drawer = !drawer"
-        >
-          Toggle
-        </v-btn> 
-        
-      </v-row>
-    </v-container> -->
+    
     <v-app-bar-nav-icon class="hidden-md-and-up"  @click.stop="drawer = !drawer" ></v-app-bar-nav-icon>
     <v-navigation-drawer
       v-model="drawer"
@@ -47,9 +33,9 @@
           :key="item.title"
           link
         >
-          <v-list-item-icon>
+          <!-- <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
+          </v-list-item-icon> -->
 
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -57,18 +43,26 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+   
   </div>
+   
   <!-- </v-sheet> -->
 </template>
 
 <script>
   export default {
+      
     data () {
       return {
+         
         drawer: null,
         items: [
-          { title: 'Home', icon: 'dashboard' },
-          { title: 'About', icon: 'question_answer' },
+          { title: 'Home', icon:'envelop' },
+          { title: 'Packages', icon: 'question_answer' },
+            { title: 'Stories', icon: 'dashboard' },
+          { title: 'Blogs', icon: 'question_answer' },
+            { title: 'Contact', icon: 'dashboard' },
+          { title: 'About Us', icon: 'question_answer' },
         ],
       }
     },
