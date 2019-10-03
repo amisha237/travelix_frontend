@@ -107,8 +107,8 @@
 
                 <v-row align="center" justify="center">
                     <v-img
-                    src="https://picsum.photos/id/11/500/300"
-                    lazy-src="https://picsum.photos/id/11/10/6"
+                    src="customer.jpg"
+                    lazy-src="customer.jpg"
                     aspect-ratio="1"
                     class="grey lighten-2"
                     max-width="100"
