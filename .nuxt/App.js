@@ -5,6 +5,8 @@ import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
 import '..\\node_modules\\@fortawesome\\fontawesome-svg-core\\styles.css'
 
+import '..\\node_modules\\material-design-icons\\iconfont\\material-icons.css'
+
 import '..\\node_modules\\vuetify\\dist\\vuetify.css'
 
 import _ef818422 from '..\\layouts\\adminDashboardNavigation.vue'

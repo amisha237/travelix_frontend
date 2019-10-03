@@ -19,7 +19,8 @@
     "@nuxtjs/axios": "^5.6.0",
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
-    "nuxt-gmaps": "^1.0.4"
+    "nuxt-gmaps": "^1.0.4",
+    "nuxt-material-design-icons": "^1.0.4"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0",
