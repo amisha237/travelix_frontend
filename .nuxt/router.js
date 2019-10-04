@@ -3,22 +3,22 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _4f29f8a3 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages_admin_index" */))
-const _63f2f5a2 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
-const _88a24d60 = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
-const _4a8a3b0a = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
-const _7c589e19 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
-const _21273314 = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
-const _184dbb6b = () => interopDefault(import('..\\pages\\package-details.vue' /* webpackChunkName: "pages_package-details" */))
-const _3e78c403 = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
-const _6d1b07aa = () => interopDefault(import('..\\pages\\admin\\add-package.vue' /* webpackChunkName: "pages_admin_add-package" */))
-const _1f4a3433 = () => interopDefault(import('..\\pages\\admin\\view-bookings.vue' /* webpackChunkName: "pages_admin_view-bookings" */))
-const _7ab4bd2c = () => interopDefault(import('..\\pages\\admin\\view-customers.vue' /* webpackChunkName: "pages_admin_view-customers" */))
-const _37948378 = () => interopDefault(import('..\\pages\\admin\\view-enquiries.vue' /* webpackChunkName: "pages_admin_view-enquiries" */))
-const _3e4f7466 = () => interopDefault(import('..\\pages\\admin\\view-packages.vue' /* webpackChunkName: "pages_admin_view-packages" */))
-const _e6acf9bc = () => interopDefault(import('..\\pages\\admin\\view-subscribers.vue' /* webpackChunkName: "pages_admin_view-subscribers" */))
-const _7dfaf4df = () => interopDefault(import('..\\pages\\admin\\view-users.vue' /* webpackChunkName: "pages_admin_view-users" */))
-const _9a9e09fc = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _b416fcd8 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages_admin_index" */))
+const _2569ff93 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
+const _775cbdbf = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
+const _06381f79 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
+const _2c7a5b70 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
+const _a9cb6a36 = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
+const _1383c0da = () => interopDefault(import('..\\pages\\package-details.vue' /* webpackChunkName: "pages_package-details" */))
+const _0bb2af1c = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
+const _7cf4cc5c = () => interopDefault(import('..\\pages\\admin\\add-package.vue' /* webpackChunkName: "pages_admin_add-package" */))
+const _090d87b8 = () => interopDefault(import('..\\pages\\admin\\view-bookings.vue' /* webpackChunkName: "pages_admin_view-bookings" */))
+const _2466b35b = () => interopDefault(import('..\\pages\\admin\\view-customers.vue' /* webpackChunkName: "pages_admin_view-customers" */))
+const _3d730cb2 = () => interopDefault(import('..\\pages\\admin\\view-enquiries.vue' /* webpackChunkName: "pages_admin_view-enquiries" */))
+const _1a7e7c57 = () => interopDefault(import('..\\pages\\admin\\view-packages.vue' /* webpackChunkName: "pages_admin_view-packages" */))
+const _dc92acde = () => interopDefault(import('..\\pages\\admin\\view-subscribers.vue' /* webpackChunkName: "pages_admin_view-subscribers" */))
+const _f8754ae4 = () => interopDefault(import('..\\pages\\admin\\view-users.vue' /* webpackChunkName: "pages_admin_view-users" */))
+const _201b2f31 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 Vue.use(Router)
 
@@ -31,67 +31,67 @@ export const routerOptions = {
 
   routes: [{
       path: "/admin",
-      component: _4f29f8a3,
+      component: _b416fcd8,
       name: "admin"
     }, {
       path: "/blog",
-      component: _63f2f5a2,
+      component: _2569ff93,
       name: "blog"
     }, {
       path: "/contact",
-      component: _88a24d60,
+      component: _775cbdbf,
       name: "contact"
     }, {
       path: "/inspire",
-      component: _4a8a3b0a,
+      component: _06381f79,
       name: "inspire"
     }, {
       path: "/login",
-      component: _7c589e19,
+      component: _2c7a5b70,
       name: "login"
     }, {
       path: "/package",
-      component: _21273314,
+      component: _a9cb6a36,
       name: "package"
     }, {
       path: "/package-details",
-      component: _184dbb6b,
+      component: _1383c0da,
       name: "package-details"
     }, {
       path: "/stories",
-      component: _3e78c403,
+      component: _0bb2af1c,
       name: "stories"
     }, {
       path: "/admin/add-package",
-      component: _6d1b07aa,
+      component: _7cf4cc5c,
       name: "admin-add-package"
     }, {
       path: "/admin/view-bookings",
-      component: _1f4a3433,
+      component: _090d87b8,
       name: "admin-view-bookings"
     }, {
       path: "/admin/view-customers",
-      component: _7ab4bd2c,
+      component: _2466b35b,
       name: "admin-view-customers"
     }, {
       path: "/admin/view-enquiries",
-      component: _37948378,
+      component: _3d730cb2,
       name: "admin-view-enquiries"
     }, {
       path: "/admin/view-packages",
-      component: _3e4f7466,
+      component: _1a7e7c57,
       name: "admin-view-packages"
     }, {
       path: "/admin/view-subscribers",
-      component: _e6acf9bc,
+      component: _dc92acde,
       name: "admin-view-subscribers"
     }, {
       path: "/admin/view-users",
-      component: _7dfaf4df,
+      component: _f8754ae4,
       name: "admin-view-users"
     }, {
       path: "/",
-      component: _9a9e09fc,
+      component: _201b2f31,
       name: "index"
     }],
 

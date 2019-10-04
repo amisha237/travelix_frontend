@@ -2,7 +2,7 @@
 <div>
   
   <v-card class="mx-auto ma-12  " >
-    <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1 "  >
+    <v-toolbar  height=85 color="purple" class="white--text lighten-2 py-n1 "  >
     <v-toolbar-title class="headline">
        Package
      
@@ -20,7 +20,7 @@
         ></v-text-field>
         </v-flex>
          <div class="flex-grow-1"></div>
-        <v-btn color="primary" dark class="ml-5" exact to="/admin/addPackage">New Package</v-btn>
+        <v-btn color="primary" dark class="ml-5" exact to="/admin/add-package">New Package</v-btn>
      </v-card-title>
    
     <v-data-table
