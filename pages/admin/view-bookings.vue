@@ -48,6 +48,7 @@
          
           { text: 'User Name', value: 'name' },
           { text: 'User Email', value: 'email' },
+          { text: 'Package Id', value: 'package_id' },
           { text: 'Package Name', value: 'package_name' },
           { text: 'Confirmation Status', value: 'status' },
           { text: 'Booking date', value: 'date' },

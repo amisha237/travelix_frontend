@@ -27,7 +27,7 @@
                 <v-menu >
                 <template v-slot:activator="{ on }">
                     <v-btn color="primary" dark v-on="on" small>
-                       Dropdown
+                      {{item.status }}
                     </v-btn>
                 </template>
 
@@ -56,48 +56,24 @@ export default {
         search: '',
         headers: [
           {
-            text: 'ID',
+            text: 'Token No',
             align: 'left',
-            value: 'name',
+            value: 'token_no',
           },
-          { text: 'Token No', value: 'token_no' },
+         
           { text: 'Name', value: 'name' },
+          { text:' Subject', value: 'subject' },
           { text:' Message', value: 'message' },
-          { text: 'Status', value: 'status' ,sortable:false},
+          { text: 'Status', value: 'status' ,sortable:false, align:'right'},
         ],
         
-        enquiries:[
-            {
-            name: 'Ice cream sandwich',
-            calories: 237,
-            fat: 9.0,
-            carbs: 37,
-            protein: 4.3,
-            image: '/review-3.jpeg',
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-            fat: 16.0,
-            carbs: 23,
-            protein: 6.0,
-            image:  '/review-4.jpg',
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-            fat: 3.7,
-            carbs: 67,
-            protein: 4.3,
-            image:'/review5.jpeg',
-          },
+        enquiries:[],
 
-
-
-        ],
         items:[
-            'view details',
-            'update status'
+            'Ignore',
+            'Update Status',
+            'Delete',
+            'Reply',
         ]
 
         }
@@ -107,12 +83,14 @@ export default {
     },
     methods:{
           async initialize () {
-          const response = await this.$axios.get('/api/')
+          const response = await this.$axios.get('/api/contact/index')
  
           for(var j=0;j<response.data.length;j++)
             {
               this.enquiries.push(response.data[j])
             }
+
+            console.log(this.enquiries)
 
       },
     }
