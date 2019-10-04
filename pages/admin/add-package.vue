@@ -122,7 +122,7 @@
                 prepend-icon="mdi-camera"
                 label="Pick an Image"
                 outlined
-            ></v-file-input>
+            ></v-file-input> 
             </v-flex> -->
               
             <br><br>

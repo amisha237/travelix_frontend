@@ -33,12 +33,14 @@
       
      <template>
      <v-dialog v-model="dialog"  max-width="700px" >
-        <template v-slot:activator="{ on }" >
-         <v-btn  color="primary" text v-on="on">Login | Sign Up</v-btn>
-         <!-- <v-btn v-if="loggedIn" color="primary" text v-on="on">Logout</v-btn>          -->
+
+        <template v-slot:activator="{ on }">
+         <v-btn v-if="!loggedIn" color="primary" text v-on="on">Login | Sign Up</v-btn>
+         <v-btn  v-if="loggedIn" text color="primary"  @click.prevent="logout" >Logout</v-btn>
+          
         </template>
 
-       
+              
         <template>
            <v-tabs
               v-model="active"
@@ -76,7 +78,7 @@
 				  class="hidden-sm-and-down"
 				/>
 			</v-flex> 
-     
+         
 	</v-layout>
 </v-app-bar>
   
@@ -109,10 +111,6 @@ export default {
           to: '/package'
         },
         {
-          title: 'Destination',
-          to: '/inspire'
-        },
-        {
           title: 'Stories',
           to: '/stories'
         },
@@ -137,7 +135,10 @@ export default {
   methods:{
         async logout()
         {
-          await this.$auth.logout();
+          await this.$auth.logout();;
+          console.log('logout')
+          window.location.reload()
+
         }
   }
 }

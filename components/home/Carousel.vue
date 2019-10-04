@@ -1,5 +1,5 @@
 <template>
-  <v-carousel :show-arrows="true"  hide-delimiters cycle height="50vw" style="width:100%">
+  <v-carousel :show-arrows="true"  hide-delimiters cycle height="40vw" style="width:100%">
     <v-carousel-item
       v-for="(item,i) in items"
       :key="i"
@@ -27,7 +27,7 @@
             src:"/slider-3.jpg",
           },
           {
-              src:'/slider-2.jpg',
+              src:'/tourimg.jpg',
           }
         ],
       }

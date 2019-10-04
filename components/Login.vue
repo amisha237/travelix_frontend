@@ -90,17 +90,15 @@ export default {
         }
       }).catch(e => {
 
-          console.log("Login Failde");
+          console.log("Login Failed");
       });
 
       if(this.$auth.loggedIn)
       {
-         console.log("Success")
-         // console.log(response.data)
+          console.log("Success")
+          //console.log(response.data)
           console.log('Login SuccessFull')
-           this.$router.push({
-           path: '/package'
-         });
+         window.location.reload()
 
       }
          

@@ -79,8 +79,8 @@ export default {
     debug: false
   },
   auth: {
-    login: '/login',
-    logout: '/',
+    // login: '/',
+    // logout: '/admin',
     strategies: {
       local: {
         endpoints: {

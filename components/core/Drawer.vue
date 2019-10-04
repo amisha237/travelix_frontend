@@ -12,12 +12,20 @@
     >
     
       <v-list-item>
-        <v-list-item-avatar>
+        <v-list-item-avatar v-if="loggedIn">
+          <v-img :src="`http://localhost:8000/mainpackages/${$auth.user.profile_img}`"></v-img>
+        </v-list-item-avatar>
+
+        <v-list-item-avatar v-if="!loggedIn">
           <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
         </v-list-item-avatar>
 
-        <v-list-item-content>
-          <v-list-item-title>John Leider</v-list-item-title>
+        <v-list-item-content v-if="loggedIn">
+          <v-list-item-title>{{$auth.user.name}}</v-list-item-title>
+        </v-list-item-content>
+
+         <v-list-item-content v-if="!loggedIn">
+          <v-list-item-title>heroien</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
