@@ -42,6 +42,7 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    'nuxt-material-design-icons',
     [
       'nuxt-fontawesome', {
         imports: [
@@ -56,6 +57,7 @@ export default {
         ]
       }
     ],
+    
     ['nuxt-gmaps', {
       // key: '<API-Key>'
       key: 'GOOGLE MAPS KEY'

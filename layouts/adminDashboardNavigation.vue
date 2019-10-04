@@ -6,22 +6,27 @@
       :clipped="clipped"
       fixed
       app
+      src=""
+      :color="color"
+     
       
     >
+    
     <v-list dense >
-				<div>
+				<!-- <div>
 					<v-layout wrap>
 						<v-flex xs10 sm10 md10 lg10>
-							<!--<div v-if="authenticated"><UserProfile /></div>-->
+							<div v-if="authenticated"><UserProfile /></div>
                             <span>user profile</span>
 						</v-flex>
 					</v-layout>
 				</div>
-				<hr>
+				<hr> -->
         <v-list-group
            v-for="(item, i) in items"
            :key="i"
            no-action
+          
            
         >
           <template v-slot:activator>
@@ -37,9 +42,10 @@
             v-for="(subitem, i) in item.subitems"
             :key="i"
             exact
+           
             v-bind:to="subitem.to"
           >
-            <v-list-item-title >{{subitem.title}}</v-list-item-title>
+            <v-list-item-title  >{{subitem.title}}</v-list-item-title>
             <v-list-item-icon>
               <v-icon >{{subitem.icon}}</v-icon>
             </v-list-item-icon>
@@ -47,15 +53,18 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
+    <!-- appbar -->
     <v-app-bar
       :clipped-left="clipped"
+      :color="color"
       fixed
       app
+      src=""
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon @click.stop="func" />
      
       
-      <v-toolbar-title >Dashboard</v-toolbar-title>
+      <v-toolbar-title >{{title}}</v-toolbar-title>
       <v-spacer />
       
       <!-- email notifications -->
@@ -246,9 +255,11 @@
 export default {
   data () {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
       fixed: false,
+      color:"grey lighten-4",
+      title:"Travelix Admin Dashboard",
       items: [
         {
           icon: '',
@@ -274,7 +285,7 @@ export default {
           {
           icon: ' ',
           title: 'View Stories',
-          to: '/inspire'
+          to: '/admin'
         },
 
         ]
@@ -339,12 +350,12 @@ export default {
           {
            icon: '',
            title: 'Add Blog',
-           to: '/',
+           to: '/admin',
           },
           {
           icon: '',
           title: 'View Blog',
-          to: '/inspire'
+          to: '/admin'
         },
 
         ]
@@ -378,10 +389,13 @@ export default {
 
       ],
       miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Admin Dashboard'
     }
+  },
+  methods:{
+     func(){
+      this.drawer=!this.drawer
+      // this.miniVariant=!this.miniVariant
+     }
   }
 }
 </script>

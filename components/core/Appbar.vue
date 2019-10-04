@@ -7,7 +7,7 @@
       class="nav"
       min-height="80px"
     >
-     
+     <Drawer/>
       <v-toolbar-title v-text="title" />
      
       <!-- navigation button -->
@@ -85,11 +85,13 @@
 <script>
 import Login from '@/components/Login.vue' ;
 import Signup from '@/components/Signup.vue' ;
+import Drawer from '@/components/core/Drawer.vue' ;
 export default {
     name:"Appbar",
     components:{
       Login,
-      Signup
+      Signup,
+      Drawer
     },
   data () {
     return {
