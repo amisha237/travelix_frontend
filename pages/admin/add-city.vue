@@ -4,34 +4,25 @@
         <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
              <v-card class="mx-auto pa-10 ma-10 grey lighten-3" >
           
-                    <v-card-text class="black--text display-1 text-center" text-center>Add Blog</v-card-text>
+                    <v-card-text class="black--text display-1 text-center" text-center>Add City</v-card-text>
                      <v-form
-                    ref="form"
+                    ref="form1"
                     v-model="active"
                     method="POST"
-                    id="form">
+                    id="form1">
                         <v-row>
-                            <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
-                                <v-select
-                                :items="items"
+                           <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
+                               <v-select
+                                :items="cities"
                                 label="Select City"
                                 outlined
                             ></v-select>
-                            </v-col>
-
-                        </v-row>
-                        <v-row>
-                            <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
-                                <v-text-field
-                                label="Add Place name"
-                                outlined
-                                ></v-text-field>
-                            </v-col>
+                           </v-col> 
                         </v-row>
                         <v-row>
                             <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
                                 <v-file-input 
-                                label="Add Image" 
+                                label="Add Header Image" 
                                 outlined dense
                                 :rules="rules"
                                 prepend-icon="mdi-camera"
@@ -40,24 +31,11 @@
                                 </v-file-input>
                             </v-col>
                         </v-row>
-                        <v-row>
-                            <v-col cols = "12" xs = "5" sm = "5" md = "5" lg = "5">
-                            </v-col>
-                            <v-col cols = "12" xs = "2" sm = "2" md = "2" lg = "2">
-                                <v-btn
-                                color = "primary"> 
-                                Submit
-                                </v-btn>
-                            </v-col>
-                        </v-row>
 
                      </v-form>
              </v-card>
         </v-col>
     </v-row>
-
-    
- 
 </v-container>
     
 </template>

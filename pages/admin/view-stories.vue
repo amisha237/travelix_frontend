@@ -10,7 +10,7 @@
           </v-toolbar>
         
           <v-card-title>
-            <v-row class="justify-center">
+            <v-row class="justify-center pb-5" >
 						
 						<v-col cols="12" md="4" lg="4">
               <span class=" grey--text subtitle-1">Rows per page </span>
@@ -20,8 +20,7 @@
                         class="ml-3"
                         v-on="on"
                         single-line
-                        outlined
-                        rounded
+                        text
                         small
                       >
                         {{ itemsPerPage }}
@@ -48,9 +47,9 @@
                       v-model="search"
                       append-icon="mdi-magnify"
                       label="Search"
-                      outlined
+                      text
                       hide-details
-                      rounded
+                      
                       height="20"
                       
                   ></v-text-field>
@@ -67,15 +66,19 @@
             :items-per-page.sync="itemsPerPage"
             :page="page"
           >
+          
             <template v-slot:footer>
+              <hr>
                 <v-row class="mt-12 mx-2" align="center">
                   
                   <v-col>
+                    
                   <v-pagination
                     v-model="page"
                     :length="numberOfPages"
-                    color="purple"
+                    color="purple lighten-2"
                     circle
+                    max-visible="5"
                   ></v-pagination></v-col>
                 </v-row>
             </template>

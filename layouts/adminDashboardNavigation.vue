@@ -365,13 +365,18 @@ export default {
           subitems:[
           {
            icon: '',
+           title: 'Add City',
+           to: '/admin/add-city',
+          },
+           {
+           icon: '',
            title: 'Add Blog',
-           to: '/admin',
+           to: '/admin/add-blog',
           },
           {
           icon: '',
           title: 'View Blog',
-          to: '/admin'
+          to: '/admin/view-blogs'
         },
 
         ]
