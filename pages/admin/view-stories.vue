@@ -1,35 +1,90 @@
 <template>
+  <v-container fluid  class="py-12">
+		<v-row class=" align-center justify-center">
+			<v-col cols="12" md="10" lg="10">
+        <v-card  >
+          <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1" elavation>
+              <v-toolbar-title class="headline">
+                Stories
+              </v-toolbar-title>
+          </v-toolbar>
+        
+          <v-card-title>
+            <v-row class="justify-center">
+						
+						<v-col cols="12" md="4" lg="4">
+              <span class=" grey--text subtitle-1">Rows per page </span>
+                  <v-menu offset-y>
+                    <template v-slot:activator="{ on }">
+                      <v-btn color=""
+                        class="ml-3"
+                        v-on="on"
+                        single-line
+                        outlined
+                        rounded
+                        small
+                      >
+                        {{ itemsPerPage }}
+                        <v-icon>mdi-chevron-down</v-icon>
+                      </v-btn>
+                    </template>
+                    <v-list>
+                      <v-list-item
+                        v-for="(number, index) in itemsPerPageArray"
+                        :key="index"
+                        @click="updateItemsPerPage(number)"
+                      >
+                        <v-list-item-title>{{ number }}</v-list-item-title>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
+              </v-col>
+            <div class="flex-grow-1"></div>
 
-  <v-card  class=" ma-10 ">
-    <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1" elavation>
-    <v-toolbar-title class="headline">
-       Stories
-    </v-toolbar-title>
-    </v-toolbar>
-   
-    <v-card-title>
-        <div class="flex-grow-1"></div>
-        <v-flex sm12 xs12 md4 lg4>
-            <v-text-field
-                v-model="search"
-                append-icon="mdi-magnify"
-                label="Search"
-                single-line
-                hide-details
-            ></v-text-field>
-        </v-flex> 
-        </v-card-title>
-       <br>
+              <!-- search -->
+            
+              <v-col cols="12" md="4" lg="4">
+                  <v-text-field
+                      v-model="search"
+                      append-icon="mdi-magnify"
+                      label="Search"
+                      outlined
+                      hide-details
+                      rounded
+                      height="20"
+                      
+                  ></v-text-field>
+              </v-col> 
+            </v-row>
+              </v-card-title>
+            
 
-    <v-data-table
-      :headers="headers"
-      :items="stories"
-      :search="search"
-    >
-
-    </v-data-table>
-  </v-card>
-
+          <v-data-table
+            :headers="headers"
+            :items="stories"
+            :search="search"
+            hide-default-footer
+            :items-per-page.sync="itemsPerPage"
+            :page="page"
+          >
+            <template v-slot:footer>
+                <v-row class="mt-12 mx-2" align="center">
+                  
+                  <v-col>
+                  <v-pagination
+                    v-model="page"
+                    :length="numberOfPages"
+                    color="purple"
+                    circle
+                  ></v-pagination></v-col>
+                </v-row>
+            </template>
+          </v-data-table>
+        
+        </v-card>
+			</v-col>
+		</v-row>
+  </v-container>
 
 </template>
 
@@ -38,12 +93,15 @@
     layout:'adminDashboardNavigation',
     data () {
       return {
+       itemsPerPageArray: [1, 2, 3,12,15,18],
+       page: 1,
+			 itemsPerPage: 2,
         search: '',
         headers: [
           {
             text: 'Id',
             align: 'left',
-            value: 'user_id',
+            value: 'id',
           },
          
           { text: 'User Id', value: 'user_id' },
@@ -52,8 +110,42 @@
           { text: 'Date', value: 'current_date' },
           { text: 'Likes', value: 'likes_count' }
         ],
-        stories: [ ],
+        stories: [
+         { id:1,
+           user_id:"abs",
+           
+            package_name:"ghfhj",
+            experience:"uuiioooo",
+            date:"22-05-98",
+
+
+            },
+            { id:2,
+              user_id:"pqr",
+            package_name:"ghfhj",
+            experience:"uuiioooo",
+            date:"22-05-98",
+
+
+            },
+            {id:3,
+            user_id:"xyz",
+            package_name:"ghfhj",
+            experience:"uuiioooo",
+            date:"22-05-98",
+
+
+            },
+
+
+
+         ],
       }
+    },
+    computed: {
+			numberOfPages () {
+				return Math.ceil(this.stories.length / this.itemsPerPage)
+      },
     },
      created () {
           this.initialize()
@@ -68,6 +160,10 @@
             }
 
       },
+      
+			updateItemsPerPage (number) {
+				this.itemsPerPage = number
+			},
     }
   }
 </script>

@@ -1,56 +1,63 @@
 <template>
-<div>
-  <v-card class="ma-12">
-    <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1" elavation>
-    <v-toolbar-title class="headline">
-       Subscribers
-     
-    </v-toolbar-title>
-    </v-toolbar>
-    <v-card-title class="mb-5">
-      
-      <div class="flex-grow-1"></div>
-        <v-text-field
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Search"
-            single-line
-            hide-details
-        ></v-text-field>
-    </v-card-title>
-    <v-data-table
-      :headers="headers"
-      :items="subscribers"
-      :search="search"
-    >
-       <template v-slot:item.action="{ item }">
-        <v-icon
-         color="red"
-         class="mr-2"
-         @click="deleteItem(item)"
-      >
-       mdi-delete
-      </v-icon>
-       </template>
-    </v-data-table>
-  </v-card>
+  <v-container fluid  class="py-12">
+		<v-row class=" align-center justify-center">
+			<v-col cols="12" md="10" lg="10">
+        <v-card class="">
+          <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1" elavation>
+            <v-toolbar-title class="headline">
+              Subscribers
+            
+            </v-toolbar-title>
+          </v-toolbar>
+          <v-card-title class="mb-5">
+              <v-row>
+                    <div class="flex-grow-1"></div>
+                    <v-col cols="12" md="4" lg="4">
+                      <v-text-field
+                          v-model="search"
+                          append-icon="mdi-magnify"
+                          label="Search"
+                          single-line
+                          hide-details
+                      ></v-text-field>
+                     </v-col>
+            </v-row>
+          </v-card-title>
+          <v-data-table
+            :headers="headers"
+            :items="subscribers"
+            :search="search"
+          >
+            <template v-slot:item.action="{ item }">
+              <v-icon
+              color="red"
+              class="mr-2"
+              @click="deleteItem(item)"
+            >
+              mdi-delete
+            </v-icon>
+            </template>
+          </v-data-table>
+        </v-card>
    <!-- snackbar -->
-	<v-snackbar
-		v-model="snackbar"
-		:timeout="timeout"
-		top
-		vertical
-    >
-		{{ message }}
-		<v-btn
-			color="primary"
-			text
-			@click="snackbar = false"
-		>
-			Close
-		</v-btn>
-    </v-snackbar>
-</div> 
+        <v-snackbar
+          v-model="snackbar"
+          :timeout="timeout"
+          top
+          vertical
+          >
+          {{ message }}
+          <v-btn
+            color="primary"
+            text
+            @click="snackbar = false"
+          >
+            Close
+          </v-btn>
+          </v-snackbar>
+			</v-col>
+		</v-row>
+</v-container>
 </template>
 <script>
 
@@ -59,12 +66,11 @@ export default {
     data(){
         return{
         search: '',
+        snackbar:false,
+        message:'',
+        timeout:3000,
         headers: [
-          {
-            text: 'ID',
-            align: 'left',
-            value: 'name',
-          },
+          { text: 'ID', value: 'name',align: 'left'},
           { text: 'Email', value: 'email' },
           { text:'Action', value: 'action' ,sortable: false,},
         ],
@@ -99,7 +105,7 @@ export default {
 					
           this.snackbar=true
           const index = this.packages.indexOf(item)
-		  this.packages.splice(index, 1)
+		      this.packages.splice(index, 1)
         
       },
     }

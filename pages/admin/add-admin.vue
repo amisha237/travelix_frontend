@@ -174,7 +174,7 @@ export default {
     layout:'adminDashboardNavigation',
    data(){
        return{
-         active: true,
+        active: true,
         fname: '',
         lname:'',
         uname:'',
