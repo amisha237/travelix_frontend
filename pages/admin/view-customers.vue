@@ -1,48 +1,50 @@
 <template>
+ <v-container fluid  class="py-12">
+		<v-row class=" align-center justify-center">
+			<v-col cols="12" md="10" lg="10">
+         <v-card>
+            <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1" elavation>
+              <v-toolbar-title class="headline"> Customers</v-toolbar-title>
+            </v-toolbar>
+          
+            <v-card-title class="mb-3">
+              <v-row>
+                 <div class="flex-grow-1"></div>
+                 <v-col cols="12" md="4" lg="4">
+                      <v-text-field
+                        v-model="search"
+                        append-icon="mdi-magnify"
+                        label="Search"
+                        single-line
+                        hide-details
+                        
+                      ></v-text-field>
+                  </v-col>
+              </v-row>
+            </v-card-title>
+              
 
-  <v-card  class=" ma-10 ">
-    <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1" elavation>
-    <v-toolbar-title class="headline">
-       Customers
-     
-    </v-toolbar-title>
-    </v-toolbar>
-   
-    <v-card-title>
-        Customers
-    <div class="flex-grow-1"></div>
-     <v-flex md4>
-      <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        label="Search"
-        single-line
-        hide-details
-        
-      ></v-text-field>
-     </v-flex> 
-    </v-card-title>
-       <br>
-
-    <v-data-table
-    
-      :headers="headers"
-      :items="users"
-      :search="search"
-      
-      >
-    <template v-slot:item.profile_img="{ item }">
-        <v-avatar size="70px" class="ma-2">  
-          <v-img
-            class=" my-5 "
+            <v-data-table
             
-            :src="`http://localhost:8000/mainpackages/${item.profile_img}`">
-          </v-img>
-        </v-avatar>
-    </template>
-    </v-data-table>
-  </v-card>
-
+              :headers="headers"
+              :items="users"
+              :search="search"
+              
+              >
+            <template v-slot:item.profile_img="{ item }">
+                <v-avatar size="70px" class="ma-2">  
+                  <v-img
+                    class=" my-5 "
+                    
+                    :src="`http://localhost:8000/mainpackages/${item.profile_img}`">
+                  </v-img>
+                </v-avatar>
+            </template>
+            </v-data-table>
+          </v-card>
+			</v-col>
+		</v-row>
+ </v-container>
 
 </template>
 
