@@ -285,7 +285,7 @@ export default {
           {
           icon: ' ',
           title: 'View Stories',
-          to: '/admin'
+          to: '/admin/view-stories'
         },
 
         ]

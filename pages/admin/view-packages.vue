@@ -175,59 +175,111 @@
           </v-card>
         </v-dialog>
         <template>
+          <!-- image input -->
   <v-row justify="center">
-    <v-dialog v-model="imagedialog"  max-width="600px">
-      <v-card>
-        <v-card-title>
-          <span class="headline">Images</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12" sm="10" md="10">
-                 <v-file-input
-                    accept="image/png, image/jpeg, image/bmp"
-                    placeholder="Pick an image"
-                    prepend-icon="mdi-camera"
-                    label="Image"
-                ></v-file-input>
-              </v-col>
-               <v-col cols="12" sm="10" md="10">
-                 <v-file-input
-                    accept="image/png, image/jpeg, image/bmp"
-                    placeholder="Pick an image"
-                    prepend-icon="mdi-camera"
-                    label="Image"
-                ></v-file-input>
-              </v-col>
-               <v-col cols="12" sm="10" md="10">
-                 <v-file-input
-                    accept="image/png, image/jpeg, image/bmp"
-                    placeholder="Pick an image"
-                    prepend-icon="mdi-camera"
-                    label="Image"
-                ></v-file-input>
-              </v-col>
-               <v-col cols="12" sm="10" md="10">
-                 <v-file-input
-                    accept="image/png, image/jpeg, image/bmp"
-                    placeholder="Pick an image"
-                    prepend-icon="mdi-camera"
-                    label="Image"
-                ></v-file-input>
-              </v-col>
-               
-            </v-row>
-          </v-container>
-          
-        </v-card-text>
-        <v-card-actions>
-          <div class="flex-grow-1"></div>
-          <v-btn color="blue darken-1" text @click="imagedialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="imagedialog = false">Save</v-btn>
-        </v-card-actions>
-      </v-card>
+    <v-col cols="12" md="6" lg="6">
+      <v-dialog v-model="imagedialog"  max-width="800px" class="mx-auto">
+        <v-tabs
+              v-model="tabactive"
+              color="primary"
+              light
+              slider-color="yellow"
+              grow
+           >
+           <v-tab
+              v-for="n in images"
+              :key="n"
+              
+              >
+              {{n}}</v-tab>
+              <v-tab-item>
+               <v-card class="pa-5">
+                  <v-card-title>
+                      <span class="subtitle-2">Add  header image for package</span>
+                  </v-card-title>
+                <v-form
+                 ref=""
+                 v-model="active"
+                 method="POST"
+                 id="">
+                   <v-file-input
+                       accept="image/*"
+                       placeholder="Pick an header image"
+                       prepend-icon="mdi-camera"
+                       show-size
+                      
+                       ></v-file-input>
+                      
+                      <v-btn color="blue darken-1" text @click="imagedialog = false">Close</v-btn>
+                      <v-btn color="blue darken-1"  text @click="imagedialog = false">Save</v-btn>
+                  
+                </v-form>
+                
+              </v-card> 
+              </v-tab-item>
+              <v-tab-item>
+                    <v-card class="pa-5" img="">
+                        <v-card-title>
+                          <span class="subtitle-2">Add  more images for package</span>
+                        </v-card-title>
+                         <v-form 
+                          ref=""
+                          v-model="active"
+                          method="POST"
+                          id="">
+                          <v-container>
+                            <v-row>
+                              <v-col cols="12" sm="10" md="10">
+                                <v-file-input
+                                    accept="image/png, image/jpeg, image/bmp"
+                                    placeholder="Pick an image"
+                                    prepend-icon="mdi-camera"
+                                    label="Image"
+                                    show-size
+                                ></v-file-input>
+                              </v-col>
+                              <v-col cols="12" sm="10" md="10">
+                                <v-file-input
+                                    accept="image/png, image/jpeg, image/bmp"
+                                    placeholder="Pick an image"
+                                    prepend-icon="mdi-camera"
+                                    label="Image"
+                                ></v-file-input>
+                              </v-col>
+                              <v-col cols="12" sm="10" md="10">
+                                <v-file-input
+                                    accept="image/png, image/jpeg, image/bmp"
+                                    placeholder="Pick an image"
+                                    prepend-icon="mdi-camera"
+                                    label="Image"
+                                ></v-file-input>
+                              </v-col>
+                              <v-col cols="12" sm="10" md="10">
+                                <v-file-input
+                                    accept="image/png, image/jpeg, image/bmp"
+                                    placeholder="Pick an image"
+                                    prepend-icon="mdi-camera"
+                                    label="Image"
+                                ></v-file-input>
+                              </v-col>
+                              
+                            </v-row>
+                          </v-container>
+                            <div class="flex-grow-1"></div>
+                            <v-btn color="blue darken-1" text @click="imagedialog = false">Close</v-btn>
+                            <v-btn color="blue darken-1" text @click="imagedialog = false">Save</v-btn>
+                           </v-form>
+                    </v-card>
+              </v-tab-item>
+             
+            
+
+           
+        </v-tabs>
+                
+    
     </v-dialog>
+    </v-col>
   </v-row>
 </template>
       <v-icon
@@ -280,6 +332,7 @@
       },
     data () {
       return {
+        tabactive:false,
         imagedialog:false,
         active:true,
         message:'',
@@ -347,6 +400,9 @@
           package_details:'',
           
         },
+        images:[
+          'Header image','Other images'
+        ]
   
       }
     },
@@ -395,7 +451,8 @@
         
       },
       addImage(item){
-          this.imagedialog=true;
+          this.imagedialog=true
+          this.tabactive=true
       },
 
      close () {
