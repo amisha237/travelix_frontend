@@ -1,6 +1,7 @@
 <template>
 <v-app>
     <v-container fluid fill-height >
+       
         <v-row align-center justify-center>
             <v-col cols = "12" xs = "12" sm = "12" md = "12" >
                 <v-card
@@ -19,21 +20,45 @@
                             >
                             </v-img>
                         </v-col>
-                         
+                        
                         <v-col cols = "12" xs = "5" sm = "5" md = "5" class="display-1 font-weight-bold" >
                             Sign In
                             <p></p>
                             <v-text-field
-                            label="Enter Name"
-                            
+                            prepend-icon="person"
+                            label="Email ID"                                    
+                            placeholder=" "                                   
+                            name="email"
+                            type="email"
+                            v-model="email"
+                            autocomplete="on"
+                            required
+                            outline
+                            hide-details
+
                             ></v-text-field>
 
-                            <v-text-field
-                            label="Enter Password"
-                            
-                            ></v-text-field>
+                            <v-text-field id="password"
+                      prepend-icon="lock"
+                      v-model="password"
+                      :append-icon="show ? 'visibility' : 'visibility_off'"
+                      :type="show ? 'text' : 'password'"
+                      name="password"
+                      label="Password"
+                      placeholder=" "
+                      hint="At least 8 characters"
+                      autocomplete="off"
+                     @click:append="show = !show"
+                      outline
+                       >
+                            </v-text-field>
                             <v-checkbox class="" label="Remember me"> </v-checkbox>
-                            <v-btn color = "primary">Login</v-btn>
+                           <v-btn color="success"
+                             type="submit"                              
+                        @click.prevent="checkLogin"
+                        form="form"
+                              left>
+                              LogIn</v-btn>
                         </v-col>
                         <v-col cols = "12" xs = "1" sm = "1" md = "2"></v-col>
                         
@@ -53,6 +78,7 @@
                  </v-card>
             </v-col>
         </v-row>
+       
     </v-container>
 </v-app>
     
@@ -61,6 +87,63 @@
 <script>
 export default {
 layout : 'adminLoginLayout',
+
+     data: () => ({
+       active: true,
+      show : false,
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
+       
+     
+      password:'',
+      authentication:'admin'
+      
+
+    }),
+     methods: {
+
+  
+
+   async checkLogin() {
+       
+       console.log(this.email);
+       await this.$auth.loginWith('local', {
+        data: {
+          "email": this.email,
+          "password": this.password,  
+          "authentication": this.authentication,
+        }
+      
+      }).catch(e => {
+
+          console.log("Login Failed");
+      });
+
+      if(this.$auth.loggedIn)
+      {
+        //   console.log("Success")
+        //   //console.log(response.data)
+        //   console.log('Login SuccessFull')
+           
+         window.location.reload();
+
+          this.$router.push({
+                  path: '/admin/view-users'
+         });
+
+        
+      }
+         
+  }
+},
+
+
+
+
+
 }
 </script>
 

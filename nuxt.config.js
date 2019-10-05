@@ -79,21 +79,26 @@ export default {
     debug: false
   },
   auth: {
-    // login: '/',
-    // logout: '/admin',
+    
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/api/login', method: 'post', propertyName: 'meta.token' },
-          user: { url: '/api/me', method: 'get', propertyName: 'data' },
-          logout: {url: '/api/logout', method: 'get'},
+          login: { url: '/api/auth/login', method: 'post', propertyName: 'meta.token' },
+          user: { url: '/api/auth/me', method: 'get', propertyName: 'data' },
+          logout: {url: '/api/auth/logout', method: 'get'},
         },
-
         tokenRequired: true,
         tokenType: 'Bearer',
       },
-    
-    }
+ 
+    },
+    redirect: {
+      login: '/admin',
+      logout: '/',
+      home: '/',
+      user: '/admin/view-user',
+    },
+
   },
   /*
   ** vuetify module configuration

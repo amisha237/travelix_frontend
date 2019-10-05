@@ -1,5 +1,13 @@
 <template>
 <v-container fluid >
+     <v-form
+                    ref="form"
+                    v-model="active"
+                    method="POST"
+                    id="form"
+                
+                    enctype="multipart/form-data"
+                    >
     <v-row>
         
            <!-- <v-col cols = "12" xs = "12" sm = "12" md = "5" lg = "5">
@@ -11,13 +19,8 @@
                 <v-card class="mx-auto pa-10 ma-10 grey lighten-3" >
           
                     <v-card-text class="black--text display-1 text-center" text-center>Create User</v-card-text>
-                     <v-form
-                    ref="form"
-                    v-model="active"
-                    method="POST"
-                    id="form"
-                    >
-                     </v-form>
+                    
+                   
                         <v-row>
                             <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6" >
                                 <v-text-field
@@ -41,15 +44,6 @@
                         <v-row>
                             <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6" >
                                 <v-text-field
-                                label="Username"
-                                v-model="uname"
-                                :rules="nameRules"
-                                outlined
-                                required
-                                ></v-text-field>
-                            </v-col>
-                            <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6" >
-                                <v-text-field
                                 label="Email"
                                 v-model="email"
                                 :rules="emailRules"
@@ -57,32 +51,22 @@
                                 required
                                 ></v-text-field>
                             </v-col>
+                            <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6" >
+                                <v-text-field
+                                label="Contact"
+                                v-model="contact"
+                               
+                                outlined
+                                required
+                                ></v-text-field>
+                            </v-col>
                         </v-row>
+                       
                         <v-row>
                             <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6" >
                                 <v-text-field
                                 label = "Password"
                                 v-model = "password"
-                                outlined
-                                required
-                                >
-                                </v-text-field>
-                            </v-col>
-                            <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6" >
-                                <v-text-field
-                                label = "Repeat Password"
-                                v-model = "rpassword"
-                                outlined
-                                required
-                                >
-                                </v-text-field>
-                            </v-col>
-                        </v-row>
-                        <v-row>
-                            <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6" >
-                                <v-text-field
-                                label = "Mobile No"
-                                v-model = "mobile"
                                 outlined
                                 required
                                 >
@@ -100,7 +84,7 @@
                                     <template v-slot:activator="{ on }">
                                         <v-text-field
                                         v-model="date"
-                                        label="Picker without buttons"
+                                        label="Date Of Birth"
                                         prepend-icon="event"
                                         readonly
                                         v-on="on"
@@ -114,12 +98,15 @@
                             <v-col cols = "12" xs = "2" sm= "2" md = "2" lg = "2">
                             </v-col>
                             <v-col cols = "12" xs = "3" sm= "3" md = "3" lg = "3">
-                                <v-btn>Create User</v-btn>
+                                <v-btn
+                        @click="attachmentCreate"
+
+                               >Create User</v-btn>
                             </v-col>
                             <v-col cols = "12" xs = "2" sm= "2" md = "2" lg = "2">
                             </v-col>
                             <v-col cols = "12" xs = "3" sm= "3" md = "3" lg = "3">
-                                <v-btn>Delete</v-btn>
+                                <v-btn>Reset</v-btn>
                             </v-col>
                             <v-col cols = "12" xs = "2" sm= "2" md = "2" lg = "2">
                             </v-col>
@@ -132,7 +119,7 @@
                     <v-col cols = "12" xs = "6" sm = "6" md = "6" lg = "6">
                     </v-col>
                     <v-col cols = "12" xs = "6" sm = "6" md = "6" lg = "6">
-                    <p class="black--text display-1 "> Your Photo</p>
+                    <p class="black--text display-1 "> Profile Picture</p>
                     </v-col> 
                      
                 </v-row>
@@ -140,23 +127,30 @@
                     <v-col cols = "12" xs = "4" sm = "4" md = "2" lg = "2">
                     </v-col>
                     <v-col cols = "12" xs = "8" sm = "8" md = "10" lg = "10">
-                        <v-textarea
-                        solo
-                        name="input-7-4"
+                        <v-file-input
+                       
                         label="Drop files here or click to upload"
-                    ></v-textarea>
+                         outlined
+                         type="file"
+                         ref="target"
+                        								
+                         @change="onFileChange"
+                        
+                    ></v-file-input>
                     </v-col>
                 </v-row>
                 <v-row class = "hidden-md-and-up">
                     <v-col cols = "12" xs = "2" sm= "2" md = "2" lg = "2">
                     </v-col>
                     <v-col cols = "12" xs = "3" sm= "3" md = "3" lg = "3">
-                        <v-btn>Create User</v-btn>
+                        <v-btn 
+                        @click="attachmentCreate"
+                        >Create User</v-btn>
                     </v-col>
                     <v-col cols = "12" xs = "2" sm= "2" md = "2" lg = "2">
                     </v-col>
                     <v-col cols = "12" xs = "3" sm= "3" md = "3" lg = "3">
-                        <v-btn>Delete</v-btn>
+                        <v-btn>Reset</v-btn>
                     </v-col>
                     <v-col cols = "12" xs = "2" sm= "2" md = "2" lg = "2">
                     </v-col>
@@ -165,39 +159,122 @@
             </v-col>
         
     </v-row>
+     </v-form>
+     <v-snackbar
+		v-model="snackbar"
+		:timeout="timeout"
+		top
+		vertical
+    >
+		{{ message }}
+		<v-btn
+			color="primary"
+			text
+			@click="snackbar = false"
+		>
+			Close
+		</v-btn>
+    </v-snackbar>
 </v-container>
+
     
 </template>
 
 <script>
 export default {
     layout:'adminDashboardNavigation',
+    
+  
+  
+
    data(){
-       return{
-         active: true,
+
+       //  $axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+    return{
+        active: true,
         fname: '',
         lname:'',
         uname:'',
+        email:'',
+        contact:'',
+        password: '',
+        timeout:5000,
+        message:'',
+         snackbar:false,
+       
+        
+        date:'',
        nameRules: [
         v => !!v || 'Name is required',
-        v => (v && v.length <= 30) || 'Name must be less than 30 characters',
+       
       ],
-      message:'',
-      messageRules:[
-          v => !!v || 'Message is required',
-
-      ],
+     
       email: '',
+      attachment:'',
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
       ],
       date: new Date().toISOString().substr(0, 10),
       menu2:'false',
+     
        }
-   }
-    
+   
 
+
+       
+
+
+
+   },
+   methods : {
+
+     onFileChange(event) {
+
+          this.attachment = event
+        
+         console.log(this.attachment)
+        },
+
+     async  attachmentCreate() {
+            var form = new FormData();
+            form.append('firstname',this.fname);
+             form.append('lastname',this.lname);
+              form.append('email',this.email);
+             form.append('contact',this.contact);
+             form.append('password',this.password);
+             form.append('password_confirmation',this.password);
+             form.append('DOB',this.dob);
+            form.append('profile_img',this.attachment);
+            console.log(this.selectedFile)
+
+              const response = await this.$axios.post('/api/admin/register',
+					form,
+					{
+						headers: {
+							'Content-Type': 'multipart/form-data'
+						}
+					}
+				)
+				if(response.data.success==true)
+				{
+					console.log('Successfiull')
+                    this.$emit('success','New Question Added')
+                  this.message="Admin  successfully updated"
+                 this.snackbar=true
+                  this.$router.push({
+                  path: '/admin/view-users'
+         });
+                 
+                }
+            
+        
+        },
+       
+          
+      
+
+        }
 }
 </script>
 

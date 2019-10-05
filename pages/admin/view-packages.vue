@@ -195,23 +195,26 @@
               <v-tab-item>
                <v-card class="pa-5">
                   <v-card-title>
-                      <span class="subtitle-2">Add  header image for package</span>
+                      <span class="subtitle-2">Add  header image for P
+                        ackage</span>
                   </v-card-title>
                 <v-form
                  ref=""
                  v-model="active"
                  method="POST"
+                  enctype="multipart/form-data"
                  id="">
                    <v-file-input
-                       accept="image/*"
+                       type = "file"
                        placeholder="Pick an header image"
                        prepend-icon="mdi-camera"
                        show-size
+                       @change="onFileChange"
                       
                        ></v-file-input>
                       
                       <v-btn color="blue darken-1" text @click="imagedialog = false">Close</v-btn>
-                      <v-btn color="blue darken-1"  text @click="imagedialog = false">Save</v-btn>
+                      <v-btn color="blue darken-1"  text  @click.prevent="addHeaderImage(item)">Save</v-btn>
                   
                 </v-form>
                 
@@ -256,7 +259,7 @@
                               </v-col>
                               <v-col cols="12" sm="10" md="10">
                                 <v-file-input
-                                    accept="image/png, image/jpeg, image/bmp"
+                                   
                                     placeholder="Pick an image"
                                     prepend-icon="mdi-camera"
                                     label="Image"
@@ -336,6 +339,7 @@
         imagedialog:false,
         active:true,
         message:'',
+        attachment1: '',
         timeout:3000,
         snackbar:false,
         dialog: false,
@@ -347,7 +351,7 @@
         ],
         featureRules: [
             v => !!v || 'Feature is required',
-            v => (v && v.length <= 50) || 'Feature must be less than 50 characters',
+            v => (v && v.length <= 1000) || 'Feature must be less than 50 characters',
         ],
         locations: [
             'Andhra Pradesh',
@@ -419,6 +423,45 @@
           this.initialize()
     },
     methods:{
+
+       onFileChange(event) {
+
+          this.attachment1 = event
+        
+         console.log(this.attachment1)
+        },
+
+        
+     async  addHeaderImage(item) {
+           let id=item.id
+           console.log(id)
+            var form = new FormData();
+            
+            form.append('package_header_image',this.attachment1);
+            console.log(this.attachment1)
+
+              const response = await this.$axios.post(`/api/packages/addheaderimage/${id}`,
+                form,
+                {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                }
+                      )
+                      if(response.data.success==true)
+                      {
+                        console.log('Successfull update')
+                                  this.$emit('success','New Header  Added')
+                              //   this.message="header successfully updated"
+                              // this.snackbar=true
+                                this.$router.push({
+                                path: '/admin/view-users'
+                      });
+                              
+                              }
+            
+        
+        },
         	async initialize () {
           const response = await this.$axios.get('/api/packages/index')
  

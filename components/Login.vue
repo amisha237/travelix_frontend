@@ -73,6 +73,7 @@ export default {
        
      
       password:'',
+      authentication:'customer',
       
 
     }),
@@ -87,18 +88,19 @@ export default {
         data: {
           "email": this.email,
           "password": this.password,  
+          "authentication":this.authentication,
         }
+      
       }).catch(e => {
-
           console.log("Login Failed");
       });
-
+    
       if(this.$auth.loggedIn)
       {
           console.log("Success")
           //console.log(response.data)
           console.log('Login SuccessFull')
-         window.location.reload()
+          window.location.reload()
 
       }
          

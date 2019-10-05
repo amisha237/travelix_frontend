@@ -193,6 +193,7 @@
     methods: {
       
        async submitForm() {
+         console.log(this.days)
 
           const response = await this.$axios.post('api/packages/add',{
             package_name : this.name,

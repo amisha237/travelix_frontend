@@ -13,11 +13,11 @@
     
       <v-list-item>
         <v-list-item-avatar v-if="loggedIn">
-          <v-img :src="`http://localhost:8000/mainpackages/${$auth.user.profile_img}`"></v-img>
+          <v-img :src="`http://localhost:8000/UserProfileImage/${$auth.user.profile_img}`"></v-img>
         </v-list-item-avatar>
 
         <v-list-item-avatar v-if="!loggedIn">
-          <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
+          <v-img :src="`http://localhost:8000/UserProfileImage/default-profile.png`"></v-img>
         </v-list-item-avatar>
 
         <v-list-item-content v-if="loggedIn">
@@ -64,9 +64,9 @@
         items: [
           { title: 'Home', icon:'home' },
           { title: 'Packages', icon: 'question_answer' },
-            { title: 'Stories', icon: 'dashboard' },
+          { title: 'Stories', icon: 'dashboard' },
           { title: 'Blogs', icon: 'question_answer' },
-            { title: 'Contact', icon: 'dashboard' },
+          { title: 'Contact', icon: 'dashboard' },
           { title: 'About Us', icon: 'question_answer' },
         ],
       }

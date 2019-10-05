@@ -94,16 +94,20 @@
       //   },
       // ],
       
-    import { mapState } from 'vuex'  
+     
     export default {
 
-    data: () => ({
+    data () {
      
-       items: [],
+       return{  
+         items: [],
+       }
+      
 
-      }),
+      },
 
     created () {
+      console.log("hello")
 		  this.initialize()
   },
 
