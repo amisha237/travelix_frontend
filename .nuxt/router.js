@@ -7,7 +7,6 @@ const _b416fcd8 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* w
 const _2569ff93 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
 const _775cbdbf = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
 const _06381f79 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
-const _2c7a5b70 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
 const _a9cb6a36 = () => interopDefault(import('..\\pages\\package.vue' /* webpackChunkName: "pages_package" */))
 const _1383c0da = () => interopDefault(import('..\\pages\\package-details.vue' /* webpackChunkName: "pages_package-details" */))
 const _0bb2af1c = () => interopDefault(import('..\\pages\\stories.vue' /* webpackChunkName: "pages_stories" */))
@@ -47,10 +46,6 @@ export const routerOptions = {
       path: "/inspire",
       component: _06381f79,
       name: "inspire"
-    }, {
-      path: "/login",
-      component: _2c7a5b70,
-      name: "login"
     }, {
       path: "/package",
       component: _a9cb6a36,

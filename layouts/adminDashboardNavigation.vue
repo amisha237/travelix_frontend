@@ -297,7 +297,7 @@ export default {
           {
            icon: 'mdi-account',
            title: 'Add Admin User',
-           to: '/',
+           to: '/admin/add-admin',
           },
           {
           icon: 'mdi-account',
