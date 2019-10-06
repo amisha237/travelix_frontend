@@ -4,9 +4,9 @@
     
    
       <v-flex xs12 sm12 md7 lg7>
-        <v-card class="mx-auto pa-10 ma-10 grey lighten-3" >
+        <v-card class="mx-auto pa-10 ma-10 grey lighten-3 " img="/bg_5.jpg" >
           
-          <v-card-text class="black--text display-2 text-center" text-center>GET IN TOUCH</v-card-text>
+          <v-card-text class="black--text display-2 text-center">GET IN TOUCH</v-card-text>
           
           <v-form
               ref="form"
