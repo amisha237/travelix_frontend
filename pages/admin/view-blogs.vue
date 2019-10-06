@@ -33,6 +33,15 @@
 						:search="search"
 						>
 
+						<template v-slot:item.blog_image="{ item }"> 
+							<v-img
+								class=" my-5 "
+								height="150px"
+								width="150px"
+								:src="`http://localhost:8000/mainblogs/${item.blog_image}`">
+							</v-img>
+						</template>
+
 						</v-data-table>
 				</v-card>
 			</v-col>
@@ -49,10 +58,10 @@
         search: '',
         headers: [
 
-          { text: 'City',align: 'left', value: 'city_name'},
+          { text: 'City',align: 'left', value: 'city'},
           { text: 'Description', value: 'description' },
-          { text: 'Location', value: 'place_name' },
-          { text: 'Image', value: 'images_header' },
+          { text: 'Location', value: 'place' },
+          { text: 'Image', value: 'blog_image' },
         
         ],
         blogs: [ ],
@@ -63,12 +72,14 @@
     },
     methods:{
           async initialize () {
-          const response = await this.$axios.get('/api/')
+          const response = await this.$axios.get('/api/blog/index')
  
           for(var j=0;j<response.data.length;j++)
             {
               this.blogs.push(response.data[j])
-            }
+			}
+			
+			console.log(this.blogs)
 
       },
     }

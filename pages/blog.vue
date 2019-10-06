@@ -10,15 +10,18 @@
         <v-col cols = "12" xs = "2" sm = "2" md = "4"></v-col>
         <v-col cols = "12" xs = "8" sm = "8" md = "4">
             <v-select
+            v-model="city"
             :items="items"
             label="Select City"
             solo
+            @change="onCityChanged"
             ></v-select>
         </v-col>
     </v-row>
     <v-row>
         <v-col cols = "12" xs = "8" sm = "8" md= "8">
             <v-card
+            v-if="media"
             class="mx-auto"
             :flat="false"
             :loading="false"
@@ -29,25 +32,25 @@
             :height="undefined"
              >
                 <v-img
-                v-if="media"
+                
                 class="white--text"
                 height="250px"
-                src="collage.jpg"
+                :src="`http://localhost:8000/mainblogs/${header_image}`"
                 >
                     
-                </v-img>
-                <v-card-text>
-                   <u> <v-subheader class="font-weight-bold title">Name of selected city</v-subheader></u>
+                </v-img> 
+           
+                <v-card-text v-for="place in places" :key="place.id">
+                   <u> <v-subheader class="font-weight-bold title">{{place.place}}</v-subheader></u>
                    <br>
                     <p>
-                        Delhi, India’s capital territory, is a massive metropolitan area in the country’s north.
-                         In Old Delhi, a neighborhood dating to the 1600s, stands the imposing Mughal-era Red Fort, 
-                         a symbol of India, and the sprawling Jama Masjid mosque, whose courtyard accommodates 25,000 people.
-                          Nearby is Chandni Chowk, a vibrant bazaar filled with food carts, sweets shops and spice stalls.
+                      {{place.description}}
                     </p>
                     <br>
-                    <v-btn color = "brown"> View Packages</v-btn>
                 </v-card-text>
+                <v-card-text>
+                    <v-btn color = "brown"> View Packages</v-btn>
+                </v-card-text>    
             </v-card>
 
         </v-col>
@@ -56,13 +59,13 @@
             
                 <v-subheader class = "display-1 black--text" >Latest Offers</v-subheader>
                 <br>
-                <v-div v-for="offer in offers" :key="offer.title" align="center" justify="center" >
+                <div v-for="offer in offers" :key="offer.title" align="center" justify="center" >
                     
                     <li>{{offer.data}}</li> 
                     <br>
-                </v-div>
+                </div>
                 <br>
-                <v-div>
+                <div>
                     <v-subheader class = "display-1 black--text">More Images</v-subheader>
                     <br>
                     <v-row align="center" justify="center">
@@ -104,7 +107,7 @@
                         max-height="100"
                         ></v-img>
                     </v-row>
-                </v-div>
+                </div>
 
         </v-col>
     </v-row>
@@ -117,21 +120,66 @@
 export default {
     data(){
         return{
-            items:['Delhi' , 'Mumbai' , 'Chennai','Kolkata','Shimla' , 'Andaman & Nicobar'],
-            media: 'true',
+            items:[],
+            city:'',
+            places:[],
+            header_image:'',
+            media: '',
 
              offers : [
-        {
-            data : "Rs700 off on jamaica tour",
-        },
-        {
-            data : "Rs 200 cashback on specific tours",
-        },
-        {
-            data : "Travel offers for students",
-        },
-    ],
+                            {
+                                data : "Rs700 off on jamaica tour",
+                            },
+                            {
+                                data : "Rs 200 cashback on specific tours",
+                            },
+                            {
+                                data : "Travel offers for students",
+                            },
+                     ],
             
+        }
+    },
+
+    created()
+    {
+        this.initialize()
+    },
+
+    methods: {
+
+        async initialize(){
+
+            const response = await this.$axios.get('/api/blog/cities')
+            
+            for(var j=0;j<response.data.length;j++)
+			{
+			 	this.items.push(response.data[j].name)
+            }
+
+            console.log(this.items)
+        },
+
+        async onCityChanged(){
+
+            this.media = true
+
+            console.log(this.city)
+
+            const response = await this.$axios.post('/api/blog/show',{
+                city: this.city,
+            })
+             
+            this.header_image = response.data.image
+
+            for(var j=0;j<response.data.data.length;j++)
+			{
+			 	this.places.push(response.data.data[j])
+            }
+
+            console.log(this.places)
+
+
         }
     }
 

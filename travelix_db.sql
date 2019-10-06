@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2019 at 08:53 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Oct 06, 2019 at 05:06 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -61,6 +61,34 @@ INSERT INTO `admins` (`id`, `firstname`, `lastname`, `email`, `password`, `conta
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `blogs`
+--
+
+CREATE TABLE `blogs` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `city` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `destination_id` int(10) UNSIGNED NOT NULL,
+  `place` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blogs`
+--
+
+INSERT INTO `blogs` (`id`, `city`, `destination_id`, `place`, `description`, `blog_image`, `created_at`, `updated_at`) VALUES
+(1, 'Gujrat', 1, 'Rann of Kutch', 'The Rann of Kutch is located in the Thar Desert bio-geographic area in the Indian state of Gujarat, with some parts in Pakistani province of Sindh. It is a seasonally marshy region, the word Rann meaning \"salt marsh\", alternating with medak\'s, elevated pieces of land where vegetation grows. Kori Creek and Sir creek are located in the Rann of Kutch area, which is part of Indus river delta.\r\n\r\nKutch is the name of the district in Gujarat where this region is situated. The marsh covers an area of around 10,000 square miles and is positioned between the Gulf of Kutch and the mouth of the Indus River in southern Pakistan. Many rivers located in Rajasthan and Gujarat flow in to Rann of Kutch. These are Luni, Bhuki, Bharud, Nara, Kharod, Banas, Saraswati, Rupen, Bambhan and Machchhu.', NULL, NULL, NULL),
+(2, 'Gujrat', 1, 'Gir National Park', 'Gir National Park and Wildlife Sanctuary, also known as Sasan Gir, is a forest and wildlife sanctuary near Talala Gir in Gujarat, India. It is located 43 km (27 mi) north-east of Somnath, 65 km (40 mi) south-east of Junagadh and 60 km (37 mi) south-west of Amreli. It was established in 1965, with a total area of 1,412 km2 (545 sq mi), of which 258 km2 (100 sq mi) is fully protected as national park and 1,153 km2 (445 sq mi) as wildlife sanctuary.[1] It is part of the Kathiawar-Gir dry deciduous forests ecoregion.', NULL, NULL, NULL),
+(3, 'Gujrat', 1, 'Statue of Unity', 'The Statue of Unity is a colossal statue of Congress Politician and independence activist Sardar Vallabhbhai Patel (1875–1950), who was the first Home minister of independent India and the chief adherent of Mahatma Gandhi during the non-violent Indian Independence movement. Patel was highly respected for his leadership in uniting the 552 princely states of India to form the single Union of India. It is located in the state of Gujarat, India. It is the world\'s tallest statue with a height of 182 metres. It is located on a river island facing the Sardar Sarovar Dam on river Narmada in Kevadiya colony, 100 kilometres (62 mi) southeast of the city of Vadodara[2] and 150 km from Surat.\r\n\r\nThe project was first announced in 2010 and the construction of the statue started in October 2013 by Larsen & Toubro, who received the contract for ₹2,989 crore (US$420 million) from Government of Gujarat. It was designed by Indian sculptor Ram V. Sutar, and was inaugurated by Indian Prime Minister Narendra Modi on 31 October 2018, the 143rd anniversary of Patel\'s birth.', NULL, NULL, NULL),
+(5, 'Chennai', 6, 'Marina Beach', 'Marina Beach is a natural urban beach in Chennai, Tamil Nadu, India, along the Bay of Bengal.[1] The beach runs from near Fort St. George in the north to Foreshore Estate in the south, a distance of 6.0 km (3.7 mi),[2] making it the longest natural urban beach in the country.[3][4][5] The Marina is primarily sandy, unlike the short, rocky formations that make up the Juhu Beach in Mumbai. The average width of the beach is 300 m (980 ft)[6] and the width at the widest stretch is 437 m (1,434 ft). Bathing and swimming at the Marina Beach are legally prohibited because of the dangers, as the undercurrent is very turbulent. It is one of the most crowded beaches in the country and attracts about 30,000 visitors a day during weekdays[7] and 50,000 visitors a day during the weekends and on holidays.[8][9][10] During summer months, about 15,000 to 20,000 people visit the beach daily.', '1570371416-blogImage.png', '2019-10-06 08:46:56', '2019-10-06 08:46:56'),
+(6, 'Mumbai', 7, 'Gateway of India', 'The Gateway of India is an arch-monument built in the early twentieth-century located in the city of Mumbai, in the Indian state of Maharashtra. It was erected to commemorate the landing of the first British monarch in India; King-Emperor George V and Queen-Empress Mary\'s arrival at Apollo Bunder, Mumbai (then Bombay) in December 1911. Built in the Indo-Saracenic style, incorporating elements of 16th-century Gujarati architecture, the foundation stone for the gateway was laid in March 1913. During the royal visit, the gateway was not yet built and a cardboard structure had greeted the monarch. The final design of the monument by architect George Wittet was sanctioned only in 1914, and construction was completed in 1924. The structure is a triumphal arch made of basalt, which is 26 metres (85 feet) high.', '1570374247-blogImage.jpg', '2019-10-06 09:34:07', '2019-10-06 09:34:07');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `contacts`
 --
 
@@ -78,6 +106,32 @@ CREATE TABLE `contacts` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `destinations`
+--
+
+CREATE TABLE `destinations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `destination_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `destinations`
+--
+
+INSERT INTO `destinations` (`id`, `name`, `destination_image`, `created_at`, `updated_at`) VALUES
+(1, 'Gujrat', 'blog-img5.jpg', NULL, NULL),
+(2, 'Himachal Pradesh', NULL, NULL, NULL),
+(3, 'Rajasthan', NULL, '2019-10-06 06:11:29', '2019-10-06 06:11:29'),
+(4, 'Delhi', '1570362138-blogImage.png', '2019-10-06 06:12:18', '2019-10-06 06:12:18'),
+(6, 'Chennai', '1570371416-blogImage.png', '2019-10-06 08:26:34', '2019-10-06 08:26:34'),
+(7, 'Mumbai', '1570374109-blogImage.jpg', '2019-10-06 09:31:49', '2019-10-06 09:31:49');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -87,7 +141,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -121,7 +175,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2019_10_02_143820_add_features_to_packages_table', 1),
 (13, '2019_10_02_145334_create_package_images_table', 1),
 (14, '2019_10_02_151738_create_subscribers_table', 1),
-(15, '2019_10_03_141638_create_stocks_table', 1);
+(15, '2019_10_03_141638_create_stocks_table', 1),
+(18, '2019_10_06_105201_create_destinations_table', 2),
+(21, '2019_10_06_105302_create_blogs_table', 3),
+(22, '2019_10_06_110641_create_destinations_table', 3),
+(23, '2019_10_06_110735_add_foreifn_to_blogs_table', 4);
 
 -- --------------------------------------------------------
 
@@ -134,7 +192,7 @@ CREATE TABLE `oauth_access_tokens` (
   `user_id` bigint(20) DEFAULT NULL,
   `client_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci,
   `revoked` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -212,7 +270,7 @@ CREATE TABLE `oauth_auth_codes` (
   `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `client_id` int(10) UNSIGNED NOT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci,
   `revoked` tinyint(1) NOT NULL,
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -402,9 +460,23 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `admins_email_unique` (`email`);
 
 --
+-- Indexes for table `blogs`
+--
+ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `blogs_city_index` (`city`),
+  ADD KEY `blogs_destination_id_index` (`destination_id`);
+
+--
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `destinations`
+--
+ALTER TABLE `destinations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -504,10 +576,22 @@ ALTER TABLE `admins`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT for table `blogs`
+--
+ALTER TABLE `blogs`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `destinations`
+--
+ALTER TABLE `destinations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -519,7 +603,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
@@ -566,6 +650,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `blogs`
+--
+ALTER TABLE `blogs`
+  ADD CONSTRAINT `blogs_destination_id_foreign` FOREIGN KEY (`destination_id`) REFERENCES `destinations` (`id`);
 
 --
 -- Constraints for table `package_images`
