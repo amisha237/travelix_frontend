@@ -28,43 +28,16 @@
    </div>
    <card3 />
     <div>
-       <pre>
-
-
-
-      home page
-      
-      
+       
      
-
-
-
-
-
-
-
-
-    </pre>
+   <packageCard />
     
     </div>
     <div>
-      <pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </pre>
+    <services/>
+    </div>
+    <div>
+      <newsletter/>
     </div>
   </v-layout>
  
@@ -75,8 +48,12 @@
 // import Slider1 from '@/components/Slider1' ;
 import Carousel from '@/components/home/Carousel' ;
 import Card1 from '@/components/home/Card1' ;
-import Card2 from '@/components/home/Card2' ; import card3 from '@/components/home/card3' ;
+import Card2 from '@/components/home/Card2' ;
+ import card3 from '@/components/home/card3' ;
 import card4 from '@/components/home/card4' ;
+import packageCard from '@/components/home/packageCard'
+import services from '@/components/home/services'
+import newsletter from '@/components/home/newsletter'
 export default {
   components: {
     // Slider1,
@@ -84,7 +61,10 @@ export default {
     ,Card1,
     Card2,
     card3,
-    card4
+    card4,
+    packageCard,
+    services,
+    newsletter
 
     
   },

@@ -8,6 +8,7 @@
         elavation=6
         height="auto"
         flat
+        img="/bg_5.jpg"
        >
       <center> <p class="display-2" >Our satisfied customer says</p></center>
       <p></p>
