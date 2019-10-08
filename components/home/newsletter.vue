@@ -5,7 +5,7 @@
                <v-card
                 max-width="100vw"
                 width="1500"
-                class=" mx-auto pt-12"
+                class=" max-auto pt-12"
                 img="/fig5.jpg"
                 elavation=6
                 height="400"

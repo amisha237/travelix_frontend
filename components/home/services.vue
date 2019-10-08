@@ -5,11 +5,11 @@
                <v-card
                 max-width="100vw"
                 width="1500"
-                class=" mx-auto pa-10"
-                color="orange lighten-1"
-                elavation=6
-                height="300"
+                class=" max-auto pa-10 white--text "
+                color="grey darken-4"
+                elavation
                 flat
+                
                 >
                 <template>
                    <v-item-group >
@@ -18,12 +18,12 @@
                             <v-col cols="12" xs="6" sm="6" md="3" lg="3">
                                 <v-item v-slot:default="{ active, toggle }">
                                    <v-card
-                                    class="justify-center pa-2"
-                                    flat
-                                    tile
+                                    class="justify-center py-2 px-3 mx-auto"
+                                   
                                     height="200"
                                     @click="toggle"
                                     color="orange lighten-1"
+                                    
                                     >
                                     
                                     <v-card-title class="headline"><b>Best Price Guarantee</b></v-card-title>

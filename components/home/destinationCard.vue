@@ -5,11 +5,10 @@
     <v-card
     v-for="item in items" :key="item.title"
     v-bind:to="item.to"
-    class="max-auto category-card ma-5"
+    class="max-auto category-card mx-5 mt-5"
     max-width="270"
     max-height="600"
     outlined
-    raised
     exact
   >
    <v-img

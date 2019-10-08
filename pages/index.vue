@@ -9,32 +9,41 @@
   <Carousel />
   <br><br>
   </div>
-  <div class="display-2" color="primary">
-    Best Destination
-    <br><br>
-  </div>
-  <Card1 />
-  <div class="display-2">Best Packages<br><br></div>
-   <Card2 /> 
+   <div class="my-12 text-center">
+     	<span class="display-2 pb-12 mb-12 font-italic font-weight">Top  </span>
+      	<span class="display-2 pb-12 mb-12 font-italic font-weight">Destinations</span> <br><br><br>  
+        <destinationCard />
+   		<!-- <v-btn large color="blue darken-2" class="white--text mt-5 px-5" to="/packages">View All</v-btn> -->
+    </div>
+  
+    <div>
+    	<services/>
+    </div>
+  
+
+    <div class="my-12 text-center">
+     	<span class="display-2 pb-12 mb-12 font-italic font-weight-light"> Discover our tour </span>
+      	<span class="display-2 pb-12 mb-12 red--text font-italic font-weight">packages</span> <br><br><br>  
+      
+   		<packageCard />
+     	<v-btn large color="blue darken-2" class="white--text mt-5 px-5" to="/packages">View All</v-btn>
+    </div>
    <br>
    <br>
    
    <card4 />
    <br>
    <br>
-   <div class="">
-       <span class="display-2"> Latest From Our Blogs</span>
-       <br><br>
-   </div>
+   
    <card3 />
-    <div>
-       
-     
-   <packageCard />
+   
     
-    </div>
-    <div>
-    <services/>
+    
+    <div class="my-12 py-12 text-center">
+      <span class="display-2 pb-12 mb-12 font-italic font-weight-light">Latest from Our </span>
+      <span class="display-2 pb-12 mb-12 red--text font-italic font-weight">Blogs</span> <br><br><br>
+      <blogCard/>
+        <v-btn large color="blue darken-2" class="white--text mt-5 px-5" to="/blog" exact>View All</v-btn>
     </div>
     <div>
       <newsletter/>
@@ -47,24 +56,26 @@
 <script>
 // import Slider1 from '@/components/Slider1' ;
 import Carousel from '@/components/home/Carousel' ;
-import Card1 from '@/components/home/Card1' ;
+import destinationCard from '@/components/home/destinationCard' ;
 import Card2 from '@/components/home/Card2' ;
- import card3 from '@/components/home/card3' ;
+ import blogCard from '@/components/home/blogCard' ;
 import card4 from '@/components/home/card4' ;
 import packageCard from '@/components/home/packageCard'
 import services from '@/components/home/services'
 import newsletter from '@/components/home/newsletter'
+// import parallax from '@/components/home/parallax'
 export default {
   components: {
     // Slider1,
-    Carousel
-    ,Card1,
+	Carousel,
+	destinationCard,
     Card2,
-    card3,
     card4,
     packageCard,
     services,
-    newsletter
+    blogCard,
+	newsletter,
+	// parallax
 
     
   },
