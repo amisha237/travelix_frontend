@@ -108,7 +108,7 @@ export default {
         },
         {
           title: 'Package',
-          to: '/package'
+          to: '/packages'
         },
         {
           title: 'Stories',
