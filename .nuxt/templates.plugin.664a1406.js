@@ -7,6 +7,9 @@ config.autoAddCss = false
     import  { fas as fortawesomefreesolidsvgicons_fas } from '@fortawesome/free-solid-svg-icons'
     library.add(fortawesomefreesolidsvgicons_fas)
 
+    import  { far as fortawesomefreeregularsvgicons_far } from '@fortawesome/free-regular-svg-icons'
+    library.add(fortawesomefreeregularsvgicons_far)
+
     import  { fab as fortawesomefreebrandssvgicons_fab } from '@fortawesome/free-brands-svg-icons'
     library.add(fortawesomefreebrandssvgicons_fab)
 
