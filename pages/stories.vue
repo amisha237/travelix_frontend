@@ -2,6 +2,9 @@
 <template>
 
   <v-container fluid fill-width >
+       <v-img src="/home_slider.jpg" height=250px width=200% alt=""><br><br><br>
+       <p class="display-2  white--text">The Experince that we share with you!!</p>
+    </v-img>
     <!--<v-card>
         <v-subheader >
             The Stories
@@ -19,14 +22,14 @@
     </v-row>-->
     
     <br><br>
-    <v-div >
+    
     <v-layout wrap>
         
         <v-flex xs12 sm12 md9 lg9>
             
                 
                 <v-card
-                    v-for="item in items" :key="item.title"
+                    v-for="item in items" :key="item.id"
                     class="mx-auto card_margin pa-4"
                     :flat="flat"
                     :loading="loading"
@@ -39,23 +42,23 @@
                         v-if="media"
                         class="white--text"
                         height="350px"
-                        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                        :src="`http://localhost:8000/storiesImage/${item.image_1}`"                                 
                     >
-                        <v-card-title class="align-end fill-height">I'm a title</v-card-title>
+                        <v-card-title class="align-end fill-height">{{item.package_name}}</v-card-title>
                     </v-img>
                     <!--<v-card-title v-else>I'm a title</v-card-title>
         
                     <v-card-text>I'm card text</v-card-text>-->
                     <v-card-actions v-if="actions">
-                        <v-chip>{{item.tag}}</v-chip>&emsp;
-                        <v-chip>{{item.category}}</v-chip>&emsp;
-                        <v-chip>{{item.author}}</v-chip>&emsp;
+                        <v-chip>Travel Date: {{item.tour_date}}</v-chip>&emsp;
+                        <v-chip>Likes: {{item.likes}}</v-chip>&emsp;
+                        <v-chip >Author: {{item.author}}</v-chip>&emsp;
                     </v-card-actions>
 
-                    <v-card-text>text..........</v-card-text>
+                    <v-card-text>{{item.experience}}</v-card-text>
                     <br>
                     <v-row class="pa-4">
-                    <v-btn>likes</v-btn><v-spacer></v-spacer><v-btn>read more</v-btn>
+                    <v-btn>likes</v-btn><v-spacer></v-spacer><v-btn>Read more</v-btn>
                     </v-row>
                     
                 </v-card>
@@ -65,10 +68,11 @@
         <v-flex xs12 sm12 md3 lg3>
             <v-card >
                 <v-subheader>Latest post</v-subheader>
-                <v-div  v-for="post in posts" :key="post.title" >
+                <v-div  v-for="post in posts" :key="post.id" >
                 <v-card
-                max-width="500"
-                height = "200"
+                max-width="600"
+                height = "230"
+                
                 class="mx-auto card_margin"
                 >
                     <v-row
@@ -76,16 +80,21 @@
                     >
                         <v-col class="shrink">
                             <v-img
-                            height="150"
+                            height="180"
                             width="100"
-                            src="https://cdn.vuetifyjs.com/images/cards/store.jpg"
+                            :src="`http://localhost:8000/storiesImage/${post.image_1}`"   
                             >
                             </v-img>
-                        </v-col>
-                        <v-col class="text-center">
+                            
                            
-
-
+                        </v-col>
+                        <v-col class="post-style">
+                           <v-header class="post-style-header">{{post.package_name}}</v-header><br>
+                           <v-header class="post-style-header">{{post.tour_date}}</v-header><br>
+                            <v-header class="post-style-header">{{post.author}}</v-header>
+                           <p class="post-style-exp">{{post.experience.substring(0,160)+""}} <a href="#">...Read More</a>
+</p>
+                           
                         </v-col>
                      </v-row>
                 </v-card>
@@ -149,7 +158,7 @@
             </v-card>
         </v-flex> 
     </v-layout>
-    </v-div>
+    
     
   </v-container>
 
@@ -169,20 +178,20 @@ export default {
     height: undefined,
 
     items : [
-        {
-            tag : 'tags1',
-            category : 'category1',
-            author : 'author1',
+        // {
+        //     tag : '',
+        //     category : 'category1',
+        //     author : 'author1',
 
-        },
-        {
-            tag : 'tags',
-            category : 'category',
-            author : 'author',
+        // },
+        // {
+        //     tag : 'tags',
+        //     category : 'category',
+        //     author : 'author',
 
-        }
+        // }
     ],
-
+    
     offers : [
         {
             data : "Rs700 off on jamaica tour",
@@ -196,20 +205,68 @@ export default {
     ],
 
     posts : [
-        {
-            data : '',
-        },
-        {
-            data : '',
-        },
+      
     ]
   }),
+
+    created()
+    {
+        this.initialize()
+       
+    },
+     methods: {
+
+        async initialize(){
+
+            const response = await this.$axios.get('/api/stories/index')
+            
+            for(var j=0;j<response.data.length;j++)
+			{
+			 	this.items.push(response.data[j])
+            }
+        
+
+            console.log(this.items)
+
+            const response1 = await this.$axios.get('/api/stories/getLatest')
+            
+            for(var j=0;j<response1.data.length;j++)
+			{
+			 	this.posts.push(response1.data[j])
+            }
+
+
+            console.log(this.post)
+
+          
+        },
+
+}
 }
 </script>
+
+
 <style>
 .card_margin {
 
     margin-bottom: 30px;
+}
+.post-style-header{
+    color:red;
+    font-size: 15px;
+   
+}
+.post-style-exp{
+    font-size: 12px;
+}
+.post-style{
+   
+   margin-left:-10px;
+   
+}
+.post-read{
+    align-content:right;
+    font-size: 12px;
 }
 </style>
 

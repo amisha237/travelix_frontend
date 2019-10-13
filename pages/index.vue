@@ -35,10 +35,6 @@
    <br>
    <br>
    
-   <card3 />
-   
-    
-    
     <div class="my-12 py-12 text-center">
       <span class="display-2 pb-12 mb-12 font-italic font-weight-light">Latest from Our </span>
       <span class="display-2 pb-12 mb-12 red--text font-italic font-weight">Blogs</span> <br><br><br>

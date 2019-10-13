@@ -27,7 +27,7 @@
                                     >
                                     
                                     <v-card-title class="headline"><b>Best Price Guarantee</b></v-card-title>
-                                    <v-text>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</v-text>
+p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</p>
                                     </v-card>
                                 </v-item>
                                 </v-col>
@@ -43,7 +43,7 @@
                                     >
                                     
                                     <v-card-title class="headline"><b>Safe and Secure</b></v-card-title>
-                                    <v-text>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</v-text>
+                                    <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</p>
                                     </v-card>
                                 </v-item>
                                 </v-col>
@@ -59,7 +59,7 @@
                                     >
                                    
                                     <v-card-title class="headline"><b>Best Travel Agents</b></v-card-title>
-                                    <v-text>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</v-text>
+                                    <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in pri. Veniam delectus ei vis.</p>
                                     </v-card>
                                 </v-item>
                                 </v-col>
@@ -75,7 +75,7 @@
                                     >
                                    
                                     <v-card-title class="headline"><b>Travel Guidelines</b></v-card-title>
-                                    <v-text>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</v-text>
+                                    pLorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</p>
                                     </v-card>
                                 </v-item>
                                 </v-col>
