@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2019 at 05:06 PM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Oct 14, 2019 at 12:49 PM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `travelix_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `add_likes`
+--
+
+CREATE TABLE `add_likes` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `stories_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -141,7 +155,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -179,7 +193,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2019_10_06_105201_create_destinations_table', 2),
 (21, '2019_10_06_105302_create_blogs_table', 3),
 (22, '2019_10_06_110641_create_destinations_table', 3),
-(23, '2019_10_06_110735_add_foreifn_to_blogs_table', 4);
+(23, '2019_10_06_110735_add_foreifn_to_blogs_table', 4),
+(24, '2019_10_12_142356_create_stories_table', 5),
+(25, '2019_10_12_153241_create_add_likes_table', 5);
 
 -- --------------------------------------------------------
 
@@ -192,7 +208,7 @@ CREATE TABLE `oauth_access_tokens` (
   `user_id` bigint(20) DEFAULT NULL,
   `client_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci,
+  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `revoked` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -270,7 +286,7 @@ CREATE TABLE `oauth_auth_codes` (
   `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `client_id` int(10) UNSIGNED NOT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci,
+  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `revoked` tinyint(1) NOT NULL,
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -409,6 +425,35 @@ CREATE TABLE `stocks` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `stories`
+--
+
+CREATE TABLE `stories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `author` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `package_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `experience` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tour_date` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_1` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `likes` int(11) NOT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `stories`
+--
+
+INSERT INTO `stories` (`id`, `user_id`, `author`, `package_name`, `experience`, `tour_date`, `image_1`, `likes`, `status`, `created_at`, `updated_at`) VALUES
+(1, 123, 'Anand Maurya', 'Summer Trip Experience', 'hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience\r\nexperiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience', '32-12-12', '1570893360-StoriesImage.jpeg\r\n', 45, 'Reviewed', NULL, NULL),
+(2, 121, 'Maurya Anand', 'Winter Trip Experience', 'hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience\r\nexperiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience', '32-12-12', '1570893360-StoriesImage.jpeg\r\n', 98, 'Reviewed', NULL, NULL),
+(4, 118, 'Maurya Anand 2', 'Winter Trip Experience', 'hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience\r\nexperiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience', '32-12-11', '1570893360-StoriesImage.jpeg\r\n', 981, 'Reviewed', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subscribers`
 --
 
@@ -451,6 +496,14 @@ INSERT INTO `users` (`id`, `name`, `email`, `username`, `contact`, `password`, `
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `add_likes`
+--
+ALTER TABLE `add_likes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `add_likes_stories_id_index` (`stories_id`),
+  ADD KEY `add_likes_user_id_index` (`user_id`);
 
 --
 -- Indexes for table `admins`
@@ -551,6 +604,13 @@ ALTER TABLE `stocks`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `stories`
+--
+ALTER TABLE `stories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `stories_user_id_unique` (`user_id`);
+
+--
 -- Indexes for table `subscribers`
 --
 ALTER TABLE `subscribers`
@@ -568,6 +628,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `add_likes`
+--
+ALTER TABLE `add_likes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -603,7 +669,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
@@ -636,6 +702,12 @@ ALTER TABLE `stocks`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `stories`
+--
+ALTER TABLE `stories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
@@ -650,6 +722,13 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `add_likes`
+--
+ALTER TABLE `add_likes`
+  ADD CONSTRAINT `add_likes_stories_id_foreign` FOREIGN KEY (`stories_id`) REFERENCES `stories` (`id`),
+  ADD CONSTRAINT `add_likes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `blogs`
