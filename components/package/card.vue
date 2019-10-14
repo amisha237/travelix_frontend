@@ -43,7 +43,7 @@
       <v-flex xs12 sm12 md2 lg2>
       <v-col  class="align-end justify-right">
           <center>
-        <v-btn class="success white--text" >
+        <v-btn class="success white--text" :to="`/package-details/${item.id}`">
          Details
         </v-btn>
           </center>
@@ -59,43 +59,16 @@
 <script>
 
   
-      // items: [
-      //   {
-      //     color: '#C5CAE9',
-      //     src: '/delhi.jpg',
-      //     title: 'Coorg',
-      //     loc:'Delhi',
-      //     type:'Family',
-      //     desc: 'Features ty uioo hjkkl; bbnjmkll',
-      //   },
-      //   {
-      //     color: '#952175',
-      //     src: '/bbs.jpeg',
-      //     title: 'Halcyon Days',
-      //     loc:'Bhubaneswar',
-      //     type:'Family',
-      //     desc: 'Features ty uioo hjkkl; bbnjmkll',
-      //   },
-      //    {
-      //     color: '#1F7087',
-      //     src: '/fig2.jpg',
-      //     title: 'Demo',
-      //     loc:'Puri',
-      //     type:'Friends',
-      //     desc: 'Features ty uioo hjkkl; bbnjmkll',
-      //   },
-      //    {
-      //     color: '#952175',
-      //     src: '/img4.jpg',
-      //     title: 'Tyghyu',
-      //     loc:'Kerala',
-      //     type:'Family',
-      //     desc: 'Features ty uioo hjkkl; bbnjmkll',
-      //   },
-      // ],
-      
      
     export default {
+
+    props:{
+
+      package:{
+        type: Object,
+      }
+ 
+    } ,  
 
     data () {
      

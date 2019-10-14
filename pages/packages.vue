@@ -93,7 +93,7 @@
                             
                             
                                 <v-col  class="align-end justify-center" cols="12" md="3" lg="3">
-                                    <v-btn class="success white--text" absolute right bottom >Details</v-btn>
+                                   <v-btn class="success white--text" absolute right bottom >Details</v-btn>
                                 </v-col>
                             
                             
@@ -124,7 +124,9 @@
 </template>
 <script>
   export default {
-     
+
+    
+
     data () {
       return {
         search: '',
@@ -142,10 +144,11 @@
         ],
        filterdItems:[],
        items:[],
-       
-       
+          
       }
     },
+
+   
      created () {
       console.log("hello")
           this.initialize()
@@ -167,9 +170,8 @@
         console.log(this.items)
 
       },
-      
-      
-  
+
+     
       
     },
   }

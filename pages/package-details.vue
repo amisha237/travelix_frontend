@@ -6,16 +6,38 @@
           <v-sheet class="pa-5" elevation="1">
            
           
-            <center> <h1>{{packageHeading}}</h1></center><br>
-            <img src="/Shimla.gif" height="300" width="100%" alt="">
+            <center> <h1>{{item.package_name}}</h1></center><br>
+            <v-img :src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
+             height="100%" 
+             width="100%" alt=""></v-img>
 
             <v-sheet class="pa-4" elevation="1">
-              <v-row v-for="item in packageDetails" :key="item">
+            <v-row>
               <v-col>
-              <h3> {{item.title}} </h3> {{item.value}}
+              <h3> Package Name </h3> {{item.package_name}} 
+              </v-col>  
+            </v-row>
+             <v-row>
+              <v-col>
+              <h3> Package Type </h3> {{item.package_type}}
               
               </v-col>  
               
+            </v-row>
+            <v-row>
+              <v-col>
+              <h3> Package Duration</h3> {{item.package_nights}} nights and {{item.package_day}} days
+              </v-col>  
+            </v-row>
+            <v-row>
+              <v-col>
+              <h3> Package Details</h3> {{item.package_details}}
+              </v-col>  
+            </v-row>
+             <v-row>
+              <v-col>
+              <h3> Price</h3>Rs. {{item.package_price}}/-
+              </v-col>  
             </v-row>
             <br>
             <v-btn class="ma-2" outlined color="indigo">Book Now</v-btn>
@@ -44,18 +66,21 @@
                 
                 >
                     <v-slide-item
-                    v-for="n in 15"
-                    :key="n"
+                    v-for="image in images"
+                    :key="image"
                     v-slot:default="{ active, toggle }"
                     >
                     <v-card
                         color='grey lighten-1'
                         class="ma-4"
-                        height="100"
-                        width="100"
+                        height="250"
+                        width="250"
                         @click="toggle"
                     >
-                    <img src="/Shimla.gif" height="100%" width="100%" alt="">
+                    <v-img :src="`http://localhost:8000/mainpackages/${image}`"
+                     height="100%" 
+                     width="100%"
+                     alt=""></v-img>
                         <v-row
                         class="fill-height"
                         align="center"
@@ -108,6 +133,7 @@
 <script>
 
   export default {
+    
     data: () => ({
       model: null,
       multiple: false,
@@ -117,25 +143,29 @@
       nextIcon: false,
       centerActive: false,
 
-      packageHeading: 'Shimla with Kinnaur Valley',
-      packageDetails: [        
-        {
-          title: 'Package Name:',
-          value: 'Shimla with Kinnaur Valley'
-        },
-        {
-          title: 'Package Duration:',
-          value: '6 nights and 7 days'
-        },
-        {
-          title: 'Places to Visit:',
-          value: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-        },
-        {
-          title: 'Package Price:',
-          value: 'Rs. 20,000/- per head'
-        }
-      ],
+      item:'',
+
+      images:[],
+       
+      // packageHeading: 'Shimla with Kinnaur Valley',
+      // packageDetails: [        
+      //   {
+      //     title: 'Package Name:',
+      //     value: 'Shimla with Kinnaur Valley'
+      //   },
+      //   {
+      //     title: 'Package Duration:',
+      //     value: '6 nights and 7 days'
+      //   },
+      //   {
+      //     title: 'Places to Visit:',
+      //     value: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+      //   },
+      //   {
+      //     title: 'Package Price:',
+      //     value: 'Rs. 20,000/- per head'
+      //   }
+      // ],
      
     //map script
 
@@ -296,7 +326,43 @@
     currentLocation: {}
 
     }),
+
+    created(){
+      this.initialize()
+  },
+
+  methods: {
+        	async initialize () {
+
+          let id = this.$route.params.packageId
+
+          const response = await this.$axios.get(`/api/packages/show/${id}`)
+
+          this.item = response.data
+          console.log(this.item)     
+
+          const response2 = await this.$axios.get(`/api/packages/showimage/${id}`)
+
+          
+            if(response2.data[0].image_1 != null)
+            this.images.push(response2.data[0].image_1)
+            if(response2.data[0].image_2 != null)
+            this.images.push(response2.data[0].image_2)
+            if(response2.data[0].image_3 != null)
+            this.images.push(response2.data[0].image_3)
+            if(response2.data[0].image_4 != null)
+            this.images.push(response2.data[0].image_4)
+            if(response2.data[0].image_5 != null)
+            this.images.push(response2.data[0].image_5)
+
+            console.log(this.images) 
+          
+         
+       }
   }
+
+}
+  
 
 </script>
 
