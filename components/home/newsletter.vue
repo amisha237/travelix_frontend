@@ -34,12 +34,11 @@
                                     required
                                     outlined
                                     color="grey lighten-1"
-                                   
                                     >
                                     </v-text-field>
-                               
                                    <div class="text-center"> 
-                                    <v-btn class="text-center" rounded>
+                                    <v-btn class="text-center" rounded
+                                    @click="sendRequest">
                                     subscribe
                                     </v-btn>
                                     </div>
@@ -52,21 +51,66 @@
                </v-card>
            </v-col>
         </v-row>
+                              
+                              
+<v-snackbar
+		v-model="snackbar"
+		:timeout="timeout"
+		top
+    	vertical
+    >
+		{{ message }}
+		<v-btn
+			color="primary"
+			text
+			@click="snackbar = false"
+		>
+			Close
+		</v-btn>
+    </v-snackbar>
     </v-container>
 </template>
 
 <script>
+import { async } from 'q'
 export default {
     data(){
         return{
+            timeout:9000,
+            snackbar :false,
             active:true,
             email:"",
+            message:"",
             emailRules: [
             v => !!v || 'E-mail is required',
             v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
       ],
         }
-    }
+    },
+    methods:{
+        async sendRequest()
+        {   
+            
+             const response = await this.$axios.post('api/subscribers/add',{        
+            email: this.email,
+      })
+      if(response.data.success==true)
+		{           
+                     this.message="You have Subscribes us Successfully.You will all get all the offers and packages in your at mailbox"
+                     this.snackbar=true
+                    console.log("Success Subscribes")
+                     this.$router.push(`/`)  
+        }
+         if(response.data.success==false)
+		{ 
+             this.message="Sorry!!!, Either you have  entered an incorrect email or You have already Subscribed us."
+                     this.snackbar=true
+                    console.log("failed")
+                     this.$router.push(`/`)  
+        }    
+        },
+       
+    },
 
 }
 </script>

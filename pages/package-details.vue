@@ -296,7 +296,8 @@
     currentLocation: {}
 
     }),
-  }
+
+}
 
 </script>
 

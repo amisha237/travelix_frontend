@@ -93,7 +93,10 @@
                             
                             
                                 <v-col  class="align-end justify-center" cols="12" md="3" lg="3">
-                                    <v-btn class="success white--text" absolute right bottom >Details</v-btn>
+                                    <v-btn  @click.prevent="sendDetails(item)"
+                                    class="success white--text" absolute right bottom 
+                                    >Details
+                                    </v-btn>
                                 </v-col>
                             
                             
@@ -142,6 +145,7 @@
         ],
        filterdItems:[],
        items:[],
+     
        
        
       }
@@ -167,6 +171,21 @@
         console.log(this.items)
 
       },
+
+      async sendDetails(item)
+    { 
+     //  let id = console.log(item)
+      // const response = await this.$axios.get(`/api/pacakge/show/${id}`);
+      // console.log(response.data)
+      //  this.$router.push({
+      //      path: '/admin/viewPackage'
+      //    });
+
+      this.$router.push(`/package-details/${item.id}`)
+      console.log(item.id);
+    }
+
+
       
       
   

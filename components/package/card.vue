@@ -43,7 +43,7 @@
       <v-flex xs12 sm12 md2 lg2>
       <v-col  class="align-end justify-right">
           <center>
-        <v-btn class="success white--text" >
+        <v-btn  @click.prevent="sendDetails" class="success white--text" >
          Details
         </v-btn>
           </center>
@@ -97,15 +97,13 @@
      
     export default {
 
-    data () {
+    data: () => ({
      
-       return{  
-         items: [],
-       }
+       items: [],
+       params: this.items.id,
+       
+     }),
       
-
-      },
-
     created () {
       console.log("hello")
 		  this.initialize()
@@ -130,6 +128,23 @@
         console.log(this.items)
 
       },
+async sendDetails()
+{
+      
+      console.log(this.items.id)
+      const response = await axios.$get(`/api/pacakge/show/${this.params}`);
+      console.log(response.data)
+
+       this.$router.push({
+           path: '/admin/viewPackage'
+         });
+
+
+      
+
+}
+     
+
       
   }
     
