@@ -60,6 +60,21 @@ export default {
                 },
             ]
         }
+    },
+    created () {
+		  this.initialize()
+  },
+    methods:{
+         	async initialize () 
+          {
+              const response = await this.$axios.get('/api/blog/cities')
+               for(var j=1;j<4;j++)
+			 	{
+			 		 this.items.push(response.data[j])
+                }
+              console.log(response.data)
+
+          }
     }
 }
 </script>

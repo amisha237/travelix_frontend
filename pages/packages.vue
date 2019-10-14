@@ -127,7 +127,9 @@
 </template>
 <script>
   export default {
-     
+
+    
+
     data () {
       return {
         search: '',
@@ -150,6 +152,8 @@
        
       }
     },
+
+   
      created () {
       console.log("hello")
           this.initialize()

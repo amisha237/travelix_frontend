@@ -43,7 +43,11 @@
       <v-flex xs12 sm12 md2 lg2>
       <v-col  class="align-end justify-right">
           <center>
+<<<<<<< HEAD
         <v-btn  @click.prevent="sendDetails" class="success white--text" >
+=======
+        <v-btn class="success white--text" :to="`/package-details/${item.id}`">
+>>>>>>> 5867cc5e197962d364e956555ac6b67c8218608c
          Details
         </v-btn>
           </center>
@@ -59,50 +63,22 @@
 <script>
 
   
-      // items: [
-      //   {
-      //     color: '#C5CAE9',
-      //     src: '/delhi.jpg',
-      //     title: 'Coorg',
-      //     loc:'Delhi',
-      //     type:'Family',
-      //     desc: 'Features ty uioo hjkkl; bbnjmkll',
-      //   },
-      //   {
-      //     color: '#952175',
-      //     src: '/bbs.jpeg',
-      //     title: 'Halcyon Days',
-      //     loc:'Bhubaneswar',
-      //     type:'Family',
-      //     desc: 'Features ty uioo hjkkl; bbnjmkll',
-      //   },
-      //    {
-      //     color: '#1F7087',
-      //     src: '/fig2.jpg',
-      //     title: 'Demo',
-      //     loc:'Puri',
-      //     type:'Friends',
-      //     desc: 'Features ty uioo hjkkl; bbnjmkll',
-      //   },
-      //    {
-      //     color: '#952175',
-      //     src: '/img4.jpg',
-      //     title: 'Tyghyu',
-      //     loc:'Kerala',
-      //     type:'Family',
-      //     desc: 'Features ty uioo hjkkl; bbnjmkll',
-      //   },
-      // ],
-      
      
     export default {
 
-    data: () => ({
-     
-       items: [],
-       params: this.items.id,
-       
-     }),
+    props:{
+
+      package:{
+        type: Object,
+      }
+ 
+    } ,  
+ data () {
+      return {
+        items:[],
+
+      }
+ },
       
     created () {
       console.log("hello")
