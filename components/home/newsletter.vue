@@ -37,7 +37,7 @@
                                     >
                                     </v-text-field>
                                    <div class="text-center"> 
-                                    <v-btn class="text-center" rounded
+                                    <v-btn block  class="text-center" 
                                     @click="sendRequest">
                                     subscribe
                                     </v-btn>

@@ -11,9 +11,10 @@
 				<v-img src="/delhi.jpg">
 					<div class="text-right py-5" >
 						<v-chip
+							outlined
 							class="ma-2"
 							label
-							color="primary"
+							color="white"
 							>
 							Rs 5000
 						</v-chip>
@@ -46,9 +47,10 @@
 					<v-overlay
 					v-if="hover"
 					absolute
-					color="#036358"
+					z-index="0"
+					
 					>
-					<v-btn :to="`/package-details/${item.id}`">See more info</v-btn>
+					<v-btn outlined :to="`/package-details/${item.id}`">See more info</v-btn>
 					</v-overlay>
 				</v-fade-transition>
 				</v-card>

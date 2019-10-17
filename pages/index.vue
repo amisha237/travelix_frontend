@@ -9,16 +9,18 @@
   <!-- <Carousel /> -->
   
     <v-img src="/hero-image.jpg" class="hidden-sm-and-down" height="500px" width="100vw" alt="unable to load image">
-    
+    <!-- <v-overlay absolute opacity="0.4"> -->
     <br><br><br><br><br><br><br><br>
     <br><br><br><br><br>
    
       <center><v-btn x-large outlined class=" white--text" >View Packages</v-btn></center>
-
+    <!-- </v-overlay> -->
     </v-img>
     <v-img src="/hero-image.jpg" class="hidden-md-and-up" height="300px" width="100vw" alt="unable to load image">
+      <!-- <v-overlay absolute> -->
       <br><br><br><br><br><br><br><br><br><br>
       <center><v-btn outlined  class="hidden-md-and-up  white--text " >View Packages</v-btn></center>
+      <!-- </v-overlay> -->
     </v-img>
       
    
