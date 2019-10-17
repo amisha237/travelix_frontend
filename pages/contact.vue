@@ -1,12 +1,14 @@
 <template>
-
-    <v-layout wrap class=" align-center justify-center">
+  <div>
+    <v-img src="/office.jpg" width="100vw">
+    <v-overlay absolute opacity="0.7" >
+    <v-layout  class=" align-center ">
     
-   
+      
       <v-flex xs12 sm12 md7 lg7>
-        <v-card class="mx-auto pa-10 ma-10 grey lighten-3 " img="/bg_5.jpg" >
+        <div class="mx-auto my-auto px-auto py-auto "  >
           
-          <v-card-text class="black--text display-2 text-center">GET IN TOUCH</v-card-text>
+          <v-card-text class="display-1 font-weight-light text-center">GET IN TOUCH</v-card-text>
           
           <v-form
               ref="form"
@@ -50,7 +52,7 @@
               @click.prevent="submitForm"
               form="form" 
               class=" purple  darken-4 white--text "
-              rounded  large
+              block
               >
               SEND MESSAGE
               </v-btn>
@@ -60,13 +62,14 @@
           </v-form>
         
 
-        </v-card>
+        </div>
       </v-flex>
-      <v-flex md1 lg1>
-
+      <v-flex md2 lg1>
+      
       </v-flex>
-      <v-flex xs12 sm12 md4 lg4 >
-        <pre class="headline">  Find us at the office</pre>
+      <v-flex xs12 sm12 md3 lg4 >
+      <br>
+        <pre class="headline">     Find us at the office</pre>
         <pre> 
       Bld Mihail Kogalniceanu,
       nr. 8, 7652 Bucharest 
@@ -76,7 +79,7 @@
         <pre>
 
         </pre>
-        <pre class="headline">  Give us a ring
+        <pre class="headline">     Give us a call
         </pre>
       
         <pre>
@@ -88,10 +91,12 @@
        
 
       </v-flex>
-
+   
      
     </v-layout> 
-
+    </v-overlay>
+    </v-img>
+  </div>
 </template>
 
 <script>
