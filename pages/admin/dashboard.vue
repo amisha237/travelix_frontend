@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <br>
-        <center><h1>Dashboard</h1></center>
+        <center><p class="display-2 font-weight-light">Admin Dashboard</p></center>
         <br><br>
 
 
@@ -10,7 +10,7 @@
             <v-row class="hidden-sm-and-down">
                 <v-col v-for="card in Cards" :key="card">
                     <v-card height="100px" :color="card.color">
-                        <v-card-title>
+                        <v-card-title class="font-weight-light white--text">
                             <center>
                                 <font-awesome-icon :icon="[card.icon.prefix, card.icon.name]"/>
                                 <v-divider
@@ -27,7 +27,7 @@
             <v-row class="hidden-md-and-up" v-for="card in Cards" :key="card">
                 <v-col >
                     <v-card :color="card.color">
-                        <v-card-title>
+                        <v-card-title class="font-weight-light white--text">
                             <font-awesome-icon :icon="[card.icon.prefix, card.icon.name]"/>
                             <v-divider
                                 class="mx-4"
@@ -58,8 +58,8 @@
             <br><br>
 
 
-
-            <center><h1>Latest Enquiries</h1></center>
+            <br><br>
+            <center><p class="display-1 font-weight-light">Latest Enquiries</p></center>
             
             <br>
             <v-data-table
@@ -70,7 +70,7 @@
             >
                 <template v-slot:top>
                 <v-toolbar flat color="white">
-                    <v-spacer></v-spacer><v-btn color="primary">View all</v-btn>
+                    <v-spacer></v-spacer><v-btn outlined color="primary">View all</v-btn>
                 </v-toolbar>
                 </template>
             </v-data-table>
@@ -79,7 +79,7 @@
 
 
 
-            <center><h1>Booking trends</h1><br><br></center>
+            <center><p class="display-1 font-weight-light">Booking trends</p><br><br></center>
             <v-card
                 class="mx-auto text-center"
                 color="green"
@@ -155,7 +155,7 @@ export default {
                     prefix: 'fas',
                     name: 'suitcase-rolling'
                 },
-                color:'yellow'
+                color:'orange'
             }
         ],
 
