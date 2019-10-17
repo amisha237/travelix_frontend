@@ -1,33 +1,59 @@
 <template>
- <v-app>
-    <div>
-   <v-layout wrap>
-    <v-card
+  <v-app>
+    <v-container>
+    <v-row no-gutters class="hidden-sm-and-down">
+      <v-col md="3" v-for="item in items" :key="item.title"
+      v-bind:to="item.to"
+      >
+        <v-card
+        class="mx-5 mt-5"
+        outlined
+        exact
+        >
+          <v-img
+            class="white--text"
+            height="400px"
+            
+            v-bind:src="item.src"
+          >
+            <v-card-title class="justify-center">
+              <span > {{item.destination}}<br>{{item.price}}</span>   
+            </v-card-title>
+          </v-img>
+        
+        </v-card> 
+      </v-col>
+    </v-row>
+    <v-container>
+    <v-row no-gutters class="hidden-md-and-up"
     v-for="item in items" :key="item.title"
     v-bind:to="item.to"
-    class="max-auto category-card mx-5 mt-5"
-    max-width="270"
-    max-height="600"
-    outlined
-    exact
-  >
-   <v-img
-      class="white--text"
-      height="400px"
-      v-bind:src="item.src"
-   >
-     <v-card-title class="justify-center">
-           <span > {{item.destination}}<br>{{item.price}}</span>
-           
-     </v-card-title>
-    </v-img>
-    
-  </v-card> 
-
-   </v-layout>
-</div>
+    >
+      <v-col sm="12"
+      >
+        <v-card
+        class="mx-auto mt-5"
+        outlined
+        exact
+        >
+          <v-img
+            class="white--text"
+            height="200px"
+            width="100vw"
+            v-bind:src="item.src"
+          >
+            <v-card-title class="justify-center">
+              <span > {{item.destination}}<br>{{item.price}}</span>   
+            </v-card-title>
+          </v-img>
+        
+        </v-card> 
+      </v-col>
+    </v-row>
+    </v-container>
+    </v-container>  
      
-     </v-app>
+  </v-app>
 </template>
 <script>
 export default {

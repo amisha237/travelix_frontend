@@ -13,9 +13,9 @@
                 >
                 
                 <v-row class="justify-center text-center align-center">
-                    <v-overlay absolute  vlaue="0.4" light>
+                    <v-overlay absolute z-index="0" value="1" light>
                     <v-col sm="12" xs="12" md="12" lg="12">
-                        <span class="display-1 py-5">Sign Up for a Newsletter</span><br><br>
+                        <span class="display-1 font-weight-light py-5">Sign Up for Newsletters</span><br><br>
                         <!-- <span class="subtitle-1">Sign up for our mailing list to get latest updates and offers.</span> -->
                     
                         <v-form 

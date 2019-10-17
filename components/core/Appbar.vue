@@ -8,7 +8,7 @@
       min-height="80px"
     >
      <Drawer/>
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title v-text="title" class="font-weight-light" />
      
       <!-- navigation button -->
 

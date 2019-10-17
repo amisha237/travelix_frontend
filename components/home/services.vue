@@ -1,101 +1,67 @@
 <template>
     <v-container fluid>
-        <v-row align="center" justify="center">
-           <v-col cols="12">
-               <v-card
-                max-width="100vw"
-                width="1500"
-                class=" max-auto pa-10 white--text "
-                color="grey darken-4"
-                elavation
-                flat
-                
-                >
-                <template>
-                   <v-item-group >
-                        <v-container>
-                            <v-row>
-                            <v-col cols="12" xs="6" sm="6" md="3" lg="3">
-                                <v-item v-slot:default="{ active, toggle }">
-                                   <v-card
-                                    class="justify-center py-2 px-3 mx-auto"
-                                   
-                                    height="200"
-                                    @click="toggle"
-                                    color="orange lighten-1"
-                                    
-                                    >
-                                    
-                                    <v-card-title class="headline"><b>Best Price Guarantee</b></v-card-title>
-p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</p>
-                                    </v-card>
-                                </v-item>
-                                </v-col>
-                                <v-col cols="12" xs="6" sm="6" md="3" lg="3">
-                                <v-item v-slot:default="{ active, toggle }">
-                                    <v-card
-                                    class="justify-center pa-2"
-                                    flat
-                                    tile
-                                    height="200"
-                                    @click="toggle"
-                                    color="orange lighten-1"
-                                    >
-                                    
-                                    <v-card-title class="headline"><b>Safe and Secure</b></v-card-title>
-                                    <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</p>
-                                    </v-card>
-                                </v-item>
-                                </v-col>
-                                <v-col cols="12" xs="6" sm="6" md="3" lg="3">
-                                <v-item v-slot:default="{ active, toggle }">
-                                    <v-card
-                                    class="justify-center pa-2"
-                                    flat
-                                    tile
-                                    height="200"
-                                    @click="toggle"
-                                    color="orange lighten-1"
-                                    >
-                                   
-                                    <v-card-title class="headline"><b>Best Travel Agents</b></v-card-title>
-                                    <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in pri. Veniam delectus ei vis.</p>
-                                    </v-card>
-                                </v-item>
-                                </v-col>
-                                <v-col cols="12" xs="6" sm="6" md="3" lg="3">
-                                <v-item v-slot:default="{ active, toggle }">
-                                    <v-card
-                                    class="justify-center pa-2"
-                                    flat
-                                    tile
-                                    height="200"
-                                    @click="toggle"
-                                    color="orange lighten-1"
-                                    >
-                                   
-                                    <v-card-title class="headline"><b>Travel Guidelines</b></v-card-title>
-                                    pLorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</p>
-                                    </v-card>
-                                </v-item>
-                                </v-col>
-                            </v-row>
-                    </v-container>
-                </v-item-group>
-                </template>
-        
-        
-        
-        
-        </v-card>
+        <v-row justify="center"><p class="display-1 font-weight-light">Our Services</p></v-row>
+        <br>
+        <v-container>
             
+        <v-row class="hidden-sm-and-down">  
+            <v-img src="/services.jpg" height="400px" width="100vw">
+                <v-overlay absolute="true" value="true" opacity="0" >
+                <v-container fluid>
+                <v-row>
+                <v-col md="3" v-for="n in 4" :key="n">
+                  
+                    <v-item v-slot:default="{ active, toggle }">
+                        <v-card
+                        class="py-2 px-3 "
+                        outlined
+                        height="200"
+                        @click="toggle"
+                        color="orange lighten-1"
+                        >   
+                            <v-card-title class="headline"><b>Best Price Guarantee</b></v-card-title>
+                            <p><br>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, 
+                                in lucilius prodesset pri. Veniam delectus ei vis.</p>
+                        </v-card>
+                    </v-item>
 
-
-
-                </v-col>
-
+                    </v-col>
+                    </v-row>
+                    </v-container>    
+                </v-overlay>
+                
+            </v-img>
+            
         </v-row>
+        <v-row no-gutters class="hidden-md-and-up"
+        v-for="n in 4" :key="n">  
+            
+            
+               
+                <v-row>
+                <v-col sm="12" >
+                  
+                    <v-item v-slot:default="{ active, toggle }">
+                        <v-card
+                        class="py-2 px-3 "
+                        outlined
+                        height="200"
+                        @click="toggle"
+                        color="orange lighten-1"
+                        >   
+                            <v-card-title class="headline white--text"><b>Best Price Guarantee</b></v-card-title>
+                            <p><br>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, 
+                                in lucilius prodesset pri. Veniam delectus ei vis.</p>
+                        </v-card>
+                    </v-item>
 
+                    </v-col>
+                    </v-row>
+                   
+         
+          
+        </v-row>
+        </v-container>       
 
     </v-container>
 </template>

@@ -9,6 +9,7 @@
       overflow
       temporary
       app
+      src=""
     >
     
       <v-list-item>
@@ -34,6 +35,7 @@
       <v-list dense shaped>
 
         <v-list-item
+      
           v-for="item in items"
           :key="item.title"
           link

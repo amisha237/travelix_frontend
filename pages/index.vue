@@ -6,14 +6,30 @@
     align-center
   >
   <div width="100%" fluid>
-  <Carousel />
+  <!-- <Carousel /> -->
+  
+    <v-img src="/hero-image.jpg" class="hidden-sm-and-down" height="500px" width="100vw" alt="unable to load image">
+    
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br>
+   
+      <center><v-btn x-large outlined class=" white--text" >View Packages</v-btn></center>
+
+    </v-img>
+    <v-img src="/hero-image.jpg" class="hidden-md-and-up" height="300px" width="100vw" alt="unable to load image">
+      <br><br><br><br><br><br><br><br><br><br>
+      <center><v-btn outlined  class="hidden-md-and-up  white--text " >View Packages</v-btn></center>
+    </v-img>
+      
+   
+ 
   <br><br>
   </div>
    <div class="my-12 text-center">
-     	<span class="display-2 pb-12 mb-12 font-italic font-weight">Top  </span>
-      	<span class="display-2 pb-12 mb-12 font-italic font-weight">Destinations</span> <br><br><br>  
+     	<span class="display-1 pb-12 mb-12 font-weight-light">Top </span>
+      	<span class="display-1 pb-12 mb-12 font-weight-light">Destinations</span> <br><br>
         <destinationCard />
-   		<!-- <v-btn large color="blue darken-2" class="white--text mt-5 px-5" to="/packages">View All</v-btn> -->
+   		
     </div>
   
     <div>
@@ -22,11 +38,11 @@
   
 
     <div class="my-12 text-center">
-     	<span class="display-2 pb-12 mb-12 font-italic font-weight-light"> Discover our tour </span>
-      	<span class="display-2 pb-12 mb-12 red--text font-italic font-weight">packages</span> <br><br><br>  
+     	<span class="display-2 pb-12 mb-12  font-weight-light"> Discover our tour </span>
+      	<span class="display-2 pb-12 mb-12 red--text font-weight">packages</span> <br><br><br>  
       
    		<packageCard />
-     	<v-btn large color="blue darken-2" class="white--text mt-5 px-5" to="/packages">View All</v-btn>
+     	<v-btn block large color="blue darken-2" class="white--text mt-5 px-5" to="/packages">View All</v-btn>
     </div>
    <br>
    <br>
@@ -36,10 +52,10 @@
    <br>
    
     <div class="my-12 py-12 text-center">
-      <span class="display-2 pb-12 mb-12 font-italic font-weight-light">Latest from Our </span>
-      <span class="display-2 pb-12 mb-12 red--text font-italic font-weight">Blogs</span> <br><br><br>
+      <span class="display-2 pb-12 mb-12 font-weight-light">Latest from Our </span>
+      <span class="display-2 pb-12 mb-12 red--text font-weight">Blogs</span> <br><br><br>
       <blogCard/>
-        <v-btn large color="blue darken-2" class="white--text mt-5 px-5" to="/blog" exact>View All</v-btn>
+        <v-btn block color="blue darken-2" class="white--text mt-5 px-5" to="/blog" exact>View All</v-btn>
     </div>
     <div>
       <newsletter/>

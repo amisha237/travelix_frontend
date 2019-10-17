@@ -7,22 +7,23 @@
     <v-container mx-auto >
       <v-layout wrap >
         <v-flex xs12 sm12 md4 lg4>
-        <div class="display-1" >
-         Travelix<br>
+        <div class="display-1 font-weight-light" >
+         Travelix<br><br>
         </div>
         </v-flex>
-        <v-flex xs12 sm12 md6 lg4>
-        <div > 
-        Company
+        <v-flex xs6 sm6 md6 lg4>
+        <div > <br>
+        <p class="font-weight-light">COMPANY</p>
          
-         <br><br>
-        <a href="#"> About Us</a><br>
-        <a href="#"> Contact Us</a><br>
-        <a href="#"> Privacy Policy</a><br><br>
+         
+        <nuxt-link to="/"> About Us</nuxt-link><br>
+        <nuxt-link to="/"> Contact Us</nuxt-link><br>
+        <nuxt-link to="/"> Privacy Policy</nuxt-link><br><br>
         </div>
         </v-flex>
-        <v-flex xs12 sm12 md4 lg4>
-        <div class="">
+        <v-flex xs6 sm6 md4 lg4>
+          <br>
+        <div class="font-weight-light">
          ADDRESS <br><br>
           5th Floor, A-118,<br>
           Sector-136, Noida
@@ -32,14 +33,44 @@
       </v-layout>
       <br><br>
       
-      <v-layout   wrap>
-        <v-flex >
-            <center>
+      <v-row class="hidden-sm-and-down">
+        <v-col  cols="1" v-for="(item, i) in items"
+            :key="i">
+            
             <v-btn
-            v-for="(item, i) in items"
-            :key="i"
+            
             :href="item.href"
-            class="ml-0 mr-3"
+            class="ml-0 mr-2"
+            color="primary"
+            rounded
+            target="_blank"
+           >
+          
+          <v-icon v-text="item.icon" />
+          </v-btn>
+        
+        </v-col>
+        <v-col></v-col>
+        <v-col  cols="1">
+        <v-btn
+          class="mr-0"
+          fab
+          color="red"
+          title="Go to top"
+          @click="$vuetify.goTo(0)"
+        >
+          <v-icon>mdi-chevron-up</v-icon>
+        </v-btn>
+        </v-col>
+      </v-row>
+      <v-row class="hidden-md-and-up">
+        <v-col cols="2" v-for="(item, i) in items"
+            :key="i">
+            
+            <v-btn
+            
+            :href="item.href"
+            class="ml-0 mr-2"
             color="primary"
             square
             target="_blank"
@@ -47,18 +78,22 @@
           
           <v-icon v-text="item.icon" />
           </v-btn>
-         </center>
-         </v-flex>
         
+        </v-col>
+       
+        <v-col cols="3">
         <v-btn
           class="mr-0"
-          square
+          fab
+          color="red"
           title="Go to top"
           @click="$vuetify.goTo(0)"
         >
           <v-icon>mdi-chevron-up</v-icon>
         </v-btn>
-      </v-layout>
+        </v-col>
+
+      </v-row>
     </v-container>
   </v-footer>
 </template>

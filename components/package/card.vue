@@ -12,6 +12,7 @@
     height="auto"
     outlined
     raised
+    
    >
   
     <v-row
@@ -43,11 +44,7 @@
       <v-flex xs12 sm12 md2 lg2>
       <v-col  class="align-end justify-right">
           <center>
-<<<<<<< HEAD
-        <v-btn  @click.prevent="sendDetails" class="success white--text" >
-=======
         <v-btn class="success white--text" :to="`/package-details/${item.id}`">
->>>>>>> 5867cc5e197962d364e956555ac6b67c8218608c
          Details
         </v-btn>
           </center>

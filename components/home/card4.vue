@@ -1,16 +1,16 @@
 <template>
-     <v-layout wrap>
+     <!-- <v-layout wrap>
         <v-card
-        max-width="100vw"
-        width="1500"
+       
+        width="100vw"
         class="ma-2 mx-auto pa-10"
         color="blue-grey lighten-4"
         elavation=6
-        height="auto"
+        height="600px"
         flat
-        img="/bg_5.jpg"
+        
        >
-      <center> <p class="display-2" >Our satisfied customer says</p></center>
+      <center> <p class="display-2" >Our Satisfied Customers</p></center>
       <p></p>
     <v-carousel :show-arrows="true"  hide-delimiters cycle height="auto">
      <v-carousel-item  
@@ -20,7 +20,7 @@
     max-width="90vw"
     width="80%"
     class="ma-1 mx-auto"
-    elavation=0
+    
     height="auto"
     color="blue-grey lighten-5"
     >
@@ -58,7 +58,127 @@
         
 
          </v-card>
-    </v-layout>
+    </v-layout> -->
+
+  <div>
+    <v-row justify="center"><p class="display-1 font-weight-light">Our Satisfied Customers</p></v-row>
+        <br>
+        
+        <v-container>    
+        <v-row class="hidden-sm-and-down">  
+            <v-img src="/customers.jpg" height="400px" width="100vw">
+                <v-overlay absolute="true" value="true" opacity="0.3" >
+                <v-container>
+                <v-row>
+                <v-col md="3"  v-for="item in items" :key="item">
+                  <br><br><br>
+                    <v-item v-slot:default="{ active, toggle }">
+                        <v-card
+                        class="py-auto px-3 "
+                        outlined
+                        height="200"
+                        width="100vw"
+                        @click="toggle"
+                        color="orange lighten-1"
+                        opacity="0.1"
+                        >   
+                          <v-row>
+                          <v-col cols="5">
+                            <v-img :src="item.src" alt="" width="100%" height="100px"></v-img>
+                          </v-col> 
+                          <!-- <v-col cols="1"></v-col> -->
+                          <v-col>
+                            <v-row>
+                              <v-col cols="12">
+                              <h2><b>{{item.name}}</b></h2>
+                              {{item.date}}
+                              </v-col> 
+                            </v-row>
+                          </v-col>
+                        </v-row>
+                        <v-row>
+                          <v-col>
+                            {{item.desc}}
+                          </v-col>
+                        </v-row>                                
+
+                    
+                        </v-card>
+                    </v-item>
+
+                    </v-col> 
+                    
+                    </v-row>
+                </v-container>    
+                </v-overlay>
+                
+            </v-img>
+            
+        </v-row>
+
+        <v-row class="hidden-md-and-up">  
+            <v-img src="/customers.jpg" height="80vh" width="100vw">
+                <v-overlay absolute="true" value="true" opacity="0.3" >
+                <v-container>
+                <v-row justify="center">
+                  <v-col sm="8" cols="10" >
+                  <br><br><br><br><br><br><br><br>
+                    
+                    <v-carousel
+                      cycle
+                      height="auto"
+                      hide-delimiters
+                      show-arrows-on-hover
+                    >
+                      <v-carousel-item
+                        v-for="item in items" :key="item"
+                      >
+                        <v-card
+                        class="py-auto px-2 "
+                        outlined
+                        height="200"
+                        width="100vw"
+                        @click="toggle"
+                        color="orange lighten-1"
+                        opacity="0.1"
+                        >         
+                        <v-row>
+                          <v-col cols="5">
+                            <v-img :src="item.src" alt="" width="100%" height="100px"></v-img>
+                          </v-col> 
+                          <!-- <v-col cols="1"></v-col> -->
+                          <v-col>
+                            <v-row>
+                              <v-col cols="12">
+                              <h2><b>{{item.name}}</b></h2>
+                              {{item.date}}
+                              </v-col> 
+                            </v-row>
+                          </v-col>
+                        </v-row>
+                        <v-row>
+                          <v-col>
+                            {{item.desc}}
+                          </v-col>
+                        </v-row>                        
+                                            
+                                      
+                        </v-card> 
+                      </v-carousel-item>
+                    </v-carousel>
+                  </v-col> 
+                    
+                </v-row>
+                </v-container>    
+                </v-overlay>
+                
+            </v-img>
+            
+        </v-row>
+        </v-container>
+  </div>
+
+
 </template>
 
 <script>
@@ -78,7 +198,7 @@ export default {
           color: '#952175',
           src: '/review-3.jpeg',
           title: 'Halcyon Days',
-          name:'Sara  ',
+          name:'Sara Whitman',
           date:'2 March 2019',
           desc: 'Features ty uioo hjkkl; bbnjmkll',
         },
@@ -86,7 +206,7 @@ export default {
           color: '#1F7087',
           src: '/review-4.jpg',
           title: 'Demo',
-          name:'Aryan ',
+          name:'Aryan Roy',
           date:'23 Nov 2018',
           desc: 'Features ty uioo hjkkl; bbnjmkll',
         },
@@ -94,7 +214,7 @@ export default {
           color: '#952175',
           src: '/review6.jpg',
           title: 'Tyghyu',
-          name:'John ',
+          name:'John Cena',
           date:'23 Nov 2018',
           desc: 'Features ty uioo hjkkl; bbnjmkll',
         },
