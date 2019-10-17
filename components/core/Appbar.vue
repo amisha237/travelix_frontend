@@ -8,8 +8,8 @@
       min-height="80px"
     >
      <Drawer/>
-      <v-toolbar-title v-text="title" class="font-weight-light" />
-     
+      <v-toolbar-title>
+     <v-img src="/Travelix.jpg" height="50px" contain></v-img></v-toolbar-title>
       <!-- navigation button -->
 
       <div class="flex-grow-1"></div>
