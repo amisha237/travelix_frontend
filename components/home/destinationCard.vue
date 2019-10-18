@@ -17,7 +17,7 @@
             v-bind:src="item.src"
           >
             <v-card-title class="justify-center">
-              <span > {{item.destination}}<br>{{item.price}}</span>   
+              <span > {{item.destination}} <br>{{item.price}}</span>   
             </v-card-title>
           </v-img>
         
@@ -88,19 +88,19 @@ export default {
         }
     },
     created () {
-		  this.initialize()
+		//  this.initialize()
   },
     methods:{
-         	async initialize () 
-          {
-              const response = await this.$axios.get('/api/blog/cities')
-               for(var j=1;j<4;j++)
-			 	{
-			 		 this.items.push(response.data[j])
-                }
-              console.log(response.data)
+        //  	async initialize () 
+        //   {
+        //       const response = await this.$axios.get('/api/blog/cities')
+        //        for(var j=1;j<4;j++)
+			 	// {
+			 	// 	 this.items.push(response.data[j])
+        //         }
+        //       console.log(response.data)
 
-          }
+        //   }
     }
 }
 </script>

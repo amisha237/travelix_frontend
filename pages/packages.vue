@@ -1,8 +1,8 @@
 <template>
   <v-container fluid>
     <v-row class="mb-12">
-      <v-img src="/home_slider.jpg" height=400px   alt="">
-       <p class="display-2 text-center white--text">The Offers</p>
+      <v-img src="/home_slider.jpg" height=230px   alt=""><br><br><br><br><br><br><br>
+       <p class="display-2  white--text">The Offers</p>
      </v-img>
     </v-row>
     <v-row class="my-12"></v-row>  
@@ -127,8 +127,6 @@
 </template>
 <script>
   export default {
-
-    
 
     data () {
       return {

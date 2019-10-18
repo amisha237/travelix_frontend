@@ -1,14 +1,16 @@
 <template>
   <div>
-    <!-- <img src="/header-img.jpg" height=200px width=100% alt=""> -->
+     <v-row class="mb-12">
+      <v-img src="/home_slider.jpg" height=230px   alt=""><br><br><br><br><br><br><br>
+       <p class="display-2  white--text">The Offers</p>
+     </v-img>
+    </v-row>
+  
     <v-container fluid fill-width>
-
           <v-sheet class="pa-5" elevation="1">
-           
-          
-            <center> <h1>{{item.package_name}}</h1></center><br>
+           <h1>{{item.package_name}}</h1>
             <v-img :src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
-             height="100%" 
+             height="350" 
              width="100%" alt=""></v-img>
 
             <v-sheet class="pa-4" elevation="1">

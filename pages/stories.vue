@@ -2,7 +2,7 @@
 <template>
 
   <v-container fluid fill-width >
-       <v-img src="/home_slider.jpg" height=250px width=200% alt=""><br><br><br>
+       <v-img src="/home_slider.jpg" height=230px  width=100% alt=""><br><br><br><br><br>
        <p class="display-2  white--text">The Experince that we share with you!!</p>
     </v-img>
     <!--<v-card>
@@ -29,7 +29,7 @@
             
                 
                 <v-card
-                    v-for="item in items" :key="item.id"
+                    v-for="item in items" :key="item.id"     
                     class="mx-auto card_margin pa-4"
                     :flat="flat"
                     :loading="loading"
@@ -51,14 +51,22 @@
                     <v-card-text>I'm card text</v-card-text>-->
                     <v-card-actions v-if="actions">
                         <v-chip>Travel Date: {{item.tour_date}}</v-chip>&emsp;
-                        <v-chip>Likes: {{item.likes}}</v-chip>&emsp;
+                        
+                        
                         <v-chip >Author: {{item.author}}</v-chip>&emsp;
+                        <v-chip class="likes_layout">Likes: {{item.likes}}</v-chip>&emsp;
                     </v-card-actions>
 
                     <v-card-text>{{item.experience}}</v-card-text>
                     <br>
                     <v-row class="pa-4">
-                    <v-btn>likes</v-btn><v-spacer></v-spacer><v-btn>Read more</v-btn>
+                       {
+                    <v-btn btn btn-danger @click.prevent="sendLike(item.id)">{{likes[item.id]}}</v-btn><v-spacer></v-spacer><v-btn>Read more</v-btn>
+                    else{
+                    <v-btn btn btn-primary @click.prevent="sendLike(item.id)">{{likes[item.id]}}</v-btn><v-spacer></v-spacer><v-btn>Read more</v-btn>
+
+                    }
+                        }
                     </v-row>
                     
                 </v-card>
@@ -68,7 +76,7 @@
         <v-flex xs12 sm12 md3 lg3>
             <v-card >
                 <v-subheader>Latest post</v-subheader>
-                <v-div  v-for="post in posts" :key="post.id" >
+                <div  v-for="post in posts" :key="post.id" >
                 <v-card
                 max-width="600"
                 height = "230"
@@ -80,8 +88,8 @@
                     >
                         <v-col class="shrink">
                             <v-img
-                            height="180"
-                            width="100"
+                            height="150"
+                            width="130"
                             :src="`http://localhost:8000/storiesImage/${post.image_1}`"   
                             >
                             </v-img>
@@ -89,27 +97,27 @@
                            
                         </v-col>
                         <v-col class="post-style">
-                           <v-header class="post-style-header">{{post.package_name}}</v-header><br>
-                           <v-header class="post-style-header">{{post.tour_date}}</v-header><br>
-                            <v-header class="post-style-header">{{post.author}}</v-header>
-                           <p class="post-style-exp">{{post.experience.substring(0,160)+""}} <a href="#">...Read More</a>
+                           <header> class="post-style-header">{{post.package_name}}</header><br>
+                           <header class="post-style-header">{{post.tour_date}}</header><br>
+                            <header class="post-style-header">{{post.author}}</header>
+                           <p class="post-style-exp">{{post.experience.substring(0,100)+""}} <a href="#">...Read More</a>
 </p>
-                           
+                        
                         </v-col>
                      </v-row>
                 </v-card>
                 
 
-                </v-div>
+                </div>
                 <v-divider></v-divider>
                 <v-subheader>Latest Offers</v-subheader>
-               <v-div v-for="offer in offers" :key="offer.title" align="center" justify="center" >
+               <div  v-for="offer in offers" :key="offer.title"  justify="center" >
                 
-                <li>{{offer.data}}</li>
+                <li class="latest-offers">{{offer.data}}</li>
                 
                
                 <br>
-                </v-div>
+                </div>
                 <v-divider></v-divider>
                 <v-divider></v-divider>
                 <v-subheader>Our Customers</v-subheader>
@@ -167,6 +175,8 @@
 <script>
 export default {
      data: () => ({
+         user_id:'',
+         like:'',
     flat: false,
     media: true,
     loading: false,
@@ -202,11 +212,20 @@ export default {
         {
             data : "Travel offers for students",
         },
+         {
+            data : "Rs700 off on jamaica tour",
+        },
+        {
+            data : "Rs 200 cashback on specific tours",
+        },
+        {
+            data : "Travel offers for students",
+        },
     ],
 
-    posts : [
-      
-    ]
+    posts : [],
+    likes :[]
+
   }),
 
     created()
@@ -222,26 +241,59 @@ export default {
             
             for(var j=0;j<response.data.length;j++)
 			{
-			 	this.items.push(response.data[j])
+                 this.items.push(response.data[j])
+                  this.user_id = this.$auth.user.id
+                  console.log(this.user_id) 
+                  console.log(response.data[j].id)
+                  var sid = response.data[j].id
+                  var uid = this.user_id
+
+                  const response2  = await this.$axios.get(`/api/stories/getlikes/${sid}/${uid}`)
+                  if(response2.data.success==true)
+                  {
+                      this.likes[sid] = "UNLIKE"
+                      console.log(this.likes[sid])
+                  }else{
+                      this.likes[sid] = "LIKE"
+                         console.log(this.likes[sid])
+                  }
+                
+            
             }
         
-
-            console.log(this.items)
-
             const response1 = await this.$axios.get('/api/stories/getLatest')
             
             for(var j=0;j<response1.data.length;j++)
 			{
-			 	this.posts.push(response1.data[j])
+                 this.posts.push(response1.data[j])
+                 
             }
-
-
-            console.log(this.post)
-
-          
+           
         },
 
-}
+        async sendLike(item)
+        {       
+            console.log(item)
+            this.user_id = this.$auth.user.id
+            console.log(this.user_id)
+            //console.log(user_id)
+           const response = await this.$axios.post('api/stories/addLikes',{
+           s_id :item,
+           u_id: this.user_id,
+
+      })
+      if(response.data.success==true)
+				{
+        this.likes[item] = "UNLIKE"
+    }
+     if(response.data.success==false)
+				{
+        this.likes[item] = "LIKE"
+    
+    }
+        },
+
+    }
 }
 </script>
 
@@ -268,6 +320,13 @@ export default {
     align-content:right;
     font-size: 12px;
 }
+.latest-offers{
+    /* padding:12px; */
+    margin-left:12px;
+    
+}
+
+
 </style>
 
 
