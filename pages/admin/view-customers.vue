@@ -18,6 +18,7 @@
                         single-line
                         hide-details
                         
+                        
                       ></v-text-field>
                   </v-col>
               </v-row>
@@ -29,6 +30,9 @@
               :headers="headers"
               :items="users"
               :search="search"
+               hide-default-footer
+            :items-per-page.sync="itemsPerPage"
+            :page="page"
               
               >
             <template v-slot:item.profile_img="{ item }">
@@ -39,6 +43,21 @@
                     :src="`http://localhost:8000/mainpackages/${item.profile_img}`">
                   </v-img>
                 </v-avatar>
+            </template>
+            <template v-slot:footer>
+              <hr>
+                <v-row class="mt-12 mx-2" align="center">
+                  
+                  <v-col>
+                    
+                  <v-pagination
+                    v-model="page"
+                    :length="numberOfPages"
+                    color="purple lighten-2"
+                    circle
+                    total-visible="5"
+                  ></v-pagination></v-col>
+                </v-row>
             </template>
             </v-data-table>
           </v-card>
@@ -54,17 +73,25 @@
     data () {
       return {
         search: '',
+        itemsPerPageArray: [1, 2, 5,10,15,20],
+        page: 1,
+		    itemsPerPage: 5,
         headers: [
-          { text: 'Profile Image', value: 'profile_img',sortable:false , align: 'left'},
-          { text: 'UserName',  value: 'username', }, 
-          { text: 'Email', value: 'email',sortable:false },
-          { text:'Name', value: 'name',sortable:false },
-          { text: 'Contact', value: 'contact',sortable:false },          
-          { text: 'Action', value: 'action',sortable:false,align:'right' },
+          { text: 'Profile Image', value: 'profile_img',sortable:false , align: 'left',class:'black--text subtitle-2'},
+          { text: 'UserName',  value: 'username',class:'black--text subtitle-2' }, 
+          { text: 'Email', value: 'email',sortable:false,class:'black--text subtitle-2' },
+          { text:'Name', value: 'name',sortable:false,class:'black--text subtitle-2' },
+          { text: 'Contact', value: 'contact',sortable:false ,class:'black--text subtitle-2'},          
+          { text: 'Action', value: 'action',sortable:false,align:'right',class:'black--text subtitle-2' },
 
         ],
         users: [],
       }
+    },
+    computed:{
+		numberOfPages () {
+				return Math.ceil(this.users.length / this.itemsPerPage)
+      },
     },
 
     created () {

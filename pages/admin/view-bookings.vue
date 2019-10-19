@@ -31,7 +31,25 @@
 						:headers="headers"
 						:items="bookings"
 						:search="search"
+             hide-default-footer
+            :items-per-page.sync="itemsPerPage"
+            :page="page"
 						>
+            <template v-slot:footer>
+              <hr>
+                <v-row class="mt-12 mx-2" align="center">
+                  
+                  <v-col>
+                    
+                  <v-pagination
+                    v-model="page"
+                    :length="numberOfPages"
+                    color="purple lighten-2"
+                    circle
+                    total-visible="5"
+                  ></v-pagination></v-col>
+                </v-row>
+            </template>
 
 						</v-data-table>
 				</v-card>
@@ -47,6 +65,9 @@
     data () {
       return {
         search: '',
+        itemsPerPageArray: [1, 2, 5,10,15,20],
+        page: 1,
+		    itemsPerPage: 5,
         headers: [
           {
             text: 'User Id',
@@ -63,6 +84,11 @@
         ],
         bookings: [ ],
       }
+    },
+    computed:{
+		numberOfPages () {
+				return Math.ceil(this.bookings.length / this.itemsPerPage)
+      },
     },
      created () {
           this.initialize()

@@ -31,6 +31,9 @@
 						:headers="headers"
 						:items="blogs"
 						:search="search"
+             hide-default-footer
+            :items-per-page.sync="itemsPerPage"
+            :page="page"
 						>
 
 						<template v-slot:item.blog_image="{ item }"> 
@@ -41,6 +44,21 @@
 								:src="`http://localhost:8000/mainblogs/${item.blog_image}`">
 							</v-img>
 						</template>
+						 <template v-slot:footer>
+              <hr>
+                <v-row class="mt-12 mx-2" align="center">
+                  
+                  <v-col>
+                    
+                  <v-pagination
+                    v-model="page"
+                    :length="numberOfPages"
+                    color="purple lighten-2"
+                    circle
+                    total-visible="5"
+                  ></v-pagination></v-col>
+                </v-row>
+            </template>
 
 						</v-data-table>
 				</v-card>
@@ -55,17 +73,25 @@
     layout:'adminDashboardNavigation',
     data () {
       return {
-        search: '',
+				search: '',
+				itemsPerPageArray: [1, 2, 5,10,15,20],
+        page: 1,
+		    itemsPerPage: 5,
         headers: [
 
           { text: 'City',align: 'left', value: 'city'},
           { text: 'Description', value: 'description' },
           { text: 'Location', value: 'place' },
-          { text: 'Image', value: 'blog_image' },
+          { text: 'Image', value: 'blog_image',sortable:false },
         
         ],
         blogs: [ ],
       }
+		},
+		computed:{
+		numberOfPages () {
+				return Math.ceil(this.blogs.length / this.itemsPerPage)
+      },
     },
      created () {
           this.initialize()
