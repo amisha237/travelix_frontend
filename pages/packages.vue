@@ -1,8 +1,8 @@
 <template>
   <v-container fluid>
     <v-row class="mb-12">
-      <v-img src="/home_slider.jpg" height=230px   alt=""><br><br><br><br><br><br><br>
-       <p class="display-2  white--text">The Offers</p>
+      <v-img src="/home_slider.jpg" height=300px   alt=""><br><br><br><br><br><br><br>
+       <p class="display-2  white--text text-center">The Offers</p>
      </v-img>
     </v-row>
     <v-row class="my-12"></v-row>  
@@ -23,7 +23,7 @@
       :sort-desc="sortDesc"
       hide-default-footer
     >  
-     <!-- <template v-slot:header>
+     <template v-slot:header>
        <v-row class="justify-center">
            <v-col cols="12" md="10" lg="10">
         <v-toolbar
@@ -31,6 +31,7 @@
           color="grey darken-2"
           class=""
         >
+         <template v-if="$vuetify.breakpoint.mdAndUp">
           <v-text-field
             v-model="search"
             clearable
@@ -40,7 +41,7 @@
             prepend-inner-icon="search"
             label="Search"
           ></v-text-field>
-          <template v-if="$vuetify.breakpoint.mdAndUp">
+           </template>
             <div class="flex-grow-1"></div>
             <v-select
               v-model="sortBy"
@@ -48,15 +49,15 @@
               solo-inverted
               hide-details
               :items="keys"
-              prepend-inner-icon="search"
+              
               label="Sort by"
             ></v-select>
          
-          </template>
+         
         </v-toolbar>
            </v-col>
        </v-row>
-      </template> -->
+      </template>
 
     
         <template v-slot:default="props">
