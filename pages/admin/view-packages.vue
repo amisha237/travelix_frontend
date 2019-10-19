@@ -27,7 +27,9 @@
       :headers="headers"
       :items="packages"
       :search="search"
-      
+      hide-default-footer
+      :items-per-page.sync="itemsPerPage"
+      :page="page"
     >
     <template v-slot:item.action="{ item }">
        <v-dialog v-model="dialog" max-width="1000px" class="mx-auto">
@@ -176,7 +178,7 @@
         </v-dialog>
         <template>
           <!-- image input -->
-  <v-row justify="center">
+    <v-row justify="center">
     <v-col cols="12" md="6" lg="6">
       <v-dialog v-model="imagedialog"  max-width="800px" class="mx-auto">
         <v-tabs
@@ -195,8 +197,7 @@
               <v-tab-item>
                <v-card class="pa-5">
                   <v-card-title>
-                      <span class="subtitle-2">Add  header image for P
-                        ackage</span>
+                      <span class="subtitle-2">Add  header image for Package</span>
                   </v-card-title>
                 <v-form
                  ref=""
@@ -283,8 +284,8 @@
     
     </v-dialog>
     </v-col>
-  </v-row>
-</template>
+    </v-row>
+    </template>
       <v-icon
         small
         class="mr-2"
@@ -306,8 +307,23 @@
        mdi-camera
       </v-icon>
     </template>
+    <template v-slot:footer>
+              <hr>
+                <v-row class="mt-12 mx-2" align="center">
+                  
+                  <v-col>
+                    
+                  <v-pagination
+                    v-model="page"
+                    :length="numberOfPages"
+                    color="purple lighten-2"
+                    circle
+                    max-visible="5"
+                  ></v-pagination></v-col>
+                </v-row>
+            </template>
     </v-data-table>
-  </v-card>
+    </v-card>
   <!-- snackbar -->
 	<v-snackbar
 		v-model="snackbar"
@@ -363,7 +379,10 @@
             'Family',
             'Couple',
             'Group',
-            ],
+			],
+			itemsPerPageArray: [1, 2, 3,12,15,18],
+      		 page: 1,
+			 itemsPerPage: 2,
         headers: [
           {
             text: 'ID',
@@ -411,6 +430,9 @@
       }
     },
     computed: {
+		numberOfPages () {
+				return Math.ceil(this.packages.length / this.itemsPerPage)
+      },
      
     },
 
