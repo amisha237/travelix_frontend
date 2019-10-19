@@ -13,7 +13,7 @@
 					
 					<v-card-title class="mb-3">
 						<v-row>
-						<div class="flex-grow-1"></div>
+						
 						<v-col cols="12" md="4" lg="4">
 							<v-text-field
 								v-model="search"
@@ -22,6 +22,11 @@
 								single-line
 								hide-details
 							></v-text-field>
+							
+						</v-col>
+						<div class="flex-grow-1"></div>
+						<v-col cols="2">
+							<v-btn color="primary"  to="/admin/add-blog" exact>ADD NEW</v-btn>
 						</v-col>
 						</v-row> 
 					</v-card-title>
@@ -79,10 +84,10 @@
 		    itemsPerPage: 5,
         headers: [
 
-          { text: 'City',align: 'left', value: 'city'},
-          { text: 'Description', value: 'description' },
-          { text: 'Location', value: 'place' },
-          { text: 'Image', value: 'blog_image',sortable:false },
+          { text: 'CITY',align: 'left', value: 'city',class:'black--text subtitle-2'},
+          { text: 'DESCRIPTION', value: 'description',sortable:false,class:'black--text subtitle-2' },
+          { text: 'LOCATION', value: 'place',class:'black--text subtitle-2' },
+          { text: 'IMAGE', value: 'blog_image',sortable:false,class:'black--text subtitle-2' },
         
         ],
         blogs: [ ],
