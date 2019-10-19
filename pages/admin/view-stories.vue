@@ -113,36 +113,7 @@
           { text: 'Date', value: 'current_date' },
           { text: 'Likes', value: 'likes_count' }
         ],
-        stories: [
-         { id:1,
-           user_id:"abs",
-           
-            package_name:"ghfhj",
-            experience:"uuiioooo",
-            date:"22-05-98",
-
-
-            },
-            { id:2,
-              user_id:"pqr",
-            package_name:"ghfhj",
-            experience:"uuiioooo",
-            date:"22-05-98",
-
-
-            },
-            {id:3,
-            user_id:"xyz",
-            package_name:"ghfhj",
-            experience:"uuiioooo",
-            date:"22-05-98",
-
-
-            },
-
-
-
-         ],
+        stories: [],
       }
     },
     computed: {

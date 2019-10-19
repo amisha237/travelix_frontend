@@ -8,7 +8,34 @@
               </v-toolbar>
 
             <v-card-title class="mb-5">
-               <v-row>
+               <v-row class="mb-6">
+				<v-col cols="12" md="4" lg="4">
+              <span class=" black--text subtitle-1 ">Rows per page </span>
+                  <v-menu offset-y>
+                    <template v-slot:activator="{ on }">
+                      <v-btn color=""
+                        class="ml-3"
+                        v-on="on"
+                        single-line
+                        text
+                        small
+                      >
+                        {{ itemsPerPage }}
+                        <v-icon>mdi-chevron-down</v-icon>
+                      </v-btn>
+                    </template>
+                    <v-list>
+                      <v-list-item
+                        v-for="(number, index) in itemsPerPageArray"
+                        :key="index"
+                        @click="updateItemsPerPage(number)"
+                      >
+                        <v-list-item-title>{{ number }}</v-list-item-title>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
+              </v-col>
+            <div class="flex-grow-1"></div>
                 <div class="flex-grow-1"></div>
                 <v-col cols="12" md="4" lg="4">
                     <v-text-field
@@ -25,6 +52,9 @@
               :headers="headers"
               :items="users"
               :search="search"
+			  hide-default-footer
+              :items-per-page.sync="itemsPerPage"
+              :page="page"
             >
               <template v-slot:item.profile_img="{ item }">
                 <v-avatar size="70px" class="ma-2">  
@@ -34,6 +64,22 @@
                     :src="`http://localhost:8000/AdminProfileImage/${item.profile_img}`">
                   </v-img>
                 </v-avatar>
+            </template>
+            
+            <template v-slot:footer>
+              <hr>
+                <v-row class="mt-12 mx-2" align="center">
+                  
+                  <v-col>
+                    
+                  <v-pagination
+                    v-model="page"
+                    :length="numberOfPages"
+                    color="purple lighten-2"
+                    circle
+                    total-visible="5"
+                  ></v-pagination></v-col>
+                </v-row>
             </template>
             </v-data-table>
           </v-card>
@@ -47,25 +93,36 @@ export default {
     layout:'adminDashboardNavigation',
     data(){
         return{
-        search: '',
+		search: '',
+		itemsPerPageArray: [1, 2, 5,10,15,20],
+        page: 1,
+		itemsPerPage: 5,
         headers: [
           {
             text: 'ID',
             align: 'left',
-            sortable: false,
-            value: 'id',
+            
+			value: 'id',
+			class:'black--text subtitle-2'
+
           },
-          { text: 'First Name', value: 'firstname' },
-          { text: 'Last Name', value: 'lastname' },
-          { text: 'Email ', value: 'email' },
-          { text: 'Contact', value: 'contact' },
-          { text: 'Profile Image', value: 'profile_img' },
+          { text: 'First Name', value: 'firstname',class:'black--text subtitle-2' ,},
+          { text: 'Last Name', value: 'lastname',class:'black--text subtitle-2' },
+          { text: 'Email ', value: 'email',class:'black--text subtitle-2' },
+          { text: 'Contact', value: 'contact',class:'black--text subtitle-2',sortable: false, },
+          { text: 'Profile Image', value: 'profile_img',class:'black--text subtitle-2',sortable: false, },
         ],
         
         users:[],
 
         }
-    },
+	},
+	computed:{
+		numberOfPages () {
+				return Math.ceil(this.users.length / this.itemsPerPage)
+      },
+
+	},
     created () {
           this.initialize()
     },
@@ -78,7 +135,10 @@ export default {
               this.users.push(response.data[j])
             }
 
-      },
+	  },
+	  updateItemsPerPage (number) {
+				this.itemsPerPage = number
+			},
     }
 }
 </script>
