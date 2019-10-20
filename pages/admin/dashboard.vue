@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <br>
-        <center><p class="display-2 font-weight-light">Admin Dashboard</p></center>
+        <p class="display-1 font-weight-light">Dashboard</p>
         <br><br>
 
 
@@ -18,7 +18,8 @@
                                 inset
                                 vertical
                                 ></v-divider>
-                                {{card.title}}
+                                {{card.title}}<br>
+                              <center>  <h3 class="data"> {{card.value}}</h3></center>
                             </center>
                         </v-card-title>
                     </v-card>
@@ -49,7 +50,7 @@
                             <v-avatar color="red" size="70">
                                 <span class="white--text headline"><font-awesome-icon :icon="['fas', 'users']"/></span>
                             </v-avatar>
-                            <h3>{{chip.count}}</h3><br>
+                            <h3>{{chip.count}}</h3>
                             <h3>{{chip.title}}</h3>
                         </center>
                     </v-col>
@@ -121,6 +122,7 @@
 
 <script>
 export default {
+      layout:"adminDashboardNavigation",
     data: () => ({
 
         //card data
@@ -129,8 +131,10 @@ export default {
                 title: 'Packages',
                 icon:{
                     prefix: 'fas',
-                    name: 'plane'
+                    name: 'plane',
+                   
                 },
+                 value: "23",
                 color:'red'
             },
             {
@@ -139,7 +143,8 @@ export default {
                     prefix: 'fas',
                     name: 'question-circle'
                 },
-                color:'blue'
+                color:'blue',
+                value: '34'
             },
             {
                 title: 'Subscribers',
@@ -147,6 +152,7 @@ export default {
                     prefix: 'fas',
                     name: 'users'
                 },
+                value: '34',
                 color:'green'
             },
             {
@@ -155,6 +161,7 @@ export default {
                     prefix: 'fas',
                     name: 'suitcase-rolling'
                 },
+                value: '34',
                 color:'orange'
             }
         ],
@@ -280,12 +287,49 @@ export default {
           },
         ],
       
+    packageLength: '',
+
+    }),
 
 
-    })
+    
+    created()
+    {
+        this.initialize()
+       
+    },
+     methods: {
+
+         	async initialize () {
+
+
+                 console.log("Connected to admin")
+                 const response0 = await this.$axios.get('/api/packages/index')
+                 const response1 = await this.$axios.get('/api/contact/index')
+                 const response2 = await this.$axios.get('/api/subscribers/')
+                 const response3 = await this.$axios.get('/api/subscribers/')
+
+                 
+
+                    console.log(response1.data)
+                    console.log(this.Cards[0]['value'])
+               this.Cards[0]['value'] = response0.data.length
+               this.Cards[1]['value'] = response1.data.length
+               this.Cards[2]['value'] = response2.data.length
+               this.Cards[3]['value'] = response3.data.length
+
+
+                    }
+     }
+
 }
 </script>
 
 <style scoped>
+
+.data{
+    color:black;
+    
+}
 
 </style>
