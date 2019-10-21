@@ -227,6 +227,7 @@
                           <span class="subtitle-2">Add  more images for package</span>
                         </v-card-title>
                          <v-form 
+                          enctype="multipart/form-data"
                           ref=""
                           v-model="active"
                           method="POST"
@@ -235,35 +236,52 @@
                             <v-row>
                               <v-col cols="12" sm="10" md="10">
                                 <v-file-input
-                                    accept="image/png, image/jpeg, image/bmp"
+                                    accept="image/*"
                                     placeholder="Pick an image"
                                     prepend-icon="mdi-camera"
                                     label="Image"
                                     show-size
+                                    @change="onFileChange1"
                                 ></v-file-input>
                               </v-col>
                               <v-col cols="12" sm="10" md="10">
                                 <v-file-input
-                                    accept="image/png, image/jpeg, image/bmp"
+                                    accept="image/*"
                                     placeholder="Pick an image"
                                     prepend-icon="mdi-camera"
                                     label="Image"
+                                    show-size
+                                    @change="onFileChange2"
                                 ></v-file-input>
                               </v-col>
                               <v-col cols="12" sm="10" md="10">
                                 <v-file-input
-                                    accept="image/png, image/jpeg, image/bmp"
+                                    accept="image/*"
                                     placeholder="Pick an image"
                                     prepend-icon="mdi-camera"
                                     label="Image"
+                                    show-size
+                                    @change="onFileChange3"
                                 ></v-file-input>
                               </v-col>
                               <v-col cols="12" sm="10" md="10">
                                 <v-file-input
-                                   
+                                    accept="image/*"
                                     placeholder="Pick an image"
                                     prepend-icon="mdi-camera"
                                     label="Image"
+                                    show-size
+                                    @change="onFileChange4"
+                                ></v-file-input>
+                              </v-col>
+                               <v-col cols="12" sm="10" md="10">
+                                <v-file-input
+                                    accept="image/*"
+                                    placeholder="Pick an image"
+                                    prepend-icon="mdi-camera"
+                                    label="Image"
+                                    show-size
+                                    @change="onFileChange5"
                                 ></v-file-input>
                               </v-col>
                               
@@ -271,7 +289,7 @@
                           </v-container>
                             <div class="flex-grow-1"></div>
                             <v-btn color="blue darken-1" text @click="imagedialog = false">Close</v-btn>
-                            <v-btn color="blue darken-1" text @click="imagedialog = false">Save</v-btn>
+                            <v-btn color="blue darken-1" text @click.prevent="addOtherImage(item)">Save</v-btn>
                            </v-form>
                     </v-card>
               </v-tab-item>
@@ -355,7 +373,12 @@
         imagedialog:false,
         active:true,
         message:'',
-        attachment1: '',
+        attachment1:'',
+        attachment2:'',
+        attachment3:'',
+        attachment4:'',
+        attachment5:'',
+        attachment6:'',
         timeout:3000,
         snackbar:false,
         dialog: false,
@@ -453,6 +476,37 @@
          console.log(this.attachment1)
         },
 
+         onFileChange1(event) {
+
+          this.attachment2 = event
+           console.log(this.attachment2)
+        
+        },
+         onFileChange2(event) {
+
+          this.attachment3 = event
+           console.log(this.attachment3)
+ 
+        },
+         onFileChange3(event) {
+
+          this.attachment4 = event
+           console.log(this.attachment4)
+
+        },
+         onFileChange4(event) {
+
+          this.attachment5 = event
+           console.log(this.attachment5)
+ 
+        },
+         onFileChange5(event) {
+
+          this.attachment6 = event
+           console.log(this.attachment6)
+
+        },
+
         
      async  addHeaderImage(item) {
            let id=item.id
@@ -484,7 +538,42 @@
             
         
         },
-        	async initialize () {
+
+         async  addOtherImage(item) {
+           let id=item.id
+           console.log(id)
+            const form = new FormData();
+            
+            form.append('image_1',this.attachment2);
+            form.append('image_2',this.attachment3);
+            form.append('image_3',this.attachment4);
+            form.append('image_4',this.attachment5);
+            form.append('image_5',this.attachment6);
+
+            console.log(form)
+
+              const response = await this.$axios.post(`/api/packages/addmoreimage/${id}`,
+                form,
+                {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                }
+              )
+                      if(response.data.success==true)
+                      {
+                        console.log('Successfull update')
+                                this.$emit('success','New Header Added')
+                              // this.message="header successfully updated"
+                              // this.snackbar=true
+                                this.$router.push({
+                                path: '/admin/view-users'
+                                });
+                              
+                      }
+ 
+        },
+        async initialize () {
           const response = await this.$axios.get('/api/packages/index')
  
           for(var j=0;j<response.data.length;j++)

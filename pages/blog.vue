@@ -59,7 +59,7 @@
             
                 <v-subheader class = "display-1 black--text" >Latest Offers</v-subheader>
                 <br>
-                <div v-for="offer in offers" :key="offer.title" align="center" justify="center" >
+                <div v-for="offer in offers" :key="offer.title" justify="center" >
                     
                     <li>{{offer.data}}</li> 
                     <br>
@@ -70,7 +70,7 @@
                     <br>
                     <v-row align="center" justify="center">
                         <v-img
-                        src="delhi.jpg"
+                        :src="`http://localhost:8000/mainblogs/${img1}`"
                         lazy-src="delhi.jpg"
                         aspect-ratio="1"
                         class="grey lighten-2"
@@ -79,7 +79,7 @@
                         ></v-img>
                         &emsp;&emsp;&emsp;&emsp;&emsp;
                         <v-img
-                        src="delhi.jpg"
+                       :src="`http://localhost:8000/mainblogs/${img2}`"
                         lazy-src="delhi.jpg"
                         aspect-ratio="1"
                         class="grey lighten-2"
@@ -90,7 +90,7 @@
                     <br><br>
                     <v-row align="center" justify="center">
                         <v-img
-                        src="delhi.jpg"
+                        :src="`http://localhost:8000/mainblogs/${img3}`"
                         lazy-src="delhi.jpg"
                         aspect-ratio="1"
                         class="grey lighten-2"
@@ -99,7 +99,7 @@
                         ></v-img>
                         &emsp;&emsp;&emsp;&emsp;&emsp;
                         <v-img
-                        src="delhi.jpg"
+                        :src="`http://localhost:8000/mainblogs/${img4}`"
                         lazy-src="delhi.jpg"
                         aspect-ratio="1"
                         class="grey lighten-2"
@@ -122,6 +122,10 @@ export default {
         return{
             items:[],
             city:'',
+            img1:'',
+            img2:'',
+            img3:'',
+            img4:'',
             places:[],
             header_image:'',
             media: '',
@@ -177,7 +181,14 @@ export default {
 			 	this.places.push(response.data.data[j])
             }
 
+
+            this.img1 = this.places[0]['blog_image'] 
+            this.img2 = this.places[1]['blog_image'] 
+            this.img3 = this.places[2]['blog_image'] 
+            this.img4 = this.places[3]['blog_image'] 
+
             console.log(this.places)
+            console.log(this.img1)
 
 
         }
