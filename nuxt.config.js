@@ -62,10 +62,12 @@ export default {
       }
     ],
     
-    ['nuxt-gmaps', {
-      // key: '<API-Key>'
-      key: 'GOOGLE MAPS KEY'
-    }],
+    [
+      "nuxt-gmaps",
+      {
+        key: process.env.AIzaSyBfHKoR99vezZCLOhQaNq0oCHdMMCotnsw
+      }
+    ]
     // // Simple usage
     // 'nuxt-google-maps-module',
 

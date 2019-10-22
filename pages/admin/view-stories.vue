@@ -110,8 +110,8 @@
           { text: 'User Id', value: 'user_id' },
           { text: 'Package Name', value: 'package_name' },
           { text: 'Experience', value: 'experience' },
-          { text: 'Date', value: 'current_date' },
-          { text: 'Likes', value: 'likes_count' }
+          { text: 'Date', value: 'tour_date' },
+          { text: 'Likes', value: 'likes' }
         ],
         stories: [],
       }
@@ -126,11 +126,12 @@
     },
     methods:{
           async initialize () {
-          const response = await this.$axios.get('/api/')
+          const response = await this.$axios.get('/api/stories/index')
  
           for(var j=0;j<response.data.length;j++)
             {
               this.stories.push(response.data[j])
+              console.log(response.data[j])
             }
 
       },

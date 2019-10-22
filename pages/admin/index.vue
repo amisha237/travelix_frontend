@@ -103,10 +103,9 @@ layout : 'adminLoginLayout',
       
 
     }),
+    
+    
      methods: {
-
-  
-
    async checkLogin() {
        
        console.log(this.email);
@@ -116,7 +115,6 @@ layout : 'adminLoginLayout',
           "password": this.password,  
           "authentication": this.authentication,
         }
-      
       }).catch(e => {
 
           console.log("Login Failed");
@@ -124,14 +122,9 @@ layout : 'adminLoginLayout',
 
       if(this.$auth.loggedIn)
       {
-        //   console.log("Success")
-        //   //console.log(response.data)
-        //   console.log('Login SuccessFull')
-           
-         window.location.reload();
-
+      
           this.$router.push({
-                  path: '/admin/view-users'
+                  path: '/admin/dashboard'
          });
 
         
@@ -139,10 +132,6 @@ layout : 'adminLoginLayout',
          
   }
 },
-
-
-
-
 
 }
 </script>

@@ -9,7 +9,13 @@
             <br>
             <v-row class="hidden-sm-and-down">
                 <v-col v-for="card in Cards" :key="card">
-                    <v-card height="100px" :color="card.color">
+                    <v-item  v-slot:default="{ toggle }">
+                    <v-card 
+                    height="100px" 
+                    :color="card.color"
+                    @click="toggle"
+                    :to="card.link"
+                    >
                         <v-card-title class="font-weight-light white--text">
                             <center>
                                 <font-awesome-icon :icon="[card.icon.prefix, card.icon.name]"/>
@@ -19,15 +25,20 @@
                                 vertical
                                 ></v-divider>
                                 {{card.title}}<br>
-                              <center>  <h3 class="data"> {{card.value}}</h3></center>
+                              <center>  <h3 class="data white--text"> {{card.value}}</h3></center>
                             </center>
                         </v-card-title>
                     </v-card>
+                    </v-item>
                 </v-col>
             </v-row>
             <v-row class="hidden-md-and-up" v-for="card in Cards" :key="card">
                 <v-col >
-                    <v-card :color="card.color">
+                    <v-item  v-slot:default="{ toggle }">
+                    <v-card 
+                    :color="card.color"
+                    :to="card.link"
+                    >
                         <v-card-title class="font-weight-light white--text">
                             <font-awesome-icon :icon="[card.icon.prefix, card.icon.name]"/>
                             <v-divider
@@ -38,6 +49,7 @@
                             {{card.title}}
                         </v-card-title>
                     </v-card>
+                    </v-item>
                 </v-col>
             </v-row>
             <br><br>
@@ -71,7 +83,7 @@
             >
                 <template v-slot:top>
                 <v-toolbar flat color="white">
-                    <v-spacer></v-spacer><v-btn outlined color="primary">View all</v-btn>
+                    <v-spacer></v-spacer><v-btn to="view-enquiries" outlined color="primary">View all</v-btn>
                 </v-toolbar>
                 </template>
             </v-data-table>
@@ -91,15 +103,17 @@
                 <v-sheet color="rgba(0, 0, 0, .12)">
                     <v-sparkline
                     :value="value"
+                    :labels="label"
                     color="rgba(255, 255, 255, .7)"
                     height="100"
+                    line-width="3"
                     padding="24"
                     stroke-linecap="round"
                     smooth
                     >
-                    <template v-slot:label="item">
-                        ${{ item.value }}
-                    </template>
+                    <!-- <template v-slot:label="item">
+                        {{value}}
+                    </template> -->
                     </v-sparkline>
                 </v-sheet>
                 </v-card-text>
@@ -134,7 +148,8 @@ export default {
                     name: 'plane',
                    
                 },
-                 value: "23",
+                link:"/admin/view-packages",
+                value: "23",
                 color:'red'
             },
             {
@@ -143,6 +158,7 @@ export default {
                     prefix: 'fas',
                     name: 'question-circle'
                 },
+                link:"/admin/view-enquiries",
                 color:'blue',
                 value: '34'
             },
@@ -152,6 +168,7 @@ export default {
                     prefix: 'fas',
                     name: 'users'
                 },
+                link:"/admin/view-subscribers",
                 value: '34',
                 color:'green'
             },
@@ -161,6 +178,7 @@ export default {
                     prefix: 'fas',
                     name: 'suitcase-rolling'
                 },
+                link:"/admin/view-bookings",
                 value: '34',
                 color:'orange'
             }
@@ -187,31 +205,33 @@ export default {
         ],
 
         //graph data
-        value: [    423,446,675,510,590,610,760,   ],
-
+        value: [    423,446,675,510,590,610,760,446,675,510,590,610   ],
+        label: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May','Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
 
         //table data
         headers: [
           {
-            text: 'Dessert (100g serving)',
+            text: 'Token No.',
             align: 'left',
             sortable: false,
-            value: 'name',
+            value: 'token_no',
           },
-          { text: 'Calories', value: 'calories' },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' },
+          { text: 'Name' , value: 'name'},
+          { text: 'Subject', value: 'subject' },
+          { text: 'Email' , value: 'email'},
+          { text: 'Message', value: 'message' },
+          
+          
         ],
-        desserts: [
+        desserts: [],
+        deerts: [
           {
             name: 'Frozen Yogurt',
             calories: 159,
             fat: 6.0,
             carbs: 24,
             protein: 4.0,
-            iron: '1%',
+          
           },
           {
             name: 'Ice cream sandwich',
@@ -219,7 +239,7 @@ export default {
             fat: 9.0,
             carbs: 37,
             protein: 4.3,
-            iron: '1%',
+           
           },
           {
             name: 'Eclair',
@@ -227,7 +247,7 @@ export default {
             fat: 16.0,
             carbs: 23,
             protein: 6.0,
-            iron: '7%',
+           
           },
           {
             name: 'Cupcake',
@@ -235,7 +255,7 @@ export default {
             fat: 3.7,
             carbs: 67,
             protein: 4.3,
-            iron: '8%',
+           
           },
           {
             name: 'Gingerbread',
@@ -243,7 +263,7 @@ export default {
             fat: 16.0,
             carbs: 49,
             protein: 3.9,
-            iron: '16%',
+            
           },
           {
             name: 'Jelly bean',
@@ -251,7 +271,7 @@ export default {
             fat: 0.0,
             carbs: 94,
             protein: 0.0,
-            iron: '0%',
+           
           },
           {
             name: 'Lollipop',
@@ -259,7 +279,7 @@ export default {
             fat: 0.2,
             carbs: 98,
             protein: 0,
-            iron: '2%',
+           
           },
           {
             name: 'Honeycomb',
@@ -267,7 +287,7 @@ export default {
             fat: 3.2,
             carbs: 87,
             protein: 6.5,
-            iron: '45%',
+           
           },
           {
             name: 'Donut',
@@ -275,7 +295,7 @@ export default {
             fat: 25.0,
             carbs: 51,
             protein: 4.9,
-            iron: '22%',
+            
           },
           {
             name: 'KitKat',
@@ -283,15 +303,13 @@ export default {
             fat: 26.0,
             carbs: 65,
             protein: 7,
-            iron: '6%',
+           
           },
         ],
       
     packageLength: '',
 
     }),
-
-
     
     created()
     {
@@ -301,8 +319,7 @@ export default {
      methods: {
 
          	async initialize () {
-
-
+                 
                  console.log("Connected to admin")
                  const response0 = await this.$axios.get('/api/packages/index')
                  const response1 = await this.$axios.get('/api/contact/index')
@@ -317,6 +334,16 @@ export default {
                this.Cards[1]['value'] = response1.data.length
                this.Cards[2]['value'] = response2.data.length
                this.Cards[3]['value'] = response3.data.length
+
+
+                 const response4 = await this.$axios.get('/api/contact/index')
+ 
+            for(var j=0;j<response4.data.length;j++)
+                {
+                this.desserts.push(response4.data[j])
+                }
+                console.log(desserts)
+
 
 
                     }

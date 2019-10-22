@@ -88,15 +88,6 @@
                         align="center"
                         justify="center"
                         >
-
-                        <!-- <v-scale-transition>
-                            <v-icon
-                            v-if="active"
-                            color="white"
-                            size="48"
-                            v-text="'mdi-close-circle-outline'"
-                            ></v-icon>
-                        </v-scale-transition> -->
                         </v-row>
                     </v-card>
                     </v-slide-item>
@@ -107,8 +98,8 @@
 
             <br><br>
             <!-- google map -->
-            <GMap
-            :cluster="{options: {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}}" :center="{lat: locations[0].lat, lng: locations[0].lng}"
+            <!-- <GMap
+            :cluster="{options:{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}}" :center="{lat: locations[0].lat, lng: locations[0].lng}"
             :options="{fullscreenControl: false, streetViewControl: false, mapTypeControl: false, zoomControl: true, gestureHandling: 'cooperative', styles: mapStyle}"
             :zoom="6">
             <GMapMarker v-for="location in locations"
@@ -123,7 +114,34 @@
                     </code>
                 </GMapInfoWindow>
             </GMapMarker>
-            </GMap>
+            </GMap> -->
+
+           <GMap
+      :cluster="{options: {styles: clusterStyle}}"
+      :center="{lat: locations[0].lat, lng: locations[0].lng}"
+      :options="{fullscreenControl: false, streetViewControl: false, mapTypeControl: false, zoomControl: true, gestureHandling: 'cooperative', styles: mapStyle}"
+      :zoom="6"
+    >
+       <GMapMarker
+        v-for="location in locations"
+        :key="location.id"
+        :position="{lat: location.lat, lng: location.lng}"
+        :options="{icon: location === currentLocation ? pins.selected : pins.notSelected}"
+        @click="test($event); currentLocation = location"
+        >
+        <GMapInfoWindow>
+          <code>
+            lat: {{ location.lat }},
+            lng: {{ location.lng }}
+          </code>
+            </GMapInfoWindow>
+          </GMapMarker>
+        </GMap>
+
+
+
+
+
           </v-sheet>
       
      
@@ -136,61 +154,38 @@
 
   export default {
     
-    data: () => ({
-      model: null,
-      multiple: false,
-      mandatory: false,
-      showArrows: true,
-      prevIcon: false,
-      nextIcon: false,
-      centerActive: false,
-
-      item:'',
-
-      images:[],
-       
-      // packageHeading: 'Shimla with Kinnaur Valley',
-      // packageDetails: [        
-      //   {
-      //     title: 'Package Name:',
-      //     value: 'Shimla with Kinnaur Valley'
-      //   },
-      //   {
-      //     title: 'Package Duration:',
-      //     value: '6 nights and 7 days'
-      //   },
-      //   {
-      //     title: 'Places to Visit:',
-      //     value: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-      //   },
-      //   {
-      //     title: 'Package Price:',
-      //     value: 'Rs. 20,000/- per head'
-      //   }
-      // ],
-     
-    //map script
-
-        locations: [
-      {
-        lat: 44.933076,
-        lng: 15.629058
+    data(){
+         return {
+      currentLocation: {},
+      locations: [
+        {
+          lat: 19.0760,
+          lng: 72.8777
+        },
+        {
+          lat: 19.03,
+          lng: 72.900
+        },
+        {
+          lat: 19.0480,
+          lng: 72.912
+        }
+      ],
+      pins: {
+        selected:
+          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAApVBMVEUAAAD/AAD/AADxHCvyGyjzGDHoFy7vGSnwHi3wHSzsGi3uGivuHivrGyvsHCztGyrtHSzuHCvuHSzsHSzsHSvtHCvtHCrtGyvsHCvsHCvtHSztHCvtHCvtHCvuGyvtHCvtHSztGyvtHSvtHCvtHCztHCvsHCvtHCvtHCvtHCvtHCvtHCvtHCvtHCvtHCvtHCvtHCvtHCvtHCvtHCvtHCvtHCv///8Zo6fZAAAANXRSTlMAAQISExUWHyIjKDs8QVJVV1ppe3x+f4KHiJiZmpuxt7vDxMbHys7R4Ont7u/w8fLz9Pb7/qzXrqoAAAABYktHRDZHv4jRAAAAn0lEQVQYGaXBV5KCQABF0eeooxjGnDFnpc13/1uzi7JoQL/Gc/R/v931fr/u5JXSuBK61JVQe/Dy+FNM/kQkyMnpYRnfN1hdOVsgKEqeATZyzsBI1hg4yTkCQ1kj4CBnBQRFyTPAUs4Ay/i+werLKRFTUsyCyFxxFSJlJcx4mSnJuxG6FpTSJtRS2s8Ua5LRm+wOdll9UL3fq/qo2dQ3nvcVIgrnmsRBAAAAAElFTkSuQmCC",
+        notSelected:
+          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABHElEQVR42uVVyw4BMRQdC98lsbPwG5YSH+BzWFtLZilh0oQgFh6J54IwBmGYtrfaBREdcTvDhpM0adrec3rb+7Csn8fRdrLg7VzBubhDzmHrudRuZ2KRs/miLd6AThfNaOTTGRFIsMm8bkSuXBeGoLVaGi0g39wLI4GTf1EjdE/+E1pAAGgEAenkb/tBo1vQFUDgBbSbny6al77uSQwB/6wJSNHoAo8xj30iaYMW4Lv9wfSTpc0eH6atXtE4TKWNUS4AY2hyddY4k/lwVEZncm9QilQuBGPwnp1B5GIXGi3P0eU0c7EqKrje5hU5d7fr2P2AEJIESkNqB1XJkvhI0/GrTuqZX619tLMF/VHlfnk5/0r7ZMvVWA3rr3AF6LIMZ7PmSlUAAAAASUVORK5CYII="
       },
-      {
-        lat: 45.8150,
-        lng: 15.9819
-      },
-      {
-        lat: 45.12,
-        lng: 16.21
-      }
-    ],
-    pins: {
-        selected: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB...',
-        notSelected: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAM...'
-    },
- 
-    mapStyle: [
+      clusterStyle: [
+        {
+          url: "https://googlemaps.github.io/js-marker-clusterer/images/m2.png",
+          width: 56,
+          height: 56,
+          textColor: "#fff"
+        }
+      ],
+      mapStyle: [
         {
           featureType: "all",
           elementType: "labels.text.fill",
@@ -323,17 +318,25 @@
             }
           ]
         }
-    ],
- 
-    currentLocation: {}
-
-    }),
-
-    created(){
-      this.initialize()
+      ],
+      model: null,
+      multiple: false,
+      mandatory: false,
+      showArrows: true,
+      prevIcon: false,
+      nextIcon: false,
+      centerActive: false,
+      item:'',
+      images:[],
+         };
+      
+    //map script
   },
-
+  created(){
+      this.initialize()
+      },
   methods: {
+
         	async initialize () {
 
           let id = this.$route.params.packageId
@@ -363,7 +366,7 @@
        }
   }
 
-}
+};
   
 
 </script>

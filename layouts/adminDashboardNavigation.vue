@@ -277,6 +277,11 @@ export default {
       color:"grey lighten-4",
       title:"Travelix Admin Dashboard",
       items: [
+         {
+          icon: '',
+          title: 'Dashboard',
+         
+        },
         {
           icon: '',
           title: 'Package',
@@ -412,11 +417,24 @@ export default {
       miniVariant: false,
     }
   },
+  created () {
+          this.initialize()
+    },
+  
   methods:{
-     func(){
+      async initialize () {
+
+        console.log($auth.user.name)
+      },
+       func(){
       this.drawer=!this.drawer
       // this.miniVariant=!this.miniVariant
      }
+
+
+     
+
+
   }
 }
 </script>
