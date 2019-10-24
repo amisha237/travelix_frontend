@@ -12,7 +12,7 @@
             <v-select
             v-model="city"
             :items="items"
-            label="Select City"
+            :label="items[0]"
             solo
             @change="onCityChanged"
             ></v-select>
@@ -49,21 +49,26 @@
                     <br>
                 </v-card-text>
                 <v-card-text>
-                    <v-btn color = "brown"> View Packages</v-btn>
+                    <v-btn color = "brown" :to="`/package/${city}`"> View Packages</v-btn>
                 </v-card-text>    
             </v-card>
 
         </v-col>
 
         <v-col  cols = "12" xs = "4" sm = "4" md= "4">
-            
+            <v-card
+            max-width="600"
+            height = "230"
+            class="mx-auto card_margin"
+            >
                 <v-subheader class = "display-1 black--text" >Latest Offers</v-subheader>
                 <br>
-                <div v-for="offer in offers" :key="offer.title" justify="center" >
+                <div v-for="feed in feeds" :key="feed.title" justify="center" >
                     
-                    <li>{{offer.data}}</li> 
+                    <li  class="latest-offers" >{{feed}}</li> 
                     <br>
                 </div>
+            </v-card>    
                 <br>
                 <div>
                     <v-subheader class = "display-1 black--text">More Images</v-subheader>
@@ -128,19 +133,9 @@ export default {
             img4:'',
             places:[],
             header_image:'',
-            media: '',
+            media: 'true',
 
-             offers : [
-                            {
-                                data : "Rs700 off on jamaica tour",
-                            },
-                            {
-                                data : "Rs 200 cashback on specific tours",
-                            },
-                            {
-                                data : "Travel offers for students",
-                            },
-                     ],
+            feeds:[],
             
         }
     },
@@ -154,14 +149,44 @@ export default {
 
         async initialize(){
 
-            const response = await this.$axios.get('/api/blog/cities')
+
+            const response2 = await this.$axios.get('/api/blog/cities')
             
-            for(var j=0;j<response.data.length;j++)
+            for(var j=0;j<response2.data.length;j++)
 			{
-			 	this.items.push(response.data[j].name)
+			 	this.items.push(response2.data[j].name)
             }
 
-            console.log(this.items)
+            this.city = this.items[0]
+
+            const response = await this.$axios.post('/api/blog/show',{
+                city: this.items[0],
+            })
+             
+            this.header_image = response.data.image
+            
+            this.places = []
+
+            for(var j=0;j<response.data.data.length;j++)
+			{
+			 	this.places.push(response.data.data[j])
+            }
+
+
+            // this.img1 = this.places[0]['blog_image'] 
+            // this.img2 = this.places[1]['blog_image'] 
+            // this.img3 = this.places[2]['blog_image'] 
+            // this.img4 = this.places[3]['blog_image'] 
+
+
+            const response1 = await this.$axios.get('/api/activityfeeds')
+
+            for(var j=0;j<response1.data.length;j++)
+			{
+			 	this.feeds.push(response1.data[j].description)
+            }
+
+            console.log(this.feeds)
         },
 
         async onCityChanged(){
@@ -175,6 +200,8 @@ export default {
             })
              
             this.header_image = response.data.image
+            
+            this.places = []
 
             for(var j=0;j<response.data.data.length;j++)
 			{
@@ -182,10 +209,10 @@ export default {
             }
 
 
-            this.img1 = this.places[0]['blog_image'] 
-            this.img2 = this.places[1]['blog_image'] 
-            this.img3 = this.places[2]['blog_image'] 
-            this.img4 = this.places[3]['blog_image'] 
+            // this.img1 = this.places[0]['blog_image'] 
+            // this.img2 = this.places[1]['blog_image'] 
+            // this.img3 = this.places[2]['blog_image'] 
+            // this.img4 = this.places[3]['blog_image'] 
 
             console.log(this.places)
             console.log(this.img1)
@@ -199,4 +226,9 @@ export default {
 
 <style>
 
+.latest-offers{
+    /* padding:12px; */
+    margin-left:12px;
+    
+}
 </style>

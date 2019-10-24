@@ -91,7 +91,9 @@
   methods: {
 
 	  	async initialize () {
-      const response = await this.$axios.get('/api/packages/index')
+      const response = await this.$axios.post('/api/packages/filter/location',{
+        location: this.$route.params.city
+      })
  
        for(var j=0;j<response.data.length;j++)
 			 	{

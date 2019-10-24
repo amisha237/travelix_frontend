@@ -60,13 +60,9 @@
                     <v-card-text>{{item.experience}}</v-card-text>
                     <br>
                     <v-row class="pa-4">
-                       {
-                    <v-btn btn btn-danger @click.prevent="sendLike(item.id)">{{likes[item.id]}}</v-btn><v-spacer></v-spacer><v-btn>Read more</v-btn>
-                    else{
-                    <v-btn btn btn-primary @click.prevent="sendLike(item.id)">{{likes[item.id]}}</v-btn><v-spacer></v-spacer><v-btn>Read more</v-btn>
 
-                    }
-                        }
+                    <v-btn btn btn-danger @click.prevent="sendLike(item.id)">{{likes[item.id]}}</v-btn><v-spacer></v-spacer><v-btn>Read more</v-btn>
+
                     </v-row>
                     
                 </v-card>

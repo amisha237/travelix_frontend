@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2019 at 12:49 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Oct 24, 2019 at 09:15 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `travelix_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activity_feeds`
+--
+
+CREATE TABLE `activity_feeds` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `activity_feeds`
+--
+
+INSERT INTO `activity_feeds` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(2, 'Admin', 'A new Package Hawai Tour of Hawai has arrived!!!', '2019-10-24 12:32:11', '2019-10-24 12:32:11'),
+(3, 'User', 'Have a look hum hai has Shared his Story!!!', '2019-10-24 12:42:18', '2019-10-24 12:42:18'),
+(4, 'Admin', 'A new City Blog of japan has been added!!!', '2019-10-24 12:49:43', '2019-10-24 12:49:43');
 
 -- --------------------------------------------------------
 
@@ -94,11 +117,12 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`id`, `city`, `destination_id`, `place`, `description`, `blog_image`, `created_at`, `updated_at`) VALUES
-(1, 'Gujrat', 1, 'Rann of Kutch', 'The Rann of Kutch is located in the Thar Desert bio-geographic area in the Indian state of Gujarat, with some parts in Pakistani province of Sindh. It is a seasonally marshy region, the word Rann meaning \"salt marsh\", alternating with medak\'s, elevated pieces of land where vegetation grows. Kori Creek and Sir creek are located in the Rann of Kutch area, which is part of Indus river delta.\r\n\r\nKutch is the name of the district in Gujarat where this region is situated. The marsh covers an area of around 10,000 square miles and is positioned between the Gulf of Kutch and the mouth of the Indus River in southern Pakistan. Many rivers located in Rajasthan and Gujarat flow in to Rann of Kutch. These are Luni, Bhuki, Bharud, Nara, Kharod, Banas, Saraswati, Rupen, Bambhan and Machchhu.', NULL, NULL, NULL),
-(2, 'Gujrat', 1, 'Gir National Park', 'Gir National Park and Wildlife Sanctuary, also known as Sasan Gir, is a forest and wildlife sanctuary near Talala Gir in Gujarat, India. It is located 43 km (27 mi) north-east of Somnath, 65 km (40 mi) south-east of Junagadh and 60 km (37 mi) south-west of Amreli. It was established in 1965, with a total area of 1,412 km2 (545 sq mi), of which 258 km2 (100 sq mi) is fully protected as national park and 1,153 km2 (445 sq mi) as wildlife sanctuary.[1] It is part of the Kathiawar-Gir dry deciduous forests ecoregion.', NULL, NULL, NULL),
-(3, 'Gujrat', 1, 'Statue of Unity', 'The Statue of Unity is a colossal statue of Congress Politician and independence activist Sardar Vallabhbhai Patel (1875–1950), who was the first Home minister of independent India and the chief adherent of Mahatma Gandhi during the non-violent Indian Independence movement. Patel was highly respected for his leadership in uniting the 552 princely states of India to form the single Union of India. It is located in the state of Gujarat, India. It is the world\'s tallest statue with a height of 182 metres. It is located on a river island facing the Sardar Sarovar Dam on river Narmada in Kevadiya colony, 100 kilometres (62 mi) southeast of the city of Vadodara[2] and 150 km from Surat.\r\n\r\nThe project was first announced in 2010 and the construction of the statue started in October 2013 by Larsen & Toubro, who received the contract for ₹2,989 crore (US$420 million) from Government of Gujarat. It was designed by Indian sculptor Ram V. Sutar, and was inaugurated by Indian Prime Minister Narendra Modi on 31 October 2018, the 143rd anniversary of Patel\'s birth.', NULL, NULL, NULL),
+(1, 'Gujrat', 1, 'Rann of Kutch', 'The Rann of Kutch is located in the Thar Desert bio-geographic area in the Indian state of Gujarat, with some parts in Pakistani province of Sindh. It is a seasonally marshy region, the word Rann meaning \"salt marsh\", alternating with medak\'s, elevated pieces of land where vegetation grows. Kori Creek and Sir creek are located in the Rann of Kutch area, which is part of Indus river delta.\r\n\r\nKutch is the name of the district in Gujarat where this region is situated. The marsh covers an area of around 10,000 square miles and is positioned between the Gulf of Kutch and the mouth of the Indus River in southern Pakistan. Many rivers located in Rajasthan and Gujarat flow in to Rann of Kutch. These are Luni, Bhuki, Bharud, Nara, Kharod, Banas, Saraswati, Rupen, Bambhan and Machchhu.', '1570370194-blogImage.jpg', NULL, NULL),
+(2, 'Gujrat', 1, 'Gir National Park', 'Gir National Park and Wildlife Sanctuary, also known as Sasan Gir, is a forest and wildlife sanctuary near Talala Gir in Gujarat, India. It is located 43 km (27 mi) north-east of Somnath, 65 km (40 mi) south-east of Junagadh and 60 km (37 mi) south-west of Amreli. It was established in 1965, with a total area of 1,412 km2 (545 sq mi), of which 258 km2 (100 sq mi) is fully protected as national park and 1,153 km2 (445 sq mi) as wildlife sanctuary.[1] It is part of the Kathiawar-Gir dry deciduous forests ecoregion.', '1570374247-blogImage.jpg', NULL, NULL),
+(3, 'Gujrat', 1, 'Statue of Unity', 'The Statue of Unity is a colossal statue of Congress Politician and independence activist Sardar Vallabhbhai Patel (1875–1950), who was the first Home minister of independent India and the chief adherent of Mahatma Gandhi during the non-violent Indian Independence movement. Patel was highly respected for his leadership in uniting the 552 princely states of India to form the single Union of India. It is located in the state of Gujarat, India. It is the world\'s tallest statue with a height of 182 metres. It is located on a river island facing the Sardar Sarovar Dam on river Narmada in Kevadiya colony, 100 kilometres (62 mi) southeast of the city of Vadodara[2] and 150 km from Surat.\r\n\r\nThe project was first announced in 2010 and the construction of the statue started in October 2013 by Larsen & Toubro, who received the contract for ₹2,989 crore (US$420 million) from Government of Gujarat. It was designed by Indian sculptor Ram V. Sutar, and was inaugurated by Indian Prime Minister Narendra Modi on 31 October 2018, the 143rd anniversary of Patel\'s birth.', '1570371416-blogImage.png', NULL, NULL),
 (5, 'Chennai', 6, 'Marina Beach', 'Marina Beach is a natural urban beach in Chennai, Tamil Nadu, India, along the Bay of Bengal.[1] The beach runs from near Fort St. George in the north to Foreshore Estate in the south, a distance of 6.0 km (3.7 mi),[2] making it the longest natural urban beach in the country.[3][4][5] The Marina is primarily sandy, unlike the short, rocky formations that make up the Juhu Beach in Mumbai. The average width of the beach is 300 m (980 ft)[6] and the width at the widest stretch is 437 m (1,434 ft). Bathing and swimming at the Marina Beach are legally prohibited because of the dangers, as the undercurrent is very turbulent. It is one of the most crowded beaches in the country and attracts about 30,000 visitors a day during weekdays[7] and 50,000 visitors a day during the weekends and on holidays.[8][9][10] During summer months, about 15,000 to 20,000 people visit the beach daily.', '1570371416-blogImage.png', '2019-10-06 08:46:56', '2019-10-06 08:46:56'),
-(6, 'Mumbai', 7, 'Gateway of India', 'The Gateway of India is an arch-monument built in the early twentieth-century located in the city of Mumbai, in the Indian state of Maharashtra. It was erected to commemorate the landing of the first British monarch in India; King-Emperor George V and Queen-Empress Mary\'s arrival at Apollo Bunder, Mumbai (then Bombay) in December 1911. Built in the Indo-Saracenic style, incorporating elements of 16th-century Gujarati architecture, the foundation stone for the gateway was laid in March 1913. During the royal visit, the gateway was not yet built and a cardboard structure had greeted the monarch. The final design of the monument by architect George Wittet was sanctioned only in 1914, and construction was completed in 1924. The structure is a triumphal arch made of basalt, which is 26 metres (85 feet) high.', '1570374247-blogImage.jpg', '2019-10-06 09:34:07', '2019-10-06 09:34:07');
+(6, 'Mumbai', 7, 'Gateway of India', 'The Gateway of India is an arch-monument built in the early twentieth-century located in the city of Mumbai, in the Indian state of Maharashtra. It was erected to commemorate the landing of the first British monarch in India; King-Emperor George V and Queen-Empress Mary\'s arrival at Apollo Bunder, Mumbai (then Bombay) in December 1911. Built in the Indo-Saracenic style, incorporating elements of 16th-century Gujarati architecture, the foundation stone for the gateway was laid in March 1913. During the royal visit, the gateway was not yet built and a cardboard structure had greeted the monarch. The final design of the monument by architect George Wittet was sanctioned only in 1914, and construction was completed in 1924. The structure is a triumphal arch made of basalt, which is 26 metres (85 feet) high.', '1570374247-blogImage.jpg', '2019-10-06 09:34:07', '2019-10-06 09:34:07'),
+(7, 'Gujrat', 1, 'Statue of Unity', 'The Statue of Unity is a colossal statue of Congress Politician and independence activist Sardar Vallabhbhai Patel (1875–1950), who was the first Home minister of independent India and the chief adherent of Mahatma Gandhi during the non-violent Indian Independence movement. Patel was highly respected for his leadership in uniting the 552 princely states of India to form the single Union of India. It is located in the state of Gujarat, India. It is the world\'s tallest statue with a height of 182 metres. It is located on a river island facing the Sardar Sarovar Dam on river Narmada in Kevadiya colony, 100 kilometres (62 mi) southeast of the city of Vadodara[2] and 150 km from Surat.\r\n\r\nThe project was first announced in 2010 and the construction of the statue started in October 2013 by Larsen & Toubro, who received the contract for ₹2,989 crore (US$420 million) from Government of Gujarat. It was designed by Indian sculptor Ram V. Sutar, and was inaugurated by Indian Prime Minister Narendra Modi on 31 October 2018, the 143rd anniversary of Patel\'s birth.', '1570374109-blogImage.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -141,7 +165,9 @@ INSERT INTO `destinations` (`id`, `name`, `destination_image`, `created_at`, `up
 (3, 'Rajasthan', NULL, '2019-10-06 06:11:29', '2019-10-06 06:11:29'),
 (4, 'Delhi', '1570362138-blogImage.png', '2019-10-06 06:12:18', '2019-10-06 06:12:18'),
 (6, 'Chennai', '1570371416-blogImage.png', '2019-10-06 08:26:34', '2019-10-06 08:26:34'),
-(7, 'Mumbai', '1570374109-blogImage.jpg', '2019-10-06 09:31:49', '2019-10-06 09:31:49');
+(7, 'Mumbai', '1570374109-blogImage.jpg', '2019-10-06 09:31:49', '2019-10-06 09:31:49'),
+(8, 'japan', NULL, '2019-10-24 12:49:23', '2019-10-24 12:49:23'),
+(9, 'japan', NULL, '2019-10-24 12:49:43', '2019-10-24 12:49:43');
 
 -- --------------------------------------------------------
 
@@ -195,7 +221,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2019_10_06_110641_create_destinations_table', 3),
 (23, '2019_10_06_110735_add_foreifn_to_blogs_table', 4),
 (24, '2019_10_12_142356_create_stories_table', 5),
-(25, '2019_10_12_153241_create_add_likes_table', 5);
+(25, '2019_10_12_153241_create_add_likes_table', 5),
+(26, '2019_10_24_174011_create_activity_feeds_table', 5);
 
 -- --------------------------------------------------------
 
@@ -378,7 +405,11 @@ CREATE TABLE `packages` (
 
 INSERT INTO `packages` (`id`, `package_name`, `package_location`, `package_price`, `package_type`, `package_details`, `package_header_image`, `created_at`, `updated_at`, `package_features`, `package_day`, `package_nights`) VALUES
 (1, 'Anand', 'Gujrat', 1231, 'Family', 'it has various features\nit has various features\nit has various features', '1570300214-packageImage.jpg', '2019-10-05 12:25:35', '2019-10-05 13:00:14', 'it has various features', 12, 13),
-(2, 'Winter Vacation', 'Rajsthan', 1324, 'Couple', 'items: [], items: [], items: [], items: [], items: [],', '1570301243-packageImage.jpg', '2019-10-05 13:16:16', '2019-10-05 13:17:23', 'items: [], items: [], items: [], items: [], items: [],', 4, 3);
+(2, 'Winter Vacation', 'Rajasthan', 1324, 'Couple', 'items: [], items: [], items: [], items: [], items: [],', '1571671746-packageImage.jpg', '2019-10-05 13:16:16', '2019-10-21 09:59:06', 'items: [], items: [], items: [], items: [], items: [],', 4, 3),
+(3, 'Winter Vacation', 'Rajasthan', 8324, 'Couple', 'items: [], items: [], items: [], items: [], items: [],', '1570301243-packageImage.jpg', '2019-10-05 13:16:16', '2019-10-05 13:17:23', 'items: [], items: [], items: [], items: [], items: [],', 4, 3),
+(4, 'Hawai Tour', 'Hawai', 100000, 'couple', 'padharo kabhi hawai me.', NULL, '2019-10-24 12:24:16', '2019-10-24 12:24:16', 'achh hai', 3, 2),
+(5, 'Hawai Tour', 'Hawai', 100000, 'couple', 'padharo kabhi hawai me.', NULL, '2019-10-24 12:32:11', '2019-10-24 12:32:11', 'achh hai', 3, 2),
+(6, 'Anand', 'Gujrat', 1231, 'Man', 'it has various features\r\nit has various features\r\nit has various features', '1570300214-packageImage.jpg', '2019-10-05 12:25:35', '2019-10-05 13:00:14', 'it has various features', 12, 13);
 
 -- --------------------------------------------------------
 
@@ -397,6 +428,14 @@ CREATE TABLE `package_images` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `package_images`
+--
+
+INSERT INTO `package_images` (`id`, `package_id`, `image_1`, `image_2`, `image_3`, `image_4`, `image_5`, `created_at`, `updated_at`) VALUES
+(1, 1, '1570301243-packageImage.jpg', '1570300214-packageImage.jpg', '1570300085-packageImage.jpg', '1570031111-packageImage.png', '1570301243-packageImage.jpg', NULL, NULL),
+(9, 2, '15716748850-packageImage.jpg', '15716748851-packageImage.png', '15716748852-packageImage.jpg', '15716748853-packageImage.jpg', '15716748854-packageImage.jpg', '2019-10-21 10:51:25', '2019-10-21 10:51:25');
 
 -- --------------------------------------------------------
 
@@ -447,9 +486,8 @@ CREATE TABLE `stories` (
 --
 
 INSERT INTO `stories` (`id`, `user_id`, `author`, `package_name`, `experience`, `tour_date`, `image_1`, `likes`, `status`, `created_at`, `updated_at`) VALUES
-(1, 123, 'Anand Maurya', 'Summer Trip Experience', 'hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience\r\nexperiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience', '32-12-12', '1570893360-StoriesImage.jpeg\r\n', 45, 'Reviewed', NULL, NULL),
-(2, 121, 'Maurya Anand', 'Winter Trip Experience', 'hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience\r\nexperiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience', '32-12-12', '1570893360-StoriesImage.jpeg\r\n', 98, 'Reviewed', NULL, NULL),
-(4, 118, 'Maurya Anand 2', 'Winter Trip Experience', 'hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your hey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience\r\nexperiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experiencehey, how was your experience', '32-12-11', '1570893360-StoriesImage.jpeg\r\n', 981, 'Reviewed', NULL, NULL);
+(1, 1, 'username', 'Winte vacation', 'hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya', '12\'12\'12', NULL, 0, 'pending', NULL, NULL),
+(4, 6, 'hum hai', 'winter vacation hai', 'hhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gya', '12\'3\'19', NULL, 0, 'Review', '2019-10-24 12:42:18', '2019-10-24 12:42:18');
 
 -- --------------------------------------------------------
 
@@ -496,6 +534,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `username`, `contact`, `password`, `
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `activity_feeds`
+--
+ALTER TABLE `activity_feeds`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `add_likes`
@@ -630,6 +674,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `activity_feeds`
+--
+ALTER TABLE `activity_feeds`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `add_likes`
 --
 ALTER TABLE `add_likes`
@@ -645,7 +695,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `contacts`
@@ -657,7 +707,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `destinations`
 --
 ALTER TABLE `destinations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -669,7 +719,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
@@ -687,13 +737,13 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `package_images`
 --
 ALTER TABLE `package_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `stocks`
