@@ -26,7 +26,13 @@
     <v-layout wrap>
         
         <v-flex xs12 sm12 md9 lg9>
-            
+            <v-data-iterator
+                :items="items"
+                :items-per-page.sync="itemsPerPage"
+                :page="page"
+                hide-default-footer
+                >  
+                <template v-slot:default="props">
                 
                 <v-card
                     v-for="item in items" :key="item.id"     
@@ -70,6 +76,21 @@
                     </v-row>
                     
                 </v-card>
+                </template>
+                <template v-slot:footer>
+                    <v-row class="mt-2" align="center" justify="center">
+                        <v-col>
+                            <v-pagination
+                                v-model="page"
+                                :length="numberOfPages"
+                                :total-visible="5"
+                                color="grey darken-2"
+                                max-visible="5"
+                            ></v-pagination>
+                        </v-col>
+                    </v-row> 
+                </template>
+            </v-data-iterator>
            
             
         </v-flex>
@@ -106,6 +127,7 @@
                         </v-col>
                      </v-row>
                 </v-card>
+                
                 
 
                 </div>
@@ -164,7 +186,10 @@
                 <br><br>
                 
             </v-card>
+            
+        
         </v-flex> 
+        
     </v-layout>
     
     
@@ -186,6 +211,8 @@ export default {
     raised: false,
     width: 850,
     height: undefined,
+    page: 1,
+    itemsPerPage: 2,
 
     items : [
         // {
@@ -227,11 +254,17 @@ export default {
     likes :[]
 
   }),
+  
 
     created()
     {
         this.initialize()
        
+    },
+    computed: {
+      numberOfPages () {
+        return Math.ceil(this.items.length / this.itemsPerPage)
+      },
     },
      methods: {
 

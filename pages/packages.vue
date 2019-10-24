@@ -135,13 +135,13 @@
         filter: {},
         sortDesc: false,
         page: 1,
-        itemsPerPage: 2,
+        itemsPerPage: 7,
         sortBy: 'name',
         keys: [
           'package_name',
           'package_type',
           'package_location',
-          'price',
+          'package_price',
           
         ],
        filterdItems:[],
