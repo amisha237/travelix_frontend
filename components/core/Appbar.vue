@@ -28,10 +28,25 @@
 				</v-btn>
 			</div>
       <v-spacer/>
+      
+			<v-flex xs12 sm12  md3 lg3>
+				<v-text-field
+          clearable
+					append-icon="mdi-magnify"
+				  placeholder="search..."
+					hide-details
+          outlined
+          rounded
+          
+				  class="hidden-sm-and-down"
+				/>
+			</v-flex>
+      <v-spacer /> 
 
       <!-- login signup dialog -->
+
       
-     <template>
+     <template v-if="!loggedIn">
      <v-dialog v-model="dialog"  max-width="700px" >
 
         <template v-slot:activator="{ on }">
@@ -67,17 +82,67 @@
            </template>
       </v-dialog>
    </template>
-   <v-spacer />
-			<v-flex xs12 sm12  md3 lg3>
-				<v-text-field
-          clearable
-					append-icon="mdi-magnify"
-				  placeholder="search..."
-					hide-details
-          outlined
-				  class="hidden-sm-and-down"
-				/>
-			</v-flex> 
+   <!-- loggedIn -->
+   <template v-if="loggedIn">
+        <div class="text-center nav" >
+            <v-menu
+            :close-on-content-click="false"
+            :nudge-width="200"
+            offset-y
+            transition="scroll-x-reverse-transition"
+            open-on-hover
+            >
+            <template v-slot:activator="{ on }">
+                <v-btn icon v-on="on" fav>
+                    <v-avatar>
+                       <img
+                        src="https://cdn.vuetifyjs.com/images/john.jpg"
+                        alt="John"
+                        
+                       >
+                    </v-avatar>
+                </v-btn>
+            </template>
+
+            <v-card class="primary">
+             <v-list>
+                <v-list-item v-if="loggedIn">
+                    <v-list-item-avatar >
+
+                    <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                    </v-list-item-avatar>
+
+                    <v-list-item-content>
+                    <v-list-item-title>{{$auth.user.name}}</v-list-item-title>
+                    </v-list-item-content>
+
+                    <v-list-item-action>
+                    
+                    </v-list-item-action>
+                </v-list-item>
+             </v-list>
+                <v-list>
+                <v-list-item>
+                  <v-list-item-action>
+                    <v-btn text small>
+                      Profile
+                    </v-btn>
+                  </v-list-item-action>
+                </v-list-item>
+                
+                <v-list-item>
+                <v-list-item-action>
+                    <v-btn text small>
+                    Logout
+                    </v-btn>
+                    </v-list-item-action>
+                </v-list-item>
+                </v-list>
+            </v-card>
+            </v-menu>
+        </div>
+        </template>
+   
          
 	</v-layout>
 </v-app-bar>
