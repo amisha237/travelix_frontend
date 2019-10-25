@@ -1,4 +1,5 @@
 <template>
+ 
   <v-layout wrap align-center justify-center >
     <v-flex xs12 md9> 
         <v-form  ref="form"
@@ -79,7 +80,8 @@
               </div>
             
           </v-form>
-      </v-flex>
+      </v-flex> 
+
    </v-layout>
 </template>
 

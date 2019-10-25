@@ -55,7 +55,7 @@
             <br><br>
 
 
-            <v-sheet class="pa-5" elevation="1">
+            <v-sheet class="pa-5" elevation="3">
                 <v-row>
                     <v-col v-for="chip in Chip" :key="chip">
                         <center>
@@ -72,14 +72,14 @@
 
 
             <br><br>
-            <center><p class="display-1 font-weight-light">Latest Enquiries</p></center>
+        <p class="display-1 justify-end font-weight-dark">Latest Enquiries</p>
             
             <br>
             <v-data-table
             :headers="headers"
             :items="desserts"
             :items-per-page="5"
-            class="elevation-1"
+            class="elevation-1 "
             >
                 <template v-slot:top>
                 <v-toolbar flat color="white">
@@ -187,19 +187,19 @@ export default {
         //chip data
         Chip:[
             {
-                count:40,
-                title:'Hotels'
+                count:0,
+                title:'Stories'
             },
             {
-                count:30,
-                title:'Destinations'
+                count:0,
+                title:'Total Customers'
             },
             {
-                count:40,
-                title:'Hotels'
+                count:0,
+                title:'Blogs Cities'
             },
             {
-                count:30,
+                count:0,
                 title:'Destinations'
             },
         ],
@@ -224,88 +224,7 @@ export default {
           
         ],
         desserts: [],
-        deerts: [
-          {
-            name: 'Frozen Yogurt',
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-          
-          },
-          {
-            name: 'Ice cream sandwich',
-            calories: 237,
-            fat: 9.0,
-            carbs: 37,
-            protein: 4.3,
-           
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-            fat: 16.0,
-            carbs: 23,
-            protein: 6.0,
-           
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-            fat: 3.7,
-            carbs: 67,
-            protein: 4.3,
-           
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-            fat: 16.0,
-            carbs: 49,
-            protein: 3.9,
-            
-          },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-            fat: 0.0,
-            carbs: 94,
-            protein: 0.0,
-           
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-           
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-            fat: 3.2,
-            carbs: 87,
-            protein: 6.5,
-           
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-            fat: 25.0,
-            carbs: 51,
-            protein: 4.9,
-            
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
-            fat: 26.0,
-            carbs: 65,
-            protein: 7,
-           
-          },
-        ],
+        
       
     packageLength: '',
 
@@ -325,20 +244,27 @@ export default {
                  const response1 = await this.$axios.get('/api/contact/index')
                  const response2 = await this.$axios.get('/api/subscribers/')
                  const response3 = await this.$axios.get('/api/subscribers/')
-
-                 
-
-                    console.log(response1.data)
-                    console.log(this.Cards[0]['value'])
+                      console.log(response1.data)
+                      console.log(this.Cards[0]['value'])
                this.Cards[0]['value'] = response0.data.length
                this.Cards[1]['value'] = response1.data.length
                this.Cards[2]['value'] = response2.data.length
                this.Cards[3]['value'] = response3.data.length
 
 
-                 const response4 = await this.$axios.get('/api/contact/index')
+                 const response8 = await this.$axios.get('/api/stories/index')
+                 const response5 = await this.$axios.get('/api/index')
+                 const response6 = await this.$axios.get('/api/blog/cities')
+                 const response7 = await this.$axios.get('/api/blog/cities/index')
+                
+                this.Chip[0]['count'] = response8.data.length
+                this.Chip[1]['count'] = response5.data.length
+                this.Chip[2]['count'] = response6.data.length
+                this.Chip[3]['count'] = response7.data.length
+
+                const response4 = await this.$axios.get('/api/contact/index')
  
-            for(var j=0;j<response4.data.length;j++)
+                 for(var j=0;j<response4.data.length;j++)
                 {
                 this.desserts.push(response4.data[j])
                 }
