@@ -52,11 +52,11 @@ export const routerOptions = {
       component: _05bf49c4,
       name: "inspire"
     }, {
-      path: "/package/:city",
+      path: "/package",
       component: _bbfaf2ec,
       name: "package"
     }, {
-      path: "/package-details/:packageId",
+      path: "/package-details",
       component: _0fc6f102,
       name: "package-details"
     }, {

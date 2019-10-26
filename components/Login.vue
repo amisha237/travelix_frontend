@@ -1,11 +1,13 @@
 <template>
-   <v-card>
+   <v-card
+   :style="{backgroundImage:'url(/bg_10.jpg)',backgroundSize: 'cover',}">
        <v-card-text>
           <div>
               <v-form ref="form"
               v-model="active"
               method="POST"
-              id="form">
+              id="form"
+              >
               
                 <!-- email -->
                  <v-text-field

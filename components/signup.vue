@@ -1,6 +1,10 @@
 <template>
-  <v-layout wrap align-center justify-center >
-    <v-flex xs12 md9> 
+  <v-layout wrap align-center justify-center 
+   :style="{backgroundImage:'url(/bg_10.jpg)',backgroundSize: 'cover',}"
+   class="my-container"
+  >
+    <v-flex xs12 md9>
+       
         <v-form  ref="form"
               v-model="active"
               method="POST"
@@ -142,3 +146,6 @@
   },
   }
 </script>
+<style>
+
+</style>

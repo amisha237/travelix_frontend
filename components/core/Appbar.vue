@@ -59,10 +59,12 @@
         <template>
            <v-tabs
               v-model="active"
-              color="primary"
+              color="white"
               light
               slider-color="yellow"
               grow
+              background-color="teal darken-3"
+              position= "absolute"
            >
              <v-tab
               v-for="n in logins"
