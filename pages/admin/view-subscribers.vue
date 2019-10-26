@@ -1,4 +1,5 @@
 <template>
+
   <v-container fluid  class="py-12">
 		<v-row class=" align-center justify-center">
 			<v-col cols="12" md="10" lg="10">
@@ -57,7 +58,7 @@
             </template>
           </v-data-table>
         </v-card>
-     
+     <!-- <snackbar :message="send_messg"/> -->
    <!-- snackbar -->
         <v-snackbar
           v-model="snackbar"
@@ -75,13 +76,17 @@
           </v-btn>
           </v-snackbar>
 			</v-col>
-		</v-row>
+		</v-row>]
+
 </v-container>
+
 </template>
 <script>
 //import snackbar from '@/components/snackbar.vue' ;
 export default {
- 
+//  components : {
+//    snackbar
+//  },
     layout:'adminDashboardNavigation',
     data(){
         return{
@@ -91,16 +96,14 @@ export default {
         page: 1,
 		    itemsPerPage: 5,
         snackbar:false,
-        message:'',
-        timeout:7000,
+        message :'',
+        timeout:5000,
         headers: [
           { text: 'ID', value: 'id',align: 'left'},
           { text: 'Email', value: 'email' },
           { text:'Action', value: 'action' ,sortable: false, align:'right'},
         ],
-        
         subscribers:[],
-        
      }
     },
     computed:{
@@ -129,14 +132,14 @@ export default {
 
         if(response.data.success ==true)
         {
-          this.snackbar = true
-          this.message = "You deleted Subscribers"
           
-
+          this.message = "Your have Successfully Deleted the Subscriber"
+          this.snackbar = true;
+         // location.reload(true)
         }else
         {
-          this.snackbar = true
-          this.message = "Process Failed"
+         this.snackbar = true;
+         this.send_messg = "Failed to connect to the Server"
         }
         
     }

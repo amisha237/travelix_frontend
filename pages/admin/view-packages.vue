@@ -32,14 +32,15 @@
       :page="page"
     >
     <template v-slot:item.action="{ item }">
-       <v-dialog v-model="dialog" max-width="1000px" class="mx-auto">
-          <v-card pa-10>
-            <v-card-text class="black--text display-1 text-center" text-center>Edit Package</v-card-text>
+       <v-dialog v-model="dialog" max-width="1200px" class="mx-auto ma-20" >
+          <v-card pa-10 >
+            <v-card-text class="black--text display-1 text-center dark" text-center>Edit Package</v-card-text>
             <v-form
               ref="form"
               v-model="active"
               method="POST"
               id="form"
+              
           >
               <!-- package name -->
                 <v-layout  wrap>
@@ -596,10 +597,11 @@
 				const response = await this.$axios.delete(`/api/packages/delete/${id}`)
 				if(response.data.success==true)
 				 {
-					this.message=` Package deleted  successfully`
+          this.message='Package deleted  successfully'
+          this.snackbar = true
 				 } 
 					
-          this.snackbar=true
+         
           const index = this.packages.indexOf(item)
 				  this.packages.splice(index, 1)
         
@@ -640,7 +642,7 @@
           this.message="package successfully updated"
           this.snackbar=true
           console.log("Success")
-          window.location.reload()
+          //window.location.reload()
         }
         this.close()
 

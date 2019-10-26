@@ -145,11 +145,22 @@
         
 
         </v-card>
-    
-    
-      
-
        </v-flex>
+       <v-snackbar
+          v-model="snackbar"
+          :timeout="timeout"
+          top
+          vertical
+          >
+          {{ message }}
+          <v-btn
+            color="primary"
+            text
+            @click="snackbar = false"
+          >
+            Close
+          </v-btn>
+          </v-snackbar>
     </v-layout> 
 
 </template>
@@ -158,6 +169,10 @@
   export default {
     layout:"adminDashboardNavigation",
     data: () => ({
+       snackbar:false,
+        message :'',
+        status:false,
+        timeout:5000,
         active: true,
         name: '',
         nameRules: [
@@ -207,12 +222,21 @@
 
       })
       if(response.data.success==true)
-				{
+				{  this.status = true
+          this.message = "You have successfully Added Packages"
+          this.snackbar = true,
           console.log("Success")
-          this.$router.push({
-           path: '/admin/viewPackage'
-         });
+         
+        //   
         }
+        // if(this.status==true)
+        // {
+        //     this.$router.push({
+        //    path: '/admin/view-packages'
+        //  });
+
+        //  this.status = false
+        // }
         
 
     },

@@ -21,15 +21,20 @@
 
 <script>
 export default {
+
+	props: {
+		message: {
+			type: String,
+			required: true
+		}
+	},
     data(){
         return{
-        timeout:3000,
-        snackbar:false,
-        dialog: false,
-        message: '',
-        
-
+		timeout:5000,
+		
+     
         }
+		
     }
 
     

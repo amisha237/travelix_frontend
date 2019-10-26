@@ -18,7 +18,7 @@
             <v-col cols = "12" xs = "12" sm= "12" md = "9" lg = "9"  >
                 <v-card class="mx-auto pa-10 ma-10 grey lighten-3" >
           
-                    <v-card-text class="black--text display-1 text-center" text-center>Create User</v-card-text>
+                    <v-card-text class="black--text display-1 text-center" text-center>Add Admin</v-card-text>
                     
                    
                         <v-row>
@@ -34,7 +34,7 @@
                              <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6" >
                                  <v-text-field
                                 label="Last Name"
-                                v-model="lname"
+                                v-model="lname"  
                                 :rules="nameRules"
                                 outlined
                                 required
@@ -61,7 +61,6 @@
                                 ></v-text-field>
                             </v-col>
                         </v-row>
-                       
                         <v-row>
                             <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6" >
                                 <v-text-field
@@ -90,7 +89,7 @@
                                         v-on="on"
                                         ></v-text-field>
                                     </template>
-                                    <v-date-picker v-model="date" @input="menu2 = false"></v-date-picker>
+                                    <v-date-picker v-model="date" @input=" menu2 = false"></v-date-picker>
                                 </v-menu>
                             </v-col>
                         </v-row>
@@ -184,8 +183,6 @@
 export default {
     layout:'adminDashboardNavigation',
     
-  
-  
 
    data(){
 
@@ -200,10 +197,9 @@ export default {
         password: '',
         timeout:5000,
         message:'',
-         snackbar:false,
+        snackbar:false,
+        date:false,
        
-        
-        date:'',
        nameRules: [
         v => !!v || 'Name is required',
        
@@ -215,15 +211,10 @@ export default {
         v => !!v || 'E-mail is required',
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
       ],
-      date: new Date().toISOString().substr(0, 10),
-      menu2:'false',
+     date: new Date().toISOString().substr(0, 10),
+      menu2:false,
      
        }
-   
-
-
-       
-
 
 
    },
@@ -264,7 +255,7 @@ export default {
                  this.snackbar=true
                   this.$router.push({
                   path: '/admin/view-users'
-         });
+                     });
                  
                 }
             
@@ -274,7 +265,7 @@ export default {
           
       
 
-        }
+    }
 }
 </script>
 
