@@ -74,7 +74,7 @@
               {{n}}
 
               </v-tab>
-                 <v-tab-item  >
+                 <v-tab-item>
                       <Login />
                  </v-tab-item>
                  <v-tab-item>
@@ -134,7 +134,7 @@
                 
                 <v-list-item>
                 <v-list-item-action>
-                    <v-btn text small>
+                    <v-btn text small @click.prevent="logout">
                     Logout
                     </v-btn>
                     </v-list-item-action>
@@ -202,10 +202,10 @@ export default {
   methods:{
         async logout()
         {
-          await this.$auth.logout();;
+          await this.$auth.logout().then(()=>{
+            this.$router.push('/');
+          });
           console.log('logout')
-          window.location.reload()
-
         }
   }
 }

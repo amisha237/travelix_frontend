@@ -6,3 +6,4 @@ export const getters = {
         return state.user
     }
 }
+

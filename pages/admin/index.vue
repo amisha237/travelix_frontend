@@ -79,6 +79,7 @@
             </v-col>
         </v-row>
        
+       
     </v-container>
 </v-app>
     
@@ -89,7 +90,9 @@ export default {
 layout : 'adminLoginLayout',
 
      data: () => ({
-       active: true,
+      text:'',
+      snackbar:false,
+      active: true,
       show : false,
       email: '',
       emailRules: [
@@ -109,26 +112,23 @@ layout : 'adminLoginLayout',
    async checkLogin() {
        
        console.log(this.email);
+
        await this.$auth.loginWith('local', {
         data: {
           "email": this.email,
           "password": this.password,  
           "authentication": this.authentication,
         }
+      }).then(() => {
+      if(this.$auth.loggedIn)
+          this.$router.push('/admin/dashboard')
+      else         
+          this.text="LOGIN FAILED"                                               
+          
       }).catch(e => {
-
           console.log("Login Failed");
       });
 
-      if(this.$auth.loggedIn)
-      {
-      
-          this.$router.push({
-                  path: '/admin/dashboard'
-         });
-
-        
-      }
          
   }
 },

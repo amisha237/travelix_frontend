@@ -335,7 +335,7 @@
                     v-model="page"
                     :length="numberOfPages"
                     color="purple lighten-2"
-                    circle
+                  circle
                     max-visible="5"
                   ></v-pagination></v-col>
                 </v-row>

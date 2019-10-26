@@ -142,7 +142,7 @@
                 v-for="(item, index) in notifications"
                 :key="index"
                 >
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                <v-list-item-title>{{ item.action }}</v-list-item-title>
                 
                 </v-list-item>
                 
@@ -153,7 +153,7 @@
                 small
                 rounded
                 color="error"
-                @click="messages = 0"
+                @click="deleteNotification"
 
                 >
                 clear all
@@ -161,7 +161,7 @@
                 </div>
             </v-list>
             </span>
-            <span v-else class=""><br>
+            <span v-else  class=""><br>
                 No new notifications
 
             </span>
@@ -399,12 +399,12 @@ export default {
         ]
         },
       ],
-      messages:5,
+      messages:'',
       notifications: [
-        { title: 'Vasily S sent you a message' },
-        { title: 'Oleg M uploaded a new Zip file with ' },
-        { title: 'Oleg M uploaded a new Zip file with ' },
-        { title: 'Click Me 2' },
+        // { title: 'Vasily S sent you a message' },
+        // { title: 'Oleg M uploaded a new Zip file with ' },
+        // { title: 'Oleg M uploaded a new Zip file with ' },
+        // { title: 'Click Me 2' },
       ],
       email:4,
       emails:[
@@ -424,8 +424,30 @@ export default {
   methods:{
       async initialize () {
 
-        console.log($auth.user.name)
+        //console.log($auth.user.name)
+          const response = await this.$axios.get('/api/notification')
+          console.log('testing')
+           console.log(response.data.length)
+            let length =  response.data.length;
+            this.messages = length;
+
+          for(var j=0;j<response.data.length;j++)
+            {
+              this.notifications.push(response.data[j])
+			}
+			
+        
       },
+
+      async deleteNotifications()
+      {
+        const response = await this.$axios.delete('/api/notification/delete')
+        
+
+      },
+      
+
+     
        func(){
       this.drawer=!this.drawer
       // this.miniVariant=!this.miniVariant

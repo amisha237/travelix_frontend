@@ -1,8 +1,8 @@
 <template>
-<v-container fluid >
+<v-container flex>
     <v-img  
-         width="1500"
-         height="400"
+         width="1700"
+         height="300"
          src="blog_image2.jpg">
     </v-img>
     <br><br>
@@ -58,7 +58,7 @@
         <v-col  cols = "12" xs = "4" sm = "4" md= "4">
             <v-card
             max-width="600"
-            height = "230"
+            height = "auto"
             class="mx-auto card_margin"
             >
                 <v-subheader class = "display-1 black--text" >Latest Offers</v-subheader>

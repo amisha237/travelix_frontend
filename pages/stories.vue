@@ -35,6 +35,7 @@
                 <template v-slot:default="props">
                 
                 <v-card
+                   
                     v-for="item in items" :key="item.id"     
                     class="mx-auto card_margin pa-4"
                     :flat="flat"
@@ -42,6 +43,7 @@
                     :outlined="outlined"
                     :width="width"
                     :height="height"
+                    :border="black"
                     
                     >
                     <v-img
@@ -55,19 +57,22 @@
                     <!--<v-card-title v-else>I'm a title</v-card-title>
         
                     <v-card-text>I'm card text</v-card-text>-->
-                    <v-card-actions v-if="actions">
-                        <v-chip>Travel Date: {{item.tour_date}}</v-chip>&emsp;
-                        
-                        
-                        <v-chip >Author: {{item.author}}</v-chip>&emsp;
-                        <v-chip class="likes_layout">Likes: {{item.likes}}</v-chip>&emsp;
+                    <v-card-actions v-if="actions" class="indigo white--text">
+                       
+                        <v-chip class="white black--text"  >Author: {{item.author}}</v-chip>&emsp; 
+                        <v-chip class="white black--text"  >Travel Date: {{item.tour_date}}</v-chip>&emsp;
+                        <v-spacer></v-spacer>
+                        <v-chip class="likes_layout white black--text">Likes: {{item.likes}}</v-chip>&emsp;
                     </v-card-actions>
 
                     <v-card-text>{{item.experience}}</v-card-text>
                     <br>
                     <v-row class="pa-4">
 
-                    <v-btn btn btn-danger @click.prevent="sendLike(item.id)">{{likes[item.id]}}</v-btn><v-spacer></v-spacer><v-btn>Read more</v-btn>
+                     <v-btn text icon large fab dark  color="primary" >
+                <v-icon>mdi-heart</v-icon>
+              </v-btn><v-spacer></v-spacer> <v-btn  tile color="lighten-2 indigo" dark>View Package Info</v-btn>
+     <v-spacer></v-spacer><v-btn color="indigo  lighten-2  white--text outlined ">Booking Avaliable</v-btn>
 
                     </v-row>
                     
@@ -98,11 +103,13 @@
                 max-width="600"
                 height = "230"
                 
-                class="mx-auto card_margin"
+                class="mx-auto card_margin dark"
                 >
                     <v-row
                     class="py-4 pl-4"
                     >
+                     <!-- <p class="display-5">{{post.tour_date}}</p> -->
+                           
                         <v-col class="shrink">
                             <v-img
                             height="150"
@@ -113,12 +120,13 @@
                             
                            
                         </v-col>
-                        <v-col class="post-style">
-                           <header> class="post-style-header">{{post.package_name}}</header><br>
-                           <header class="post-style-header">{{post.tour_date}}</header><br>
-                            <header class="post-style-header">{{post.author}}</header>
-                           <p class="post-style-exp">{{post.experience.substring(0,100)+""}} <a href="#">...Read More</a>
-</p>
+                        <v-col class="post-style justify-start" >
+                           <header  class="post-style-header">{{post.package_name}}</header>
+                            <p class="post-style-header">{{post.author}}</p>
+                          
+                           <p class="post-style-exp">{{post.experience.substring(0,60)+""}} <a href="#">...Read More</a></p>
+                            
+                            <p class="grey--text"> By : {{post.author}}</p>
                         
                         </v-col>
                      </v-row>

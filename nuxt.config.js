@@ -91,19 +91,17 @@ export default {
         endpoints: {
           login: { url: '/api/auth/login', method: 'post', propertyName: 'meta.token' },
           user: { url: '/api/auth/me', method: 'get', propertyName: 'data' },
-          logout: {url: '/api/auth/logout', method: 'get'},
+          logout: {url: '/api/auth/logout', method: 'get',},
         },
         tokenRequired: true,
         tokenType: 'Bearer',
       },
  
     },
-    redirect: {
-      login: '/admin',
-      logout: '/',
-      home: '/',
-      user: '/admin/view-user',
-    },
+    // redirect: {
+    //   login: '/admin/dashboard',
+    //   logout: '/',
+    // },
 
   },
   /*

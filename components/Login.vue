@@ -86,25 +86,33 @@ export default {
    async checkLogin() {
        
        console.log(this.email);
-       await this.$auth.loginWith('local', {
-        data: {
-          "email": this.email,
-          "password": this.password,  
-          "authentication":this.authentication,
-        }
-      
-      }).catch(e => {
-          console.log("Login Failed");
-      });
-    
-      if(this.$auth.loggedIn)
-      {
-          console.log("Success")
-          //console.log(response.data)
-          console.log('Login SuccessFull')
-          window.location.reload()
+     try{  
+          await this.$auth.loginWith('local', {
+            data: {
+              "email": this.email,
+              "password": this.password,  
+              "authentication":this.authentication,
+            }
 
+              }).then(() => {
+                if(this.$auth.loggedIn)
+                   this.$router.push('/')
+                else  
+                  console.log("Login Failed"); 
+           }) 
       }
+      catch(err ) {
+          console.log("Login Failed");
+      }
+    
+      // if(this.$auth.loggedIn)
+      // {
+      //     console.log("Success")
+      //     //console.log(response.data)
+      //     console.log('Login SuccessFull')
+      //     window.location.reload()
+
+      // }
          
   }
 },

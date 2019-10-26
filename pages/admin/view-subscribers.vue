@@ -35,7 +35,7 @@
               <v-icon
               color="red"
               class="mr-2"
-              @click="deleteItem(item)"
+              @click.prevent ="deleteItem(item)"
             >
               mdi-delete
             </v-icon>
@@ -57,6 +57,7 @@
             </template>
           </v-data-table>
         </v-card>
+     
    <!-- snackbar -->
         <v-snackbar
           v-model="snackbar"
@@ -78,22 +79,24 @@
 </v-container>
 </template>
 <script>
-
+//import snackbar from '@/components/snackbar.vue' ;
 export default {
+ 
     layout:'adminDashboardNavigation',
     data(){
         return{
+        
         search: '',
         itemsPerPageArray: [1, 2, 5,10,15,20],
         page: 1,
 		    itemsPerPage: 5,
         snackbar:false,
         message:'',
-        timeout:3000,
+        timeout:7000,
         headers: [
-          { text: 'ID', value: 'name',align: 'left'},
+          { text: 'ID', value: 'id',align: 'left'},
           { text: 'Email', value: 'email' },
-          { text:'Action', value: 'action' ,sortable: false,},
+          { text:'Action', value: 'action' ,sortable: false, align:'right'},
         ],
         
         subscribers:[],
@@ -111,8 +114,7 @@ export default {
     },
     methods:{
           async initialize () {
-          const response = await this.$axios.get('/api/')
- 
+          const response = await this.$axios.get('/api/subscribers')
           for(var j=0;j<response.data.length;j++)
             {
               this.subscribers.push(response.data[j])
@@ -120,21 +122,26 @@ export default {
 
       },
        async deleteItem (item) {
-        
-         confirm('Are you sure you want to delete this item?') 
+        let id=item.id
+        console.log(item)
+        console.log(item.id)
+        const response = await this.$axios.delete(`/api/subscribers/delete/${id}`)
 
-                let id=item.id
-				const response = await this.$axios.delete(`/api//${id}`)
-				if(response.data.success==true)
-				 {
-					this.message=` Package deleted  successfully`
-				 } 
-					
-          this.snackbar=true
-          const index = this.packages.indexOf(item)
-		      this.packages.splice(index, 1)
+        if(response.data.success ==true)
+        {
+          this.snackbar = true
+          this.message = "You deleted Subscribers"
+          
+
+        }else
+        {
+          this.snackbar = true
+          this.message = "Process Failed"
+        }
         
-      },
     }
+       
+  },
 }
+
 </script>

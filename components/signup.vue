@@ -83,7 +83,8 @@
               </div>
             
           </v-form>
-      </v-flex>
+      </v-flex> 
+
    </v-layout>
 </template>
 
