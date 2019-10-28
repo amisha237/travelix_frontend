@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2019 at 09:15 PM
+-- Generation Time: Oct 28, 2019 at 05:03 PM
 -- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,7 +43,9 @@ CREATE TABLE `activity_feeds` (
 INSERT INTO `activity_feeds` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES
 (2, 'Admin', 'A new Package Hawai Tour of Hawai has arrived!!!', '2019-10-24 12:32:11', '2019-10-24 12:32:11'),
 (3, 'User', 'Have a look hum hai has Shared his Story!!!', '2019-10-24 12:42:18', '2019-10-24 12:42:18'),
-(4, 'Admin', 'A new City Blog of japan has been added!!!', '2019-10-24 12:49:43', '2019-10-24 12:49:43');
+(4, 'Admin', 'A new City Blog of japan has been added!!!', '2019-10-24 12:49:43', '2019-10-24 12:49:43'),
+(5, 'User', 'Have a look Akash has Shared his Story!!!', '2019-10-28 09:41:28', '2019-10-28 09:41:28'),
+(6, 'User', 'Have a look Akash has Shared his Story!!!', '2019-10-28 10:08:16', '2019-10-28 10:08:16');
 
 -- --------------------------------------------------------
 
@@ -222,7 +224,31 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (23, '2019_10_06_110735_add_foreifn_to_blogs_table', 4),
 (24, '2019_10_12_142356_create_stories_table', 5),
 (25, '2019_10_12_153241_create_add_likes_table', 5),
-(26, '2019_10_24_174011_create_activity_feeds_table', 5);
+(26, '2019_10_24_174011_create_activity_feeds_table', 5),
+(27, '2019_10_25_184043_create_notifications_table', 6),
+(28, '2019_10_28_145901_add_city_to_stories', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `action` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `title`, `action`, `created_at`, `updated_at`) VALUES
+(1, 'User', 'Akash has Shared his Story, Please review it', '2019-10-28 09:41:28', '2019-10-28 09:41:28'),
+(2, 'User', 'Akash has Shared his Story, Please review it', '2019-10-28 10:08:16', '2019-10-28 10:08:16');
 
 -- --------------------------------------------------------
 
@@ -252,30 +278,39 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('059946598d545dd4b51375f156ae59b1d4f0de24b71e621ddb386f0c00555a4885ebd906902cee5c', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:53:58', '2019-10-05 11:53:58', '2020-10-05 17:23:58'),
 ('06c0ab8d17b00718a5b1cfb5238f1a1c778e6bb42d46d7b5dec930cf1155e91d0d83157f28c5d7cb', 5, 1, 'authToken', '[]', 0, '2019-10-05 12:06:39', '2019-10-05 12:06:39', '2020-10-05 17:36:39'),
 ('0805e57e806889d3536679693fafcceffa91039e75e450283657bf069644401412505ee545d37d4e', 17, 1, 'authToken', '[]', 0, '2019-10-05 11:07:51', '2019-10-05 11:07:51', '2020-10-05 16:37:51'),
+('1059552ecf57f42e1e27d8ab5b3efa7d1246ad9444aa8979c0e18b894c0191fb21d991c64fc672ef', 1, 1, 'authToken', '[]', 1, '2019-10-26 04:23:49', '2019-10-26 04:23:49', '2020-10-26 09:53:49'),
 ('2013fc11138c07eae98f33b68f634c2a1830946856b6826cb5c77e859b366aba7c7f9a5a30b5cef5', 7, 1, 'authToken', '[]', 0, '2019-10-05 05:53:25', '2019-10-05 05:53:25', '2020-10-05 11:23:25'),
+('26151463e609221552363ba20302a007aeb9737351c1bdf8abbca1d27414a16541d752a9d4f2dfbe', 17, 1, 'authToken', '[]', 0, '2019-10-26 01:15:09', '2019-10-26 01:15:09', '2020-10-26 06:45:09'),
 ('268ccdcba23482cbcd428f3d44648200c6c26f26f41438dd96a0a8707863edf5abe71aceffbfda4e', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:18:06', '2019-10-05 11:18:06', '2020-10-05 16:48:06'),
 ('2b59a05e156caa0c19ea1a69f9fed05c664751f30e6bde103f7a1634196a06f58352580af7c8a892', 1, 1, 'authToken', '[]', 1, '2019-10-05 10:56:44', '2019-10-05 10:56:44', '2020-10-05 16:26:44'),
 ('2ec64e884a8a1984e83a9905556dc1bf60d9f5f2a502a6120c90dec83ca0cfd67aeab33cda8aca59', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:31:17', '2019-10-05 11:31:17', '2020-10-05 17:01:17'),
+('301cbed3fa29a8455279fea0ed5fb6e94574da0279fd64bf83f20cf505c068fd8f2adaba974a35f9', 17, 1, 'authToken', '[]', 0, '2019-10-26 01:31:57', '2019-10-26 01:31:57', '2020-10-26 07:01:57'),
 ('39b24419d672f3a43b99fd17800be65404fc400b9c66e88f50bde34579787989d98088eda4c25658', 1, 1, 'authToken', '[]', 0, '2019-10-05 11:54:36', '2019-10-05 11:54:36', '2020-10-05 17:24:36'),
 ('3bdce4b2bbaec31bb08a09ca5c587a2d7467c746a33f75c5fd9ee134262001edec4ccf749bf141af', 15, 1, 'authToken', '[]', 0, '2019-10-05 08:59:25', '2019-10-05 08:59:25', '2020-10-05 14:29:25'),
+('3ddb753f2fea72744f74f20c7fd127abb3429aaa6697da6717da09778d8cbc8b4fa5e673b14d504b', 17, 1, 'authToken', '[]', 0, '2019-10-26 01:43:30', '2019-10-26 01:43:30', '2020-10-26 07:13:30'),
 ('3f48c2e88b32bfdc5b580cbe4f1c1a5ca199bc5f14091e538574d79b2615bc315a2873667944edfc', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:48:29', '2019-10-05 11:48:29', '2020-10-05 17:18:29'),
 ('412f09e9388857988fe48c9752f7607989b977019a506f6e5097ae9e24536e5f60b32674a46e948a', 17, 1, 'authToken', '[]', 0, '2019-10-05 11:02:03', '2019-10-05 11:02:03', '2020-10-05 16:32:03'),
+('41937790c6bf4a346990e385a19425653b034970abc93738b258bb896ec06779bfde58cf3ed4b635', 17, 1, 'authToken', '[]', 0, '2019-10-26 04:25:47', '2019-10-26 04:25:47', '2020-10-26 09:55:47'),
 ('437d4c0524f5e580c1c99bd4b4c99c77d99c2c901411e322a98ecab74253318ef49537b83cfead76', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:41:33', '2019-10-05 11:41:33', '2020-10-05 17:11:33'),
 ('4de3e16fa9feb9a795651f6efe96d8f5546da8744aa271447202e99e7de87fbc7632a0172898ced6', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:49:17', '2019-10-05 11:49:17', '2020-10-05 17:19:17'),
 ('50d76b2dabf4c1be3920cdb734295b82e65a208a9c28bfe741d4c95bee5889dc9d7aacba47770474', 5, 1, 'authToken', '[]', 1, '2019-10-05 12:06:53', '2019-10-05 12:06:53', '2020-10-05 17:36:53'),
 ('51403a62ada593033102f83e1dbbd3921f1b89676f97d59b1ab3be9d56e762fd42d5d1fae6cde8cc', 1, 1, 'authToken', '[]', 0, '2019-10-05 10:18:10', '2019-10-05 10:18:10', '2020-10-05 15:48:10'),
 ('5185dafae4e5064edca69a10b6710adb34e28f24e07d8d0e226c76b6a77c9e732f59b9efd5224be9', 17, 1, 'authToken', '[]', 0, '2019-10-05 11:21:47', '2019-10-05 11:21:47', '2020-10-05 16:51:47'),
+('53238d938f186acd45f7f660a91979e804e7de719665b7b2e8ffaeb34bf465b92ef0e8e29b25f163', 17, 1, 'authToken', '[]', 0, '2019-10-26 02:18:46', '2019-10-26 02:18:46', '2020-10-26 07:48:46'),
 ('544696c8cdae886e4c72d30c0e3fa8f9df209d03045f68a00c24c0d947dc70b39e3b1ae830a0e70e', 4, 1, 'authToken', '[]', 0, '2019-10-05 12:03:43', '2019-10-05 12:03:43', '2020-10-05 17:33:43'),
 ('57a5dd752abc6d5e647ce506cebcf2e3cd7c0bf06c4de32a84842b3dd156ba11328143c9fecbd916', 3, 1, 'authToken', '[]', 0, '2019-10-05 11:10:20', '2019-10-05 11:10:20', '2020-10-05 16:40:20'),
+('617932fda7eee6cadddae4ba957f9aabcac488102c696dc082ea7bacdac53becabf4c7c0da689394', 17, 1, 'authToken', '[]', 1, '2019-10-26 04:19:54', '2019-10-26 04:19:54', '2020-10-26 09:49:54'),
 ('65d365535092805ea51291a906f7220e09c4ed2c6a7731b973e82757cf3c04f4711c454c455a7da9', 6, 1, 'authToken', '[]', 0, '2019-10-05 05:50:54', '2019-10-05 05:50:54', '2020-10-05 11:20:54'),
 ('66b44b46ae900dc36b4fda301e9b12f06237542bb2ea35c51cda96578e0224c8015b90debcbcef35', 14, 1, 'authToken', '[]', 0, '2019-10-05 08:57:37', '2019-10-05 08:57:37', '2020-10-05 14:27:37'),
 ('6cc67655969145c2f58278890f5c35e3d0b634265d35976359795ceeaa876aa38f84e45020c8ef55', 13, 1, 'authToken', '[]', 0, '2019-10-05 08:43:43', '2019-10-05 08:43:43', '2020-10-05 14:13:43'),
 ('6f27b9e013766156846774d18c61b6dc0897937de918bb814f90a2ef3bb5b66f724891f420ce5847', 4, 1, 'authToken', '[]', 0, '2019-10-05 05:45:50', '2019-10-05 05:45:50', '2020-10-05 11:15:50'),
 ('74c0a03dede025681b0172fe65e96544ff1f0415ee25a3a12bba0a278cab3cc577a82b9cdc605f50', 2, 1, 'authToken', '[]', 0, '2019-10-05 05:27:17', '2019-10-05 05:27:17', '2020-10-05 10:57:17'),
 ('7c75e8e155a0f40791ac553c934eed49ad63da85c4b80983bb678b36c90e3d283e40f54d41bd7e72', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:50:37', '2019-10-05 11:50:37', '2020-10-05 17:20:37'),
+('80d187d22a91a5116e1be89e5c553f1bf8647d2f8aaee89366a4e9a9e9fc1f68c8cbba3fc14ede9a', 17, 1, 'authToken', '[]', 0, '2019-10-26 01:20:02', '2019-10-26 01:20:02', '2020-10-26 06:50:02'),
 ('810197992f1e2dcde325eefd55f943dde7496be726b680a25a5c3291f0a6837138bda6db3c8d9933', 16, 1, 'authToken', '[]', 0, '2019-10-05 09:01:24', '2019-10-05 09:01:24', '2020-10-05 14:31:24'),
 ('83bb886cc93b1e471119aa4e87fd7726922abbbdbfbefbbc5e93ba9591f7c58ebb1ed0ad6e300067', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:28:45', '2019-10-05 11:28:45', '2020-10-05 16:58:45'),
 ('88cb4fa7995081d0f06d01c6de662ce159e303fa844319d2900f95ee0fbe8a8cf3a2bf03bd2fc5c8', 3, 1, 'authToken', '[]', 0, '2019-10-05 11:10:58', '2019-10-05 11:10:58', '2020-10-05 16:40:58'),
+('893a6ece770788076d7fc92df4a4871698d3fb71c4d7993fb03871c19857a15df63ae4c9d62d95c7', 17, 1, 'authToken', '[]', 0, '2019-10-26 04:21:55', '2019-10-26 04:21:55', '2020-10-26 09:51:55'),
 ('8bf490235a54df7f0f11751e705e7cc3addc06881e9377a7d90e65b871b4f0a3ea0f08d53f07aa53', 1, 1, 'authToken', '[]', 1, '2019-10-05 10:49:20', '2019-10-05 10:49:20', '2020-10-05 16:19:20'),
 ('8dbc49c1a116694cc7863733d57e694e5d5346fc37cfb366f299b09582880cc7718ed85f1c2808a5', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:39:55', '2019-10-05 11:39:55', '2020-10-05 17:09:55'),
 ('91156b95b617ec13679aaca2282a242b14a1cf33939eb5033daca1a8ca84318236f4f725a36b4aaf', 8, 1, 'authToken', '[]', 0, '2019-10-05 07:21:13', '2019-10-05 07:21:13', '2020-10-05 12:51:13'),
@@ -284,13 +319,20 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('96008e7379a963e2a6de818e0cebef317dbd33b33beadbcbd221688382f8146e5f51ee18e1dc8b3e', 12, 1, 'authToken', '[]', 0, '2019-10-05 08:05:29', '2019-10-05 08:05:29', '2020-10-05 13:35:29'),
 ('9676b450d8fa25e0088f3c775eaf2b191d126fcf2f97f7feedad035389ae5d8d9abb571e164b9e86', 17, 1, 'authToken', '[]', 0, '2019-10-05 11:25:28', '2019-10-05 11:25:28', '2020-10-05 16:55:28'),
 ('9ab41837a025301b2828a6f013c9f95d206e17120480d6461cd67b1f8ccb93520ed71b2e551dd2b4', 11, 1, 'authToken', '[]', 0, '2019-10-05 07:53:16', '2019-10-05 07:53:16', '2020-10-05 13:23:16'),
+('a08ed32f61a5994337a1e4bd097e0127baeb48141b46618c5552030b0dddf67d0da3290c7be54178', 17, 1, 'authToken', '[]', 0, '2019-10-26 02:21:26', '2019-10-26 02:21:26', '2020-10-26 07:51:26'),
 ('a21612c20cef22ca58fc19ee4f1b9be6a8be80d7c583de4e0b555a15ff88805e0898ad90aedd10b5', 1, 1, 'authToken', '[]', 0, '2019-10-05 10:47:52', '2019-10-05 10:47:52', '2020-10-05 16:17:52'),
 ('a28bec450aa3a5d19f52df47207e500750b6ad14a10c405c60400b6ac404aac4c7d35241ffeb4f9b', 3, 1, 'authToken', '[]', 1, '2019-10-05 11:16:03', '2019-10-05 11:16:03', '2020-10-05 16:46:03'),
 ('a2adb2989b22c94644bfa7ffd5a9ceed192c72e35740b391f820e9a19a2d1be880912c71429c44ac', 17, 1, 'authToken', '[]', 0, '2019-10-05 11:01:27', '2019-10-05 11:01:27', '2020-10-05 16:31:27'),
+('a52d5a311d778ca3e23492cea57125339ae1ff769abd0153dfda0cfec3d23c440c31a3caf1587a58', 1, 1, 'authToken', '[]', 1, '2019-10-26 02:33:01', '2019-10-26 02:33:01', '2020-10-26 08:03:01'),
 ('a56bbc8a6c21f2038dee9c0085f280740e1fa38915f09420fbbf65143c1a6c8597511c8d64e96205', 4, 1, 'authToken', '[]', 1, '2019-10-05 12:04:02', '2019-10-05 12:04:02', '2020-10-05 17:34:02'),
+('afa3241ef50f387840129e0d1643ec3760e0b03cf11b035833165fd32f6d26b5acf8361c7cbea7cf', 1, 1, 'authToken', '[]', 1, '2019-10-26 04:25:09', '2019-10-26 04:25:09', '2020-10-26 09:55:09'),
 ('b684dde87e2dd5c61d7b6bf16a83c511f8e16595eb1b5b14e92c5fa7e9bf7d643cb2f024bcb87e45', 5, 1, 'authToken', '[]', 0, '2019-10-05 05:46:19', '2019-10-05 05:46:19', '2020-10-05 11:16:19'),
+('b6a359199ebfa4d06aaf1160b09357bc9f29a56b666ac24f511a841f14cc0739a2888a6ff7ba8c59', 17, 1, 'authToken', '[]', 0, '2019-10-28 09:35:46', '2019-10-28 09:35:46', '2020-10-28 15:05:46'),
+('bcf522dfde81e5946e3c72beae18e99c6ee78d342ed1b7131e405acae63b0170faccb46344a2fb2a', 17, 1, 'authToken', '[]', 0, '2019-10-26 04:18:45', '2019-10-26 04:18:45', '2020-10-26 09:48:45'),
+('d096059cdcdd1bd185df0f4ee8506f49dc11e76a1fd906df7a713769122dd3ab34c3c33c4f8ba295', 17, 1, 'authToken', '[]', 0, '2019-10-26 01:18:33', '2019-10-26 01:18:33', '2020-10-26 06:48:33'),
 ('d96bef3dfee27d080471ae74588109fdc8e94c74f7b6bfaa028bed445194b9209d19b52145cb3ceb', 3, 1, 'authToken', '[]', 1, '2019-10-05 12:01:34', '2019-10-05 12:01:34', '2020-10-05 17:31:34'),
 ('ddcf8b489801c1fe5797d72693c8f846d17ae255939f0ced79dcb0c006cb21722dcbd2af0e9f2ca0', 17, 1, 'authToken', '[]', 1, '2019-10-05 11:56:28', '2019-10-05 11:56:28', '2020-10-05 17:26:28'),
+('de7d3cb9891f67e801f8a823eacae0a3dfaf8f987adf2b94f0235efc1e98be40c27a019540ff52b4', 17, 1, 'authToken', '[]', 0, '2019-10-26 04:17:04', '2019-10-26 04:17:04', '2020-10-26 09:47:04'),
 ('df1fe772ab7a57f72a8713b7f8623b8a58283e90479b39a2133c3c16be627f6a9b0f239065087f41', 10, 1, 'authToken', '[]', 0, '2019-10-05 07:51:45', '2019-10-05 07:51:45', '2020-10-05 13:21:45'),
 ('e196655672d34bededb71fe2ad7311339bed4301ed5196241717c70c850f9a09698d424deb6c27e4', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:40:27', '2019-10-05 11:40:27', '2020-10-05 17:10:27'),
 ('e1cd2f67f07de99cd1509c8e7f377e9140374e816e171778be03825849053c0cc9b854ebef0880a5', 1, 1, 'authToken', '[]', 1, '2019-10-05 10:18:40', '2019-10-05 10:18:40', '2020-10-05 15:48:40'),
@@ -298,10 +340,12 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('e98b18baee2b3833f01af59efef0eed1010919867a7e3dd026a4c3614817f338970c9e8d043fbd57', 17, 1, 'authToken', '[]', 0, '2019-10-05 10:10:27', '2019-10-05 10:10:27', '2020-10-05 15:40:27'),
 ('eb3a29514f8092271c2395e1203849ca3047da8939f1f4137e2fba84bec068316e70a9b8ff0f1697', 17, 1, 'authToken', '[]', 1, '2019-10-05 10:20:25', '2019-10-05 10:20:25', '2020-10-05 15:50:25'),
 ('ec875f15ba7686f42502021a4b060563fb921c9f231a6ca4972a79f955144814f2d826bcf9c4474e', 1, 1, 'authToken', '[]', 0, '2019-10-05 12:26:29', '2019-10-05 12:26:29', '2020-10-05 17:56:29'),
+('f0dc955bcd835e7cfa3baf890555de515f557bc57768f3e5f4e27a595f1d09ce2e59b73dc5a11429', 17, 1, 'authToken', '[]', 0, '2019-10-26 02:22:21', '2019-10-26 02:22:21', '2020-10-26 07:52:21'),
 ('f1eaaefe1483226890caf7a174e9db1ae29bee73687388af8cec350885b33ac9db0126977ebd88aa', 17, 1, 'authToken', '[]', 1, '2019-10-05 10:14:23', '2019-10-05 10:14:23', '2020-10-05 15:44:23'),
 ('f25aa04ee925cf9ce7cd22e3efaf11f0c66378761fb5f7dc0a7d1b6d2ca005c0301c135eed1052ef', 17, 1, 'authToken', '[]', 0, '2019-10-05 11:20:56', '2019-10-05 11:20:56', '2020-10-05 16:50:56'),
 ('fa24d5edef3038ae993ab5f3d2c8b4d1554b558e8319a2dca71aad742f2190114bf9031c140bb785', 1, 1, 'authToken', '[]', 1, '2019-10-05 11:52:23', '2019-10-05 11:52:23', '2020-10-05 17:22:23'),
-('fef3fa8b53104b473f690deb960970a62813f214e6ddbb060d305fd5db2672a004f135904d8aeac9', 9, 1, 'authToken', '[]', 0, '2019-10-05 07:48:55', '2019-10-05 07:48:55', '2020-10-05 13:18:55');
+('fef3fa8b53104b473f690deb960970a62813f214e6ddbb060d305fd5db2672a004f135904d8aeac9', 9, 1, 'authToken', '[]', 0, '2019-10-05 07:48:55', '2019-10-05 07:48:55', '2020-10-05 13:18:55'),
+('fff0be2bd45fddc1cdc0c6b62f1573abd8173f9e6f04e85b9bb3d17980ee09790e4fb30e4df6c0d8', 1, 1, 'authToken', '[]', 1, '2019-10-26 02:47:07', '2019-10-26 02:47:07', '2020-10-26 08:17:07');
 
 -- --------------------------------------------------------
 
@@ -409,7 +453,7 @@ INSERT INTO `packages` (`id`, `package_name`, `package_location`, `package_price
 (3, 'Winter Vacation', 'Rajasthan', 8324, 'Couple', 'items: [], items: [], items: [], items: [], items: [],', '1570301243-packageImage.jpg', '2019-10-05 13:16:16', '2019-10-05 13:17:23', 'items: [], items: [], items: [], items: [], items: [],', 4, 3),
 (4, 'Hawai Tour', 'Hawai', 100000, 'couple', 'padharo kabhi hawai me.', NULL, '2019-10-24 12:24:16', '2019-10-24 12:24:16', 'achh hai', 3, 2),
 (5, 'Hawai Tour', 'Hawai', 100000, 'couple', 'padharo kabhi hawai me.', NULL, '2019-10-24 12:32:11', '2019-10-24 12:32:11', 'achh hai', 3, 2),
-(6, 'Anand', 'Gujrat', 1231, 'Man', 'it has various features\r\nit has various features\r\nit has various features', '1570300214-packageImage.jpg', '2019-10-05 12:25:35', '2019-10-05 13:00:14', 'it has various features', 12, 13);
+(6, 'Anandi', 'Gujrat', 1231, 'Man', 'it has various features\r\nit has various features\r\nit has various features', '1570300214-packageImage.jpg', '2019-10-05 12:25:35', '2019-10-05 13:00:14', 'it has various features', 12, 13);
 
 -- --------------------------------------------------------
 
@@ -478,16 +522,19 @@ CREATE TABLE `stories` (
   `likes` int(11) NOT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `city` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `stories`
 --
 
-INSERT INTO `stories` (`id`, `user_id`, `author`, `package_name`, `experience`, `tour_date`, `image_1`, `likes`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'username', 'Winte vacation', 'hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya', '12\'12\'12', NULL, 0, 'pending', NULL, NULL),
-(4, 6, 'hum hai', 'winter vacation hai', 'hhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gya', '12\'3\'19', NULL, 0, 'Review', '2019-10-24 12:42:18', '2019-10-24 12:42:18');
+INSERT INTO `stories` (`id`, `user_id`, `author`, `package_name`, `experience`, `tour_date`, `image_1`, `likes`, `status`, `created_at`, `updated_at`, `city`) VALUES
+(1, 1, 'username', 'Winte vacation', 'hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya hhehehehehe mazza aa gya', '12\'12\'12', NULL, 0, 'pending', NULL, NULL, NULL),
+(4, 6, 'hum hai', 'winter vacation hai', 'hhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gya', '12\'3\'19', NULL, 0, 'Review', '2019-10-24 12:42:18', '2019-10-24 12:42:18', NULL),
+(6, 17, 'hum hai', 'winter vacation hai', 'hhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gyahhehehehehe mazza aa gya', '12\'3\'19', NULL, 0, 'Review', '2019-10-24 12:42:18', '2019-10-24 12:42:18', NULL),
+(8, 17, 'Akash', 'Anandi', 'hheheh ehhehhhhh hhhhhhh h hhhhh heeheheh mazza aag yahhehehe hhehhhhhh hhhhhhhhh hhhhee heheh mazza aagyahheh ehehh ehhhhhh hhhhh hhhhhhhhe eheheh maz za aagyahheheheh hehhhhhhh hhhhhh hhhhhhe eheheh  mazza aag yahhe hehehhehhh hhhhhhhhh hhhhh hheeheheh mazza aagyahhehe hehhehhhhh \r\n hhhhhhhhhhhhhheeheheh mazza aagyahhehehehhehhhhhhhhhhhhhhhhhhheeheheh mazza aagyahhehehehhehhhhhhhhhhhhhhhhhhheeheheh mazza aagyahhehehehhehhhhhhhhhhhhhhhhhhheeheheh mazza aagyahhehehehhehhhhhhhhhhhhhhhhhhheeheheh mazza aagyahhehehehhehhhhhhhhhhhhhhhhhhheeheheh mazza aagyahhehehehhehhhhhhhhhhhhhhhhhhheeheheh mazza aagyahhehehehhehhhhhhhhhhhhhhhhhhheeheheh mazza aagyahhehehehhehhhhhhhhhhhhhhhhhhheeheheh mazza aagya', '2019-10-28', '1572277096-StoriesImage.gif', 0, 'Review', '2019-10-28 10:08:16', '2019-10-28 10:08:16', 'Gujrat');
 
 -- --------------------------------------------------------
 
@@ -589,6 +636,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `oauth_access_tokens`
 --
 ALTER TABLE `oauth_access_tokens`
@@ -651,8 +704,7 @@ ALTER TABLE `stocks`
 -- Indexes for table `stories`
 --
 ALTER TABLE `stories`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `stories_user_id_unique` (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `subscribers`
@@ -677,7 +729,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activity_feeds`
 --
 ALTER TABLE `activity_feeds`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `add_likes`
@@ -719,7 +771,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
@@ -755,13 +813,13 @@ ALTER TABLE `stocks`
 -- AUTO_INCREMENT for table `stories`
 --
 ALTER TABLE `stories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`

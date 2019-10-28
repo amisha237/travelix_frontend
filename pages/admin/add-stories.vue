@@ -12,33 +12,64 @@
                     id="form">
                         <v-row>
                             <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
-                                <v-select
-                                v-model="city"
-                                :items="items"
-                                label="Select City"
-                                outlined
-                            ></v-select>
-                            </v-col>
-
-                        </v-row>
-                        <v-row>
-                            <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
                                 <v-text-field
-                                v-model="place"
-                                label="Add Place name"
+                                v-model="author"
+                                label="Author name"
                                 outlined
                                 ></v-text-field>
                             </v-col>
                         </v-row>
-                         <v-textarea
+                        <v-row>
+                            <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
+                            <v-select
+                                v-model="city"
+                                :items="items"
+                                label="Select City"
+                                outlined
+                                @change="onCityChanged"
+                            ></v-select>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6">
+                                <v-select
+                                v-model="package_name"
+                                :items="packages"
+                                label="Package name"
+                                outlined
+                                ></v-select>
+                            </v-col>
+                            <v-col cols = "12" xs = "12" sm = "12" md = "6" lg = "6" >
+                                <v-menu
+                                v-model="menu2"
+                                :close-on-content-click="false"
+                                :nudge-right="40"
+                                transition="scale-transition"
+                                min-width="290px"
+                                >
+                                    <template v-slot:activator="{ on }">
+                                        <v-text-field
+                                        v-model="date"
+                                        label="Tour Date"
+                                        prepend-icon="event"
+                                        readonly
+                                        offset-y
+                                        v-on="on"
+                                        ></v-text-field>
+                                    </template>
+                                    <v-date-picker  v-model="date" @input=" menu2 = false"></v-date-picker>
+                                </v-menu>
+                            </v-col>
+                        </v-row>
+                        <v-textarea
                         v-model="description"
-                        label="Details"
+                        label="Your Story"
                         required
                         outlined
                         >
                         </v-textarea>
                         <v-row>
-                            <v-col cols = "6" xs = "6" sm = "6" md = "6" lg = "6">
+                            <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
                                 <v-file-input 
                                 label="Add Image" 
                                 outlined dense
@@ -48,46 +79,7 @@
                                 @change="onFileChanged">
                                 </v-file-input>
                             </v-col>
-                             <v-col cols = "6" xs = "6" sm = "6" md = "6" lg = "6">
-                                <v-file-input 
-                                label="Add Image" 
-                                outlined dense
-                                :rules="rules"
-                                prepend-icon="mdi-camera"
-                                accept="image/*"
-                                @change="onFileChanged">
-                                </v-file-input>
-                            </v-col>
-                             <v-col cols = "6" xs = "6" sm = "6" md = "6" lg = "6">
-                                <v-file-input 
-                                label="Add Image" 
-                                outlined dense
-                                :rules="rules"
-                                prepend-icon="mdi-camera"
-                                accept="image/*"
-                                @change="onFileChanged">
-                                </v-file-input>
-                            </v-col>
-                             <v-col cols = "6" xs = "6" sm = "6" md = "6" lg = "6">
-                                <v-file-input 
-                                label="Add Image" 
-                                outlined dense
-                                :rules="rules"
-                                prepend-icon="mdi-camera"
-                                accept="image/*"
-                                @change="onFileChanged">
-                                </v-file-input>
-                            </v-col>
-                             <v-col cols = "6" xs = "6" sm = "6" md = "6" lg = "6">
-                                <v-file-input 
-                                label="Add Image" 
-                                outlined dense
-                                :rules="rules"
-                                prepend-icon="mdi-camera"
-                                accept="image/*"
-                                @change="onFileChanged">
-                                </v-file-input>
-                            </v-col>
+                             
                         </v-row>
                        
                         <v-row>
@@ -116,15 +108,84 @@ export default {
     data(){
         return{
             city:'',
-            place:'',
+            package_name:'',
+            author:'',
+            date:'',
             description:'',
             image:'',
-            items:['a','b'],
+            packages:[],
+            items:[],
             rules: [
                 value => !value || value.size < 2000000 || 'Image size should be less than 2 MB!',
                 ],
         }
     },
+
+     created () {
+
+          this.initialize()
+    },
+    methods:{
+
+          async initialize () {
+          const cities = await this.$axios.get('/api/blog/cities')
+          
+          for(var j=0;j<cities.data.length;j++)
+            {
+              this.items.push(cities.data[j].name)
+            }
+
+      },
+
+       async onCityChanged () {
+
+          const packages = await this.$axios.post('/api/packages/filter/location',{
+              location:this.city,
+          })
+          this.packages = []
+          console.log(packages.data)
+          for(var j=0;j<packages.data.length;j++)
+            {
+              this.packages.push(packages.data[j].package_name)
+            } 
+       },
+
+         async onFileChanged(event)
+        {
+            this.image = event
+        },
+
+       async submitForm() {
+          
+          var form = new FormData();
+
+            var user = this.$auth.user.id
+            form.append('author',this.author);
+            form.append('user_id',user);
+            form.append('package_name',this.package_name);
+            form.append('experience',this.description);
+            form.append('tour_date',this.date);
+            form.append('city',this.city);
+            form.append('image',this.image);
+
+            const response = await this.$axios.post('/api/stories/add',
+					form,
+					{
+						headers: {
+							'Content-Type': 'multipart/form-data'
+						}
+                    }
+                )
+                
+                console.log(response.data.success)
+
+                this.$router.push('/admin/dashboard')
+        }
+
+       
+    }
+
+
     
 
 }

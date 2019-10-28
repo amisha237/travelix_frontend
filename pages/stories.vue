@@ -43,7 +43,7 @@
                     :outlined="outlined"
                     :width="width"
                     :height="height"
-                    :border="black"
+                    border="black"
                     
                     >
                     <v-img
@@ -218,20 +218,7 @@ export default {
     page: 1,
     itemsPerPage: 2,
 
-    items : [
-        // {
-        //     tag : '',
-        //     category : 'category1',
-        //     author : 'author1',
-
-        // },
-        // {
-        //     tag : 'tags',
-        //     category : 'category',
-        //     author : 'author',
-
-        // }
-    ],
+    items : [],
     
     offers : [
         {
@@ -300,11 +287,12 @@ export default {
         
             const response1 = await this.$axios.get('/api/stories/getLatest')
             
-            for(var j=0;j<response1.data.length;j++)
+            for(var j=0;j<2;j++)
 			{
-                 this.posts.push(response1.data[j])
-                 
+                 this.posts.push(response1.data[j])  
             }
+
+            console.log(this.posts)
            
         },
 
