@@ -58,9 +58,8 @@ export default {
           {
             text: 'Token No',
             align: 'left',
-            value: 'token_no',
+            value: 'token',
           },
-         
           { text: 'Name', value: 'name' },
           { text:' Subject', value: 'subject' },
           { text:' Message', value: 'message' },
@@ -68,7 +67,6 @@ export default {
         ],
         
         enquiries:[],
-
         items:[
             'Ignore',
             'Update Status',

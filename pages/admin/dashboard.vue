@@ -90,9 +90,27 @@
             
             <br><br><br>
 
+              <p class="display-1 justify-end font-weight-dark">Latest Bookings</p>
+            
+            <br>
+            <v-data-table
+            :headers="booking_headers"
+            :items="bookings"
+            :items-per-page="10"
+            class="elevation-3 "
+            >
+                <template v-slot:top>
+                <v-toolbar flat color="white">
+                    <v-spacer></v-spacer><v-btn to="view-bookings" outlined rounded color="primary" >View all</v-btn>
+                </v-toolbar>
+                </template>
+            </v-data-table>
+            
+            <br><br><br>
 
 
-            <center><p class="display-1 font-weight-light">Booking trends</p><br><br></center>
+
+            <center><p class="display-1 font-weight-light">Booking Trends</p><br><br></center>
             <v-card
                 class="mx-auto text-center"
                 color="green"
@@ -214,7 +232,7 @@ export default {
             text: 'Token No.',
             align: 'left',
             sortable: false,
-            value: 'token_no',
+            value: 'token',sortable:true,
           },
           { text: 'Name' , value: 'name'},
           { text: 'Subject', value: 'subject' },
@@ -223,7 +241,26 @@ export default {
           
           
         ],
+         booking_headers: [
+          {
+            text: 'Booking Id.',
+            align: 'left',
+            sortable: false,
+            value: 'id',sortable:true,
+          },
+          { text: 'Name' , value: 'firstName'},
+         
+          { text: 'Address', value: 'address' },
+          { text: 'Adults', value: 'adult' },
+          { text: 'children', value: 'children' },
+          { text: 'contact', value: 'contact' },
+          { text: 'email', value: 'email' },
+          { text: 'Status', value: 'status' },
+          
+          
+        ],
         desserts: [],
+        bookings:[],
         
       
     packageLength: '',
@@ -269,6 +306,13 @@ export default {
                 this.desserts.push(response4.data[j])
                 }
                 console.log(this.desserts)
+
+                const responsedata = await this.$axios.get('/api/booking/index')
+                 for(var j=0;j<responsedata.data.length;j++)
+                {
+                  this.bookings.push(responsedata.data[j])
+                }
+
 
 
 

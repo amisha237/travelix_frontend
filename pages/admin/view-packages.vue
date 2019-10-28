@@ -528,12 +528,8 @@
                       if(response.data.success==true)
                       {
                         console.log('Successfull update')
-                                  this.$emit('success','New Header  Added')
-                              //   this.message="header successfully updated"
-                              // this.snackbar=true
-                                this.$router.push({
-                                path: '/admin/view-users'
-                      });
+                                  this.$emit('success','New Header  Image Added')
+                                  this.$router.go()
                               
                               }
             
@@ -564,12 +560,8 @@
                       if(response.data.success==true)
                       {
                         console.log('Successfull update')
-                                this.$emit('success','New Header Added')
-                              // this.message="header successfully updated"
-                              // this.snackbar=true
-                                this.$router.push({
-                                path: '/admin/view-users'
-                                });
+                                this.$emit('success','All SubImages Addedd Successfully')
+                             
                               
                       }
  
@@ -591,7 +583,7 @@
 
      async deleteItem (item) {
         
-         confirm('Are you sure you want to delete this item?') 
+         
 
         let id=item.id
 				const response = await this.$axios.delete(`/api/packages/delete/${id}`)

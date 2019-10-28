@@ -58,9 +58,9 @@
             </template>
           </v-data-table>
         </v-card>
-     <!-- <snackbar :message="send_messg"/> -->
+     <snackbar :message="message" :snackbar_status="snackbar_status" />
    <!-- snackbar -->
-        <v-snackbar
+        <!-- <v-snackbar
           v-model="snackbar"
           :timeout="timeout"
           top
@@ -74,19 +74,19 @@
           >
             Close
           </v-btn>
-          </v-snackbar>
+          </v-snackbar> -->
 			</v-col>
-		</v-row>]
+		</v-row>
 
 </v-container>
 
 </template>
 <script>
-//import snackbar from '@/components/snackbar.vue' ;
+import snackbar from '@/components/snackbar.vue' ;
 export default {
-//  components : {
-//    snackbar
-//  },
+ components : {
+   snackbar
+ },
     layout:'adminDashboardNavigation',
     data(){
         return{
@@ -95,7 +95,7 @@ export default {
         itemsPerPageArray: [1, 2, 5,10,15,20],
         page: 1,
 		    itemsPerPage: 5,
-        snackbar:false,
+        snackbar_status:false,
         message :'',
         timeout:5000,
         headers: [
@@ -134,13 +134,14 @@ export default {
         {
           
           this.message = "Your have Successfully Deleted the Subscriber"
-          this.snackbar = true;
-         // location.reload(true)
+          this.snackbar_status = true;
+       
         }else
         {
-         this.snackbar = true;
-         this.send_messg = "Failed to connect to the Server"
+         this.snackbar_status = true;
+         this.message = "Failed to connect to the Server"
         }
+         
         
     }
        

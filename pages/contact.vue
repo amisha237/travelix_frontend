@@ -87,27 +87,21 @@
       +40 762 321 762
       Mon - Fri, 8:00-22:00
         </pre>
-
-       
-
       </v-flex>
-   
-     
     </v-layout> 
     </v-overlay>
     </v-img>
+    <snackbar :message="message" :snackbar_status="snackbar_status" />
   </div>
+  
 </template>
 
 <script>
+import snackbar from '@/components/snackbar.vue' ;
   export default {
-
-
-
-
-
-
-
+components : {
+   snackbar
+ },
 
     data: () => ({
       active: true,
@@ -133,7 +127,9 @@
         'Subject 3',
         'Subject 4',
       ],
-      
+        snackbar_status:false,
+        message :'',
+        timeout:5000,
     }),
 
 
@@ -145,12 +141,19 @@
         name :this.name,
         email: this.email,
         subject: this.subject,
-        message: this.message
-
+        message: this.message,
       })
-      if(response.data.success==true)
-				{
-					console.log("Success")
+        if(response.data.success == true)
+        {
+          console.log("inserted")
+          this.message = "THankyou for Contact us!! We will reply you very soon"
+
+          this.snackbar_status = true;
+        }else
+        {
+        
+         this.message = "Failed to connect to the Server"
+          this.snackbar_status = true;
         }
         
 

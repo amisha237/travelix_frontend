@@ -70,17 +70,19 @@
 		    itemsPerPage: 5,
         headers: [
           {
-            text: 'User Id',
+            text: 'Booking Id',
             align: 'left',
-            value: 'user_id',
+            value: 'id',
           },
-         
-          { text: 'User Name', value: 'name' },
-          { text: 'User Email', value: 'email' },
           { text: 'Package Id', value: 'package_id' },
-          { text: 'Package Name', value: 'package_name' },
-          { text: 'Confirmation Status', value: 'status' },
-          { text: 'Booking date', value: 'date' },
+          { text: 'User Name', value: 'firstName' },
+          { text: 'User Email', value: 'email' },
+          { text: 'Booking date', value: 'created_at' },
+           { text: 'Picked Facilty', value: 'picked_facility' },
+            { text: 'Adult', value: 'adult' },
+             { text: 'children', value: 'children' },
+              { text: 'Address', value: 'address' },
+           { text: 'Confirmation Status', value: 'status' },
         ],
         bookings: [ ],
       }
@@ -95,7 +97,7 @@
     },
     methods:{
           async initialize () {
-          const response = await this.$axios.get('/api/')
+          const response = await this.$axios.get('/api/booking/index')
  
           for(var j=0;j<response.data.length;j++)
             {

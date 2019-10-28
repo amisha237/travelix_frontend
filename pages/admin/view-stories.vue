@@ -111,7 +111,8 @@
           { text: 'Package Name', value: 'package_name' },
           { text: 'Experience', value: 'experience' },
           { text: 'Date', value: 'tour_date' },
-          { text: 'Likes', value: 'likes' }
+          { text: 'Likes', value: 'likes' },
+           { text: 'Status', value: 'status' , align: 'right' }
         ],
         stories: [],
       }

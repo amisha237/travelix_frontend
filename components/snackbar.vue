@@ -1,7 +1,7 @@
 <template>
     
 <v-snackbar
-		v-model="snackbar"
+		v-model="snackbar_status"
 		:timeout="timeout"
 		top
 		vertical
@@ -10,7 +10,7 @@
 		<v-btn
 			color="primary"
 			text
-			@click="snackbar = false"
+			@click="close"
 		>
 			Close
 		</v-btn>
@@ -26,16 +26,26 @@ export default {
 		message: {
 			type: String,
 			required: true
+		},
+		snackbar_status: {
+			type: Boolean,
+			required: true
 		}
 	},
     data(){
         return{
-		timeout:5000,
-		
-     
+			color: 'success',
+		timeout:5000
         }
 		
-    }
+	},
+	methods:{
+		close()
+		{
+		 this.snackbar = false,
+		 this.$router.go()
+		}
+	}
 
     
 }
