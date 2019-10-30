@@ -1,13 +1,19 @@
 <template>
+
 <div>
+  <v-card-text class="black--text display-1 justify-end" >Packages</v-card-text>
   
-  <v-card class="mx-auto ma-12  " >
-    <v-toolbar  height=85 color="purple" class="white--text lighten-2 py-n1 "  >
+  <v-card class="mx-auto ma-5  " >
+    <v-toolbar  height=60 color="indigo darken-3" class="white--text lighten-2 py-n1 "  >
     <v-toolbar-title class="headline">
-       Package
+       <span class="gray--text title">Packages/</span>
+       <span class="white--text subtitle-1">View All Packages </span>
      
     </v-toolbar-title>
-    </v-toolbar><br>
+    </v-toolbar>
+     
+ 
+   
      <v-card-title class="display-1 mb-5" > 
        
         <v-flex xs6 sm6 md4 lg4>
@@ -20,7 +26,7 @@
         ></v-text-field>
         </v-flex>
          <div class="flex-grow-1"></div>
-        <v-btn color="primary" dark class="ml-5" exact to="/admin/add-package">New Package</v-btn>
+        <v-btn color="indigo darken-3" dark class="ml-5" exact to="/admin/add-package">New Package</v-btn>
      </v-card-title>
    
     <v-data-table
@@ -335,7 +341,7 @@
                   <v-pagination
                     v-model="page"
                     :length="numberOfPages"
-                    color="purple lighten-2"
+                    color="indigo darken-2"
                   circle
                     max-visible="5"
                   ></v-pagination></v-col>

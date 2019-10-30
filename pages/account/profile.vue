@@ -2,9 +2,9 @@
     <div>
         <v-card class="mt-n3 px-12 py-8" flat width="100wh" height="100vh">
             <v-card-title class="font-weight-light">  
-                Profile Details 
+                Account Information 
             <v-spacer></v-spacer>
-            <v-btn outlined color="primary"><v-icon>mdi-account-edit</v-icon>&nbsp;&nbsp;Edit Profile</v-btn>    
+            <v-btn outlined rounded color="success justify-center"> Active</v-btn>    
             </v-card-title>
             
             <v-divider/>
@@ -28,33 +28,74 @@
 export default {
     layout: 'accountLayout',
     data: () => ({
+        // email: '',
+        // firstName:'',
+        // lastName: '',
+        // username: '',
+        // contact: '',
         profileItems: [
             {
                 title: 'Email Id',
-                value: 'user@gmail.com',
+                value: 'email',
             },
             {
-                title: 'First Name',
-                value: 'Jenny',
+                title: 'Name',
+                value: 'name',
             },
             {
-                title: 'Last Name',
+                title: 'Username',
                 value: 'Watson',
             },
             {
-                title: 'Gender',
-                value: 'Female',
+                title: 'Contact No.',
+                value: 'username',
             },
             {
-                title: 'DOB',
+                title: 'Account Created At',
                 value: '12/05/1998',
             },
             {
-                title: 'Mobile',
-                value: '9863293876',
+                title: 'Last Update',
+                value: 'contact',
             },
+             
         ],
+
+        // profileItems: {
+        //     email: '',
+        //     firstName: '',
+        //     lastName: '',
+        //     username: '',
+        //     dob: '',
+        //     contact: ''
+        // }
      
     }),
+    created () {
+          this.initialize()
+    },
+    methods:{
+          async initialize () {
+
+              this.profileItems[0].value = this.$auth.user.email
+              this.profileItems[1].value = this.$auth.user.name
+              this.profileItems[2].value = this.$auth.user.username
+              this.profileItems[3].value = this.$auth.user.contact
+              this.profileItems[4].value = this.$auth.user.created_at
+              this.profileItems[5].value = this.$auth.user.updated_at
+              console.log(this.$auth.user.profile_img)
+              
+            //   this.profileItems.name = this.$auth.user.name
+
+            //   this.profileItems[1].value = this.$auth.user.name
+
+
+
+
+
+          }
+   
+},
 }
 </script>
+

@@ -1,9 +1,10 @@
 <template>
-  <v-container fluid  class="py-12">
+  <v-container fluid class="ma-30">
+    <div class="ma-30"> <v-card-text class="black--text display-1 justify-end" >Stories</v-card-text></div>
 		<v-row class=" align-center justify-center">
 			<v-col cols="12" md="10" lg="10">
         <v-card  >
-          <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1" elavation>
+          <v-toolbar  height=60 color="indigo darken-3" class="white--text lighten-1 py-n1" elavation>
               <v-toolbar-title class="headline">
                 Stories
               </v-toolbar-title>
@@ -27,6 +28,7 @@
                         <v-icon>mdi-chevron-down</v-icon>
                       </v-btn>
                     </template>
+                  
                     <v-list>
                       <v-list-item
                         v-for="(number, index) in itemsPerPageArray"
@@ -62,10 +64,45 @@
             :headers="headers"
             :items="stories"
             :search="search"
+             :loading="loading"
+            loading-text="Loading... Please wait"
             hide-default-footer
             :items-per-page.sync="itemsPerPage"
             :page="page"
           >
+           <template v-slot:item.status="{ item }">
+                    <v-chip :color="getColor(item.status)" dark>{{ item.status }}</v-chip>
+                </template>
+                 <template v-slot:item.action="{ item }">
+                    <v-btn
+                        rounded
+                        small
+
+                        class="mt-2 indigo darken-3 white--text">
+                        Make Deactive
+                      </v-btn><br>
+                      <v-btn
+                        rounded
+                        small
+                        class="mt-2 indigo darken-3 white--text">
+                        Make Active
+                      </v-btn><br>
+                       <v-btn
+                        small
+                        rounded
+                        class="mt-2 indigo darken-3 white--text"
+                      >
+                        Mark Report
+                      </v-btn><br>
+                      <v-btn
+                        small
+                        rounded
+                        class="mt-2 indigo darken-3 white--text"
+                      >
+                       Delete 
+                      </v-btn>
+                     
+                    </template>
           
             <template v-slot:footer>
               <hr>
@@ -76,7 +113,7 @@
                   <v-pagination
                     v-model="page"
                     :length="numberOfPages"
-                    color="purple lighten-2"
+                    color="indigo darken-3"
                     circle
                     max-visible="5"
                   ></v-pagination></v-col>
@@ -98,23 +135,30 @@
       return {
        itemsPerPageArray: [1, 2, 3,12,15,18],
        page: 1,
-			 itemsPerPage: 2,
+			 itemsPerPage: 3,
         search: '',
+        dropdown_font:[
+          'A', 'B','C'
+        ],
+        loading:true,
         headers: [
           {
-            text: 'Id',
+            text: 'Customer ID',
             align: 'left',
-            value: 'id',
+            value: 'user_id',
           },
          
-          { text: 'User Id', value: 'user_id' },
+         
           { text: 'Package Name', value: 'package_name' },
           { text: 'Experience', value: 'experience' },
           { text: 'Date', value: 'tour_date' },
           { text: 'Likes', value: 'likes' },
-           { text: 'Status', value: 'status' , align: 'right' }
+           
+           { text: 'Status', value: 'status'  },
+           { text: 'Actions', value: 'action' , align: 'right' },
         ],
         stories: [],
+
       }
     },
     computed: {
@@ -128,18 +172,25 @@
     methods:{
           async initialize () {
           const response = await this.$axios.get('/api/stories/index')
- 
+          this.loading=true
           for(var j=0;j<response.data.length;j++)
             {
               this.stories.push(response.data[j])
               console.log(response.data[j])
             }
+            this.loading=false
 
       },
       
 			updateItemsPerPage (number) {
 				this.itemsPerPage = number
-			},
+      },
+      getColor (status) {
+                    if (status == "Deactive") return 'red'
+                    else if (status == "Active") return 'green'
+                    else if (status == "Reported") return 'danger'
+                    else return 'orange'
+                },
     }
   }
 </script>

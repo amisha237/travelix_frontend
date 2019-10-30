@@ -108,14 +108,14 @@
 
             <v-card class="primary">
              <v-list>
-                <v-list-item v-if="loggedIn">
+                <v-list-item v-if="loggedIn" >
                     <v-list-item-avatar >
 
-                    <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                    <img :src="`http://localhost:8000/UserProfileImage/${this.$auth.user.profile_img}`">
                     </v-list-item-avatar>
 
                     <v-list-item-content>
-                    <v-list-item-title>{{$auth.user.name}}</v-list-item-title>
+                    <v-list-item-title class="black--text">{{$auth.user.name}}</v-list-item-title>
                     </v-list-item-content>
 
                     <v-list-item-action>
@@ -126,15 +126,16 @@
                 <v-list>
                 <v-list-item>
                   <v-list-item-action>
-                    <v-btn text small>
-                      Profile
+                    <v-btn small color="purple white--text" class="mt+10" @click="sendToProfile">
+                      View Profile
                     </v-btn>
+                    
                   </v-list-item-action>
                 </v-list-item>
                 
                 <v-list-item>
                 <v-list-item-action>
-                    <v-btn text small @click.prevent="logout">
+                    <v-btn  small class="purple white--text" @click.prevent="logout">
                     Logout
                     </v-btn>
                     </v-list-item-action>
@@ -206,6 +207,11 @@ export default {
             this.$router.push('/');
           });
           console.log('logout')
+        },
+
+        sendToProfile()
+        {
+            this.$router.push('/account/profile')
         }
   }
 }

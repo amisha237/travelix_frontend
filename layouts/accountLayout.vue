@@ -11,7 +11,7 @@
                     <v-col align="center" justify="center">
                         <v-avatar size="100">
                         <img
-                        src="/profile-image.jpg"
+                        :src="`http://localhost:8000/UserProfileImage/${this.$auth.user.profile_img}`"
                         alt="Profile Image"
                         >
                         </v-avatar>
@@ -19,8 +19,8 @@
                 </v-row>   
                 <v-row>
                     <v-col align="center" justify="center" cols="12">
-                        <div class="display-1 font-weight-light">Jenny Watson</div>
-                       <v-list-item-subtitle>jenny.watson@gmail.com</v-list-item-subtitle>
+                        <div class="display-1 font-weight-light">{{ this.$auth.user.name}}</div>
+                       <v-list-item-subtitle>{{ this.$auth.user.email}}</v-list-item-subtitle>
                     </v-col>
                 </v-row>  
                 
