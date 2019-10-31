@@ -1,10 +1,13 @@
 <template>
 <v-container fluid>
+      <v-card-text class="black--text display-1 justify-end" >Blogs</v-card-text>
     <v-row>
-        <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
-             <v-card class="mx-auto pa-10 ma-10 grey lighten-3" >
-          
-                    <v-card-text class="black--text display-1 text-center" text-center>Add Blog</v-card-text>
+         <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
+             <v-card class="mx-auto pa-5 ma-1 grey lighten-3" >
+                   <v-card-title class="black--text display-6  justify-start" >
+                       <span class="medium grey--text">Blogs/</span>
+                       <span class="small"> Add Places</span>
+                    </v-card-title><hr><br>
                      <v-form
                     ref="form"
                     v-model="active"
@@ -15,8 +18,10 @@
                                 <v-select
                                 v-model="city"
                                 :items="items"
+                                prepend-icon="location_city"
                                 label="Select City"
                                 outlined
+                                rounded
                             ></v-select>
                             </v-col>
 
@@ -25,8 +30,10 @@
                             <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
                                 <v-text-field
                                 v-model="place"
+                                prepend-icon="my_location"
                                 label="Add Place name"
                                 outlined
+                                rounded
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -34,7 +41,9 @@
                         v-model="description"
                         label="Details"
                         required
+                        prepend-icon="description"
                         outlined
+                        rounded
                         >
                         </v-textarea>
                         <v-row>
@@ -45,6 +54,7 @@
                                 :rules="rules"
                                 prepend-icon="mdi-camera"
                                 accept="image/*"
+                                rounded
                                 @change="onFileChanged">
                                 </v-file-input>
                             </v-col>
@@ -54,11 +64,11 @@
                             <v-col cols = "12" xs = "5" sm = "5" md = "5" lg = "5">
                             </v-col>
                             <v-col cols = "12" xs = "2" sm = "2" md = "2" lg = "2">
-                                <v-btn
-                                color = "primary"
+                               <center> <v-btn
+                                color = "purple darken-3 white--text"
                                 @click="submitForm"> 
                                 Submit
-                                </v-btn>
+                                </v-btn></center>
                             </v-col>
                         </v-row>
 
@@ -108,8 +118,6 @@ export default {
 			{
 			 	this.items.push(response.data[j].name)
             }
-
-            console.log(this.items)
         },
 
         async onFileChanged(event)

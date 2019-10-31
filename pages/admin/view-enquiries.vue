@@ -24,12 +24,15 @@
       :headers="headers"
       :items="enquiries"
       :search="search"
+      :loading="loading"
+      loading-text="Loading...Please Wait"
+      :color="colors"
     >
        <template v-slot:item.status="{ item }">
           <div class="text-center ">
-                <v-menu >
-                <template v-slot:activator="{ on }">
-                    <v-btn color="primary"  outline v-on="on" small>
+                <v-menu dark >
+                <template v-slot:activator="{ on }" >
+                    <v-btn :color="getColor(item.status)" class="mr-0" dark  outlined v-on="on" small>
                       {{item.status }}
                     </v-btn>
                 </template>
@@ -57,17 +60,20 @@ export default {
     layout:'adminDashboardNavigation',
     data(){
         return{
+        colors:"black",
         search: '',
+        loading: false,
         headers: [
           {
             text: 'Token No',
             align: 'left',
             value: 'token',
+           
           },
           { text: 'Name', value: 'name' },
           { text:' Subject', value: 'subject' },
           { text:' Message', value: 'message' },
-          { text: 'Status', value: 'status' ,sortable:false, align:'right'},
+          { text: 'Status', value: 'status',sortable:false, align:'right' },
         ],
         
         enquiries:[],
@@ -85,16 +91,20 @@ export default {
     },
     methods:{
           async initialize () {
+            this.loading = true
           const response = await this.$axios.get('/api/contact/index')
  
           for(var j=0;j<response.data.length;j++)
             {
               this.enquiries.push(response.data[j])
             }
-
-            console.log(this.enquiries)
-
+            this.loading =false
       },
+        getColor (status) {
+                    if (status == "pending") return 'red'
+                    else if (status == "Replied") return 'green'
+                    else return 'orange'
+                },
     }
 }
 </script>

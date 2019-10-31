@@ -1,16 +1,14 @@
 <template>
-	<v-container fluid  class="py-12">
-		<v-row class=" align-center justify-center">
-			<v-col cols="12" md="10" lg="10">
-				<v-card  class="mx-auto">
-						
-					<v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1" elavation>
-						<v-toolbar-title class="headline">
-							Bookings
-						</v-toolbar-title>
-					</v-toolbar>
-					
-					
+ 
+	<v-container fluid  class="py-1">
+   
+		<v-card-text class="black--text display-1 justify-end"> Bookings</v-card-text>
+      <v-row class=" align-center justify-center ">
+        <v-col cols="12" md="12" lg="12" >
+          <v-card > 
+              <v-toolbar  height=60 color="indigo darken-3" class="white--text lighten-1 py-n1" elavation>
+                  <v-toolbar-title class="headline"> All Bookings</v-toolbar-title>
+              </v-toolbar>
 					<v-card-title class="mb-3">
 						<v-row>
 						<div class="flex-grow-1"></div>
@@ -32,9 +30,14 @@
 						:items="bookings"
 						:search="search"
              hide-default-footer
+             :loading="loading"
+             loading-text="Loading....Please Wait!!"
             :items-per-page.sync="itemsPerPage"
             :page="page"
 						>
+            <template v-slot:item.status="{ item }">
+                    <v-btn rounded outlined  :color="getColor(item.status)" dark>{{ item.status }}</v-btn>
+                </template>
             <template v-slot:footer>
               <hr>
                 <v-row class="mt-12 mx-2" align="center">
@@ -44,7 +47,7 @@
                   <v-pagination
                     v-model="page"
                     :length="numberOfPages"
-                    color="purple lighten-2"
+                    color="indigo darken-3"
                     circle
                     total-visible="5"
                   ></v-pagination></v-col>
@@ -55,6 +58,8 @@
 				</v-card>
 			</v-col>
 	    </v-row>
+      
+ 
 	</v-container>
 
 </template>
@@ -64,9 +69,11 @@
     layout:'adminDashboardNavigation',
     data () {
       return {
+        progress:false,
         search: '',
         itemsPerPageArray: [1, 2, 5,10,15,20],
         page: 1,
+        loading:false,
 		    itemsPerPage: 5,
         headers: [
           {
@@ -97,14 +104,28 @@
     },
     methods:{
           async initialize () {
+           
+            this.loading=true
           const response = await this.$axios.get('/api/booking/index')
  
           for(var j=0;j<response.data.length;j++)
             {
               this.bookings.push(response.data[j])
             }
-
+            this.loading=false
+            
       },
+       getColor (status) {
+                    if (status == "Active") return 'green'
+                    else if (status == "Cancelled") return 'red'
+                    else return 'orange'
+                },
+                watch() {
+                       
+                            this.isLoading = false
+                      
+                },
+                
     }
   }
 </script>
