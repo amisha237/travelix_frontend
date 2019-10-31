@@ -1,10 +1,13 @@
 <template>
-  <v-card class="ma-12">
-    <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1" elavation>
-        <v-toolbar-title class="headline">
-        Enquiries
-        </v-toolbar-title>
-    </v-toolbar>
+<v-container fluid>
+
+  <v-card-text class="black--text display-1 justify-end" >Enquires</v-card-text>
+      <v-row class=" align-center justify-center ">
+        <v-col cols="12" md="12" lg="12" >
+          <v-card > 
+              <v-toolbar  height=60 color="indigo darken-3" class="white--text lighten-1 py-n1" elavation>
+                  <v-toolbar-title class="headline"> All Enquires</v-toolbar-title>
+              </v-toolbar>
 
     <v-card-title class="mb-5">
         <div class="flex-grow-1"></div>
@@ -23,10 +26,10 @@
       :search="search"
     >
        <template v-slot:item.status="{ item }">
-          <div class="text-center">
+          <div class="text-center ">
                 <v-menu >
                 <template v-slot:activator="{ on }">
-                    <v-btn color="primary" dark v-on="on" small>
+                    <v-btn color="primary"  outline v-on="on" small>
                       {{item.status }}
                     </v-btn>
                 </template>
@@ -46,6 +49,7 @@
        </template>
     </v-data-table>
   </v-card>
+        </v-col></v-row></v-container>
 </template>
 <script>
 

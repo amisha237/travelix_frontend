@@ -79,28 +79,22 @@
                         small
 
                         class="mt-2 indigo darken-3 white--text">
-                        Make Deactive
+                        Accept
                       </v-btn><br>
                       <v-btn
                         rounded
                         small
                         class="mt-2 indigo darken-3 white--text">
-                        Make Active
+                       Report
                       </v-btn><br>
                        <v-btn
                         small
                         rounded
                         class="mt-2 indigo darken-3 white--text"
                       >
-                        Mark Report
+                        Remove
                       </v-btn><br>
-                      <v-btn
-                        small
-                        rounded
-                        class="mt-2 indigo darken-3 white--text"
-                      >
-                       Delete 
-                      </v-btn>
+                     
                      
                     </template>
           
@@ -186,9 +180,9 @@
 				this.itemsPerPage = number
       },
       getColor (status) {
-                    if (status == "Deactive") return 'red'
-                    else if (status == "Active") return 'green'
-                    else if (status == "Reported") return 'danger'
+                    if (status == "Report") return 'red'
+                    else if (status == "Accept") return 'green'
+                    else if (status == "Remove") return 'grey'
                     else return 'orange'
                 },
     }

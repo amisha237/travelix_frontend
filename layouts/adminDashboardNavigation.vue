@@ -258,7 +258,7 @@
     </v-content>
    
     <template>
-  <v-footer
+  <!-- <v-footer
     color="indigo  darken-2 white--text"
     padless
     fixed
@@ -268,17 +268,7 @@
       no-gutters
       position:fixed
     >
-      <!-- <v-btn
-        v-for="link in links"
-        :key="link"
-        color="white"
-        text
-        rounded
-        
-        class="my-2"
-      >
-        {{ link }}
-      </v-btn> -->
+    
       <v-col
         class="indigo darken-3 py-2 text-center white--text"
         cols="12"
@@ -286,7 +276,7 @@
         {{ new Date().getFullYear()}} — <strong>All copy rights reserved for this @  Travelix-2019</strong>
       </v-col>
     </v-row>
-  </v-footer>
+  </v-footer> -->
 </template>
 
   </v-app>

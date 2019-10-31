@@ -33,6 +33,8 @@
       :headers="headers"
       :items="packages"
       :search="search"
+      :loading="loading"
+      loading-text="Loading... Please wait"
       hide-default-footer
       :items-per-page.sync="itemsPerPage"
       :page="page"
@@ -376,6 +378,7 @@
       },
     data () {
       return {
+        loading:false,
         tabactive:false,
         imagedialog:false,
         active:true,
@@ -573,13 +576,14 @@
  
         },
         async initialize () {
+          this.loading=true
           const response = await this.$axios.get('/api/packages/index')
  
           for(var j=0;j<response.data.length;j++)
             {
               this.packages.push(response.data[j])
             }
-
+        this.loading=false
       },
       editItem (item) {
         this.editedIndex = this.packages.indexOf(item)
