@@ -8,8 +8,8 @@
       app
       src=""
       :color="color"
-     
-      
+      class="white--text"
+
     >
     
     <v-list dense >
@@ -26,15 +26,16 @@
            v-for="(item, i) in items"
            :key="i"
            no-action
+           
           
            
         >
-          <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-icon>
-              <v-icon >{{item.icon}}</v-icon>
-            </v-list-item-icon>
-              <v-list-item-title>{{item.title}}</v-list-item-title>
+          <template v-slot:activator class="white--text">
+            <v-list-item-content  class="white--text">
+              <!-- <v-list-item-icon >
+              <v-icon color="white">{{item.icon}}</v-icon>
+            </v-list-item-icon> -->
+              <v-list-item-title ><v-icon color="white">{{item.icon}}</v-icon>&nbsp; &nbsp;&nbsp;{{item.title}}</v-list-item-title>
             </v-list-item-content>
           </template>
 
@@ -42,12 +43,13 @@
             v-for="(subitem, i) in item.subitems"
             :key="i"
             exact
-           
+            class="white--text"
+           color="white"
             v-bind:to="subitem.to"
           >
-            <v-list-item-title  >{{subitem.title}}</v-list-item-title>
+            <v-list-item-title class="white--text" >{{subitem.title}}</v-list-item-title>
             <v-list-item-icon>
-              <v-icon >{{subitem.icon}}</v-icon>
+              <v-icon class="white--text">{{subitem.icon}}</v-icon>
             </v-list-item-icon>
           </v-list-item>
         </v-list-group>
@@ -60,16 +62,15 @@
       fixed
       app
       src=""
-    >
-      <v-app-bar-nav-icon @click.stop="func" />
      
-      
-      <v-toolbar-title >{{title}}</v-toolbar-title>
+    >
+      <v-app-bar-nav-icon class="white--text" @click.stop="func" />
+      <v-toolbar-title class="white--text">{{title}}</v-toolbar-title>
       <v-spacer />
       
       <!-- email notifications -->
-
-        <div class="text-center">
+<!-- 
+        <div class="text-center ">
          <v-menu offset-y transition="scale-transition" open-on-hover>
             <template v-slot:activator="{ on }">
                 
@@ -113,7 +114,7 @@
             </span>
 
           </v-menu>
-        </div>
+        </div> -->
 
         <!-- notifications -->
 
@@ -122,7 +123,7 @@
             <template v-slot:activator="{ on }">
                 
                 <v-btn
-                color="black"
+                color="red"
                 text
                 fav
                 icon
@@ -130,7 +131,7 @@
                 >
                 <v-badge color="orange">
                     <template v-slot:badge>{{messages}}</template>
-                    <v-icon color="grey darken-4">mdi-bell</v-icon>
+                    <v-icon color="white medium">mdi-bell</v-icon>
                 </v-badge>
                 </v-btn>
             </template>
@@ -142,17 +143,16 @@
                 v-for="(item, index) in notifications"
                 :key="index"
                 >
-                <v-list-item-title>{{ item.action }}</v-list-item-title>
-                
+                <v-list-item-title color="primary flat ">{{ item.action }}</v-list-item-title>
                 </v-list-item>
-                
                 <div class="text-center">
                 <v-btn
                 class=""
                 text
                 small
                 rounded
-                color="error"
+                outlined
+                color="primary"
                 @click="deleteNotification"
 
                 >
@@ -180,21 +180,20 @@
             open-on-hover
             >
             <template v-slot:activator="{ on }">
-                <v-btn
-                 
+               <v-btn
+                color="white"
+                text
+                fav
                 icon
                 v-on="on"
-                
-                fav
-                
                 >
-                <v-icon>mdi-account</v-icon>
+                <v-icon class="large">mdi-account</v-icon>
                 </v-btn>
             </template>
 
             <v-card class="primary">
              <v-list>
-                <v-list-item v-if="loggedIn">
+                <v-list-item v-if="!loggedIn">
                     <v-list-item-avatar >
 
                     <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
@@ -252,18 +251,33 @@
   
 
     </v-app-bar>
-    <v-content>
+    <v-content class="indigo lighten-4">
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
    
-    <v-footer
-      :fixed="fixed"
-      app
+    <template>
+  <v-footer
+    color="indigo  darken-2 white--text"
+    padless
+    fixed
+  >
+    <v-row
+      justify="center"
+      no-gutters
+      position:fixed
     >
-      <span>&copy; 2019</span>
-    </v-footer>
+      <v-col
+        class="indigo darken-3 py-2 text-center white--text"
+        cols="12"
+      >
+        {{ new Date().getFullYear()}} — <strong>All copy rights reserved for this @  Travelix-2019</strong>
+      </v-col>
+    </v-row>
+  </v-footer>
+</template>
+
   </v-app>
 </template>
 
@@ -274,25 +288,25 @@ export default {
       clipped: true,
       drawer: false,
       fixed: false,
-      color:"grey lighten-4",
+      color:"indigo darken-3",
       title:"Travelix Admin Dashboard",
       items: [
          {
-          icon: '',
+          icon: 'dashboard',
           title: 'Dashboard',
          
         },
         {
-          icon: '',
+          icon: 'location_city',
           title: 'Package',
           subitems:[
           {
-           icon: 'mdi-apps',
+           icon: 'add_circle',
            title: 'Add Package',
            to: '/admin/add-package',
           },
           {
-          icon: ' ',
+          icon: 'view_comfy',
           title: 'View Package',
           to: '/admin/view-packages'
         },
@@ -300,11 +314,11 @@ export default {
         ]
         },
         {
-          icon: '',
+          icon: 'loyalty',
           title: 'Stories',
           subitems:[
           {
-          icon: ' ',
+          icon: 'view_comfy',
           title: 'View Stories',
           to: '/admin/view-stories'
         },
@@ -312,16 +326,16 @@ export default {
         ]
         },
         {
-          icon: '',
+          icon: 'person_pin',
           title: 'User',
           subitems:[
           {
-           icon: 'mdi-account',
+           icon: 'add_circle',
            title: 'Add Admin User',
            to: '/admin/add-admin',
           },
           {
-          icon: 'mdi-account',
+          icon: 'view_comfy',
           title: 'View Admin User',
           to: '/admin/view-users'
         },
@@ -329,11 +343,11 @@ export default {
         ]
         },
         {
-          icon: '',
+          icon: 'person',
           title: 'Customer',
           subitems:[
           {
-          icon: ' ',
+          icon: ' view_comfy',
           title: 'View all Customers',
           to: '/admin/view-customers'
         },
@@ -341,11 +355,11 @@ export default {
         ]
         },
         {
-          icon: '',
+          icon: 'speaker_notes',
           title: 'Subscribers',
           subitems:[
           {
-          icon: ' ',
+          icon: 'view_comfy',
           title: 'View subscribers',
           to: '/admin/view-subscribers'
         },
@@ -353,11 +367,11 @@ export default {
         ]
         },
         {
-          icon: '',
-          title: 'Contact Enquiry',
+          icon: 'question_answer',
+          title: 'Enquiry',
           subitems:[
           {
-          icon: ' ',
+          icon: 'view_comfy',
           title: 'View contact Enquiry',
           to: '/admin/view-enquiries'
         },
@@ -365,21 +379,21 @@ export default {
         ]
         },
         {
-          icon: '',
+          icon: 'flag',
           title: 'Blog',
           subitems:[
           {
-           icon: '',
+           icon: 'add_circle',
            title: 'Add City',
            to: '/admin/add-city',
           },
            {
-           icon: '',
+           icon: 'add_circle',
            title: 'Add Blog',
            to: '/admin/add-blog',
           },
           {
-          icon: '',
+          icon: 'view_comfy',
           title: 'View Blog',
           to: '/admin/view-blogs'
         },
@@ -387,19 +401,28 @@ export default {
         ]
         },
         {
-          icon: '',
+          icon: 'star',
           title: 'Bookings',
           subitems:[
           {
-          icon: ' ',
+          icon: 'view_comfy',
           title: 'View all bookings',
           to: '/admin/view-bookings'
         },
 
-        ]
+        ],
+
         },
       ],
       messages:'',
+       links: [
+        'Home',
+        'About Us',
+        'Team',
+        'Services',
+        'Blog',
+        'Contact Us',
+      ],
       notifications: [
         // { title: 'Vasily S sent you a message' },
         // { title: 'Oleg M uploaded a new Zip file with ' },
@@ -414,7 +437,7 @@ export default {
           {title:'email4'},
 
       ],
-      miniVariant: false,
+      miniVariant:false,
     }
   },
   created () {
@@ -431,7 +454,7 @@ export default {
             let length =  response.data.length;
             this.messages = length;
 
-          for(var j=0;j<response.data.length;j++)
+          for(var j=0;j<6;j++)
             {
               this.notifications.push(response.data[j])
 			}

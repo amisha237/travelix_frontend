@@ -1,12 +1,12 @@
 <template>
- <v-container fluid  class="py-12">
-		<v-row class=" align-center justify-center">
-			<v-col cols="12" md="10" lg="10">
-         <v-card>
-            <v-toolbar  height=85 color="purple" class="white--text lighten-1 py-n1" elavation>
-              <v-toolbar-title class="headline"> Customers</v-toolbar-title>
-            </v-toolbar>
-          
+ <v-container fluid  class="py-1">
+    <v-card-text class="black--text display-1 justify-end" >Customer</v-card-text>
+      <v-row class=" align-center justify-center ">
+        <v-col cols="12" md="12" lg="12" >
+          <v-card > 
+              <v-toolbar  height=60 color="indigo darken-3" class="white--text lighten-1 py-n1" elavation>
+                  <v-toolbar-title class="headline"> All Customer </v-toolbar-title>
+              </v-toolbar>
             <v-card-title class="mb-3">
               <v-row>
                  <div class="flex-grow-1"></div>
@@ -31,12 +31,14 @@
               :items="users"
               :search="search"
                hide-default-footer
-            :items-per-page.sync="itemsPerPage"
-            :page="page"
+               :loading="loading"
+              loading-text="Loading... Please wait"
+              :items-per-page.sync="itemsPerPage"
+              :page="page"
               
               >
             <template v-slot:item.profile_img="{ item }">
-                <v-avatar size="70px" class="ma-2">  
+                <v-avatar size="50px" class="ma-2">  
                   <v-img
                     class=" my-5 "
                     
@@ -44,16 +46,19 @@
                   </v-img>
                 </v-avatar>
             </template>
+             <template v-slot:item.status="{ item }">
+                    <v-chip :color="getColorBooking(item.status)" dark>{{ item.status }}</v-chip>
+              </template>
             <template v-slot:footer>
               <hr>
-                <v-row class="mt-12 mx-2" align="center">
+                <v-row class="mt-5 mx-2" align="center">
                   
                   <v-col>
                     
                   <v-pagination
                     v-model="page"
                     :length="numberOfPages"
-                    color="purple lighten-2"
+                    color="indigo darken-3"
                     circle
                     total-visible="5"
                   ></v-pagination></v-col>
@@ -86,6 +91,7 @@
 
         ],
         users: [],
+        loading:false
       }
     },
     computed:{
@@ -101,6 +107,7 @@
     methods: {
 
       async initialize() {
+        this.loading=true
         
           const response = await this.$axios.get('/api/index')
 
@@ -110,8 +117,13 @@
             }
 
         console.log(this.users)
-
-      }
+this.loading= false
+      },
+         getColor (status) {
+                    if (status == "pending") return 'red'
+                    else if (status == "Replied") return 'green'
+                    else return 'orange'
+                },
 
     }
   }

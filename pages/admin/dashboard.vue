@@ -1,13 +1,10 @@
-<template>
-    <v-container fluid>
-        <br>
-        <p class="display-1 font-weight-light">Dashboard</p>
-        <br><br>
-
-
-        <v-sheet class="pa-5" elevation="2">
-            <br>
-            <v-row class="hidden-sm-and-down">
+<template >
+    <v-container fluid >
+        
+        <v-sheet class="pa-5 mt-3" elevation="2">
+            
+             <p class="display-1 font-weight-darken mb-3">Dashboard</p>
+            <v-row class="hidden-sm-and-down mt-6">
                 <v-col v-for="card in Cards" :key="card">
                     <v-item  v-slot:default="{ toggle }">
                     <v-card 
@@ -55,12 +52,12 @@
             <br><br>
 
 
-            <v-sheet class="pa-5" elevation="3">
+            <v-sheet class="pa-5" elevation="0">
                 <v-row>
                     <v-col v-for="chip in Chip" :key="chip">
                         <center>
-                            <v-avatar color="red" size="70">
-                                <span class="white--text headline"><font-awesome-icon :icon="['fas', 'users']"/></span>
+                            <v-avatar color="indigo darken-3" size="70">
+                                <span class="white--text headline"><v-icon large color="white"> {{chip.icon}} </v-icon></span>
                             </v-avatar>
                             <h3>{{chip.count}}</h3>
                             <h3>{{chip.title}}</h3>
@@ -68,49 +65,54 @@
                     </v-col>
                 </v-row>
             </v-sheet>
+           
             <br><br>
-
-
-            <br><br>
-        <p class="display-1 justify-end font-weight-dark">Latest Enquiries</p>
+        <v-header class=" justify-end font-weight-dark mb-15 display-1">Latest Enquiries</v-header>
             
             <br>
             <v-data-table
+            item-key="name"
+            class="elevation-1 indigo darken-3 white--text mb-20"
+            :loading="loading"
+            loading-text="Loading... Please wait"
             :headers="headers"
             :items="desserts"
             :items-per-page="5"
-            class="elevation-1 "
+            dark
             >
-                <template v-slot:top>
-                <v-toolbar flat color="white">
-                    <v-spacer></v-spacer><v-btn to="view-enquiries" outlined color="primary">View all</v-btn>
+                <template v-slot:top >
+                <v-toolbar flat color="white" class="indigo darken-4 white--text" >
+                    <v-spacer></v-spacer><v-btn to="view-enquiries" rounded outlined color="white">View all</v-btn>
                 </v-toolbar>
                 </template>
-            </v-data-table>
+                <template v-slot:item.status="{ item }">
+                    <v-chip :color="getColor(item.status)" dark>{{ item.status }}</v-chip>
+                </template>
+            </v-data-table><br><br>
             
-            <br><br><br>
-
-              <p class="display-1 justify-end font-weight-dark">Latest Bookings</p>
-            
+           <v-header class=" justify-end font-weight-dark mb-15 mt-10 display-1">Latest Bookings</v-header>
             <br>
             <v-data-table
             :headers="booking_headers"
             :items="bookings"
-            :items-per-page="10"
-            class="elevation-3 "
+             class="elevation-1 indigo darken-3 white--text"
+            :loading="loading"
+            loading-text="Loading... Please wait"
+            :items-per-page="5"
+            dark
+           
             >
-                <template v-slot:top>
-                <v-toolbar flat color="white">
-                    <v-spacer></v-spacer><v-btn to="view-bookings" outlined rounded color="primary" >View all</v-btn>
+                <template v-slot:top >
+                <v-toolbar flat color="white" class="indigo darken-4 white--text" >
+                    <v-spacer></v-spacer><v-btn to="view-bookings" rounded outlined color="white">View all</v-btn>
                 </v-toolbar>
                 </template>
+                <template v-slot:item.status="{ item }">
+                    <v-chip :color="getColorBooking(item.status)" dark>{{ item.status }}</v-chip>
+                </template>
             </v-data-table>
-            
-            <br><br><br>
-
-
-
-            <center><p class="display-1 font-weight-light">Booking Trends</p><br><br></center>
+         
+            <center><p class="display-1 font-weight-light mt-5 ">Booking Trends</p></center>
             <v-card
                 class="mx-auto text-center"
                 color="green"
@@ -156,6 +158,8 @@
 export default {
       layout:"adminDashboardNavigation",
     data: () => ({
+        loading:true,
+        colorbg:'indigo lighten-5',
 
         //card data
         Cards:[
@@ -204,19 +208,23 @@ export default {
 
         //chip data
         Chip:[
-            {
+            {   
+                icon:'loyalty',
                 count:0,
                 title:'Stories'
             },
-            {
+            {   
+                icon:'person_pin',
                 count:0,
-                title:'Total Customers'
+                title:' Customers'
             },
-            {
+            {   
+                icon:'flag',
                 count:0,
                 title:'Blogs Cities'
             },
-            {
+            {   
+                icon:'place',
                 count:0,
                 title:'Destinations'
             },
@@ -238,6 +246,7 @@ export default {
           { text: 'Subject', value: 'subject' },
           { text: 'Email' , value: 'email'},
           { text: 'Message', value: 'message' },
+          { text:  'Status', value: 'status'}
           
           
         ],
@@ -261,6 +270,7 @@ export default {
         ],
         desserts: [],
         bookings:[],
+       
         
       
     packageLength: '',
@@ -279,14 +289,23 @@ export default {
                  console.log("Connected to admin")
                  const response0 = await this.$axios.get('/api/packages/index')
                  const response1 = await this.$axios.get('/api/contact/index')
+                 this.loading = true
+                  for(var j=0;j<response1.data.length;j++)
+                {
+                        this.desserts.push(response1.data[j])
+                }   
                  const response2 = await this.$axios.get('/api/subscribers/')
-                 const response3 = await this.$axios.get('/api/subscribers/')
-                      console.log(response1.data)
-                      console.log(this.Cards[0]['value'])
+                 const response3 = await this.$axios.get('/api/booking/index/')
+                  for(var j=0;j<response3.data.length;j++)
+                {
+                  this.bookings.push(response3.data[j])
+                }
+                this.loading = false
                this.Cards[0]['value'] = response0.data.length
                this.Cards[1]['value'] = response1.data.length
                this.Cards[2]['value'] = response2.data.length
                this.Cards[3]['value'] = response3.data.length
+
 
 
                  const response8 = await this.$axios.get('/api/stories/index')
@@ -298,25 +317,28 @@ export default {
                 this.Chip[1]['count'] = response5.data.length
                 this.Chip[2]['count'] = response6.data.length
                 this.Chip[3]['count'] = response7.data.length
-
-                const response4 = await this.$axios.get('/api/contact/index')
- 
-                 for(var j=0;j<response4.data.length;j++)
-                {
-                this.desserts.push(response4.data[j])
-                }
+                
+               
                 console.log(this.desserts)
 
                 const responsedata = await this.$axios.get('/api/booking/index')
-                 for(var j=0;j<responsedata.data.length;j++)
-                {
-                  this.bookings.push(responsedata.data[j])
-                }
+                
 
 
 
 
-                    }
+              },
+
+              getColor (status) {
+                    if (status == "pending") return 'red'
+                    else if (status == "Replied") return 'green'
+                    else return 'orange'
+                },
+                getColorBooking (status) {
+                    if (status == "Active") return 'green'
+                    else if (status == "Cancelled") return 'red'
+                    else return 'orange'
+                },
      }
 
 }

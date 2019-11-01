@@ -1,10 +1,12 @@
 <template>
-   <v-layout wrap  class=" align-center justify-center">
+
+   <v-layout wrap  class=" justify-center">
+      
+      
        <v-flex xs12 sm12 md10 lg10>
-        <v-card class="mx-auto pa-10 ma-10 grey lighten-3"  >
-    
-          <v-card-text class="black--text display-2 text-center" text-center>ADD PACKAGE</v-card-text>
-          <br>
+         <v-card-text class="black--text display-1 justify-end" >Packages</v-card-text>
+        <v-card class="mx-auto my+10 pa-8  white "  >
+           <v-card-title class="black--text display-6  justify-start" ><span class="medium grey--text">Packages/</span><span class="small"> Add Details</span></v-card-title><hr><br>
           <v-form
               ref="form"
               v-model="active"
@@ -124,9 +126,7 @@
                 outlined
             ></v-file-input> 
             </v-flex> -->
-              
-            <br><br>
-
+             
             <!-- buttons -->
             <div class="text-center ma-5">
               <v-btn
@@ -135,8 +135,8 @@
               class=" purple  darken-4 white--text "
               rounded  
               >
-              SAVE
-              </v-btn>
+              Save Details
+              </v-btn>&nbsp;&nbsp;&nbsp;
                <v-btn color="error" @click="reset" rounded >  Clear  </v-btn>
               
             </div>
@@ -201,7 +201,19 @@
             v => (v && v.length <= 50) || 'Feature must be less than 30 characters',
         ],
         details:'',
-        image:''
+        image:'',
+         items: [
+        {
+          text: 'Dashboard',
+          disabled: false,
+          href: 'breadcrumbs_dashboard',
+        },
+        {
+          text: 'Link 1',
+          disabled: false,
+          href: 'breadcrumbs_link_1',
+        },
+         ],
     }),
 
 

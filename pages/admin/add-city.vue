@@ -1,13 +1,15 @@
 <template>
 <v-container fluid>
+     <v-card-text class="black--text display-1 justify-end" >Blogs</v-card-text>
     <v-row>
         <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
-             <v-card class="mx-auto pa-10 ma-10 grey lighten-3" >
-          
-                    <v-card-text class="black--text display-1 text-center" text-center>Add City</v-card-text>
+             <v-card class="mx-auto pa-5 ma-1 grey lighten-3" >
+                   <v-card-title class="black--text display-6  justify-start" >
+                       <span class="medium grey--text">Blogs/</span>
+                       <span class="small"> Add State</span>
+                    </v-card-title><hr><br>
                      <v-form
                     ref="form1"
-                    
                     method="POST"
                     id="form1">
                         <v-row>
@@ -15,10 +17,14 @@
                                <v-select
                                 v-model="city"
                                 :items="items"
-                                label="Select City"
+                                offset-t="10"
+                                prepend-icon="location_city"
+                                label="Select State"
                                 outlined
+                                rounded
                             ></v-select>
                            </v-col> 
+                           
                         </v-row>
                         <v-row>
                             <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
@@ -26,6 +32,7 @@
                                 label="Add Header Image" 
                                 outlined dense
                                 :rules="rules"
+                                rounded
                                 prepend-icon="mdi-camera"
                                 accept="image/*"
                                 @change="onFileChanged">
@@ -38,7 +45,7 @@
                             </v-col>
                             <v-col cols = "12" xs = "2" sm = "2" md = "2" lg = "2">
                                 <v-btn
-                                color = "primary"
+                                color = "purple darken-3 white--text"
                                 @click="submitForm"> 
                                 Submit
                                 </v-btn>
@@ -62,6 +69,13 @@ export default {
     },
     data(){
         return{
+             dropdown_edit: [
+        { text: '100%' },
+        { text: '75%' },
+        { text: '50%' },
+        { text: '25%' },
+        { text: '0%' },
+      ],
             city:'',
             header_image:'',
             items:['Delhi' , 'Mumbai','Chennai','Kolkata'],

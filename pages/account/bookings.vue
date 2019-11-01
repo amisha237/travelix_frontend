@@ -51,7 +51,7 @@
             <v-expansion-panels >
       <v-expansion-panel
        
-        v-for="(item,i) in 3"
+        v-for="(item,i) in bookings.length"
         :key="i"
       >
         <v-expansion-panel-header expand-icon="">
@@ -69,7 +69,6 @@
                             <v-card-title class="font-weight-light">{{booking.name}}</v-card-title>
                             <v-spacer></v-spacer>
                             <v-btn text color="primary" @click="">View More</v-btn>
-                            
                         </v-row> 
                         <v-row class="mx-2">
                             <v-list-item-subtitle>{{booking.duration}}</v-list-item-subtitle>
@@ -96,12 +95,10 @@
                         </v-row>
                         
                     </v-col>
-                </v-row>
-                
-                
+                </v-row> 
             </v-card>
         </v-expansion-panel-header>
-        <v-expansion-panel-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-expansion-panel-content>
+        <v-expansion-panel-content><p> Address:     </p><p> Adult:<p> Children : </p></v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
 
@@ -122,11 +119,31 @@ export default {
                 journeyDate: '2nd Jan 2015',
                 price: 'Rs 70,000/-',
                 
-            },
-
-            
+            },  
         ],
+        packageName :[],
      
     }),
+
+    created()
+    {
+        this.initialize()
+    },
+   methods: {
+          async initialize () {
+          const response = await this.$axios.get('/api/booking/index')
+          for(var j=0;j<response.data.length;j++)
+            {
+            //   this.bookings.push(response.data[j])
+               
+        	}
+        
+			
+          
+          
+          }
+
+
+    }
 }
 </script>
