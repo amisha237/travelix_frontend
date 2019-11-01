@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid>
+    <v-container fluid class="mt-n12">
         <v-row justify="center"><p class="display-1 font-weight-light">Our Services</p></v-row>
         <br>
         <v-container>

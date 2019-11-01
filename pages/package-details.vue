@@ -1,19 +1,19 @@
 <template>
-  <div>
-     <v-row class="mb-12">
-      <v-img src="/home_slider.jpg" height=230px   alt=""><br><br><br><br><br><br><br>
-       <p class="display-2  white--text">The Offers</p>
-     </v-img>
+  <v-container fluid fill-width>
+    <v-row class="mb-12">
+      <v-img src="/package-details.jpg" height=300px alt=""><br><br><br><br><br><br><br>
+       <!-- <p class="display-2  white--text">The Offers</p> -->
+      </v-img>
     </v-row>
   
     <v-container fluid fill-width>
-          <v-sheet class="pa-5" elevation="1">
-           <h1>{{item.package_name}}</h1>
+      <v-sheet class="pa-5" elevation="1">
+            <h1>{{item.package_name}}</h1>
             <v-img :src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
              height="350" 
              width="100%" alt=""></v-img>
 
-            <v-sheet class="pa-4" elevation="1">
+          <v-sheet class="pa-4" elevation="1">
             <v-row>
               <v-col>
               <h3> Package Name </h3> {{item.package_name}} 
@@ -43,10 +43,10 @@
             </v-row>
             <br>
             <v-btn class="ma-2" outlined color="indigo">Book Now</v-btn>
-            </v-sheet>
+          </v-sheet>
             
 
-             <template>
+            <template>
               <div >
                 
                 <br><br>
@@ -65,7 +65,6 @@
                     :mandatory="mandatory"
                     :show-arrows="showArrows"
                     :center-active="centerActive"
-                
                 >
                     <v-slide-item
                     v-for="image in images"
@@ -93,7 +92,7 @@
                     </v-slide-item>
                 </v-slide-group>
                 </v-sheet>
-            </div>
+              </div>          
             </template>
 
             <br><br>
@@ -121,7 +120,7 @@
       :center="{lat: locations[0].lat, lng: locations[0].lng}"
       :options="{fullscreenControl: false, streetViewControl: false, mapTypeControl: false, zoomControl: true, gestureHandling: 'cooperative', styles: mapStyle}"
       :zoom="6"
-    >
+      >
        <GMapMarker
         v-for="location in locations"
         :key="location.id"
@@ -142,11 +141,11 @@
 
 
 
-          </v-sheet>
+      </v-sheet>
       
      
     </v-container>  
-  </div>  
+  </v-container>  
 </template>
 
 

@@ -27,18 +27,18 @@
  
   <br><br>
   </div>
-   <div class="my-12 text-center">
+   <div class=" mt-12 text-center">
      	<span class="display-1 pb-12 mb-12 font-weight-light">Top </span>
       	<span class="display-1 pb-12 mb-12 font-weight-light">Destinations</span> <br><br>
         <destinationCard />
    		
     </div>
   
-    <div>
+    <div class="mt-n12">
     	<services/>
     </div>
   
-
+    <br><br>
     <div class="my-12 text-center">
      	<span class="display-2 pb-12 mb-12  font-weight-light"> Discover our tour </span>
       	<span class="display-2 pb-12 mb-12 red--text font-weight">packages</span> <br><br><br>  

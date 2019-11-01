@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card class="mt-n3 px-12 py-8" flat width="100wh" height="100vh">
+        <v-card class="mt-n3 px-12 py-8" flat width="100wh" height="auto">
             <v-card-title class="font-weight-light">  
                 Booking Details
             
