@@ -184,7 +184,7 @@
       //      path: '/admin/viewPackage'
       //    });
 
-      this.$router.push(`/package-details/${item.id}`)
+      this.$router.push(`/packagesDetails/${item.id}`)
       console.log(item.id);
     }
 

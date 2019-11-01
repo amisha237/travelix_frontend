@@ -42,7 +42,7 @@
               </v-col>  
             </v-row>
             <br>
-            <v-btn class="ma-2" outlined color="indigo">Book Now</v-btn>
+            <v-btn class="ma-2" outlined color="indigo" :to="`/booking/${item.id}`">Book Now</v-btn>
             </v-sheet>
             
 
@@ -339,7 +339,7 @@
 
         	async initialize () {
 
-          let id = this.$route.params.packageId
+          let id = this.$route.params.id
 
           const response = await this.$axios.get(`/api/packages/show/${id}`)
 
