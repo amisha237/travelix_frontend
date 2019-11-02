@@ -7,6 +7,8 @@
 				<v-card
 				class="mx-auto"
 				max-width="344"
+				height="700px"
+				
 				>
 				<v-img
 				:src="`http://localhost:8000/mainpackages/${item.package_header_image}`"

@@ -1,11 +1,16 @@
 <template>
-    <v-container fluid>
+    <div>
         <v-row class="">
            <v-col cols="12">
                <center><v-card
                 max-width="100vw"
+<<<<<<< HEAD
                 width="1400"
                 class=""
+=======
+                width="1500"
+                class=" pt-12"
+>>>>>>> ae4bd1c42d4e9874d003eab4c6ffdeb9ee54cfe1
                 img="/fig5.jpg"
                 height="400"
                 >
@@ -34,9 +39,14 @@
                                     color="orange lighten-1"
                                     >
                                     </v-text-field>
+<<<<<<< HEAD
                                    <div class="text-center "> 
                                     <v-btn   class="text-center purple darken-4"
                                     dark 
+=======
+                                   <div class="text-center"> 
+                                    <v-btn block color="secondary" class="text-center" 
+>>>>>>> ae4bd1c42d4e9874d003eab4c6ffdeb9ee54cfe1
                                     @click="sendRequest">
                                     subscribe
                                     </v-btn>
@@ -68,7 +78,7 @@
 			Close
 		</v-btn>
     </v-snackbar>
-    </v-container>
+    </div>
 </template>
 
 <script>

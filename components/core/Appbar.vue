@@ -17,8 +17,10 @@
 
       <div class="flex-grow-1"></div>
       <v-layout  >
-			<div class="hidden-sm-and-down" >
-				<v-btn
+        
+			<v-row class="hidden-sm-and-down">
+				<v-col>
+        <v-btn
 					v-for="(item, i) in items" :key="i"
 					:to="item.to"
 					router
@@ -29,7 +31,8 @@
 				>
 					{{item.text}}
 				</v-btn>
-			</div>
+				</v-col>
+			</v-row>
       <v-spacer/>
       
 			<v-flex xs12 sm12  md3 lg3>
@@ -50,7 +53,7 @@
 
       
      <template v-if="!loggedIn">
-     <v-dialog v-model="dialog"  max-width="700px" >
+     <v-dialog v-model="dialog"  width="500px" height="700px" >
 
         <template v-slot:activator="{ on }">
          <v-btn v-if="!loggedIn" color="primary" text v-on="on">Login | Sign Up</v-btn>
@@ -66,7 +69,7 @@
               light
               slider-color="yellow"
               grow
-              background-color="teal darken-3"
+              background-color="primary"
               position= "absolute"
            >
              <v-tab

@@ -1,8 +1,13 @@
 <template>
+<<<<<<< HEAD
     <v-container fluid>
         <v-row justify="start"><p class="display-1 font-weight-dark organe darken-4--text">Our Services</p></v-row>
+=======
+    <div class="mt-n12">
+        <v-row justify="center"><p class="display-1 font-weight-light">Our Services</p></v-row>
+>>>>>>> ae4bd1c42d4e9874d003eab4c6ffdeb9ee54cfe1
         <br>
-        <v-container>
+       
             
         <v-row class="hidden-sm-and-down ">  
             <v-img src="/servicesbg.jpg" height="400px" width="100vw">
@@ -65,9 +70,9 @@
          
           
         </v-row>
-        </v-container>       
+              
 
-    </v-container>
+    </div>
 </template>
 
 <script>

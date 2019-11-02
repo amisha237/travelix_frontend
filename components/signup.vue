@@ -1,14 +1,16 @@
 <template>
   <v-layout wrap align-center justify-center 
    :style="{backgroundImage:'url(/bg_10.jpg)',backgroundSize: 'cover',}"
-   class="my-container"
+  
   >
+  <v-container >
     <v-flex xs12 md9>
        
         <v-form  ref="form"
               v-model="active"
               method="POST"
-              id="form">
+              id="form"
+              class="mx-auto">
         
             <!-- name -->
             <v-text-field
@@ -84,7 +86,7 @@
             
           </v-form>
       </v-flex> 
-
+  </v-container>
    </v-layout>
 </template>
 

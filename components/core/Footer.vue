@@ -37,17 +37,10 @@
         <v-col  cols="1" v-for="(item, i) in items"
             :key="i">
             
-            <v-btn
             
-            :href="item.href"
-            class="ml-0 mr-2"
-            color="primary"
-            rounded
-            target="_blank"
-           >
           
           <v-icon v-text="item.icon" />
-          </v-btn>
+       
         
         </v-col>
         <v-col></v-col>
@@ -67,17 +60,10 @@
         <v-col cols="2" v-for="(item, i) in items"
             :key="i">
             
-            <v-btn
             
-            :href="item.href"
-            class="ml-0 mr-2"
-            color="primary"
-            square
-            target="_blank"
-           >
           
           <v-icon v-text="item.icon" />
-          </v-btn>
+       
         
         </v-col>
        

@@ -11,9 +11,14 @@
     <v-img src="/hero-image.jpg" class="hidden-sm-and-down" height="660px" width="100vw" alt="unable to load image">
    <v-overlay absolute opacity="0.4"> 
    
+<<<<<<< HEAD
     <p class="display-4 bold  mb-5">Discover </p><center><p class="display-2"> The World</p></center>
       <center><v-btn x-large outlined  class=" orange--text   mt-12" >View Packages</v-btn></center>
     </v-overlay>
+=======
+      <center><v-btn to="/packages" x-large  color="primary" class=" white--text" >View Packages</v-btn></center>
+    <!-- </v-overlay> -->
+>>>>>>> ae4bd1c42d4e9874d003eab4c6ffdeb9ee54cfe1
     </v-img>
     <v-img src="/hero-image.jpg" class="hidden-md-and-up" height="300px" width="100vw" alt="unable to load image">
       <!-- <v-overlay absolute> -->
@@ -69,6 +74,9 @@
     <div>
       <newsletter/>
     </div>
+    
+      <newsletter class="mb-n5" />
+  
   </v-layout>
  
  </v-app>

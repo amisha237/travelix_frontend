@@ -170,7 +170,7 @@
             </v-img>
             
         </v-row>
-        </v-container>
+        
   </div>
 
 

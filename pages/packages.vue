@@ -1,16 +1,18 @@
 <template>
-  <v-container fluid>
+  <!-- <v-container fluid> -->
+    <v-layout column align-center justify-center>
     <v-row class="mb-12">
-      <v-img src="/home_slider.jpg" height=300px   alt=""><br><br><br><br><br><br><br>
-       <p class="display-2  white--text text-center">The Offers</p>
+      <v-img src="/packages.jpg" height=400px width="100vw"  alt=""><br><br><br><br><br><br><br>
+      <v-overlay absolute>
+       <p class="display-2  white--text text-center font-weight-light">Get ready for an exciting trip!</p>
+      </v-overlay>
      </v-img>
     </v-row>
     <v-row class="my-12"></v-row>  
     <v-row class="align-center justify-center text-center ma-12">
       <v-col>
-          <span class="display-3 font-italic font-weight-medium"> ALL </span>
-          <span class="display-3 red--text font-italic font-weight-medium">PACKAGES</span>
-          
+          <span class="display-3  font-weight-light"> ALL </span>
+          <span class="display-3 red--text  font-weight-light">PACKAGES</span>
       </v-col>
     </v-row>
     
@@ -124,7 +126,8 @@
 
     <v-row class="my-12"></v-row>   
     
-  </v-container>
+  <!-- </v-container> -->
+    </v-layout>
 </template>
 <script>
   export default {
