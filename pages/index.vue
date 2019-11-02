@@ -59,9 +59,9 @@
       <blogCard/>
         <v-btn block color="blue darken-2" class="white--text mt-5 px-5" to="/blog" exact>View All</v-btn>
     </div>
-    <div>
-      <newsletter/>
-    </div>
+    
+      <newsletter class="mb-n5" />
+  
   </v-layout>
  
  </v-app>
