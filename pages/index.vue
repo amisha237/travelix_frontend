@@ -71,11 +71,8 @@
       <blogCard/>
        	<!-- <v-btn block large color="purple darken-4" class="white--text mt-5 px-5" to="/packages">View All</v-btn> -->
     </div>
-    <div>
-      <newsletter/>
-    </div>
-    
-      <newsletter class="mb-n5" />
+   
+      <newsletter class="mb-n6 " />
   
   </v-layout>
  

@@ -1,15 +1,8 @@
 <template>
-<<<<<<< HEAD
     <v-container fluid>
-        <v-row justify="start"><p class="display-1 font-weight-dark organe darken-4--text">Our Services</p></v-row>
-=======
-    <div class="mt-n12">
-        <v-row justify="center"><p class="display-1 font-weight-light">Our Services</p></v-row>
->>>>>>> ae4bd1c42d4e9874d003eab4c6ffdeb9ee54cfe1
-        <br>
-       
-            
-        <v-row class="hidden-sm-and-down ">  
+        <v-container>
+        <v-row justify="start"><p class="display-1 font-weight-dark ">Our Services</p></v-row>
+        <v-row class="hidden-sm-and-down mb-7">  
             <v-img src="/servicesbg.jpg" height="400px" width="100vw">
                 <v-overlay absolute="true" value="true" opacity="0.34"  >
                 <v-container fluid>
@@ -43,10 +36,8 @@
         <v-row no-gutters class="hidden-md-and-up"
         v-for="n in 4" :key="n">  
             
-            
-               
                 <v-row>
-                <v-col sm="12" >
+                    <v-col sm="12" >
                   
                    <v-item v-slot:default="{ active, toggle }">
                         <v-card
@@ -63,16 +54,13 @@
                                 in lucilius prodesset pri. Veniam delectus ei vis.</p>
                         </v-card>
                     </v-item>
-
-                    </v-col>
+                        </v-col>
                     </v-row>
-                   
-         
-          
-        </v-row>
-              
 
-    </div>
+        </v-row>
+        </v-container>
+    </v-container>
+    
 </template>
 
 <script>

@@ -7,7 +7,7 @@
 				<v-card
 				class="mx-auto"
 				max-width="344"
-				height="700px"
+				height="330px"
 				
 				>
 				<v-img

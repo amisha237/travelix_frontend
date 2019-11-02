@@ -62,8 +62,6 @@
 
   <div class="container">
     <v-row justify="start"><p class="display-1 font-weight-bold  orange--text">Our Satisfied Customers</p></v-row>
-
-        <v-container>    
         <v-row class="hidden-sm-and-down">  
             <v-img src="/customers.jpg" height="350px" width="100vw">
                 <v-overlay absolute="true" value="true" opacity="0.3" >
@@ -75,10 +73,10 @@
                         <v-card
                         class=" px-3 "
                         outlined
-                        height="200"
+                        height="230"
                         width="100vw"
                         @click="toggle"
-                        color="purple darken-4"
+                        color="purple darken-4 pa-3"
                         opacity="0.35"
                         >   
                           <v-row>
@@ -170,7 +168,7 @@
             </v-img>
             
         </v-row>
-        
+       
   </div>
 
 
