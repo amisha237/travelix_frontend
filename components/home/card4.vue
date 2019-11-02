@@ -64,7 +64,7 @@
     <v-row justify="center"><p class="display-1 font-weight-light">Our Satisfied Customers</p></v-row>
         <br>
         
-        <v-container>    
+           
         <v-row class="hidden-sm-and-down">  
             <v-img src="/customers.jpg" height="400px" width="100vw">
                 <v-overlay absolute="true" value="true" opacity="0.3" >
@@ -175,7 +175,7 @@
             </v-img>
             
         </v-row>
-        </v-container>
+        
   </div>
 
 

@@ -1,13 +1,13 @@
 <template>
-    <v-container fluid class="mt-n12">
+    <div class="mt-n12">
         <v-row justify="center"><p class="display-1 font-weight-light">Our Services</p></v-row>
         <br>
-        <v-container>
+       
             
         <v-row class="hidden-sm-and-down">  
             <v-img src="/services.jpg" height="400px" width="100vw">
                 <v-overlay absolute="true" value="true" opacity="0" >
-                <v-container fluid>
+                <v-container >
                 <v-row>
                 <v-col md="3" v-for="n in 4" :key="n">
                   
@@ -61,9 +61,9 @@
          
           
         </v-row>
-        </v-container>       
+              
 
-    </v-container>
+    </div>
 </template>
 
 <script>

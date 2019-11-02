@@ -13,7 +13,7 @@
     <br><br><br><br><br><br><br><br>
     <br><br><br><br><br>
    
-      <center><v-btn x-large  color="primary" class=" white--text" >View Packages</v-btn></center>
+      <center><v-btn to="/packages" x-large  color="primary" class=" white--text" >View Packages</v-btn></center>
     <!-- </v-overlay> -->
     </v-img>
     <v-img src="/hero-image.jpg" class="hidden-md-and-up" height="300px" width="100vw" alt="unable to load image">
