@@ -1,56 +1,73 @@
 <template>
-  <v-container fluid fill-width>
+<v-layout column align-center justify-center>
+  <!-- <v-container fluid fill-width> -->
     <v-row class="mb-12">
-      <v-img src="/package-details.jpg" height=300px alt=""><br><br><br><br><br><br><br>
+      <v-img src="/package-details.jpg" height="300px" width="100vw" alt=""><br><br><br><br><br><br><br>
        <!-- <p class="display-2  white--text">The Offers</p> -->
       </v-img>
     </v-row>
   
     <v-container fluid fill-width>
       <v-sheet class="pa-5" elevation="1">
-            <h1>{{item.package_name}}</h1>
-            <v-img :src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
-             height="350" 
-             width="100%" alt=""></v-img>
+            <p class="display-2 font-weight-light"><center>{{item.package_name}}</center></p>
+            
 
           <v-sheet class="pa-4" elevation="1">
-            <v-row>
+            <v-row  class="font-weight-light">
+              <v-col cols="7" class="my-auto">
+                <v-img :src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
+                height="auto" 
+                width="100%" alt=""/>
+              </v-col>
               <v-col>
-              <h3> Package Name </h3> {{item.package_name}} 
-              </v-col>  
+                <v-row>
+                  <v-col>
+                  <h2 class=" font-weight-light"> Package Name </h2> {{item.package_name}} 
+                  <v-divider/>
+                  </v-col>  
+                </v-row>
+                <v-row>
+                  <v-col>
+                  <h2 class=" font-weight-light"> Package Type </h2> {{item.package_type}}
+                  <v-divider/>
+                  </v-col>  
+                  
+                </v-row>
+                <v-row>
+                  <v-col>
+                  <h2  class=" font-weight-light"> Package Duration</h2> {{item.package_nights}} nights and {{item.package_day}} days
+                  <v-divider/>
+                  </v-col>  
+                </v-row>
+                <v-row>
+                  <v-col>
+                  <h2 class="font-weight-light"> Package Details</h2> {{item.package_details}}
+                  <v-divider/>
+                  </v-col>  
+                </v-row>
+                <v-row>
+                  <v-col>
+                  <h2 class=" font-weight-light"> Price</h2>Rs. {{item.package_price}}/-
+            
+                  </v-col>  
+                </v-row>
+                <v-row>
+                  <v-col>
+                  <v-btn class="ma-2 " block outlined color="indigo" :to="`/booking/${item.id}`">Book Now</v-btn>
+                  </v-col>
+                </v-row>
+              </v-col>
             </v-row>
-             <v-row>
-              <v-col>
-              <h3> Package Type </h3> {{item.package_type}}
-              
-              </v-col>  
-              
-            </v-row>
-            <v-row>
-              <v-col>
-              <h3> Package Duration</h3> {{item.package_nights}} nights and {{item.package_day}} days
-              </v-col>  
-            </v-row>
-            <v-row>
-              <v-col>
-              <h3> Package Details</h3> {{item.package_details}}
-              </v-col>  
-            </v-row>
-             <v-row>
-              <v-col>
-              <h3> Price</h3>Rs. {{item.package_price}}/-
-              </v-col>  
-            </v-row>
-            <br>
-            <v-btn class="ma-2" outlined color="indigo" :to="`/booking/${item.id}`">Book Now</v-btn>
+            
+            
             </v-sheet>
             
 
             <template>
               <div >
                 
-                <br><br>
-                <h3>Gallery</h3><br>
+                <br><br><br>
+                <p class="display-2 font-weight-light mt-12"><center>Places To Visit</center></p><br>
                 <v-sheet
                 class="mx-auto"
                 elevation="2"
@@ -72,22 +89,21 @@
                     v-slot:default="{ active, toggle }"
                     >
                     <v-card
-                        color='grey lighten-1'
+                        
                         class="ma-4"
                         height="250"
                         width="250"
                         @click="toggle"
                     >
                     <v-img :src="`http://localhost:8000/mainpackages/${image}`"
-                     height="100%" 
+                     height="80%" 
                      width="100%"
-                     alt=""></v-img>
-                        <v-row
-                        class="fill-height"
-                        align="center"
-                        justify="center"
-                        >
-                        </v-row>
+                     alt="">
+                      
+                    </v-img>
+                      <v-card-title class="font-weight-light">
+                        Place Name
+                      </v-card-title>    
                     </v-card>
                     </v-slide-item>
                 </v-slide-group>
@@ -96,24 +112,7 @@
             </template>
 
             <br><br>
-            <!-- google map -->
-            <!-- <GMap
-            :cluster="{options:{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}}" :center="{lat: locations[0].lat, lng: locations[0].lng}"
-            :options="{fullscreenControl: false, streetViewControl: false, mapTypeControl: false, zoomControl: true, gestureHandling: 'cooperative', styles: mapStyle}"
-            :zoom="6">
-            <GMapMarker v-for="location in locations"
-                :key="location.id"
-                :position="{lat: location.lat, lng: location.lng}"
-                :options="{icon: location === currentLocation ? pins.selected : pins.notSelected}"
-                @click="currentLocation = location">
-                <GMapInfoWindow>
-                    <code>
-                        lat: {{ location.lat }},
-                        lng: {{ location.lng }}
-                    </code>
-                </GMapInfoWindow>
-            </GMapMarker>
-            </GMap> -->
+            
 
            <GMap
       :cluster="{options: {styles: clusterStyle}}"
@@ -145,7 +144,8 @@
       
      
     </v-container>  
-  </v-container>  
+  <!-- </v-container>   -->
+</v-layout>
 </template>
 
 
@@ -327,7 +327,7 @@
       centerActive: false,
       item:'',
       images:[],
-         };
+      };
       
     //map script
   },
