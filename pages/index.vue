@@ -44,7 +44,7 @@
       	<span class="display-2 pb-12 mb-12 red--text font-weight">packages</span> <br><br><br>  
       
    		<packageCard />
-     	<v-btn block large color="blue darken-2" class="white--text mt-5 px-5" to="/packages">View All</v-btn>
+     	<v-btn block large color="primary" class="white--text mt-5 px-5" to="/packages">View All</v-btn>
     </div>
    <br>
    <br>

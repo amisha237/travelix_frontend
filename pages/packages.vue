@@ -13,7 +13,6 @@
       <v-col>
           <span class="display-3  font-weight-light"> ALL </span>
           <span class="display-3 red--text  font-weight-light">PACKAGES</span>
-          
       </v-col>
     </v-row>
     
