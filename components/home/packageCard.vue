@@ -7,6 +7,8 @@
 				<v-card
 				class="mx-auto"
 				max-width="344"
+				height="700px"
+				
 				>
 				<v-img src="/delhi.jpg">
 					<div class="text-right py-5" >

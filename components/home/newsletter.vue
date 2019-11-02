@@ -37,7 +37,7 @@
                                     >
                                     </v-text-field>
                                    <div class="text-center"> 
-                                    <v-btn block  class="text-center" 
+                                    <v-btn block color="secondary" class="text-center" 
                                     @click="sendRequest">
                                     subscribe
                                     </v-btn>

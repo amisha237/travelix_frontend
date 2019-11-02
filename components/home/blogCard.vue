@@ -5,6 +5,7 @@
         <v-card
           class="mx-auto  pa-1"
           max-width="350"
+          height="400px"
           flat
         >
           <v-img
@@ -23,7 +24,7 @@
           </v-card-text>
 
           <v-card-actions  class="pt-2">
-         	 <v-btn text color="orange" absolute bottom right >Explore</v-btn>
+         	 <v-btn text color="orange" absolute bottom right>Explore</v-btn>
            </v-card-actions>
         </v-card>
       </v-col>

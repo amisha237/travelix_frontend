@@ -13,7 +13,7 @@
     <br><br><br><br><br><br><br><br>
     <br><br><br><br><br>
    
-      <center><v-btn x-large outlined class=" white--text" >View Packages</v-btn></center>
+      <center><v-btn x-large  color="primary" class=" white--text" >View Packages</v-btn></center>
     <!-- </v-overlay> -->
     </v-img>
     <v-img src="/hero-image.jpg" class="hidden-md-and-up" height="300px" width="100vw" alt="unable to load image">
@@ -27,7 +27,7 @@
  
   <br><br>
   </div>
-   <div class=" mt-12 text-center">
+   <div class=" mt-12 mb-n12 text-center">
      	<span class="display-1 pb-12 mb-12 font-weight-light">Top </span>
       	<span class="display-1 pb-12 mb-12 font-weight-light">Destinations</span> <br><br>
         <destinationCard />
@@ -35,7 +35,7 @@
     </div>
   
     <div class="mt-n12">
-    	<services/>
+    	<services />
     </div>
   
     <br><br>
@@ -57,7 +57,7 @@
       <span class="display-2 pb-12 mb-12 font-weight-light">Latest from Our </span>
       <span class="display-2 pb-12 mb-12 red--text font-weight">Blogs</span> <br><br><br>
       <blogCard/>
-        <v-btn block color="blue darken-2" class="white--text mt-5 px-5" to="/blog" exact>View All</v-btn>
+        <v-btn block color="primary" class="white--text mt-5 px-5" to="/blog" exact>View All</v-btn>
     </div>
     
       <newsletter class="mb-n5" />

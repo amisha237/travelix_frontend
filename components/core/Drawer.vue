@@ -10,6 +10,7 @@
       temporary
       app
       src=""
+      
     >
     
       <v-list-item>
@@ -32,23 +33,32 @@
 
       <v-divider></v-divider>
 
-      <v-list dense shaped>
+      <v-list dense shaped >
 
         <v-list-item
-      
+          color="primary"
+          
           v-for="item in items"
           :key="item.title"
+          :to="item.to"
           link
         >
-          <v-list-item-icon>
+          <v-list-item-icon >
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title class="font-weight-medium">{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        
       </v-list>
+      <br><br><br><br><br><br><br><br><br><br><br>
+          <v-btn v-if="loggedIn"  @click.prevent="logout"  block color="secondary">Logout</v-btn>
+          
+          <v-btn v-else  @click.prevent="checkLogin"  block color="secondary">Login</v-btn>
+    
+      
     </v-navigation-drawer>
   </div>
   <!-- </v-sheet> -->
@@ -62,16 +72,57 @@
     data () {
       return {
          
-        drawer: null,
+        drawer: false,
         items: [
-          { title: 'Home', icon:'home' },
-          { title: 'Packages', icon: 'question_answer' },
-          { title: 'Stories', icon: 'dashboard' },
-          { title: 'Blogs', icon: 'question_answer' },
-          { title: 'Contact', icon: 'dashboard' },
-          { title: 'About Us', icon: 'question_answer' },
+          { title: 'Home', icon:'home', to:"/" },
+          { title: 'Packages', icon: 'question_answer', to:"/packages" },
+          { title: 'Stories', icon: 'dashboard', to:"/stories" },
+          { title: 'Blogs', icon: 'question_answer', to:"/blog" },
+          { title: 'Contact', icon: 'dashboard', to:"/contact" },
+          { title: 'About Us', icon: 'question_answer', to:"/" },
         ],
       }
     },
+    methods:{
+        async logout()
+        {
+          await this.$auth.logout().then(()=>{
+            this.$router.push('/');
+          });
+          console.log('logout')
+        },
+
+        async checkLogin() {
+       
+       console.log(this.email);
+     try{  
+          await this.$auth.loginWith('local', {
+            data: {
+              "email": this.email,
+              "password": this.password,  
+              "authentication":this.authentication,
+            }
+
+              }).then(() => {
+                if(this.$auth.loggedIn)
+                   this.$router.push('/')
+                else  
+                  console.log("Login Failed"); 
+           }) 
+      }
+      catch(err ) {
+          console.log("Login Failed");
+      }
+    
+      
+         
+  },
+
+        sendToProfile()
+        {
+            this.$router.push('/account/profile')
+        },
+
+  }
   }
 </script>
