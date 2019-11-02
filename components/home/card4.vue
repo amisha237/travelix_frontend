@@ -60,49 +60,45 @@
          </v-card>
     </v-layout> -->
 
-  <div>
-    <v-row justify="center"><p class="display-1 font-weight-light">Our Satisfied Customers</p></v-row>
-        <br>
-        
+  <div class="container">
+    <v-row justify="start"><p class="display-1 font-weight-bold  orange--text">Our Satisfied Customers</p></v-row>
+
         <v-container>    
         <v-row class="hidden-sm-and-down">  
-            <v-img src="/customers.jpg" height="400px" width="100vw">
+            <v-img src="/customers.jpg" height="350px" width="100vw">
                 <v-overlay absolute="true" value="true" opacity="0.3" >
                 <v-container>
-                <v-row>
+                <v-row class="ml-3 mr-3 pa-1">
                 <v-col md="3"  v-for="item in items" :key="item">
-                  <br><br><br>
+                 
                     <v-item v-slot:default="{ active, toggle }">
                         <v-card
-                        class="py-auto px-3 "
+                        class=" px-3 "
                         outlined
                         height="200"
                         width="100vw"
                         @click="toggle"
-                        color="orange lighten-1"
-                        opacity="0.1"
+                        color="purple darken-4"
+                        opacity="0.35"
                         >   
                           <v-row>
                           <v-col cols="5">
-                            <v-img :src="item.src" alt="" width="100%" height="100px"></v-img>
+                            <v-img :src="item.src" alt="" width="100%" height="70px"></v-img>
                           </v-col> 
-                          <!-- <v-col cols="1"></v-col> -->
                           <v-col>
                             <v-row>
                               <v-col cols="12">
-                              <h2><b>{{item.name}}</b></h2>
-                              {{item.date}}
+                              <h4><b class="orange--text">{{item.name}}</b></h4>
+                              <h5 class="font-weight-light">{{item.date}}</h5>
                               </v-col> 
                             </v-row>
                           </v-col>
                         </v-row>
                         <v-row>
-                          <v-col>
+                          <v-col class="pa-3">
                             {{item.desc}}
                           </v-col>
-                        </v-row>                                
-
-                    
+                        </v-row>                           
                         </v-card>
                     </v-item>
 
@@ -122,8 +118,7 @@
                 <v-container>
                 <v-row justify="center">
                   <v-col sm="8" cols="10" >
-                  <br><br><br><br><br><br><br><br>
-                    
+                 
                     <v-carousel
                       cycle
                       height="auto"
@@ -139,7 +134,7 @@
                         height="200"
                         width="100vw"
                         @click="toggle"
-                        color="orange lighten-1"
+                        color="purple darken-4"
                         opacity="0.1"
                         >         
                         <v-row>
@@ -150,8 +145,8 @@
                           <v-col>
                             <v-row>
                               <v-col cols="12">
-                              <h2><b>{{item.name}}</b></h2>
-                              {{item.date}}
+                              <h4><b class="orange--text">{{item.name}}</b></h4>
+                              <h5 class="font-weight-light">{{item.date}}</h5>
                               </v-col> 
                             </v-row>
                           </v-col>
@@ -192,7 +187,7 @@ export default {
           title: 'Coorg',
           name:'Alisa Johnson ',
           date:'23 Nov 2018',
-          desc: 'Features ty uioo hjkkl; bbnjmkll',
+          desc: 'Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.',
         },
         {
           color: '#952175',
@@ -200,7 +195,7 @@ export default {
           title: 'Halcyon Days',
           name:'Sara Whitman',
           date:'2 March 2019',
-          desc: 'Features ty uioo hjkkl; bbnjmkll',
+          desc: 'Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.',
         },
          {
           color: '#1F7087',
@@ -208,7 +203,7 @@ export default {
           title: 'Demo',
           name:'Aryan Roy',
           date:'23 Nov 2018',
-          desc: 'Features ty uioo hjkkl; bbnjmkll',
+          desc: 'Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.',
         },
          {
           color: '#952175',
@@ -216,7 +211,7 @@ export default {
           title: 'Tyghyu',
           name:'John Cena',
           date:'23 Nov 2018',
-          desc: 'Features ty uioo hjkkl; bbnjmkll',
+          desc: 'Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec',
         },
       ],
     }),

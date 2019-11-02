@@ -2,14 +2,17 @@
   <v-app-bar
       fixed
       app
-      light
+      
       floating
-      class="nav"
+      class="nav "
+      color="purple darken-4 "
       min-height="80px"
+      dark
+      
     >
      <Drawer/>
       <v-toolbar-title>
-     <v-img src="/Travelix.jpg" height="50px" contain></v-img></v-toolbar-title>
+     <v-img src="/logo.png" height="100px" contain></v-img></v-toolbar-title><p class="logo mt-5 display-1 italic  text"> Travelix </p>
       <!-- navigation button -->
 
       <div class="flex-grow-1"></div>
@@ -22,7 +25,7 @@
 					exact
 					text
           v-text="item.title" 
-					class=""	
+					class="mr-2"	
 				>
 					{{item.text}}
 				</v-btn>
@@ -86,7 +89,7 @@
    </template>
    <!-- loggedIn -->
    <template v-if="loggedIn">
-        <div class="text-center nav" >
+        <div class="text-center nav mr-5 " >
             <v-menu
             :close-on-content-click="false"
             :nudge-width="200"
@@ -96,11 +99,9 @@
             >
             <template v-slot:activator="{ on }">
                 <v-btn icon v-on="on" fav>
-                    <v-avatar>
+                    <v-avatar  v-if="loggedIn" >
                        <img
-                        src="https://cdn.vuetifyjs.com/images/john.jpg"
-                        alt="John"
-                        
+                        :src="`http://localhost:8000/UserProfileImage/${$auth.user.profile_img}`"
                        >
                     </v-avatar>
                 </v-btn>
@@ -110,7 +111,6 @@
              <v-list>
                 <v-list-item v-if="loggedIn" >
                     <v-list-item-avatar >
-
                     <img :src="`http://localhost:8000/UserProfileImage/${this.$auth.user.profile_img}`">
                     </v-list-item-avatar>
 
@@ -220,6 +220,11 @@ export default {
 <style scoped>
 .nav{
   padding-top: 10px
+}
+.logo{
+ font-style: bold;
+
+  font-family: Arial;
 }
 </style>
 

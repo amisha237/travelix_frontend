@@ -2,20 +2,18 @@
     <v-container fluid>
         <v-row class="">
            <v-col cols="12">
-               <v-card
+               <center><v-card
                 max-width="100vw"
-                width="1500"
-                class=" max-auto pt-12"
+                width="1400"
+                class=""
                 img="/fig5.jpg"
-                elavation=6
                 height="400"
-                flat
                 >
                 
                 <v-row class="justify-center text-center align-center">
                     <v-overlay absolute z-index="0" value="1" light>
                     <v-col sm="12" xs="12" md="12" lg="12">
-                        <span class="display-1 font-weight-light py-5">Sign Up for Newsletters</span><br><br>
+                        <span class="display-1  font-weight-light py-5">Sign Up for Subscribtions</span><br><br>
                         <!-- <span class="subtitle-1">Sign up for our mailing list to get latest updates and offers.</span> -->
                     
                         <v-form 
@@ -33,11 +31,12 @@
                                     placeholder="email"
                                     required
                                     outlined
-                                    color="grey lighten-1"
+                                    color="orange lighten-1"
                                     >
                                     </v-text-field>
-                                   <div class="text-center"> 
-                                    <v-btn block  class="text-center" 
+                                   <div class="text-center "> 
+                                    <v-btn   class="text-center purple darken-4"
+                                    dark 
                                     @click="sendRequest">
                                     subscribe
                                     </v-btn>
@@ -49,6 +48,7 @@
                 </v-row>
                 
                </v-card>
+               </center>
            </v-col>
         </v-row>
                               

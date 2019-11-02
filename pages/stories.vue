@@ -1,31 +1,20 @@
 
 <template>
 
+
   <v-container fluid fill-width >
+
+      
        <v-img src="/home_slider.jpg" height=230px  width=100% alt=""><br><br><br><br><br>
        <p class="display-2  white--text">The Experince that we share with you!!</p>
     </v-img>
-    <!--<v-card>
-        <v-subheader >
-            The Stories
-        </v-subheader>
-    </v-card>-->
-   <!-- <v-row >
-        <v-img
-            src="https://picsum.photos/id/11/500/300"
-            lazy-src="https://picsum.photos/id/11/10/6"
-            aspect-ratio="1"
-            class="grey lighten-2"
-            max-width="100%"
-            max-height="300">
-        </v-img>
-    </v-row>-->
-    
     <br><br>
     
     <v-layout wrap>
         
+        
         <v-flex xs12 sm12 md9 lg9>
+           
             <v-data-iterator
                 :items="items"
                 :items-per-page.sync="itemsPerPage"
@@ -35,6 +24,7 @@
                 <template v-slot:default="props">
                 
                 <v-card
+                
                    
                     v-for="item in items" :key="item.id"     
                     class="mx-auto card_margin pa-4"
@@ -44,7 +34,6 @@
                     :width="width"
                     :height="height"
                     border="black"
-                    
                     >
                     <v-img
                         v-if="media"
@@ -71,7 +60,7 @@
 
                      <v-btn text icon large fab dark  color="primary" >
                 <v-icon>mdi-heart</v-icon>
-              </v-btn><v-spacer></v-spacer> <v-btn  tile color="lighten-2 indigo" dark>View Package Info</v-btn>
+              </v-btn><v-spacer></v-spacer> <v-btn  tile color="lighten-2 indigo" dark  :to="`/packagesDetails/${item.id}`">View Package Info</v-btn>
      <v-spacer></v-spacer><v-btn color="indigo  lighten-2  white--text outlined ">Booking Avaliable</v-btn>
 
                     </v-row>
@@ -207,6 +196,7 @@ export default {
          user_id:'',
          like:'',
     flat: false,
+    loadingCard:false,
     media: true,
     loading: false,
     actions: true,
@@ -260,6 +250,7 @@ export default {
      methods: {
 
         async initialize(){
+            this.loadingCard=true
 
             const response = await this.$axios.get('/api/stories/index')
             
@@ -291,9 +282,7 @@ export default {
 			{
                  this.posts.push(response1.data[j])  
             }
-
-            console.log(this.posts)
-           
+            this.loadingCard=false 
         },
 
         async sendLike(item)
