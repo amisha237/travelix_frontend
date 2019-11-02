@@ -9,7 +9,6 @@
       src=""
       :color="color"
       class="white--text"
-
     >
     
     <v-list dense >
@@ -211,11 +210,11 @@
                  <v-list-item v-if="loggedIn">
                     <v-list-item-avatar >
 
-                    <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                    <img :src="`http://localhost:8000/UserProfileImage/${this.$auth.user.profile_img}`" alt="John">
                     </v-list-item-avatar>
 
                     <v-list-item-content>
-                    <v-list-item-title>{{$auth.user.name}}</v-list-item-title>
+                    <v-list-item-title>{{this.$auth.user.firstname}}</v-list-item-title>
                     <v-list-item-subtitle>Admin of Travelix</v-list-item-subtitle>
                     </v-list-item-content>
 
@@ -238,7 +237,7 @@
                 
                 <v-list-item>
                 <v-list-item-action>
-                    <v-btn text>
+                    <v-btn text @click="logout">
                     Logout
                     </v-btn>
                     </v-list-item-action>
@@ -286,7 +285,7 @@ export default {
   data () {
     return {
       clipped: true,
-      drawer: false,
+      drawer: true,
       fixed: false,
       color:"indigo darken-3",
       title:"Travelix Admin Dashboard",
@@ -437,7 +436,7 @@ export default {
           {title:'email4'},
 
       ],
-      miniVariant:false,
+      miniVariant:true,
     }
   },
   created () {
@@ -455,26 +454,33 @@ export default {
             this.messages = length;
 
           for(var j=0;j<6;j++)
-            {
+          {
               this.notifications.push(response.data[j])
-			}
+		      }
 			
         
       },
 
-      async deleteNotifications()
+      async deleteNotification()
       {
         const response = await this.$axios.delete('/api/notification/delete')
         
-
       },
       
 
-     
        func(){
-      this.drawer=!this.drawer
-      // this.miniVariant=!this.miniVariant
-     }
+        this.miniVariant=!this.miniVariant
+         //this.drawer=!this.drawer
+        },
+
+        async logout()
+        {
+          await this.$auth.logout().then(()=>{
+            this.$router.push('/admin');
+          });
+          console.log('logout')
+        },
+
 
 
      

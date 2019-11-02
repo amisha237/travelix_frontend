@@ -1,8 +1,9 @@
-export default function({store,redirect}){
+export default function({ store,redirect }) {
 
-    if(!store.loggedIn)
+    if(!store.getters['auth/loggedIn'])
     {
-        redirect('/admin')
+       console.log("inside middleware not log")
+       return redirect('/admin')
     }
 
 }

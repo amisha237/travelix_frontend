@@ -1,7 +1,20 @@
 <template>
 <v-app>
+    <template>
+      <v-center>  
+        <div class="text-center mt-12">
+            <v-progress-circular
+                :size="loadsize"
+                :width="5"
+                color="pink darken-4"
+                :indeterminate="load"
+            ></v-progress-circular>
+        </div>
+      </v-center>  
+    </template>  
+
     <v-container fluid fill-height >
-       
+
         <v-row align-center justify-center>
             <v-col cols = "12" xs = "12" sm = "12" md = "12" >
                 <v-card
@@ -55,8 +68,8 @@
                             <v-checkbox class="" label="Remember me"> </v-checkbox>
                            <v-btn color="success"
                              type="submit"                              
-                        @click.prevent="checkLogin"
-                        form="form"
+                             @click="checkLogin"
+                             form="form"
                               left>
                               LogIn</v-btn>
                         </v-col>
@@ -91,6 +104,8 @@ layout : 'adminLoginLayout',
 
      data: () => ({
       text:'',
+      loadsize:'0',
+      load: false,
       snackbar:false,
       active: true,
       show : false,
@@ -110,24 +125,28 @@ layout : 'adminLoginLayout',
     
      methods: {
    async checkLogin() {
+
        
        console.log(this.email);
 
-       await this.$auth.loginWith('local', {
+       this.loadsize = "600"
+       this.load = true
+
+       await this.$auth.login({
         data: {
           "email": this.email,
           "password": this.password,  
           "authentication": this.authentication,
         }
       }).then(() => {
-        
-      this.$router.push('/admin/dashboard')
+        this.loadsize = "0"
+        this.load = true
+        this.$router.push('/admin/dashboard')
 
-      if(this.$auth.loggedIn)
-          this.$router.push('/admin/dashboard')
-      else         
-          this.text="LOGIN FAILED"                                               
-          
+    //   if(this.$auth.loggedIn)
+    //       this.$router.push('/admin/dashboard')
+    //   else         
+    //       this.text="LOGIN FAILED"                                                     
       }).catch(e => {
           console.log("Login Failed");
       });

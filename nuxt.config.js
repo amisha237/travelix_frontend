@@ -88,6 +88,7 @@ export default {
   auth: {
     
     strategies: {
+      
       local: {
         endpoints: {
           login: { url: '/api/auth/login', method: 'post', propertyName: 'meta.token' },
@@ -116,14 +117,23 @@ export default {
       dark: false,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
+          primary: colors.deepPurple.darken1,
           accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+          secondary: colors.red.darken1,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
-        }
+        },
+        light: {
+          primary: colors.deepPurple.darken1,
+          accent: colors.grey.darken3,
+          secondary: colors.red.darken1,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        },
       }
     }
   },

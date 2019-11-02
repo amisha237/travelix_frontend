@@ -1,11 +1,11 @@
 <template>
-    <v-container fluid>
+    <div>
         <v-row class="">
            <v-col cols="12">
                <v-card
                 max-width="100vw"
                 width="1500"
-                class=" max-auto pt-12"
+                class=" pt-12"
                 img="/fig5.jpg"
                 elavation=6
                 height="400"
@@ -68,7 +68,7 @@
 			Close
 		</v-btn>
     </v-snackbar>
-    </v-container>
+    </div>
 </template>
 
 <script>

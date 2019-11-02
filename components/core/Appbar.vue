@@ -6,6 +6,7 @@
       floating
       class="nav"
       min-height="80px"
+      color=""
     >
      <Drawer/>
       <v-toolbar-title>
