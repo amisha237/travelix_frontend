@@ -1,22 +1,27 @@
 <template>
  <v-container fluid>
    <v-row class="text-left">
-     <v-col cols="12" md="4" lg="4" v-for="item in items" :key="item.id">
+     <v-col cols="12" md="3" lg="3" v-for="item in items" :key="item.id">
 		 <v-hover>
           	<template v-slot:default="{ hover }">
 				<v-card
 				class="mx-auto"
 				max-width="344"
+				height="330px"
+				
 				>
-				<v-img src="/delhi.jpg">
+				<v-img
+				:src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
+				height="200" >
 					<div class="text-right py-5" >
 						<v-chip
-							outlined
+							
 							class="ma-2"
 							label
-							color="white"
+							dark
+							color="orange"
 							>
-							Rs 5000
+							Rs 5000/- 
 						</v-chip>
 					</div>
 				</v-img>
@@ -27,8 +32,7 @@
 					<h2 class="title black--text">{{item.package_name}}</h2>
 				<span class="subtitle-2"> <v-icon color="orange">mdi-map-marker</v-icon>
 				 {{item.package_location}}</span><br>
-				
-				<span>{{item.package_details}}</span>
+				<span>{{item.package_details.substring(0,70)}}</span>
 				</v-card-text>
 
 				<!-- <div class="" >
@@ -47,10 +51,10 @@
 					<v-overlay
 					v-if="hover"
 					absolute
-					z-index="0"
+					z-index="0.8"
 					
 					>
-					<v-btn outlined :to="`/package-details/${item.id}`">See more info</v-btn>
+					<v-btn outlined :to="`/packagesDetails/${item.id}`" class="orange--text">See more info</v-btn>
 					</v-overlay>
 				</v-fade-transition>
 				</v-card>
@@ -58,6 +62,7 @@
         </v-hover>
      </v-col>
    </v-row>
+
  </v-container>
 </template>
 <script>
@@ -67,7 +72,7 @@
       items:[],
     }),
      created () {
-      console.log("hello")
+      console.log("Packages Details in Home")
           this.initialize()
      },
     computed: {
@@ -79,10 +84,13 @@
         	async initialize () {
       const response = await this.$axios.get('/api/packages/index')
  
-       for(var j=0;j<3;j++)
+       for(var j=0;j<8;j++)
 			 	{
-			 		 this.items.push(response.data[j])
-        }
+					  this.items.push(response.data[j])
+					  console.log(this.items)
+		}
+		
+		
 
         console.log(this.items)
 

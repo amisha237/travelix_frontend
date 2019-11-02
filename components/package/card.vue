@@ -44,11 +44,10 @@
       <v-flex xs12 sm12 md2 lg2>
       <v-col  class="align-end justify-right">
           <center>
-        <v-btn class="success white--text" :to="`/package-details/${item.id}`">
+        <v-btn class="success white--text" :to="`/packagesDetails/${item.id}`">
          Details
         </v-btn>
           </center>
-     
       </v-col>
       </v-flex>
      

@@ -1,5 +1,7 @@
 <template>
    <v-card
+   height="300px"
+   
    :style="{backgroundImage:'url(/bg_10.jpg)',backgroundSize: 'cover',}">
        <v-card-text>
           <div>
@@ -8,7 +10,7 @@
               method="POST"
               id="form"
               >
-              
+                  <br><br>
                 <!-- email -->
                  <v-text-field
                     prepend-icon="person"
@@ -45,16 +47,23 @@
 
                 <!-- submit button -->
                   <v-flex xs12 sm12 md12 lg12>
-                      <center>
-                      <v-btn color="success"
-                             type="submit"                              
+                     <br><br>
+                      <v-btn 
+                        block
+                        
+                        color="primary"
+                        type="submit"                              
                         @click.prevent="checkLogin"
                         form="form"
-                              left>
-                              LogIn</v-btn>
-                      </center>
+                        left>
+                        LogIn
+                      </v-btn>
+                      
                       </v-flex>
               </v-form>
+              <v-flex xs12 sm12 md12 lg12>
+                <nuxt-link >Forgot Password?</nuxt-link>
+              </v-flex>
           </div>
       </v-card-text>
     </v-card>
