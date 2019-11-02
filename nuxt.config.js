@@ -84,6 +84,7 @@ export default {
     proxy: false,
     debug: false
   },
+
   auth: {
     
     strategies: {
@@ -98,10 +99,11 @@ export default {
       },
  
     },
-    // redirect: {
-    //   login: '/admin/dashboard',
-    //   logout: '/',
-    // },
+
+    redirect: {
+      login: '/',
+      logout: '/',
+    },
 
   },
   /*

@@ -44,7 +44,7 @@
                      
                     </v-list-item-group>
                     <br>
-                    <v-btn outlined block color="primary">Logout</v-btn>
+                    <v-btn outlined block color="primary" @click.prevent="logout">Logout</v-btn>
                 </v-list>
             </v-card>
         </v-col>
@@ -98,5 +98,16 @@ export default {
       ],
       model: 0,
     }),
+
+    methods:{
+         async logout()
+            {
+            await this.$auth.logout().then(()=>{
+                this.$router.push('/');
+            });
+            console.log('logout')
+            },
+   
+    }
 }
 </script>

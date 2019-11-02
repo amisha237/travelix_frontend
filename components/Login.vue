@@ -95,6 +95,8 @@ export default {
             }
 
               }).then(() => {
+                this.$router.push('/account/profile')
+                
                 if(this.$auth.loggedIn)
                    this.$router.push('/')
                 else  

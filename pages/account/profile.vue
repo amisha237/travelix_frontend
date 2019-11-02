@@ -89,12 +89,9 @@ export default {
 
             //   this.profileItems[1].value = this.$auth.user.name
 
+          },
 
-
-
-
-          }
-   
+          
 },
 }
 </script>

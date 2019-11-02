@@ -156,6 +156,8 @@
 
 <script>
 export default {
+
+      middleware:'admin',  
       layout:"adminDashboardNavigation",
     data: () => ({
         loading:true,

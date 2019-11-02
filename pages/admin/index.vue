@@ -120,6 +120,9 @@ layout : 'adminLoginLayout',
           "authentication": this.authentication,
         }
       }).then(() => {
+        
+      this.$router.push('/admin/dashboard')
+
       if(this.$auth.loggedIn)
           this.$router.push('/admin/dashboard')
       else         
