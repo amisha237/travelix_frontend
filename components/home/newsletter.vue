@@ -35,7 +35,8 @@
                                     >
                                     </v-text-field>
                                    <div class="text-center "> 
-                                    <v-btn   class="text-center purple darken-4"
+                                    <v-btn   class="text-center orange--text"
+                                    color="#31124B"
                                     dark 
                                     block
                                     @click="sendRequest">

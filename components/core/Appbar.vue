@@ -5,7 +5,7 @@
       
       floating
       class="nav "
-      color="purple darken-4 "
+      color="#31124B"
       min-height="80px"
       dark
       
@@ -56,7 +56,7 @@
      <v-dialog v-model="dialog"  width="500px" height="700px" >
 
         <template v-slot:activator="{ on }">
-         <v-btn v-if="!loggedIn" color="primary" text v-on="on">Login | Sign Up</v-btn>
+         <v-btn v-if="!loggedIn" color="white" text v-on="on">Login | Sign Up</v-btn>
          <v-btn  v-if="loggedIn" text color="primary"  @click.prevent="logout" >Logout</v-btn>
           
         </template>

@@ -24,7 +24,7 @@
                         height="200"
                         
                         @click="toggle"
-                        color="purple darken-4 outlined"
+                        color="#31124B"
                         >   
                             <v-card-title class="headline orange--text justify-center"  ><b>{{card.header}}</b></v-card-title>
                         <center> <v-icon large color="white">{{card.icon}}</v-icon> </center>
