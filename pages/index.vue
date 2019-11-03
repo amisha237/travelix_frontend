@@ -8,11 +8,11 @@
   <div width="100%" fluid>
   <!-- <Carousel /> -->
   
-    <v-img src="/hero-image.jpg" class="hidden-sm-and-down" height="660px" width="100vw" alt="unable to load image">
+    <v-img src="/hero-image.jpg" class="hidden-sm-and-down mb-12" height="660px" width="100vw" alt="unable to load image">
    <v-overlay absolute opacity="0.3"> 
    
     <p class="display-4 bold  mb-5">Discover </p><center><p class="display-2"> The World</p></center>
-      <center><v-btn x-large  rounded class=" white--text  mt-12" color="secondary">View Packages</v-btn></center>
+      <center><v-btn to="/packages" x-large rounded class="button white--text  mt-12" color="secondary">View Packages</v-btn></center>
     </v-overlay>
     </v-img>
     <v-img src="/hero-image.jpg" class="hidden-md-and-up" height="660px" width="100vw" alt="unable to load image">
@@ -23,21 +23,21 @@
  
   <br><br>
   </div>
-   <div class="title-1 text-center" >
-     	<span class="display-1 ml-12">We Discover the Best Places for you!</span>
-      	<p class="black--text bold">Enjout the best prices with liusxay service at lowest price</p>
+   <div class="title-1 text-center mt-12 mb-n12" >
+     	<span class="display-1 mx-auto ">We Discover the Best Places for you!</span>
+      	<p class="black--text bold ">Enjoy the best packages with luxury service at lowest price</p>
         <destinationCard />
    		
     </div>
-    <div class="mt-12">
+    <div class="mt-n12 mb-12">
     	<services/>
     </div>
   
 <div class="ml-4 ">
       <v-row>
       <v-col cols="10">
-    <p class="display-1 font-weight-bold  orange--text justify-start">Get Your Packages Here</p></v-col>
-            <v-col cols="2"><v-btn class=" ml-12 " color="#31124B"  large dark right  rounded  to="/packages"> View All</v-btn></v-col></v-row>
+    <p class="display-1 font-weight-bold  orange--text justify-start">Explore Our Packages</p></v-col>
+            <v-col cols="2"><v-btn class="purple darken-4  ml-12 "  large dark right  rounded outlined  to="/packages"> View All</v-btn></v-col></v-row>
       	<p class="black--text bold"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, possimus! Labore
           et ipsam autem non veritatis ullam
             ipsa!</p>
@@ -52,11 +52,15 @@
    <br>
    <br>
    
-    <div class="ml-4 ">
-      <v-row>
-      <v-col cols="10">
-    <p class="display-1 font-weight-bold  orange--text justify-start">Trending Now</p></v-col>
-            <v-col cols="2"><v-btn class="ml-12  justify-end" color="#31124B" large dark  rounded  to="/packages"> View All</v-btn></v-col></v-row>
+    <div class=" mt-12">
+      <v-row class="mt-12">
+        <v-col cols="10">
+          <p class="display-1 font-weight-bold  orange--text">Trending Now</p>
+        </v-col>
+        <v-col cols="2">
+          <v-btn class="purple darken-4  ml-12  justify-end " large dark  rounded outlined to="/packages"> View All</v-btn>
+        </v-col>
+      </v-row>
       	<p class="black--text bold"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, possimus! Labore
           et ipsam autem non veritatis ullam
             ipsa!</p>
@@ -118,5 +122,13 @@ export default {
 .services{
   /* margin-top: -220px; */
 }
-
+.button {
+  color: blue
+}
+.button:hover {
+  background-color: white;
+  color: black;
+   transform: scale(1.05); 
+  transition: .3s;  
+}
 </style>

@@ -3,7 +3,7 @@
     <v-row class="fill-height">
       <v-col cols="12" md="3" lg="3" v-for="item in items" :key="item.id">
         <v-card
-          class="mx-auto  pa-1"
+          class="mx-auto  pa-1 zoom"
           max-width="430"
           flat
         >
@@ -23,7 +23,7 @@
           </v-card-text>
 
           <v-card-actions  class="pt-7">
-         	 <v-btn outlined absolute bottom right :to="`/packagesDetails/${item.id}`" class="orange--text">View More</v-btn>
+         	 <v-btn :to="`/packagesDetails/${item.id}`" outlined block class="mx-auto  orange--text">View More</v-btn>
            </v-card-actions>
         </v-card>
       </v-col>
@@ -62,3 +62,12 @@ export default {
     
 }
 </script>
+
+<style scoped>
+.zoom:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.1); 
+  transition: .3s;
+}
+</style>

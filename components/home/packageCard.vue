@@ -5,7 +5,7 @@
 		 <v-hover>
           	<template v-slot:default="{ hover }">
 				<v-card
-				class="mx-auto"
+				class="mx-auto zoom"
 				max-width="344"
 				height="330px"
 				
@@ -102,3 +102,12 @@
     },
   }
 </script>
+
+<style scoped>
+.zoom:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.05); 
+  transition: .3s;
+}
+</style>

@@ -6,7 +6,7 @@
       v-bind:to="item.to"
       >
         <v-card
-        class="mx-5 mt-5"
+        class="mx-5 mt-5 zoom"
         outlined
         exact
         >
@@ -104,3 +104,12 @@ export default {
     }
 }
 </script>
+<style scoped>
+
+.zoom:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.1); 
+  transition: .3s;
+}
+</style>
