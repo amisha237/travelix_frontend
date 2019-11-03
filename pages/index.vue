@@ -15,14 +15,11 @@
       <center><v-btn x-large  rounded class=" white--text  mt-12" color="secondary">View Packages</v-btn></center>
     </v-overlay>
     </v-img>
-    <v-img src="/hero-image.jpg" class="hidden-md-and-up" height="300px" width="100vw" alt="unable to load image">
+    <v-img src="/hero-image.jpg" class="hidden-md-and-up" height="660px" width="100vw" alt="unable to load image">
       <!-- <v-overlay absolute> -->
-      
       <center><v-btn outlined  class="hidden-md-and-up  white--text" >View Packages</v-btn></center>
       <!-- </v-overlay> -->
     </v-img>
-      
-   
  
   <br><br>
   </div>

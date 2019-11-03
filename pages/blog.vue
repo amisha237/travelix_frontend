@@ -1,19 +1,25 @@
 <template>
+<v-layout column align-center justify-center>
+  <!-- <v-container fluid fill-width> -->
+ 
+    <v-row class="mb-12"> 
+        <v-img src="/blog_image2.jpg" height="250px" width="100vw" alt="" >
+         <v-overlay absolute opacity="0.3"> 
+        </v-overlay>
+        </v-img>
+    </v-row>
 <v-container flex>
-    <v-img  
-         width="1700"
-         height="300"
-         src="blog_image2.jpg">
-    </v-img>
-    <br><br>
+   
     <v-row align-center justify-center>
         <v-col cols = "12" xs = "2" sm = "2" md = "4"></v-col>
         <v-col cols = "12" xs = "8" sm = "8" md = "4">
+            <p class="mb-1 orange--text" >Select Your City</p>
             <v-select
             v-model="city"
             :items="items"
             :label="items[0]"
             solo
+            color="primary"
             @change="onCityChanged"
             ></v-select>
         </v-col>
@@ -31,8 +37,7 @@
             :width="undefined"
             :height="undefined"
              >
-                <v-img
-                
+                <v-img               
                 class="white--text"
                 height="250px"
                 :src="`http://localhost:8000/mainblogs/${header_image}`"
@@ -41,15 +46,16 @@
                 </v-img> 
            
                 <v-card-text v-for="place in places" :key="place.id">
-                   <u> <v-subheader class="font-weight-bold title">{{place.place}}</v-subheader></u>
+                    <div class="border">
+                    <v-subheader class="font-weight-bold title orange--text mb-n6">{{place.place}}</v-subheader>
                    <br>
-                    <p>
+                    <p class="pa-2 primary--text">
                       {{place.description}}
                     </p>
-                    <br>
+                    <br></div>
                 </v-card-text>
                 <v-card-text>
-                    <v-btn color = "brown" :to="`/package/${city}`"> View Packages</v-btn>
+                   <center> <v-btn color = "primary" align="right" outlined justify-center :to="`/package/${city}`"> View Packages</v-btn></center>
                 </v-card-text>    
             </v-card>
 
@@ -61,26 +67,26 @@
             height = "auto"
             class="mx-auto card_margin"
             >
-                <v-subheader class = "display-1 black--text" >Latest Offers</v-subheader>
+                <v-subheader class = "display-1 orange--text" >Latest Offers</v-subheader><hr>
                 <br>
                 <div v-for="feed in feeds" :key="feed.title" justify="center" >
                     
-                    <li  class="latest-offers" >{{feed}}</li> 
+                    <li  class="latest-offers primary--text" >{{feed}}</li> 
                     <br>
                 </div>
             </v-card>    
                 <br>
                 <div>
-                    <v-subheader class = "display-1 black--text">More Images</v-subheader>
+                    <v-subheader class = "display-1 orange--text font-weight">More Places</v-subheader>
                     <br>
                     <v-row align="center" justify="center">
                         <v-img
                         :src="`http://localhost:8000/mainblogs/${img1}`"
                         lazy-src="delhi.jpg"
                         aspect-ratio="1"
-                        class="grey lighten-2"
-                        max-width="100"
-                        max-height="100"
+                        class="pink lighten-2"
+                        max-width="130"
+                        max-height="130"
                         ></v-img>
                         &emsp;&emsp;&emsp;&emsp;&emsp;
                         <v-img
@@ -88,8 +94,8 @@
                         lazy-src="delhi.jpg"
                         aspect-ratio="1"
                         class="grey lighten-2"
-                        max-width="100"
-                        max-height="100"
+                         max-width="130"
+                        max-height="130"
                         ></v-img>
                     </v-row>
                     <br><br>
@@ -99,8 +105,8 @@
                         lazy-src="delhi.jpg"
                         aspect-ratio="1"
                         class="grey lighten-2"
-                        max-width="100"
-                        max-height="100"
+                        max-width="130"
+                        max-height="130"
                         ></v-img>
                         &emsp;&emsp;&emsp;&emsp;&emsp;
                         <v-img
@@ -108,8 +114,8 @@
                         lazy-src="delhi.jpg"
                         aspect-ratio="1"
                         class="grey lighten-2"
-                        max-width="100"
-                        max-height="100"
+                          max-width="130"
+                        max-height="130"
                         ></v-img>
                     </v-row>
                 </div>
@@ -118,7 +124,7 @@
     </v-row>
 
 </v-container>
-    
+</v-layout>
 </template>
 
 <script>

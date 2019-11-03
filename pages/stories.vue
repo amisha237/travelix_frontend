@@ -1,18 +1,24 @@
 
 <template>
+<v-layout column align-center justify-center>
+  <!-- <v-container fluid fill-width> -->
+ 
+    <v-row class="mb-12"> 
+        <v-img src="/package-details.jpg" height="200px" width="100vw" alt="" >
+
+         <v-overlay absolute opacity="0.3"> 
+            <p class="display-2 bold  mb-5" left>Stories </p>
+        </v-overlay>
+        </v-img>
+
+       
+    </v-row>
+
+
 
 
   <v-container fluid fill-width >
-
-      
-       <v-img src="/home_slider.jpg" height=230px  width=100% alt=""><br><br><br><br><br>
-       <p class="display-2  white--text">The Experince that we share with you!!</p>
-    </v-img>
-    <br><br>
-    
     <v-layout wrap>
-        
-        
         <v-flex xs12 sm12 md9 lg9>
            
             <v-data-iterator
@@ -24,8 +30,7 @@
                 <template v-slot:default="props">
                 
                 <v-card
-                
-                   
+   
                     v-for="item in items" :key="item.id"     
                     class="mx-auto card_margin pa-4"
                     :flat="flat"
@@ -46,15 +51,14 @@
                     <!--<v-card-title v-else>I'm a title</v-card-title>
         
                     <v-card-text>I'm card text</v-card-text>-->
-                    <v-card-actions v-if="actions" class="indigo white--text">
-                       
-                        <v-chip class="white black--text"  >Author: {{item.author}}</v-chip>&emsp; 
-                        <v-chip class="white black--text"  >Travel Date: {{item.tour_date}}</v-chip>&emsp;
+                    <v-card-actions v-if="actions" class="primary white--text">
+                        <v-chip class="orange white--text"  >Author: {{item.author}}</v-chip>&emsp; 
+                        <v-chip class="orange white--text"  >Travel Date: {{item.tour_date}}</v-chip>&emsp;
                         <v-spacer></v-spacer>
-                        <v-chip class="likes_layout white black--text">Likes: {{item.likes}}</v-chip>&emsp;
+                        <v-chip class="likes_layout orange white--text">Likes: {{item.likes}}</v-chip>&emsp;
                     </v-card-actions>
-
-                    <v-card-text>{{item.experience}}</v-card-text>
+                    <div class="border">
+                    <v-card-text >{{item.experience}}</v-card-text>
                     <br>
                     <v-row class="pa-4">
 
@@ -64,7 +68,7 @@
      <v-spacer></v-spacer><v-btn color="indigo  lighten-2  white--text outlined ">Booking Avaliable</v-btn>
 
                     </v-row>
-                    
+                    </div>
                 </v-card>
                 </template>
                 <template v-slot:footer>
@@ -85,8 +89,9 @@
             
         </v-flex>
         <v-flex xs12 sm12 md3 lg3>
+            <v-btn class="primary mb-3 white--text " elevation="3" outlined block>Add Your Stories</v-btn>
             <v-card >
-                <v-subheader>Latest post</v-subheader>
+                <v-subheader class="orange--text font-weight display-1">Latest Post</v-subheader><hr>
                 <div  v-for="post in posts" :key="post.id" >
                 <v-card
                 max-width="600"
@@ -106,37 +111,29 @@
                             :src="`http://localhost:8000/storiesImage/${post.image_1}`"   
                             >
                             </v-img>
-                            
-                           
                         </v-col>
                         <v-col class="post-style justify-start" >
-                           <header  class="post-style-header">{{post.package_name}}</header>
-                            <p class="post-style-header">{{post.author}}</p>
-                          
-                           <p class="post-style-exp">{{post.experience.substring(0,60)+""}} <a href="#">...Read More</a></p>
-                            
-                            <p class="grey--text"> By : {{post.author}}</p>
+                           <header  class="primary--text font-weight-bold">{{post.package_name}}</header>
+                            <p class="orange--text font-weight">Author: {{post.author}}</p>                   
+                              <p class="post-style-exp primary--text">{{post.experience.substring(0,120)+""}} <a href="#">...Read More</a></p>
+                              
                         
                         </v-col>
                      </v-row>
                 </v-card>
-                
-                
-
                 </div>
                 <v-divider></v-divider>
-                <v-subheader>Latest Offers</v-subheader>
+                <v-subheader class="orange--text font-weight display-1">Latest Offers</v-subheader><hr>
                <div  v-for="offer in offers" :key="offer.title"  justify="center" >
                 
-                <li class="latest-offers">{{offer.data}}</li>
+                <li class="latest-offers primary--text">{{offer.data}}</li>
                 
                
                 <br>
                 </div>
                 <v-divider></v-divider>
                 <v-divider></v-divider>
-                <v-subheader>Our Customers</v-subheader>
-
+                <v-subheader class="orange--text font-weight-3 ">Our Customers</v-subheader>
                 <v-row align="center" justify="center">
                     <v-img
                     src="customer.jpg"
@@ -187,6 +184,7 @@
     
     
   </v-container>
+</v-layout>
 
 </template>
 
@@ -337,7 +335,15 @@ export default {
 .latest-offers{
     /* padding:12px; */
     margin-left:12px;
+
     
+}
+.heading{
+    color: #31124B;
+
+}
+.border{
+    border: 3px solid #31124B;
 }
 
 

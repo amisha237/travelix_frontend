@@ -117,7 +117,7 @@ export default {
       dark: false,
       themes: {
         dark: {
-          primary: colors.deepPurple.darken1,
+          primary: "#31124B",
           accent: colors.grey.darken3,
           secondary: colors.red.darken1,
           info: colors.teal.lighten1,
@@ -126,13 +126,14 @@ export default {
           success: colors.green.accent3
         },
         light: {
-          primary: colors.deepPurple.darken1,
+          primary:  "#31124B",
           accent: colors.grey.darken3,
           secondary: colors.red.darken1,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
+
         },
       }
     }
