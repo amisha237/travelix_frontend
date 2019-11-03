@@ -76,7 +76,7 @@
                         height="230"
                         width="100vw"
                         @click="toggle"
-                        color="purple darken-4 pa-3"
+                        color="#31124B"
                         opacity="0.35"
                         >   
                           <v-row>

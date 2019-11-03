@@ -12,15 +12,15 @@
     </template>    
      <v-row>
         <v-col cols = "12" xs = "12" sm = "12" md = "12" lg = "12">
-        <v-card class="mx-auto  pa-8 pink darken-4 "  >
-           <v-card-title class="black--text display-2  justify-center" ><span class="medium white--text">Confirm Bookings</span>
+        <v-card class="mx-auto pa-8 " color="#31124B"  >
+           <v-card-title class="black--text display-2  justify-center" ><span class="medium orange--text">Confirm Bookings</span>
           </v-card-title><hr><br>
           <v-form
                     ref="form"
                     v-model="active"
                     method="POST"
                     id="form"
-                    class="white--text"
+                    class="orange--text"
                     >
                         <v-row>
                             <v-col cols = "12" xs = "6" sm = "6" md = "6" lg = "6">
@@ -29,7 +29,7 @@
                                 label="First name"
                                 outlined
                                 rounded
-                                white--text
+                                class="orange--text"
                                 dark
                                 ></v-text-field>
                             </v-col>
@@ -39,7 +39,7 @@
                                 label="Last name"
                                 outlined
                                 rounded
-                                white--text
+                                class="orange--text"
                                 dark
                                 ></v-text-field>
                             </v-col>
@@ -52,7 +52,7 @@
                                 outlined
                                 rounded
                                 prepend-inner-icon="email"
-                                white--text
+                                class="orange--text"
                                 dark
                                 ></v-text-field>
                             </v-col>
@@ -63,7 +63,7 @@
                                 outlined
                                 rounded
                                 prepend-inner-icon="phone"
-                                white--text
+                                class = "orange--text"
                                 dark
                                 ></v-text-field>
                             </v-col>
@@ -76,7 +76,7 @@
                                 type = "number"
                                 outlined
                                 rounded
-                                white--text
+                                class ="orange--text"
                                 dark
                                 ></v-text-field>
                             </v-col>
@@ -87,7 +87,7 @@
                                 type = "number"
                                 outlined
                                 rounded
-                                white--text
+                                class= "orange--text"
                                 dark
                                 ></v-text-field>
                             </v-col>
@@ -97,7 +97,7 @@
                                 label="Picked facility"
                                 outlined
                                 rounded
-                                white--text
+                                class="orange--text"
                                 dark
 
                                 ></v-select>
@@ -109,7 +109,7 @@
                         required
                         outlined
                         rounded
-                        white--text
+                        class="orange--text"
                         dark
                         >
                         </v-textarea>
@@ -127,9 +127,9 @@
     >
       <template v-slot:activator="{ on }">
         <v-btn
-          color="red lighten-2"
+          color="orange darken-3 ml-3"
           dark
-          
+          rounded
           @click="submitForm"
         >
           Submit

@@ -40,7 +40,7 @@
       <v-row>
       <v-col cols="10">
     <p class="display-1 font-weight-bold  orange--text justify-start">Get Your Packages Here</p></v-col>
-            <v-col cols="2"><v-btn class="purple darken-4  ml-12 "  large dark right  rounded outlined  to="/packages"> View All</v-btn></v-col></v-row>
+            <v-col cols="2"><v-btn class=" ml-12 " color="#31124B"  large dark right  rounded  to="/packages"> View All</v-btn></v-col></v-row>
       	<p class="black--text bold"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, possimus! Labore
           et ipsam autem non veritatis ullam
             ipsa!</p>
@@ -59,7 +59,7 @@
       <v-row>
       <v-col cols="10">
     <p class="display-1 font-weight-bold  orange--text justify-start">Trending Now</p></v-col>
-            <v-col cols="2"><v-btn class="purple darken-4  ml-12  justify-end " large dark  rounded outlined to="/packages"> View All</v-btn></v-col></v-row>
+            <v-col cols="2"><v-btn class="ml-12  justify-end" color="#31124B" large dark  rounded  to="/packages"> View All</v-btn></v-col></v-row>
       	<p class="black--text bold"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, possimus! Labore
           et ipsam autem non veritatis ullam
             ipsa!</p>

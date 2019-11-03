@@ -24,7 +24,7 @@
            <v-col cols="12" md="12" lg="12">
         <v-toolbar
           dark
-          color="purple darken-4"
+          color="#31124B"
           class=""
         >
          <template v-if="$vuetify.breakpoint.mdAndUp">
@@ -101,7 +101,7 @@
 
                                    <v-col  class="align-end justify-center" cols="12" md="3" lg="3">
                                    <v-btn 
-                                    class="purple darken-4 white--text mt-12" absolute right top  large> 
+                                    class="white--text mt-12" color="#31124B" :to="`/booking/${item.id}`" absolute right top  large> 
                                     Book Now
                                     </v-btn>
                                 </v-col>

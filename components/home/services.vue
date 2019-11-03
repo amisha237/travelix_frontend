@@ -16,7 +16,7 @@
                         pa-2
                         height="200"
                         @click="toggle"
-                        color="purple darken-4 outlined"
+                        color="#31124B"
                         >   
                             <v-card-title class="headline orange--text"  ><b>Best Price Guarantee</b></v-card-title>
                         <center> <v-icon large> dashboard</v-icon> </center>

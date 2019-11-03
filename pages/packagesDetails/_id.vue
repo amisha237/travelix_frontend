@@ -1,65 +1,70 @@
 <template>
 <v-layout column align-center justify-center>
   <!-- <v-container fluid fill-width> -->
-    <v-row class="mb-12">
-      <v-img src="/package-details.jpg" height="200px" width="100vw" alt=""><br><br><br><br><br><br><br>
-       <!-- <p class="display-2  white--text">The Offers</p> -->
-      </v-img>
+ 
+    <v-row class="mb-12"> 
+        <v-img src="/package-details.jpg" height="200px" width="100vw" alt=""><br><br><br><br><br><br><br>
+        <!-- <p class="display-2  white--text">The Offers</p> -->
+        </v-img>
     </v-row>
-  
+ 
     <v-container fluid fill-width>
-      <v-sheet class="pa-4 purple darken-4" elevation="0" >
-            <p class="display-2 font-weight-bold justify-left white--text darken-4">{{item.package_name}}</p>
+      <v-sheet class="pa-4 orange--text" elevation="0" > 
+        <v-row>
+            <p class="display-2 font-weight-bold justify-left ml-5 ">{{item.package_name}}</p>
+            <v-spacer></v-spacer>
+            <v-btn class="mr-12 mt-3 white--text" rounded color="#31124B" :to="`/booking/${item.id}`">Book Now</v-btn>
+        </v-row>
             
-
-          <v-sheet class="pa-4 orange " elevation="1" >
+       
+          <v-sheet class="pa-4 head" text-color="#31124B" elevation="4">
             <v-row  class="font-weight-light">
               <v-col cols="5" class="my-1">
                 <v-img :src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
-                height="500" 
+                height="700" 
                 width="100%" alt=""/>
               </v-col>
               <v-col>
                 <v-row>
                   <v-col>
-                  <h3 class=" font-weight-light display-1 title "></h3> <h2 class="title"> {{item.package_name}}</h2> 
+                  <h4 class=" font-weight-light head">Package Name</h4> <h2 class="head">{{item.package_name}} </h2> 
                   <v-divider/>
                   </v-col>  
                 </v-row>
                 <v-row>
                   <v-col>
-                  <h4 class=" font-weight-light "> Package Type </h4><h2 class=""> {{item.package_type}}</h2>
+                  <h4 class=" font-weight-light head"> Package Type </h4><h2 class="head"> {{item.package_type}}</h2>
                   <v-divider/>
                   </v-col>  
                 </v-row>
                 <v-row>
                   <v-col>
-                  <h2  class=" font-weight-light"> Duration</h2> {{item.package_nights}} nights and {{item.package_day}} days
+                  <h4 class=" font-weight-light head"> Duration</h4><h2 class="head">{{item.package_nights}} nights and {{item.package_day}} days </h2>
                   <v-divider/>
                   </v-col>  
                 </v-row>
                 <v-row>
                   <v-col>
-                  <h2 class="font-weight-light"> Package Details</h2> {{item.package_features}}
+                  <h4 class="font-weight-light head"> Package Features</h4> <h3 class="head"> {{item.package_features}} </h3>
                   <v-divider/>
                   </v-col>  
                 </v-row>
                 <v-row>
                   <v-col>
-                  <h2 class=" font-weight-light"> Package Details </h2> {{item.package_details}}
+                  <h4 class=" font-weight-light head"> Package Details </h4> <h3 class="head">{{item.package_details}}</h3>
                   <v-divider/>
                   </v-col>  
                   
                 </v-row>
                 <v-row>
                   <v-col>
-                  <h2 class=" font-weight-light"> Price</h2>Rs. {{item.package_price}}/-
+                  <h3 class=" font-weight-light head"> Price</h3><h2 class="head">Rs. {{item.package_price}}/- </h2>
             
                   </v-col>  
                 </v-row>
                 <v-row>
                   <v-col>
-                  <v-btn class="ma-2 " block outlined color="indigo" :to="`/booking/${item.id}`">Book Now</v-btn>
+                 
                   </v-col>
                 </v-row>
               </v-col>
@@ -73,7 +78,7 @@
               <div >
                 
                 <br><br><br>
-                <p class="display-2 font-weight-light mt-12"><center>Places To Visit</center></p><br>
+                <p class="display-1 font-weight-bold ml-4">Places To Visit</p><br>
                 <v-sheet
                 class="mx-auto"
                 elevation="2"
@@ -377,6 +382,9 @@
 </script>
 
 
-<style lang="scss">
+<style>
 
+.head {
+ color:#31124B; 
+}
 </style>
