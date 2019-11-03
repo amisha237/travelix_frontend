@@ -9,16 +9,11 @@
   <!-- <Carousel /> -->
   
     <v-img src="/hero-image.jpg" class="hidden-sm-and-down" height="660px" width="100vw" alt="unable to load image">
-   <v-overlay absolute opacity="0.4"> 
+   <v-overlay absolute opacity="0.3"> 
    
-<<<<<<< HEAD
     <p class="display-4 bold  mb-5">Discover </p><center><p class="display-2"> The World</p></center>
-      <center><v-btn x-large outlined  class=" orange--text   mt-12" >View Packages</v-btn></center>
+      <center><v-btn x-large  rounded class=" white--text  mt-12" color="secondary">View Packages</v-btn></center>
     </v-overlay>
-=======
-      <center><v-btn to="/packages" x-large  color="primary" class=" white--text" >View Packages</v-btn></center>
-    <!-- </v-overlay> -->
->>>>>>> ae4bd1c42d4e9874d003eab4c6ffdeb9ee54cfe1
     </v-img>
     <v-img src="/hero-image.jpg" class="hidden-md-and-up" height="300px" width="100vw" alt="unable to load image">
       <!-- <v-overlay absolute> -->
@@ -33,7 +28,7 @@
   </div>
    <div class="title-1 text-center" >
      	<span class="display-1 ml-12">We Discover the Best Places for you!</span>
-      	<p class="black--text bold"> Sajwfnjer scnd wejc ecnsnnrrjg f ggsg t gb dg dgfe fe rg  e?</p>
+      	<p class="black--text bold">Enjout the best prices with liusxay service at lowest price</p>
         <destinationCard />
    		
     </div>

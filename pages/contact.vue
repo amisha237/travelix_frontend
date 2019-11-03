@@ -1,12 +1,11 @@
 <template>
-  <v-container fluid fill-height fill-width>
+  <v-container  class="mt-n10">
     <v-img src="/office.jpg" width="100vw" height="160vh">
     <v-overlay absolute opacity="0.7" >
 
-    <v-row class="hidden-sm-and-down  ">
+    <v-row class="hidden-sm-and-down ">
       <v-col>     
         <v-card-text class=" display-1 font-weight-light  ">GET IN TOUCH</v-card-text>
-          
           <v-form
               ref="form"
               v-model="active"
@@ -86,7 +85,7 @@
 
     <v-row class="hidden-md-and-up" align="center">
       <v-col cols="10" class="px-1 mx-auto"> 
-        <!-- <br><br><br><br><br><br>    -->
+        <br><br><br><br><br><br>   
         <v-card-text class="display-1 font-weight-light text-center">GET IN TOUCH</v-card-text>
           
           <v-form

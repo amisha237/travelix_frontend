@@ -2,48 +2,54 @@
 <v-layout column align-center justify-center>
   <!-- <v-container fluid fill-width> -->
     <v-row class="mb-12">
-      <v-img src="/package-details.jpg" height="300px" width="100vw" alt=""><br><br><br><br><br><br><br>
+      <v-img src="/package-details.jpg" height="200px" width="100vw" alt=""><br><br><br><br><br><br><br>
        <!-- <p class="display-2  white--text">The Offers</p> -->
       </v-img>
     </v-row>
   
     <v-container fluid fill-width>
-      <v-sheet class="pa-5" elevation="1">
-            <p class="display-2 font-weight-light"><center>{{item.package_name}}</center></p>
+      <v-sheet class="pa-4 purple darken-4" elevation="0" >
+            <p class="display-2 font-weight-bold justify-left white--text darken-4">{{item.package_name}}</p>
             
 
-          <v-sheet class="pa-4" elevation="1">
+          <v-sheet class="pa-4 orange " elevation="1" >
             <v-row  class="font-weight-light">
-              <v-col cols="7" class="my-auto">
+              <v-col cols="5" class="my-1">
                 <v-img :src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
-                height="auto" 
+                height="500" 
                 width="100%" alt=""/>
               </v-col>
               <v-col>
                 <v-row>
                   <v-col>
-                  <h2 class=" font-weight-light"> Package Name </h2> {{item.package_name}} 
+                  <h3 class=" font-weight-light display-1 title "></h3> <h2 class="title"> {{item.package_name}}</h2> 
                   <v-divider/>
                   </v-col>  
                 </v-row>
                 <v-row>
                   <v-col>
-                  <h2 class=" font-weight-light"> Package Type </h2> {{item.package_type}}
+                  <h4 class=" font-weight-light "> Package Type </h4><h2 class=""> {{item.package_type}}</h2>
+                  <v-divider/>
+                  </v-col>  
+                </v-row>
+                <v-row>
+                  <v-col>
+                  <h2  class=" font-weight-light"> Duration</h2> {{item.package_nights}} nights and {{item.package_day}} days
+                  <v-divider/>
+                  </v-col>  
+                </v-row>
+                <v-row>
+                  <v-col>
+                  <h2 class="font-weight-light"> Package Details</h2> {{item.package_features}}
+                  <v-divider/>
+                  </v-col>  
+                </v-row>
+                <v-row>
+                  <v-col>
+                  <h2 class=" font-weight-light"> Package Details </h2> {{item.package_details}}
                   <v-divider/>
                   </v-col>  
                   
-                </v-row>
-                <v-row>
-                  <v-col>
-                  <h2  class=" font-weight-light"> Package Duration</h2> {{item.package_nights}} nights and {{item.package_day}} days
-                  <v-divider/>
-                  </v-col>  
-                </v-row>
-                <v-row>
-                  <v-col>
-                  <h2 class="font-weight-light"> Package Details</h2> {{item.package_details}}
-                  <v-divider/>
-                  </v-col>  
                 </v-row>
                 <v-row>
                   <v-col>

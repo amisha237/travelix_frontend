@@ -37,6 +37,7 @@
                                    <div class="text-center "> 
                                     <v-btn   class="text-center purple darken-4"
                                     dark 
+                                    block
                                     @click="sendRequest">
                                     subscribe
                                     </v-btn>
