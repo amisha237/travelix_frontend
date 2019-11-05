@@ -49,9 +49,21 @@
                     <div class="border">
                     <v-subheader class="font-weight-bold title orange--text mb-n6">{{place.place}}</v-subheader>
                    <br>
+                   <v-row>
+                    <v-col md="9" sm="12">
                     <p class="pa-2 primary--text">
                       {{place.description}}
                     </p>
+                    </v-col>
+                    <v-col md="3" sm="12"> 
+                         <v-img               
+                            class="white--text"
+                            height="250px"
+                            :src="`http://localhost:8000/mainblogs/${header_image}`"
+                            >
+                         </v-img>
+                    </v-col>
+                   </v-row>
                     <br></div>
                 </v-card-text>
                 <v-card-text>
@@ -179,10 +191,10 @@ export default {
             }
 
 
-            // this.img1 = this.places[0]['blog_image'] 
-            // this.img2 = this.places[1]['blog_image'] 
-            // this.img3 = this.places[2]['blog_image'] 
-            // this.img4 = this.places[3]['blog_image'] 
+            this.img1 = this.places[0]['blog_image'] 
+            this.img2 = this.places[1]['blog_image'] 
+            this.img3 = this.places[2]['blog_image'] 
+            this.img4 = this.places[3]['blog_image'] 
 
 
             const response1 = await this.$axios.get('/api/activityfeeds')
@@ -215,10 +227,10 @@ export default {
             }
 
 
-            // this.img1 = this.places[0]['blog_image'] 
-            // this.img2 = this.places[1]['blog_image'] 
-            // this.img3 = this.places[2]['blog_image'] 
-            // this.img4 = this.places[3]['blog_image'] 
+            this.img1 = this.places[0]['blog_image'] 
+            this.img2 = this.places[1]['blog_image'] 
+            this.img3 = this.places[2]['blog_image'] 
+            this.img4 = this.places[3]['blog_image'] 
 
             console.log(this.places)
             console.log(this.img1)
@@ -236,5 +248,10 @@ export default {
     /* padding:12px; */
     margin-left:12px;
     
+
+}
+
+.border{
+    border: 3px solid #31124B;
 }
 </style>

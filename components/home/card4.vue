@@ -2,7 +2,7 @@
     
 
   <div>
-    <v-row justify="center"><span class="my-12 display-1 font-weight-bold  orange--text">Our Satisfied Customers</span></v-row>
+    <v-row justify="center"><span class=" display-1 font-weight-bold  orange--text">Our Satisfied Customers</span></v-row>
       
         <v-row class="hidden-sm-and-down">  
           <v-parallax

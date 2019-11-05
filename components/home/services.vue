@@ -1,13 +1,12 @@
 <template>
-    <div>
-        <v-row class="mb-12" justify="center" ><p class="display-1 red--text " color="secondary">Our Services</p></v-row>
+    <div class="ml-3">
+        <v-row class="" justify="left" ><p class="display-1 font-weight-bold  orange--text justify-left" color="secondary">Our Services</p></v-row>
 
         <v-row class="hidden-sm-and-down mb-7">  
             <v-parallax
             src="/servicesbg.jpg"
             height="400"
-            
-            
+
           >
             <!-- <v-img src="/servicesbg.jpg" height="400px" width="100vw"> -->
                 <!-- <v-overlay absolute="true" value="true" opacity="0.34"  > -->
@@ -21,8 +20,7 @@
                         class="py-1 px-3 card-design"
                         outlined
                         pa-2
-                        height="200"
-                        
+                        height="300"
                         @click="toggle"
                         color="#31124B"
                         >   
@@ -77,24 +75,24 @@ export default {
             active:false,
             cardItems : [
                 {
-                    icon: "hotel",
+                    icon: "add_shopping",
                     header: "Best Packages",
-                    text: "We bring to you the best packages from around the world"
+                    text: "We bring to you the best packages from around the world.Our Holidays are co-created with our customers,ensuring suggestions and feedback are the basis of creating magical holiday"
                 },
                 {
-                    icon: "hotel",
+                    icon: "attach_money",
                     header: "Best Prices",
-                    text: "We assure to provide the best prices"
+                    text: "We assure to provide the best prices.Being a customer-driven travel company, we fully understand the desires as well as compulsions of the traveler and take them into account while making travel deals."
                 },
                 {
                     icon: "hotel",
                     header: "Best Hotels",
-                    text: "We provide you the best hotels along with packages"
+                    text: "We provide you the best hotels along with packages.We have alliance with over 45,000 hotels across India including both budget and luxury hotels and can arrange accommodation for you as per you demands and budget."
                 },
                 {
-                    icon: "hotel",
-                    header: "Best Prices",
-                    text: "We assure to provide the best prices"
+                    icon: "graphic_eq",
+                    header: "Fastest Growing ",
+                    text: "Based on a transparent business model and with over 150,000+ happy customers, Tour My India Pvt. Ltd. today is one of the fastest growing tour operators in India. We are a team of 200+ travel experts with experience"
                 },
 
             ]

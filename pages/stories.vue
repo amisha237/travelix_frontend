@@ -55,18 +55,18 @@
                         <v-chip class="orange white--text"  >Author: {{item.author}}</v-chip>&emsp; 
                         <v-chip class="orange white--text"  >Travel Date: {{item.tour_date}}</v-chip>&emsp;
                         <v-spacer></v-spacer>
-                        <v-chip class="likes_layout orange white--text">Likes: {{item.likes}}</v-chip>&emsp;
+                       <v-btn text icon  fab dark  color="secondary"  @click="getLikes(item.id)">
+                        <v-icon>mdi-heart</v-icon>
+                        </v-btn> Likes: {{item.likes}}&emsp;
                     </v-card-actions>
                     <div class="border">
                     <v-card-text >{{item.experience}}</v-card-text>
                     <br>
                     <v-row class="pa-4">
 
-                     <v-btn text icon large fab dark  color="primary" >
+                     <v-btn text icon large fab dark  color="likesColours" >
                 <v-icon>mdi-heart</v-icon>
-              </v-btn><v-spacer></v-spacer> <v-btn  tile color="lighten-2 indigo" dark  :to="`/packagesDetails/${item.id}`">View Package Info</v-btn>
-     <v-spacer></v-spacer><v-btn color="indigo  lighten-2  white--text outlined ">Booking Avaliable</v-btn>
-
+              </v-btn>
                     </v-row>
                     </div>
                 </v-card>
@@ -78,7 +78,7 @@
                                 v-model="page"
                                 :length="numberOfPages"
                                 :total-visible="5"
-                                color="grey darken-2"
+                                color="primary "
                                 max-visible="5"
                             ></v-pagination>
                         </v-col>
@@ -204,7 +204,8 @@ export default {
     width: 850,
     height: undefined,
     page: 1,
-    itemsPerPage: 2,
+    itemsPerPage: 1,
+    likeColours:'secondary',
 
     items : [],
     
@@ -256,19 +257,19 @@ export default {
 			{
                  this.items.push(response.data[j])
                   this.user_id = this.$auth.user.id
-                  console.log(this.user_id) 
-                  console.log(response.data[j].id)
+                //   console.log(this.user_id) 
+                //   console.log(response.data[j].id)
                   var sid = response.data[j].id
                   var uid = this.user_id
 
                   const response2  = await this.$axios.get(`/api/stories/getlikes/${sid}/${uid}`)
                   if(response2.data.success==true)
                   {
-                      this.likes[sid] = "UNLIKE"
-                      console.log(this.likes[sid])
+                     this.likeColours="black"
+                     // console.log(this.likes[sid])
                   }else{
-                      this.likes[sid] = "LIKE"
-                         console.log(this.likes[sid])
+                      this.likeColours="success"
+                       //  console.log(this.likes[sid])
                   }
                 
             
@@ -283,17 +284,17 @@ export default {
             this.loadingCard=false 
         },
 
-        async sendLike(item)
+         async getLikes(item)
         {       
             console.log(item)
             this.user_id = this.$auth.user.id
-            console.log(this.user_id)
+           console.log(this.user_id)
             //console.log(user_id)
            const response = await this.$axios.post('api/stories/addLikes',{
            s_id :item,
            u_id: this.user_id,
-
       })
+      this.initialize()
       if(response.data.success==true)
 				{
         this.likes[item] = "UNLIKE"

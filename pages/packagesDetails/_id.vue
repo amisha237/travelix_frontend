@@ -102,19 +102,19 @@
                     <v-card
                         
                         class="ma-4"
-                        height="250"
+                        height="200"
                         width="250"
                         @click="toggle"
                     >
                     <v-img :src="`http://localhost:8000/mainpackages/${image}`"
-                     height="80%" 
+                     height="100%" 
                      width="100%"
                      alt="">
                       
                     </v-img>
-                      <v-card-title class="font-weight-light">
-                        Place Name
-                      </v-card-title>    
+                      <!-- <v-card-title class="font-weight-light">
+                        Taj Mahal
+                      </v-card-title>     -->
                     </v-card>
                     </v-slide-item>
                 </v-slide-group>
@@ -123,6 +123,7 @@
             </template>
 
             <br><br>
+            <p class="display-1 font-weight-bold  orange--text justify-left ml-3" color="secondary">Get the Locations</p>
             
 
            <GMap

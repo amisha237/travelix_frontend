@@ -293,7 +293,13 @@ export default {
          {
           icon: 'dashboard',
           title: 'Dashboard',
-         
+         subitems:[
+           {
+              icon: 'add_circle',
+              title: 'View',
+              to: 'dashboard'
+           }
+         ]     
         },
         {
           icon: 'location_city',

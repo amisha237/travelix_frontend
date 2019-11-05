@@ -23,7 +23,7 @@
  
   <br><br>
   </div>
-   <div class="title-1 text-center mt-12 mb-n12" >
+   <div class="title-1 text-center mt-n12 mb-n12" >
      	<span class="display-1 mx-auto ">We Discover the Best Places for you!</span>
       	<p class="black--text bold ">Enjoy the best packages with luxury service at lowest price</p>
         <destinationCard />
