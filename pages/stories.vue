@@ -28,10 +28,16 @@
                 hide-default-footer
                 >  
                 <template v-slot:default="props">
-                
-                <v-card
-   
-                    v-for="item in items" :key="item.id"     
+                 <v-row class="justify-center align-center">
+                    <v-col
+                    v-for="item in props.items"
+                    :key="item.id"
+                    cols="12"
+                    sm="12"
+                    md="12"
+                    lg="12"
+                >  
+                <v-card    
                     class="mx-auto card_margin pa-4"
                     :flat="flat"
                     :loading="loading"
@@ -69,7 +75,9 @@
               </v-btn>
                     </v-row>
                     </div>
-                </v-card>
+                    </v-card>
+                 </v-col>
+                </v-row>
                 </template>
                 <template v-slot:footer>
                     <v-row class="mt-2" align="center" justify="center">

@@ -127,7 +127,6 @@
                         :length="numberOfPages"
                         :total-visible="5"
                         color="grey darken-2"
-                        max-visible="5"
                     ></v-pagination>
                 </v-col>
             </v-row> 
