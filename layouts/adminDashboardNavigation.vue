@@ -296,8 +296,8 @@ export default {
          subitems:[
            {
               icon: 'add_circle',
-              title: 'View',
-              to: 'dashboard'
+              title: 'View Dashboard',
+              to: '/admin/dashboard'
            }
          ]     
         },

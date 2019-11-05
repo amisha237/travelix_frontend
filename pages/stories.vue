@@ -97,7 +97,7 @@
             
         </v-flex>
         <v-flex xs12 sm12 md3 lg3>
-            <v-btn class="primary mb-3 white--text " elevation="3" outlined block>Add Your Stories</v-btn>
+            <v-btn class="primary mb-3 white--text " elevation="3" outlined block to="/add-stories">Add Your Stories</v-btn>
             <v-card >
                 <v-subheader class="orange--text font-weight display-1">Latest Post</v-subheader><hr>
                 <div  v-for="post in posts" :key="post.id" >

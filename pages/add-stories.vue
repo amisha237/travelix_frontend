@@ -89,7 +89,7 @@
                                 <v-btn
                                 color = "primary"
                                 @click="submitForm"> 
-                                Submit
+                                Save
                                 </v-btn>
                             </v-col>
                         </v-row>
@@ -104,7 +104,7 @@
 
 <script>
 export default {
-     layout:"adminDashboardNavigation",
+     
     data(){
         return{
             city:'',

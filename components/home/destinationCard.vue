@@ -3,18 +3,19 @@
     <v-container>
     <v-row no-gutters class="hidden-sm-and-down">
       <v-col md="3" v-for="item in items" :key="item.title"
-      v-bind:to="item.to"
       >
         <v-card
         class="mx-5 mt-5 zoom"
         outlined
         exact
+        @click="showPackages"
         >
           <v-img
             class="white--text"
             height="400px"
             
             v-bind:src="item.src"
+          
           >
             <v-card-title class="justify-center">
               <span > {{item.destination}} <br>{{item.price}}</span>   
@@ -101,6 +102,9 @@ export default {
         //       console.log(response.data)
 
         //   }
+      async showPackages(){
+          
+        }
     }
 }
 </script>
