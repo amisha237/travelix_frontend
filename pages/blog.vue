@@ -42,7 +42,7 @@
                 height="250px"
                 :src="`http://localhost:8000/mainblogs/${header_image}`"
                 >
-                    
+                <v-row class="display-1 textimg ml-4" >{{city}}</v-row>
                 </v-img> 
            
                 <v-card-text v-for="place in places" :key="place.id">
@@ -50,16 +50,16 @@
                     <v-subheader class="font-weight-bold title orange--text mb-n6">{{place.place}}</v-subheader>
                    <br>
                    <v-row>
-                    <v-col md="9" sm="12">
+                    <v-col md="8" sm="12">
                     <p class="pa-2 primary--text">
                       {{place.description}}
                     </p>
                     </v-col>
-                    <v-col md="3" sm="12"> 
+                    <v-col md="4" sm="12"> 
                          <v-img               
-                            class="white--text"
-                            height="250px"
-                            :src="`http://localhost:8000/mainblogs/${header_image}`"
+                            class="white--text mr-2"
+                            height="450px"
+                            :src="`http://localhost:8000/mainblogs/${place.blog_image}`"
                             >
                          </v-img>
                     </v-col>
@@ -253,5 +253,10 @@ export default {
 
 .border{
     border: 3px solid #31124B;
+}
+
+.textimg{
+
+  margin-top:200px;
 }
 </style>
