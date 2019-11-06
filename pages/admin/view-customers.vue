@@ -42,7 +42,7 @@
                   <v-img
                     class=" my-5 "
                     
-                    :src="`http://localhost:8000/mainpackages/${item.profile_img}`">
+                    :src="`http://localhost:8000/UserProfileImage/${item.profile_img}`">
                   </v-img>
                 </v-avatar>
             </template>

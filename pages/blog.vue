@@ -49,16 +49,16 @@
                     <div class="border">
                     <v-subheader class="font-weight-bold title orange--text mb-n6">{{place.place}}</v-subheader>
                    <br>
-                   <v-row>
-                    <v-col md="8" sm="12">
-                    <p class="pa-2 primary--text">
+                   <v-row class="ml-1">
+                    <v-col md="8" sm="12" >
+                    <span style="white-space: pre-wrap;" class="pa-2 primary--text ">
                       {{place.description}}
-                    </p>
+                    </span>
                     </v-col>
                     <v-col md="4" sm="12"> 
                          <v-img               
                             class="white--text mr-2"
-                            height="450px"
+                            height="350px"
                             :src="`http://localhost:8000/mainblogs/${place.blog_image}`"
                             >
                          </v-img>

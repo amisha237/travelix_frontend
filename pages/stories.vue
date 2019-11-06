@@ -52,7 +52,7 @@
                         height="350px"
                         :src="`http://localhost:8000/storiesImage/${item.image_1}`"                                 
                     >
-                        <v-card-title class="align-end fill-height">{{item.package_name}}</v-card-title>
+                        <v-card-title class="display-1 align-end fill-height">{{item.package_name}}</v-card-title>
                     </v-img>
                     <!--<v-card-title v-else>I'm a title</v-card-title>
         
@@ -66,7 +66,7 @@
                         </v-btn> Likes: {{item.likes}}&emsp;
                     </v-card-actions>
                     <div class="border">
-                    <v-card-text >{{item.experience}}</v-card-text>
+                    <v-card-text ><span style="white-space: pre-wrap;"> {{item.experience}}</span></v-card-text>
                     <br>
                     <v-row class="pa-4">
 
@@ -212,7 +212,7 @@ export default {
     width: 850,
     height: undefined,
     page: 1,
-    itemsPerPage: 1,
+    itemsPerPage: 2,
     likeColours:'secondary',
 
     items : [],
@@ -263,25 +263,30 @@ export default {
             
             for(var j=0;j<response.data.length;j++)
 			{
-                 this.items.push(response.data[j])
-                  this.user_id = this.$auth.user.id
-                //   console.log(this.user_id) 
-                //   console.log(response.data[j].id)
-                  var sid = response.data[j].id
-                  var uid = this.user_id
+                  this.items.push(response.data[j])
+                  if(this.$auth.loggedIn)
+                  { 
+                    this.user_id = this.$auth.user.id
+                    //console.log(this.user_id) 
+                    //console.log(response.data[j].id)
+                    var sid = response.data[j].id
+                    var uid = this.user_id
 
-                  const response2  = await this.$axios.get(`/api/stories/getlikes/${sid}/${uid}`)
-                  if(response2.data.success==true)
-                  {
-                     this.likeColours="black"
-                     // console.log(this.likes[sid])
-                  }else{
-                      this.likeColours="success"
-                       //  console.log(this.likes[sid])
+                    const response2  = await this.$axios.get(`/api/stories/getlikes/${sid}/${uid}`)
+                    if(response2.data.success==true)
+                    {
+                        this.likeColours="black"
+                        // console.log(this.likes[sid])
+                    }else{
+                        this.likeColours="success"
+                        //  console.log(this.likes[sid])
+                    }
                   }
                 
             
             }
+
+            console.log(this.items)
         
             const response1 = await this.$axios.get('/api/stories/getLatest')
             

@@ -98,12 +98,12 @@
 
              <!-- features -->
              <v-flex xs12 sm12 md12 lg12>
-                <v-text-field
+                <v-textarea
                 v-model="features"
                 :rules="featureRules"
                 label="Features"
                 outlined
-                ></v-text-field>
+                ></v-textarea>
              </v-flex>
 
              <!-- details -->
@@ -182,10 +182,7 @@
         price:null,
         location:'',
         locations: [
-            'Andhra Pradesh',
-            'Gujrat',
-            'Rajsthan',
-            'Kerala',
+            'Rajsthan','Himachal Pradesh','Andaman and Nicobar Islands','Kerla','North East','Uttarakhand'
         ],
         type:'',
         types:[

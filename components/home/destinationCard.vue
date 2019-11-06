@@ -8,7 +8,7 @@
         class="mx-5 mt-5 zoom"
         outlined
         exact
-        @click="showPackages"
+       :to="`/packageCity/${item.destination}`"
         >
           <v-img
             class="white--text"
@@ -36,6 +36,7 @@
         class="mx-auto mt-5"
         outlined
         exact
+       :to="`/packageCity/${item.destination}`"
         >
           <v-img
             class="white--text"
@@ -64,26 +65,26 @@ export default {
                 {
                 src:"/fig1.jpg",
                 price:'$100',
-                destination:'Bhubaneswar',
-                to:'/'
+                destination:'Kerla',
+               
                 },
                 {
                 src:"/img4.jpg",
                 price:'$120',
-                destination:'Kerala',
-                to:'/inspire'
+                destination:'Himachal Pradesh',
+              
                 },
                 {
                 src:"/fig2.jpg",
                 price:'$90',
-                destination:'Puri',
-                to:'/'
+                destination:'Uttarakhand',
+               
                 },
                 {
                 src:"/delhi.jpg",
                 price:'$150',
-                destination:'Delhi',
-                to:'/inspire'
+                destination:'North East',
+              
                 },
             ]
         }
@@ -103,6 +104,8 @@ export default {
 
         //   }
       async showPackages(){
+
+          this.$router.push(`/packageCity/${item.destination}`)
           
         }
     }

@@ -179,7 +179,7 @@ export default {
                 
                 console.log(response.data.success)
 
-                this.$router.push('/admin/dashboard')
+                this.$router.push('/stories')
         }
 
        

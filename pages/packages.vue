@@ -87,7 +87,7 @@
                                         <p > {{ item.package_name }} </p>
                                         <p >Type: {{item.package_type}} </p>
                                     <p> Location: {{item.package_location}} </p>
-                                        <p class="caption">{{item.package_details}} </p>
+                                        <span style="white-space: pre-wrap;" class="caption">{{item.package_features}} </span>
                                     </v-container>
                                 </v-col>
                             
@@ -126,7 +126,7 @@
                         v-model="page"
                         :length="numberOfPages"
                         :total-visible="5"
-                        color="grey darken-2"
+                        color="primary"
                     ></v-pagination>
                 </v-col>
             </v-row> 
@@ -147,7 +147,7 @@
         filter: {},
         sortDesc: false,
         page: 1,
-        itemsPerPage: 7,
+        itemsPerPage: 4,
         sortBy: 'name',
         keys: [
           'package_name',

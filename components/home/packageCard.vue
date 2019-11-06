@@ -7,7 +7,7 @@
 				<v-card
 				class="mx-auto zoom"
 				max-width="344"
-				height="330px"
+				height="355px"
 				
 				>
 				<v-img
@@ -21,7 +21,7 @@
 							dark
 							color="orange"
 							>
-							Rs 5000/- 
+							Rs {{item.package_price}}/- 
 						</v-chip>
 					</div>
 				</v-img>

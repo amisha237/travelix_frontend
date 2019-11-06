@@ -1,6 +1,6 @@
 <template>
   <v-layout wrap align-center justify-center 
-   :style="{backgroundImage:'url(/bg_10.jpg)',backgroundSize: 'cover',}"
+  
   
   >
   <v-container >

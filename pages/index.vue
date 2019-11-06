@@ -119,9 +119,7 @@ export default {
   color: #f88020;
   font-weight: 100
 }
-.services{
-  /* margin-top: -220px; */
-}
+
 .button {
   color: blue
 }

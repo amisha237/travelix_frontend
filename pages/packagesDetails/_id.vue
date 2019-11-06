@@ -21,8 +21,10 @@
             <v-row  class="font-weight-light">
               <v-col cols="5" class="my-1">
                 <v-img :src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
-                height="700" 
-                width="100%" alt=""/>
+                
+                width="100%" 
+                contain
+                alt=""/>
               </v-col>
               <v-col>
                 <v-row>
@@ -45,13 +47,13 @@
                 </v-row>
                 <v-row>
                   <v-col>
-                  <h4 class="font-weight-light head"> Package Features</h4> <h3 class="head"> {{item.package_features}} </h3>
+                  <h4 class="font-weight-light head"> Package Features</h4> <h3> <span style="white-space: pre-wrap;" class="head"> {{item.package_features}} </span></h3>
                   <v-divider/>
                   </v-col>  
                 </v-row>
                 <v-row>
                   <v-col>
-                  <h4 class=" font-weight-light head"> Package Details </h4> <h3 class="head">{{item.package_details}}</h3>
+                  <h4 class=" font-weight-light head"> Package Details </h4><h3> <span style="white-space: pre-wrap;" class="head">{{item.package_details}}</span></h3>
                   <v-divider/>
                   </v-col>  
                   

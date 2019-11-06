@@ -1,8 +1,5 @@
 <template>
-   <v-card
-   height="300px"
-   
-   :style="{backgroundImage:'url(/bg_10.jpg)',backgroundSize: 'cover',}">
+   <v-card>
        <v-card-text>
           <div>
               <v-form ref="form"

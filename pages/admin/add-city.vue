@@ -78,7 +78,7 @@ export default {
       ],
             city:'',
             header_image:'',
-            items:['Delhi','Mumbai','Chennai','Kolkata','Kerla','North East','Uttarakhand'],
+            items:['Rajsthan','Himachal Pradesh','Andaman and Nicobar Islands','Kerla','North East','Uttarakhand'],
             //cities :['Jaipur','Andaman & Nicobar' ,'Nainital','Kulu Manali'],
             rules: [
                 value => !value || value.size < 4000000 || 'Avatar size should be less than 4 MB!',

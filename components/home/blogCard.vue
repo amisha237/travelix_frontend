@@ -18,7 +18,7 @@
           <v-card-text class="text-left">
             <span>{{item.package_type}}</span><br>
             <span class="text--primary">
-            {{item.package_features}}                                                               //   Add package features here not description
+            {{item.package_features.substring(0,70)}}                                                               
             </span>
           </v-card-text>
 
