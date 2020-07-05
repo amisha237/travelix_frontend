@@ -415,7 +415,7 @@
 			],
 			itemsPerPageArray: [1, 2, 3,12,15,18],
       		 page: 1,
-			 itemsPerPage: 2,
+			 itemsPerPage: 4,
         headers: [
           {
             text: 'ID',

@@ -73,7 +73,7 @@
                                     <v-img
                                     :src="`http://localhost:8000/mainpackages/${item.package_header_image}`"
                                     max-width="400"
-                                    max-height="240"
+                                    max-height="300"
                                    
                                 ></v-img>
                                 </v-col>

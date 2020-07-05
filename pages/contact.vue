@@ -140,7 +140,7 @@
           </v-form>
       </v-col>
     </v-row>
-    <v-row class="hidden-md-and-up"> 
+    <!-- <v-row class="hidden-md-and-up"> 
       <v-col class="px-1 mx-auto" cols="10">
               <br>
         <p class="headline font-weight-light">     Find us at the office</p>
@@ -161,7 +161,7 @@
         </p>
       
       </v-col>  
-    </v-row>
+    </v-row> -->
 
 
     </v-overlay>
